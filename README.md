@@ -31,3 +31,7 @@ npm start
 - Work / portfolio
 - Team
 - Contact
+
+## Deploy
+
+Connected to Vercel from the `main` branch.
