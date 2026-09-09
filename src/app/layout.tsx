@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
-import { Figtree, Syne } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { LocaleProvider } from "@/i18n/LocaleProvider";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
+  subsets: ["latin", "greek"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
 const title = "Genesis — We build your product, start to finish";
 const description =
-  "A 3-person Athens studio delivering apps, websites and eshops for startups and small businesses — no technical team required.";
+  "A software development agency in Athens, building websites, apps, and eshops for startups and small businesses — no technical team required.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://genesis.studio"),
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: ["el_GR"],
     url: "https://genesis.studio",
     siteName: "Genesis",
     title,
@@ -68,8 +70,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${syne.variable} ${figtree.variable} h-full`}>
-      <body className="min-h-full font-sans antialiased">{children}</body>
+    <html
+      lang="en"
+      className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full`}
+    >
+      <body className="min-h-full font-sans antialiased">
+        <LocaleProvider>{children}</LocaleProvider>
+      </body>
     </html>
   );
 }

@@ -5,7 +5,7 @@
   --accent-hover: #0a6552;
   --accent-muted: #d7ebe5;
   --accent-soft: #eef6f3;
-  --bg: #f4f6f5;
+  --bg: #f7faf8;
   --bg-elevated: #ffffff;
   --ink: #15201c;
   --ink-muted: #5a675f;
@@ -24,8 +24,8 @@
   --color-ink-muted: var(--ink-muted);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
-  --font-display: var(--font-syne);
-  --font-sans: var(--font-figtree);
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 html {
@@ -33,21 +33,14 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(ellipse 90% 50% at 0% -10%, rgba(8, 80, 65, 0.07), transparent 55%),
-    radial-gradient(ellipse 70% 40% at 100% 5%, rgba(8, 80, 65, 0.05), transparent 50%),
-    var(--bg);
+  background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-figtree), "Segoe UI", sans-serif;
+  font-family: var(--font-ibm-plex-sans), "Segoe UI", sans-serif;
 }
 
 ::selection {
   background: var(--accent-muted);
   color: var(--ink);
-}
-
-.font-display {
-  font-family: var(--font-syne), Georgia, serif;
 }
 
 .section-pad {
@@ -70,6 +63,14 @@ body {
   width: 100%;
   max-width: 72rem;
   margin-inline: auto;
+}
+
+.hero-mint {
+  background:
+    radial-gradient(ellipse 70% 55% at 88% 18%, rgba(120, 196, 170, 0.38), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 12% 88%, rgba(8, 80, 65, 0.1), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 70% 75%, rgba(180, 220, 205, 0.35), transparent 50%),
+    linear-gradient(180deg, #f4faf7 0%, #f7faf8 45%, #f5f8f6 100%);
 }
 
 .fade-in {
@@ -100,7 +101,7 @@ body {
 @keyframes hero-rise {
   from {
     opacity: 0;
-    transform: translateY(1.5rem);
+    transform: translateY(1.25rem);
   }
   to {
     opacity: 1;
@@ -108,12 +109,8 @@ body {
   }
 }
 
-.animate-hero-brand {
-  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
 .animate-hero-copy {
-  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  animation: hero-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -128,7 +125,6 @@ body {
     transition: none;
   }
 
-  .animate-hero-brand,
   .animate-hero-copy {
     animation: none;
   }
