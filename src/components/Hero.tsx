@@ -1,53 +1,47 @@
-import Image from "next/image";
+"use client";
+
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export function Hero() {
+  const { t } = useLocale();
+
   return (
     <section
       id="top"
-      className="relative min-h-[100svh] overflow-hidden pt-16 md:pt-[4.25rem]"
-      aria-labelledby="hero-brand"
+      className="relative overflow-hidden pt-16 md:pt-[4.25rem]"
+      aria-labelledby="hero-heading"
     >
-      <div className="absolute inset-0">
-        <Image
-          src="/hero-athens.svg"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg" />
-      </div>
+      <div className="hero-mint absolute inset-0" aria-hidden />
 
-      <div className="section-pad container-narrow relative flex min-h-[calc(100svh-4rem)] flex-col justify-end pb-14 pt-24 md:min-h-[calc(100svh-4.25rem)] md:pb-24 md:pt-28">
-        <p
-          id="hero-brand"
-          className="font-display animate-hero-brand text-[clamp(3.75rem,14vw,8.5rem)] font-bold leading-[0.88] tracking-[-0.04em] text-ink"
-        >
-          Genesis
-        </p>
-
-        <div className="mt-6 max-w-2xl animate-hero-copy md:mt-10">
-          <h1 className="font-display text-[clamp(1.65rem,4.2vw,3rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-ink">
-            We build your product, start to finish.
-          </h1>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-muted md:text-lg">
-            A 3-person Athens studio delivering apps, websites and eshops for
-            startups — no technical team required.
+      <div className="section-pad container-narrow relative flex min-h-[calc(100svh-4rem)] flex-col justify-center pb-16 pt-16 md:min-h-[calc(100svh-4.25rem)] md:pb-24 md:pt-20">
+        <div className="max-w-3xl animate-hero-copy">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted md:text-sm">
+            {t.hero.eyebrow}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <h1
+            id="hero-heading"
+            className="mt-5 text-[clamp(2.1rem,5.2vw,3.75rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-ink"
+          >
+            {t.hero.headline}
+          </h1>
+
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
+            {t.hero.subtext}
+          </p>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href="#contact"
               className="inline-flex h-12 items-center justify-center rounded-md bg-accent px-6 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
             >
-              Let&apos;s talk
+              {t.hero.primaryCta}
             </a>
             <a
               href="#work"
-              className="inline-flex h-12 items-center justify-center rounded-md border border-border-strong bg-bg-elevated/80 px-6 text-sm font-semibold text-ink backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex h-12 items-center justify-center rounded-md border border-border-strong bg-bg-elevated/70 px-6 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
             >
-              See our work
+              {t.hero.secondaryCta}
             </a>
           </div>
         </div>

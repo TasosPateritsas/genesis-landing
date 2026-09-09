@@ -1,5 +1,7 @@
-import { services } from "@/data/content";
+"use client";
+
 import { FadeIn } from "./FadeIn";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 function ServiceIcon({ type }: { type: "app" | "web" | "shop" }) {
   const common = "h-5 w-5 text-white";
@@ -37,6 +39,8 @@ function ServiceIcon({ type }: { type: "app" | "web" | "shop" }) {
 }
 
 export function WhatWeBuild() {
+  const { t } = useLocale();
+
   return (
     <section
       id="services"
@@ -45,36 +49,31 @@ export function WhatWeBuild() {
     >
       <FadeIn>
         <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-          What we build
+          {t.services.label}
         </p>
         <h2
           id="services-heading"
-          className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
+          className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
         >
-          Full development, end to end.
+          {t.services.heading}
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
-          Bring the idea. We design, build, and ship a complete digital product —
-          so you never need an in-house technical team to get to market.
+          {t.services.intro}
         </p>
       </FadeIn>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
-        {services.map((service, index) => (
+        {t.services.items.map((service, index) => (
           <FadeIn key={service.title} delay={(index + 1) as 1 | 2 | 3}>
             <article className="h-full border border-border bg-bg-elevated p-6 md:p-7">
               <div className="flex h-11 w-11 items-center justify-center rounded-md bg-accent">
                 <ServiceIcon type={service.icon} />
               </div>
-              <h3 className="mt-6 font-display text-xl font-semibold tracking-tight text-ink">
+              <h3 className="mt-6 text-xl font-semibold tracking-tight text-ink">
                 {service.title}
               </h3>
-              <p className="mt-2 text-base font-medium text-accent">
-                {service.description}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                {service.detail}
-              </p>
+              <p className="mt-2 text-base font-medium text-accent">{service.description}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{service.detail}</p>
             </article>
           </FadeIn>
         ))}

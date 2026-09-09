@@ -1,5 +1,7 @@
-import { team } from "@/data/content";
+"use client";
+
 import { FadeIn } from "./FadeIn";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 function GitHubIcon() {
   return (
@@ -18,6 +20,8 @@ function LinkedInIcon() {
 }
 
 export function Team() {
+  const { t } = useLocale();
+
   return (
     <section
       id="team"
@@ -26,41 +30,35 @@ export function Team() {
     >
       <FadeIn>
         <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-          The team
+          {t.team.label}
         </p>
         <h2
           id="team-heading"
-          className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
+          className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
         >
-          Three engineers. One studio. You talk to the builders.
+          {t.team.heading}
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
-          We&apos;re a newly founded team in Athens — small enough to move fast,
-          senior enough to own the full stack from brief to launch.
+          {t.team.intro}
         </p>
       </FadeIn>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {team.map((member, index) => (
+        {t.team.members.map((member, index) => (
           <FadeIn key={member.name} delay={(index + 1) as 1 | 2 | 3}>
             <article className="h-full border border-border bg-bg-elevated p-6">
-              <div
-                className="flex aspect-[4/5] items-end bg-accent-soft p-5"
-                aria-hidden
-              >
+              <div className="flex aspect-[4/5] items-end bg-accent-soft p-5" aria-hidden>
                 <div className="flex h-full w-full flex-col justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-md bg-accent font-display text-xl font-bold text-white">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-md bg-accent text-xl font-bold text-white">
                     {member.initials}
                   </div>
-                  <p className="font-display text-4xl font-bold leading-none tracking-tight text-accent/25">
+                  <p className="text-4xl font-bold leading-none tracking-tight text-accent/25">
                     {member.initials}
                   </p>
                 </div>
               </div>
 
-              <h3 className="mt-5 font-display text-xl font-semibold tracking-tight text-ink">
-                {member.name}
-              </h3>
+              <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink">{member.name}</h3>
               <p className="mt-1 text-sm font-medium text-accent">{member.role}</p>
               <p className="mt-3 text-sm leading-relaxed text-ink-muted">{member.bio}</p>
 
