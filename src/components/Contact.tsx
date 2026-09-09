@@ -3,8 +3,10 @@
 import { FormEvent, useState } from "react";
 import { site } from "@/data/content";
 import { FadeIn } from "./FadeIn";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export function Contact() {
+  const { t } = useLocale();
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -15,9 +17,9 @@ export function Contact() {
     const email = String(data.get("email") || "").trim();
     const message = String(data.get("message") || "").trim();
 
-    const subject = encodeURIComponent(`Project inquiry from ${name}`);
+    const subject = encodeURIComponent(`${t.contact.mailSubject} ${name}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      `${t.contact.nameLabel}: ${name}\n${t.contact.emailFieldLabel}: ${email}\n\n${message}`,
     );
 
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
@@ -35,23 +37,22 @@ export function Contact() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <FadeIn>
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-              Contact
+              {t.contact.label}
             </p>
             <h2
               id="contact-heading"
-              className="mt-3 font-display text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
+              className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
             >
-              Tell us what you want to build.
+              {t.contact.heading}
             </h2>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-muted md:text-lg">
-              Share a short brief — idea stage is fine. We usually reply within
-              one business day with next steps and a realistic timeline.
+              {t.contact.intro}
             </p>
 
             <div className="mt-8 space-y-4 text-sm text-ink-muted">
               <p>
                 <span className="block text-xs font-semibold uppercase tracking-[0.12em] text-ink">
-                  Email
+                  {t.contact.emailLabel}
                 </span>
                 <a
                   href={`mailto:${site.email}`}
@@ -62,11 +63,9 @@ export function Contact() {
               </p>
               <p>
                 <span className="block text-xs font-semibold uppercase tracking-[0.12em] text-ink">
-                  Based in
+                  {t.contact.basedInLabel}
                 </span>
-                <span className="mt-1 block text-base text-ink-muted">
-                  {site.location}
-                </span>
+                <span className="mt-1 block text-base text-ink-muted">{t.contact.location}</span>
               </p>
             </div>
           </FadeIn>
@@ -80,7 +79,7 @@ export function Contact() {
               <div className="space-y-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-ink">
-                    Name
+                    {t.contact.nameLabel}
                   </label>
                   <input
                     id="name"
@@ -89,13 +88,13 @@ export function Contact() {
                     required
                     autoComplete="name"
                     className="mt-2 h-11 w-full border border-border bg-bg-elevated px-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-accent"
-                    placeholder="Alex Morgan"
+                    placeholder={t.contact.namePlaceholder}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-ink">
-                    Email
+                    {t.contact.emailFieldLabel}
                   </label>
                   <input
                     id="email"
@@ -104,13 +103,13 @@ export function Contact() {
                     required
                     autoComplete="email"
                     className="mt-2 h-11 w-full border border-border bg-bg-elevated px-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-accent"
-                    placeholder="alex@startup.com"
+                    placeholder={t.contact.emailPlaceholder}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-ink">
-                    Message
+                    {t.contact.messageLabel}
                   </label>
                   <textarea
                     id="message"
@@ -118,7 +117,7 @@ export function Contact() {
                     required
                     rows={5}
                     className="mt-2 w-full resize-y border border-border bg-bg-elevated px-3 py-2.5 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-accent"
-                    placeholder="What are you building, and when do you need it live?"
+                    placeholder={t.contact.messagePlaceholder}
                   />
                 </div>
               </div>
@@ -127,17 +126,16 @@ export function Contact() {
                 type="submit"
                 className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-accent text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
               >
-                Send message
+                {t.contact.submit}
               </button>
 
               {status === "sent" ? (
                 <p className="mt-3 text-sm text-accent" role="status">
-                  Opening your email client — if nothing appears, write us at{" "}
-                  {site.email}.
+                  {t.contact.sent} {site.email}.
                 </p>
               ) : (
                 <p className="mt-3 text-xs leading-relaxed text-ink-muted">
-                  Prefer email? Reach us directly at{" "}
+                  {t.contact.preferEmail}{" "}
                   <a href={`mailto:${site.email}`} className="underline underline-offset-2">
                     {site.email}
                   </a>
