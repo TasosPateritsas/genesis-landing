@@ -7,6 +7,7 @@ Single-page landing site for **Genesis**, a 3-person tech agency in Athens, Gree
 - Next.js (App Router)
 - TypeScript
 - Tailwind CSS
+- IBM Plex Sans / IBM Plex Mono
 
 ## Develop
 
@@ -16,6 +17,15 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Language (EN / EL)
+
+The site is bilingual. Use the `[EN | EL]` toggle in the nav, or open with a URL param:
+
+- English (default): `/?lang=en`
+- Greek: `/?lang=el`
+
+Selection persists in `localStorage` and the `lang` query param. The brand name **Genesis** never translates.
 
 ## Build
 
@@ -27,7 +37,7 @@ npm start
 ## Sections
 
 - Hero
-- What we build
+- Services (What we build)
 - Work / portfolio
 - Team
 - Contact
