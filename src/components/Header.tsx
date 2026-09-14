@@ -26,10 +26,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background,border,backdrop-filter] duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-accent/25 transition-[background,backdrop-filter] duration-300 ${
         scrolled || open
-          ? "border-b border-border bg-bg-elevated/90 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent"
+          ? "bg-bg-elevated/90 backdrop-blur-md"
+          : "bg-transparent"
       }`}
     >
       <div className="section-pad container-narrow flex h-16 items-center justify-between md:h-[4.25rem]">
