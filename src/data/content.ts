@@ -141,14 +141,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       work: "Work",
       team: "Team",
       contact: "Contact",
-      cta: "Let's talk",
+      cta: "Let's talk!",
     },
     hero: {
       eyebrow: "GENESIS · ATHENS, GR",
       headline: "We build your product, start to finish.",
       subtext:
         "A software development agency in Athens, building websites, apps, and eshops for startups and small businesses — no technical team required.",
-      primaryCta: "Let's talk",
+      primaryCta: "Let's talk!",
       secondaryCta: "See our work",
     },
     services: {
@@ -265,14 +265,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       work: "Έργα",
       team: "Ομάδα",
       contact: "Επικοινωνία",
-      cta: "Ας μιλήσουμε",
+      cta: "Ας μιλήσουμε!",
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",
       headline: "Φτιάχνουμε το προϊόν σου, από την αρχή ως το τέλος.",
       subtext:
         "Agency ανάπτυξης λογισμικού στην Αθήνα — σχεδιάζουμε websites, εφαρμογές και eshops για startups και μικρές επιχειρήσεις, χωρίς να χρειάζεσαι τεχνική ομάδα.",
-      primaryCta: "Ας μιλήσουμε",
+      primaryCta: "Ας μιλήσουμε!",
       secondaryCta: "Δες τη δουλειά μας",
     },
     services: {
