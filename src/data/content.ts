@@ -337,6 +337,25 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { title: "Launch", detail: "Roll out + support" },
           ],
         },
+        {
+          id: "ai-workflows",
+          icon: "workflow",
+          kicker: "AI workflows",
+          heading: "Custom workflows, ready to save you hours.",
+          body: "Automation and AI integration into your everyday processes — so your team spends less time on manual work and more time on what matters.",
+          included: [
+            "Process audit and automation opportunity mapping",
+            "Custom workflow design and AI integration",
+            "Integration with your existing tools (CRM, email, spreadsheets, etc.)",
+            "Testing and staged rollout",
+            "Optional monthly retainer for monitoring and updates",
+          ],
+          steps: [
+            { title: "Discover", detail: "Audit + opportunities" },
+            { title: "Build", detail: "Design + integrate" },
+            { title: "Launch", detail: "Roll out + support" },
+          ],
+        },
       ],
       chips: [
         { href: serviceChipHrefs.app, label: "App development" },
@@ -516,6 +535,25 @@ export const dictionaries: Record<Locale, Dictionary> = {
           ],
           steps: [
             { title: "Ανάλυση", detail: "Audit + roadmap" },
+            { title: "Ανάπτυξη", detail: "Σχεδιασμός + ενσωμάτωση" },
+            { title: "Παράδοση", detail: "Εφαρμογή + υποστήριξη" },
+          ],
+        },
+        {
+          id: "ai-workflows",
+          icon: "workflow",
+          kicker: "AI Workflows",
+          heading: "Custom αυτοματισμοί, έτοιμοι να σου γλιτώσουν ώρες.",
+          body: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σου διαδικασίες — ώστε η ομάδα σου να ξοδεύει λιγότερο χρόνο σε χειροκίνητες εργασίες και περισσότερο σε αυτό που μετράει.",
+          included: [
+            "Ανάλυση διαδικασιών και εντοπισμός ευκαιριών αυτοματοποίησης",
+            "Custom σχεδιασμός workflow και ενσωμάτωση AI",
+            "Ενσωμάτωση με τα εργαλεία που ήδη χρησιμοποιείς (CRM, email, spreadsheets κλπ)",
+            "Δοκιμές και σταδιακή εφαρμογή",
+            "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
+          ],
+          steps: [
+            { title: "Ανάλυση", detail: "Audit + ευκαιρίες" },
             { title: "Ανάπτυξη", detail: "Σχεδιασμός + ενσωμάτωση" },
             { title: "Παράδοση", detail: "Εφαρμογή + υποστήριξη" },
           ],
