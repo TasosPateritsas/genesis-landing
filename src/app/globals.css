@@ -339,6 +339,68 @@ body {
   color: #ffffff;
 }
 
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
+  display: inline-flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: #0f6e56;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 200ms ease-out,
+    background-color 150ms;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background-color: #085041;
+}
+
+.back-to-top-ring {
+  position: absolute;
+  inset: 0;
+  width: 56px;
+  height: 56px;
+  transform: rotate(-90deg);
+}
+
+.back-to-top-track,
+.back-to-top-progress {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.back-to-top-track {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.back-to-top-progress {
+  stroke: #ffffff;
+  stroke-linecap: round;
+}
+
+.back-to-top-icon {
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 640px) {
   .service-detail {
     flex-direction: column;
@@ -385,7 +447,9 @@ body {
   .offer-card,
   .offer-card:hover,
   .offer-card:focus-visible,
-  .see-all-services-arrow {
+  .see-all-services-arrow,
+  .back-to-top,
+  .back-to-top.is-visible {
     transition: none;
     transform: none;
   }

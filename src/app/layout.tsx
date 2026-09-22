@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { BackToTop } from "@/components/BackToTop";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import "./globals.css";
 
@@ -75,7 +76,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full`}
     >
       <body className="min-h-full font-sans antialiased">
-        <LocaleProvider>{children}</LocaleProvider>
+        <LocaleProvider>
+          {children}
+          <BackToTop />
+        </LocaleProvider>
       </body>
     </html>
   );

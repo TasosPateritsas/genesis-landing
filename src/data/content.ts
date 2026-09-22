@@ -79,6 +79,7 @@ export type Dictionary = {
     preferEmail: string;
     mailSubject: string;
   };
+  backToTop: string;
   footer: {
     tagline: string;
     location: string;
@@ -284,6 +285,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       preferEmail: "Prefer email? Reach us directly at",
       mailSubject: "Project inquiry from",
     },
+    backToTop: "Back to top",
     footer: {
       tagline: "Athens tech studio",
       location: "Athens, Greece",
@@ -509,6 +511,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       preferEmail: "Προτιμάς email; Επικοινώνησε απευθείας στο",
       mailSubject: "Ερώτηση έργου από",
     },
+    backToTop: "Επιστροφή στην κορυφή",
     footer: {
       tagline: "Athens tech studio",
       location: "Αθήνα, Ελλάδα",
