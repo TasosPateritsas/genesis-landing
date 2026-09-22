@@ -59,7 +59,7 @@ export function ServiceDetail({ block, includedLabel, cta, from }: ServiceDetail
               ))}
             </ol>
 
-            <Link href="/#contact" className="service-inline-cta">
+            <Link href="/#contact" className="service-chip service-inline-cta">
               {cta}
             </Link>
           </div>

@@ -33,7 +33,7 @@ export function Hero() {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href="#contact"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-accent px-6 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+              className="btn-primary inline-flex h-12 items-center justify-center rounded-md px-6 text-sm font-semibold"
             >
               {t.hero.primaryCta}
             </a>

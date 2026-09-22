@@ -51,7 +51,7 @@ export function Header() {
           <LanguageToggle />
           <Link
             href="/#contact"
-            className="inline-flex h-10 items-center rounded-md bg-accent px-4 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+            className="btn-primary inline-flex h-10 items-center rounded-md px-4 text-sm font-semibold"
           >
             {t.nav.cta}
           </Link>
@@ -107,7 +107,7 @@ export function Header() {
             <li className="pt-1">
               <Link
                 href="/#contact"
-                className="flex h-11 items-center justify-center rounded-md bg-accent text-sm font-semibold text-white"
+                className="btn-primary flex h-11 items-center justify-center rounded-md text-sm font-semibold"
                 onClick={() => setOpen(false)}
               >
                 {t.nav.cta}

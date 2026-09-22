@@ -18,7 +18,7 @@ export function ServicesPage() {
       <LocaleDocumentMeta title={page.metaTitle} description={page.metaDescription} />
       <Header />
       <main className="services-page pt-16 md:pt-[4.25rem]">
-        <div className="section-pad container-narrow pb-16 pt-8 md:pb-20 md:pt-10">
+        <div className="section-pad container-narrow pt-8 md:pt-10">
           <p className="services-breadcrumb">{page.breadcrumb}</p>
 
           <h1 className="mt-10 max-w-3xl text-[clamp(2rem,4.2vw,3.25rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-ink">
@@ -31,7 +31,7 @@ export function ServicesPage() {
 
           <nav
             aria-label={t.nav.services}
-            className="mt-10 flex flex-wrap justify-center gap-3"
+            className="services-chips flex flex-wrap justify-center gap-3"
           >
             {page.chips.map((chip) => (
               <a key={chip.href} href={chip.href} className="service-chip px-4 py-2 text-sm font-medium">
@@ -39,9 +39,10 @@ export function ServicesPage() {
               </a>
             ))}
           </nav>
+          <hr className="services-divider" />
         </div>
 
-        <div className="section-pad container-narrow space-y-12 pb-20">
+        <div className="services-blocks section-pad container-narrow space-y-12 pb-16">
           {t.services.items.map((service, index) => {
             const block = page.blocks.find((entry) => entry.id === placeholderIds[index]);
             if (block) {
@@ -81,7 +82,10 @@ export function ServicesPage() {
             <p className="services-closing-subtext mx-auto mt-3 max-w-xl text-base leading-relaxed">
               {page.closingSubtext}
             </p>
-            <Link href="/#contact" className="btn-primary mt-6 inline-flex text-sm font-semibold">
+            <Link
+              href="/#contact"
+              className="btn-primary services-closing-cta mt-6 inline-flex text-sm font-semibold"
+            >
               {page.closingCta}
             </Link>
           </div>
