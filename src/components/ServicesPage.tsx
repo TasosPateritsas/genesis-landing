@@ -3,7 +3,10 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LocaleDocumentMeta } from "@/components/LocaleDocumentMeta";
+import { ServiceDetail } from "@/components/ServiceDetail";
 import { useLocale } from "@/i18n/LocaleProvider";
+
+const placeholderIds = ["app-development", "ai-agents", "ai-workflows", "websites-eshops"] as const;
 
 export function ServicesPage() {
   const { t } = useLocale();
@@ -38,17 +41,32 @@ export function ServicesPage() {
         </div>
 
         <div className="section-pad container-narrow space-y-12 pb-20">
-          {t.services.items.map((service) => (
-            <section key={service.icon} aria-labelledby={`service-${service.icon}`}>
-              <h2
-                id={`service-${service.icon}`}
-                className="text-2xl font-semibold tracking-tight text-ink"
-              >
-                {service.title}
-              </h2>
-              <div className="mt-4 min-h-24" />
-            </section>
-          ))}
+          {t.services.items.map((service, index) => {
+            const block = page.blocks.find((entry) => entry.id === placeholderIds[index]);
+            if (block) {
+              return (
+                <ServiceDetail
+                  key={block.id}
+                  block={block}
+                  includedLabel={page.includedLabel}
+                  cta={page.cta}
+                  from={index % 2 === 0 ? "left" : "right"}
+                />
+              );
+            }
+
+            return (
+              <section key={service.icon} aria-labelledby={`service-${service.icon}`}>
+                <h2
+                  id={`service-${service.icon}`}
+                  className="text-2xl font-semibold tracking-tight text-ink"
+                >
+                  {service.title}
+                </h2>
+                <div className="mt-4 min-h-24" />
+              </section>
+            );
+          })}
         </div>
       </main>
       <Footer />

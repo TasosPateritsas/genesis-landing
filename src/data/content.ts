@@ -93,9 +93,20 @@ export type Dictionary = {
     subtitle: string;
     metaTitle: string;
     metaDescription: string;
+    includedLabel: string;
+    cta: string;
     chips: Array<{
       href: string;
       label: string;
+    }>;
+    blocks: Array<{
+      id: string;
+      icon: "smartphone" | "bot" | "workflow" | "shopping-bag";
+      kicker: string;
+      heading: string;
+      body: string;
+      included: string[];
+      steps: Array<{ title: string; detail: string }>;
     }>;
   };
 };
@@ -286,6 +297,29 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaTitle: "App Development, AI Agents & Workflows, Websites - Genesis",
       metaDescription:
         "Custom app development, AI agents, AI workflow automation, websites and eshops for startups and small businesses. Based in Athens, working worldwide.",
+      includedLabel: "What's included",
+      cta: "Book a discovery call",
+      blocks: [
+        {
+          id: "app-development",
+          icon: "smartphone",
+          kicker: "App development",
+          heading: "Custom products, ready to succeed.",
+          body: "Product development, from the first wireframe to production deploy — websites, mobile apps, and internal tools built around how your business actually works.",
+          included: [
+            "Discovery and technical scoping",
+            "UI/UX design and prototyping",
+            "Development (web, mobile, or both)",
+            "QA testing and production deployment",
+            "Optional ongoing maintenance and feature support",
+          ],
+          steps: [
+            { title: "Discover", detail: "Scope + requirements" },
+            { title: "Build", detail: "Design + development" },
+            { title: "Launch", detail: "Deploy + support" },
+          ],
+        },
+      ],
       chips: [
         { href: serviceChipHrefs.app, label: "App development" },
         { href: serviceChipHrefs.agents, label: "AI agents" },
@@ -428,6 +462,29 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaTitle: "Εφαρμογές, AI Agents & Workflows, Websites - Genesis",
       metaDescription:
         "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+      includedLabel: "Τι περιλαμβάνει",
+      cta: "Κλείσε μια συνάντηση γνωριμίας",
+      blocks: [
+        {
+          id: "app-development",
+          icon: "smartphone",
+          kicker: "Ανάπτυξη εφαρμογών",
+          heading: "Custom προϊόντα, έτοιμα να πετύχουν.",
+          body: "Ανάπτυξη προϊόντος, από το πρώτο wireframe έως το production deploy — websites, mobile apps και εσωτερικά εργαλεία, φτιαγμένα γύρω από το πώς δουλεύει πραγματικά η επιχείρησή σου.",
+          included: [
+            "Ανάλυση απαιτήσεων και τεχνικός σχεδιασμός",
+            "UI/UX design και prototyping",
+            "Ανάπτυξη (web, mobile, ή και τα δύο)",
+            "Έλεγχος ποιότητας (QA) και production deployment",
+            "Προαιρετική συνεχής συντήρηση και υποστήριξη νέων features",
+          ],
+          steps: [
+            { title: "Ανάλυση", detail: "Scope + απαιτήσεις" },
+            { title: "Ανάπτυξη", detail: "Design + development" },
+            { title: "Παράδοση", detail: "Deploy + υποστήριξη" },
+          ],
+        },
+      ],
       chips: [
         { href: serviceChipHrefs.app, label: "Ανάπτυξη Εφαρμογών" },
         { href: serviceChipHrefs.agents, label: "AI Agents" },
