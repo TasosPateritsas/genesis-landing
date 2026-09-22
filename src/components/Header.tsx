@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -11,10 +12,10 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: "#services", label: t.nav.services },
-    { href: "#work", label: t.nav.work },
-    { href: "#team", label: t.nav.team },
-    { href: "#contact", label: t.nav.contact },
+    { href: "/services", label: t.nav.services },
+    { href: "/#work", label: t.nav.work },
+    { href: "/#team", label: t.nav.team },
+    { href: "/#contact", label: t.nav.contact },
   ];
 
   useEffect(() => {
@@ -33,27 +34,27 @@ export function Header() {
       }`}
     >
       <div className="section-pad container-narrow flex h-16 items-center justify-between md:h-[4.25rem]">
-        <a href="#top" className="text-lg md:text-xl" aria-label="Genesis home">
+        <Link href="/#top" className="text-lg md:text-xl" aria-label="Genesis home">
           <Logo />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-ink-muted transition-colors hover:text-ink"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <LanguageToggle />
-          <a
-            href="#contact"
-            className="inline-flex h-10 items-center rounded-md bg-accent px-4 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+          <Link
+            href="/#contact"
+            className="btn-primary inline-flex h-10 items-center rounded-md px-4 text-sm font-semibold"
           >
             {t.nav.cta}
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
@@ -91,26 +92,26 @@ export function Header() {
           <ul className="flex flex-col gap-1 pt-2">
             {links.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="block rounded-md px-3 py-3 text-base font-medium text-ink"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li className="px-3 py-3">
               <LanguageToggle />
             </li>
             <li className="pt-1">
-              <a
-                href="#contact"
-                className="flex h-11 items-center justify-center rounded-md bg-accent text-sm font-semibold text-white"
+              <Link
+                href="/#contact"
+                className="btn-primary flex h-11 items-center justify-center rounded-md text-sm font-semibold"
                 onClick={() => setOpen(false)}
               >
                 {t.nav.cta}
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

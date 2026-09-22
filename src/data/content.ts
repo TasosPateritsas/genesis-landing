@@ -25,11 +25,11 @@ export type Dictionary = {
     label: string;
     heading: string;
     intro: string;
+    seeAll: string;
     items: Array<{
       title: string;
       description: string;
-      detail: string;
-      icon: "app" | "web" | "shop";
+      icon: "app" | "agents" | "workflows" | "shop";
     }>;
   };
   work: {
@@ -79,6 +79,7 @@ export type Dictionary = {
     preferEmail: string;
     mailSubject: string;
   };
+  backToTop: string;
   footer: {
     tagline: string;
     location: string;
@@ -87,7 +88,39 @@ export type Dictionary = {
     team: string;
     contact: string;
   };
+  servicesPage: {
+    breadcrumb: string;
+    heading: string;
+    subtitle: string;
+    metaTitle: string;
+    metaDescription: string;
+    includedLabel: string;
+    cta: string;
+    closingHeading: string;
+    closingSubtext: string;
+    closingCta: string;
+    chips: Array<{
+      href: string;
+      label: string;
+    }>;
+    blocks: Array<{
+      id: string;
+      icon: "smartphone" | "bot" | "workflow" | "shopping-bag";
+      kicker: string;
+      heading: string;
+      body: string;
+      included: string[];
+      steps: Array<{ title: string; detail: string }>;
+    }>;
+  };
 };
+
+const serviceChipHrefs = {
+  app: "#app-development",
+  agents: "#ai-agents",
+  workflows: "#ai-workflows",
+  shop: "#websites-eshops",
+} as const;
 
 const projectsShared = {
   fintra: {
@@ -152,30 +185,32 @@ export const dictionaries: Record<Locale, Dictionary> = {
       secondaryCta: "See our work",
     },
     services: {
-      label: "What we build",
-      heading: "Full development, end to end.",
+      label: "Services",
+      heading: "What we offer",
       intro:
-        "Bring the idea. We design, build, and ship a complete digital product — so you never need an in-house technical team to get to market.",
+        "We design, build, and deliver complete digital products — so you never need an in-house technical team.",
+      seeAll: "See all services",
       items: [
         {
-          title: "Product / Web Apps",
-          description: "Design to launch, built fast.",
-          detail:
-            "From first wireframe to production deploy — MVPs and full products that ship on a startup timeline.",
+          title: "App Development",
+          description:
+            "Custom product development, from the first wireframe to production deploy.",
           icon: "app",
         },
         {
-          title: "Websites",
-          description: "Fast, clean, built to convert.",
-          detail:
-            "Marketing sites and brand surfaces that load quickly, read clearly, and turn visitors into leads.",
-          icon: "web",
+          title: "AI Agents",
+          description:
+            "Custom agents that handle repetitive tasks and connect to the tools you already use.",
+          icon: "agents",
         },
         {
-          title: "Eshops",
-          description: "Ready to sell from day one.",
-          detail:
-            "Storefronts with checkout, inventory, and SEO baked in — so you can take orders without a tech team.",
+          title: "AI Workflows",
+          description: "Automation and AI integration into your everyday processes.",
+          icon: "workflows",
+        },
+        {
+          title: "Websites & Eshops",
+          description: "Marketing sites and online stores with SEO built in, ready to sell.",
           icon: "shop",
         },
       ],
@@ -250,6 +285,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       preferEmail: "Prefer email? Reach us directly at",
       mailSubject: "Project inquiry from",
     },
+    backToTop: "Back to top",
     footer: {
       tagline: "Athens tech studio",
       location: "Athens, Greece",
@@ -257,6 +293,104 @@ export const dictionaries: Record<Locale, Dictionary> = {
       work: "Work",
       team: "Team",
       contact: "Contact",
+    },
+    servicesPage: {
+      breadcrumb: "Genesis › Services",
+      heading: "Everything your product needs to launch and grow.",
+      subtitle:
+        "App development, AI agents, workflow automation, and websites & eshops — all under one roof.",
+      metaTitle: "App Development, AI Agents & Workflows, Websites - Genesis",
+      metaDescription:
+        "Custom app development, AI agents, AI workflow automation, websites and eshops for startups and small businesses. Based in Athens, working worldwide.",
+      includedLabel: "What's included",
+      cta: "Book a discovery call",
+      closingHeading: "Not sure what you need?",
+      closingSubtext: "A free 30-minute call scopes the right starting point.",
+      closingCta: "Let's talk!",
+      blocks: [
+        {
+          id: "app-development",
+          icon: "smartphone",
+          kicker: "App development",
+          heading: "Custom products, ready to succeed.",
+          body: "Product development, from the first wireframe to production deploy — websites, mobile apps, and internal tools built around how your business actually works.",
+          included: [
+            "Discovery and technical scoping",
+            "UI/UX design and prototyping",
+            "Development (web, mobile, or both)",
+            "QA testing and production deployment",
+            "Optional ongoing maintenance and feature support",
+          ],
+          steps: [
+            { title: "Discover", detail: "Scope + requirements" },
+            { title: "Build", detail: "Design + development" },
+            { title: "Launch", detail: "Deploy + support" },
+          ],
+        },
+        {
+          id: "ai-agents",
+          icon: "bot",
+          kicker: "AI agents",
+          heading: "Custom agents, ready to work for you.",
+          body: "Custom agents that handle repetitive tasks and connect to the tools you already use — support triage, lead qualification, internal ops.",
+          included: [
+            "Workflow audit and use-case scoping",
+            "Custom agent build, integrated with your CRM/tools",
+            "Testing and staged rollout",
+            "Optional monthly retainer for monitoring and updates",
+          ],
+          steps: [
+            { title: "Discover", detail: "Audit + roadmap" },
+            { title: "Build", detail: "Design + integrate" },
+            { title: "Launch", detail: "Roll out + support" },
+          ],
+        },
+        {
+          id: "ai-workflows",
+          icon: "workflow",
+          kicker: "AI workflows",
+          heading: "Custom workflows, ready to save you hours.",
+          body: "Automation and AI integration into your everyday processes — so your team spends less time on manual work and more time on what matters.",
+          included: [
+            "Process audit and automation opportunity mapping",
+            "Custom workflow design and AI integration",
+            "Integration with your existing tools (CRM, email, spreadsheets, etc.)",
+            "Testing and staged rollout",
+            "Optional monthly retainer for monitoring and updates",
+          ],
+          steps: [
+            { title: "Discover", detail: "Audit + opportunities" },
+            { title: "Build", detail: "Design + integrate" },
+            { title: "Launch", detail: "Roll out + support" },
+          ],
+        },
+        {
+          id: "websites-eshops",
+          icon: "shopping-bag",
+          kicker: "Websites & eshops",
+          heading: "Custom sites and stores, ready to sell.",
+          body: "Marketing sites and online stores, built fast, with SEO wired in from day one — so you're ready to launch and start selling immediately.",
+          included: [
+            "Discovery and content/structure planning",
+            "Custom design and development (no templates)",
+            "Eshop setup — checkout, inventory, product pages (if applicable)",
+            "Technical SEO and page speed optimization",
+            "QA testing and launch",
+            "Optional ongoing maintenance and content updates",
+          ],
+          steps: [
+            { title: "Discover", detail: "Scope + content" },
+            { title: "Build", detail: "Design + development" },
+            { title: "Launch", detail: "SEO + deploy" },
+          ],
+        },
+      ],
+      chips: [
+        { href: serviceChipHrefs.app, label: "App development" },
+        { href: serviceChipHrefs.agents, label: "AI agents" },
+        { href: serviceChipHrefs.workflows, label: "AI workflows" },
+        { href: serviceChipHrefs.shop, label: "Websites & eshops" },
+      ],
     },
   },
   el: {
@@ -276,30 +410,33 @@ export const dictionaries: Record<Locale, Dictionary> = {
       secondaryCta: "Δες τη δουλειά μας",
     },
     services: {
-      label: "Τι φτιάχνουμε",
-      heading: "Πλήρης ανάπτυξη, από την αρχή μέχρι το τέλος.",
+      label: "Υπηρεσίες",
+      heading: "Τι προσφέρουμε",
       intro:
-        "Εσύ φέρνεις την ιδέα. Εμείς σχεδιάζουμε, υλοποιούμε και παραδίδουμε ένα ολοκληρωμένο ψηφιακό προϊόν — χωρίς να χρειάζεσαι εσωτερική τεχνική ομάδα.",
+        "Σχεδιάζουμε, χτίζουμε και παραδίδουμε ολοκληρωμένα digital προϊόντα — χωρίς να χρειάζεσαι τεχνική ομάδα.",
+      seeAll: "Δες όλες τις υπηρεσίες",
       items: [
         {
-          title: "Product / Web Apps",
-          description: "Από το design μέχρι το launch, γρήγορα.",
-          detail:
-            "Από το πρώτο wireframe μέχρι το production deploy — MVPs και ολοκληρωμένα προϊόντα με ρυθμούς startup.",
+          title: "Ανάπτυξη Εφαρμογών",
+          description:
+            "Ανάπτυξη προϊόντος από το πρώτο wireframe έως το production deploy.",
           icon: "app",
         },
         {
-          title: "Websites",
-          description: "Γρήγορα, καθαρά, φτιαγμένα για conversion.",
-          detail:
-            "Marketing sites και brand surfaces που φορτώνουν γρήγορα, διαβάζονται καθαρά και μετατρέπουν επισκέπτες σε leads.",
-          icon: "web",
+          title: "AI Agents",
+          description:
+            "Agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείς.",
+          icon: "agents",
         },
         {
-          title: "Eshops",
-          description: "Έτοιμα να πουλήσουν από την πρώτη μέρα.",
-          detail:
-            "Καταστήματα με checkout, inventory και SEO από την αρχή — ώστε να δέχεσαι παραγγελίες χωρίς τεχνική ομάδα.",
+          title: "AI Workflows",
+          description: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σου διαδικασίες.",
+          icon: "workflows",
+        },
+        {
+          title: "Websites & Eshops",
+          description:
+            "Ιστοσελίδες και eshops με SEO από την πρώτη μέρα, έτοιμα να πουλήσουν.",
           icon: "shop",
         },
       ],
@@ -374,6 +511,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       preferEmail: "Προτιμάς email; Επικοινώνησε απευθείας στο",
       mailSubject: "Ερώτηση έργου από",
     },
+    backToTop: "Επιστροφή στην κορυφή",
     footer: {
       tagline: "Athens tech studio",
       location: "Αθήνα, Ελλάδα",
@@ -381,6 +519,104 @@ export const dictionaries: Record<Locale, Dictionary> = {
       work: "Έργα",
       team: "Ομάδα",
       contact: "Επικοινωνία",
+    },
+    servicesPage: {
+      breadcrumb: "Genesis › Υπηρεσίες",
+      heading: "Το προϊόν σου, από την ιδέα στην πραγματικότητα.",
+      subtitle:
+        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, και websites & eshops — όλα σε ένα μέρος.",
+      metaTitle: "Εφαρμογές, AI Agents & Workflows, Websites - Genesis",
+      metaDescription:
+        "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+      includedLabel: "Τι περιλαμβάνει",
+      cta: "Κλείσε μια συνάντηση γνωριμίας",
+      closingHeading: "Δεν ξέρεις τι χρειάζεσαι;",
+      closingSubtext: "Μια δωρεάν συνάντηση 30 λεπτών ορίζει το σωστό ξεκίνημα.",
+      closingCta: "Ας μιλήσουμε!",
+      blocks: [
+        {
+          id: "app-development",
+          icon: "smartphone",
+          kicker: "Ανάπτυξη εφαρμογών",
+          heading: "Custom προϊόντα, έτοιμα να πετύχουν.",
+          body: "Ανάπτυξη προϊόντος, από το πρώτο wireframe έως το production deploy — websites, mobile apps και εσωτερικά εργαλεία, φτιαγμένα γύρω από το πώς δουλεύει πραγματικά η επιχείρησή σου.",
+          included: [
+            "Ανάλυση απαιτήσεων και τεχνικός σχεδιασμός",
+            "UI/UX design και prototyping",
+            "Ανάπτυξη (web, mobile, ή και τα δύο)",
+            "Έλεγχος ποιότητας (QA) και production deployment",
+            "Προαιρετική συνεχής συντήρηση και υποστήριξη νέων features",
+          ],
+          steps: [
+            { title: "Ανάλυση", detail: "Scope + απαιτήσεις" },
+            { title: "Ανάπτυξη", detail: "Design + development" },
+            { title: "Παράδοση", detail: "Deploy + υποστήριξη" },
+          ],
+        },
+        {
+          id: "ai-agents",
+          icon: "bot",
+          kicker: "AI Agents",
+          heading: "Custom agents, έτοιμοι να δουλέψουν για σένα.",
+          body: "Custom agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείς — support, lead qualification, εσωτερικές διαδικασίες.",
+          included: [
+            "Ανάλυση διαδικασιών και ορισμός use-case",
+            "Custom ανάπτυξη agent, ενσωματωμένο στο CRM/εργαλεία σου",
+            "Δοκιμές και σταδιακή εφαρμογή",
+            "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
+          ],
+          steps: [
+            { title: "Ανάλυση", detail: "Audit + roadmap" },
+            { title: "Ανάπτυξη", detail: "Σχεδιασμός + ενσωμάτωση" },
+            { title: "Παράδοση", detail: "Εφαρμογή + υποστήριξη" },
+          ],
+        },
+        {
+          id: "ai-workflows",
+          icon: "workflow",
+          kicker: "AI Workflows",
+          heading: "Custom αυτοματισμοί, έτοιμοι να σου γλιτώσουν ώρες.",
+          body: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σου διαδικασίες — ώστε η ομάδα σου να ξοδεύει λιγότερο χρόνο σε χειροκίνητες εργασίες και περισσότερο σε αυτό που μετράει.",
+          included: [
+            "Ανάλυση διαδικασιών και εντοπισμός ευκαιριών αυτοματοποίησης",
+            "Custom σχεδιασμός workflow και ενσωμάτωση AI",
+            "Ενσωμάτωση με τα εργαλεία που ήδη χρησιμοποιείς (CRM, email, spreadsheets κλπ)",
+            "Δοκιμές και σταδιακή εφαρμογή",
+            "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
+          ],
+          steps: [
+            { title: "Ανάλυση", detail: "Audit + ευκαιρίες" },
+            { title: "Ανάπτυξη", detail: "Σχεδιασμός + ενσωμάτωση" },
+            { title: "Παράδοση", detail: "Εφαρμογή + υποστήριξη" },
+          ],
+        },
+        {
+          id: "websites-eshops",
+          icon: "shopping-bag",
+          kicker: "Websites & Eshops",
+          heading: "Custom ιστοσελίδες και eshops, έτοιμα να πουλήσουν.",
+          body: "Ιστοσελίδες και online καταστήματα, γρήγορα, με SEO ενσωματωμένο από την πρώτη μέρα — έτοιμα να βγουν live και να αρχίσουν να πουλάνε αμέσως.",
+          included: [
+            "Ανάλυση απαιτήσεων και σχεδιασμός περιεχομένου",
+            "Custom design και ανάπτυξη (όχι templates)",
+            "Στήσιμο eshop — checkout, inventory, σελίδες προϊόντων (όπου χρειάζεται)",
+            "Τεχνικό SEO και βελτιστοποίηση ταχύτητας",
+            "Έλεγχος ποιότητας (QA) και launch",
+            "Προαιρετική συνεχής συντήρηση και ενημέρωση περιεχομένου",
+          ],
+          steps: [
+            { title: "Ανάλυση", detail: "Scope + περιεχόμενο" },
+            { title: "Ανάπτυξη", detail: "Design + development" },
+            { title: "Παράδοση", detail: "SEO + deploy" },
+          ],
+        },
+      ],
+      chips: [
+        { href: serviceChipHrefs.app, label: "Ανάπτυξη Εφαρμογών" },
+        { href: serviceChipHrefs.agents, label: "AI Agents" },
+        { href: serviceChipHrefs.workflows, label: "AI Workflows" },
+        { href: serviceChipHrefs.shop, label: "Websites & Eshops" },
+      ],
     },
   },
 };
