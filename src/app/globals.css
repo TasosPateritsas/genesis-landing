@@ -111,23 +111,52 @@ body {
   transform: translateY(0);
 }
 
+.offer-section {
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .offer-section {
+    padding-inline: 1.25rem;
+  }
+}
+
+.offer-grid {
+  gap: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .offer-grid {
+    gap: 1rem;
+  }
+}
+
 .offer-card {
+  padding: 1.5rem;
   cursor: pointer;
   transition:
     transform 200ms ease-out,
     box-shadow 200ms ease-out;
 }
 
+@media (min-width: 768px) {
+  .offer-card {
+    padding: 1.75rem;
+  }
+}
+
+.offer-card-badge {
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: #e1f5ee;
+  color: #0f6e56;
+  transition: background-color 200ms ease-out;
+}
+
 .offer-card:hover,
 .offer-card:focus-visible {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(21, 32, 28, 0.08);
-}
-
-.offer-card-badge {
-  background-color: #e1f5ee;
-  color: #0f6e56;
-  transition: background-color 200ms ease-out;
 }
 
 .offer-card:hover .offer-card-badge,

@@ -67,7 +67,7 @@ export function WhatWeBuild() {
       className="bg-[#fafafa] py-20 md:py-28"
       aria-labelledby="services-heading"
     >
-      <div className="section-pad container-narrow">
+      <div className="offer-section container-narrow">
         <FadeIn variant="section">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-12">
             <div className="min-w-0">
@@ -86,14 +86,14 @@ export function WhatWeBuild() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+          <div className="offer-grid mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {t.services.items.map((service) => (
               <Link
                 key={service.icon}
                 href="/services"
-                className="offer-card block h-full border border-border bg-white p-6 outline-none md:p-7"
+                className="offer-card block h-full border border-border bg-white outline-none"
               >
-                <div className="offer-card-badge flex h-11 w-11 items-center justify-center rounded-md">
+                <div className="offer-card-badge flex items-center justify-center rounded-md">
                   <ServiceIcon type={service.icon} />
                 </div>
                 <h3 className="mt-6 text-xl font-semibold tracking-tight text-ink">
