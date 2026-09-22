@@ -87,7 +87,25 @@ export type Dictionary = {
     team: string;
     contact: string;
   };
+  servicesPage: {
+    breadcrumb: string;
+    heading: string;
+    subtitle: string;
+    metaTitle: string;
+    metaDescription: string;
+    chips: Array<{
+      href: string;
+      label: string;
+    }>;
+  };
 };
+
+const serviceChipHrefs = {
+  app: "#app-development",
+  agents: "#ai-agents",
+  workflows: "#ai-workflows",
+  shop: "#websites-eshops",
+} as const;
 
 const projectsShared = {
   fintra: {
@@ -260,6 +278,21 @@ export const dictionaries: Record<Locale, Dictionary> = {
       team: "Team",
       contact: "Contact",
     },
+    servicesPage: {
+      breadcrumb: "Genesis › Services",
+      heading: "Everything your product needs to launch and grow.",
+      subtitle:
+        "App development, AI agents, workflow automation, and websites & eshops — all under one roof.",
+      metaTitle: "App Development, AI Agents & Workflows, Websites - Genesis",
+      metaDescription:
+        "Custom app development, AI agents, AI workflow automation, websites and eshops for startups and small businesses. Based in Athens, working worldwide.",
+      chips: [
+        { href: serviceChipHrefs.app, label: "App development" },
+        { href: serviceChipHrefs.agents, label: "AI agents" },
+        { href: serviceChipHrefs.workflows, label: "AI workflows" },
+        { href: serviceChipHrefs.shop, label: "Websites & eshops" },
+      ],
+    },
   },
   el: {
     nav: {
@@ -386,6 +419,21 @@ export const dictionaries: Record<Locale, Dictionary> = {
       work: "Έργα",
       team: "Ομάδα",
       contact: "Επικοινωνία",
+    },
+    servicesPage: {
+      breadcrumb: "Genesis › Υπηρεσίες",
+      heading: "Το προϊόν σου, από την ιδέα στην πραγματικότητα.",
+      subtitle:
+        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, και websites & eshops — όλα σε ένα μέρος.",
+      metaTitle: "Εφαρμογές, AI Agents & Workflows, Websites - Genesis",
+      metaDescription:
+        "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+      chips: [
+        { href: serviceChipHrefs.app, label: "Ανάπτυξη Εφαρμογών" },
+        { href: serviceChipHrefs.agents, label: "AI Agents" },
+        { href: serviceChipHrefs.workflows, label: "AI Workflows" },
+        { href: serviceChipHrefs.shop, label: "Websites & Eshops" },
+      ],
     },
   },
 };
