@@ -295,6 +295,36 @@ body {
   font-weight: 600;
 }
 
+.services-closing {
+  background-color: #dcf0e7;
+  background-image: linear-gradient(180deg, #fafafa 0%, #dcf0e7 100%);
+  padding-block: 3rem;
+}
+
+.services-closing-title {
+  color: #04342c;
+  font-weight: 500;
+}
+
+.services-closing-subtext {
+  color: #085041;
+}
+
+.btn-primary {
+  border: none;
+  border-radius: 8px;
+  background-color: #0f6e56;
+  padding: 10px 22px;
+  color: #ffffff;
+  transition: background-color 150ms;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: #085041;
+  color: #ffffff;
+}
+
 @media (max-width: 640px) {
   .service-detail {
     flex-direction: column;

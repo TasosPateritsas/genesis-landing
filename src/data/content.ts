@@ -95,6 +95,9 @@ export type Dictionary = {
     metaDescription: string;
     includedLabel: string;
     cta: string;
+    closingHeading: string;
+    closingSubtext: string;
+    closingCta: string;
     chips: Array<{
       href: string;
       label: string;
@@ -299,6 +302,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Custom app development, AI agents, AI workflow automation, websites and eshops for startups and small businesses. Based in Athens, working worldwide.",
       includedLabel: "What's included",
       cta: "Book a discovery call",
+      closingHeading: "Not sure what you need?",
+      closingSubtext: "A free 30-minute call scopes the right starting point.",
+      closingCta: "Let's talk!",
       blocks: [
         {
           id: "app-development",
@@ -521,6 +527,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
       includedLabel: "Τι περιλαμβάνει",
       cta: "Κλείσε μια συνάντηση γνωριμίας",
+      closingHeading: "Δεν ξέρεις τι χρειάζεσαι;",
+      closingSubtext: "Μια δωρεάν συνάντηση 30 λεπτών ορίζει το σωστό ξεκίνημα.",
+      closingCta: "Ας μιλήσουμε!",
       blocks: [
         {
           id: "app-development",

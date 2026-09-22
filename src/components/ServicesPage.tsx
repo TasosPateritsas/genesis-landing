@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LocaleDocumentMeta } from "@/components/LocaleDocumentMeta";
@@ -68,6 +69,23 @@ export function ServicesPage() {
             );
           })}
         </div>
+
+        <section className="services-closing" aria-labelledby="services-closing-heading">
+          <div className="section-pad container-narrow text-center">
+            <h2
+              id="services-closing-heading"
+              className="services-closing-title text-2xl tracking-[-0.02em] md:text-3xl"
+            >
+              {page.closingHeading}
+            </h2>
+            <p className="services-closing-subtext mx-auto mt-3 max-w-xl text-base leading-relaxed">
+              {page.closingSubtext}
+            </p>
+            <Link href="/#contact" className="btn-primary mt-6 inline-flex text-sm font-semibold">
+              {page.closingCta}
+            </Link>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
