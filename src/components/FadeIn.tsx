@@ -6,9 +6,16 @@ type FadeInProps = {
   children: ReactNode;
   className?: string;
   delay?: 0 | 1 | 2 | 3;
+  /** "section" fades the whole block once, when about 20% is visible. */
+  variant?: "rise" | "section";
 };
 
-export function FadeIn({ children, className = "", delay = 0 }: FadeInProps) {
+export function FadeIn({
+  children,
+  className = "",
+  delay = 0,
+  variant = "rise",
+}: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,24 +29,30 @@ export function FadeIn({ children, className = "", delay = 0 }: FadeInProps) {
           observer.unobserve(node);
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      variant === "section"
+        ? { threshold: 0.2 }
+        : { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [variant]);
 
   const delayClass =
-    delay === 1
-      ? "fade-in-delay-1"
-      : delay === 2
-        ? "fade-in-delay-2"
-        : delay === 3
-          ? "fade-in-delay-3"
-          : "";
+    variant === "section"
+      ? ""
+      : delay === 1
+        ? "fade-in-delay-1"
+        : delay === 2
+          ? "fade-in-delay-2"
+          : delay === 3
+            ? "fade-in-delay-3"
+            : "";
+
+  const motionClass = variant === "section" ? "fade-in-section" : "fade-in";
 
   return (
-    <div ref={ref} className={`fade-in ${delayClass} ${className}`.trim()}>
+    <div ref={ref} className={`${motionClass} ${delayClass} ${className}`.trim()}>
       {children}
     </div>
   );

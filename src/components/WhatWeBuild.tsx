@@ -1,27 +1,41 @@
 "use client";
 
+import Link from "next/link";
 import { FadeIn } from "./FadeIn";
 import { useLocale } from "@/i18n/LocaleProvider";
 
-function ServiceIcon({ type }: { type: "app" | "web" | "shop" }) {
-  const common = "h-5 w-5 text-white";
+function ServiceIcon({ type }: { type: "app" | "agents" | "workflows" | "shop" }) {
+  const common = "h-5 w-5";
 
   if (type === "app") {
     return (
       <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="6" y="3" width="12" height="18" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="12" cy="17.5" r="1" fill="currentColor" />
+        <rect x="7" y="3" width="10" height="18" rx="2" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M11 18h2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     );
   }
 
-  if (type === "web") {
+  if (type === "agents") {
     return (
       <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M3 9h18" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="6.5" cy="7" r="0.8" fill="currentColor" />
-        <circle cx="9" cy="7" r="0.8" fill="currentColor" />
+        <rect x="5" y="8" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M12 8V5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="12" cy="4" r="1" fill="currentColor" />
+        <circle cx="9" cy="12.5" r="1" fill="currentColor" />
+        <circle cx="15" cy="12.5" r="1" fill="currentColor" />
+        <path d="M9 16h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (type === "workflows") {
+    return (
+      <svg className={common} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <rect x="3" y="3" width="7.5" height="7.5" rx="1.2" />
+        <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.2" />
+        <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.2" />
+        <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.2" />
       </svg>
     );
   }
@@ -29,11 +43,17 @@ function ServiceIcon({ type }: { type: "app" | "web" | "shop" }) {
   return (
     <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden>
       <path
-        d="M4 8h16l-1.2 10.2A2 2 0 0 1 16.81 20H7.19a2 2 0 0 1-1.99-1.8L4 8Z"
+        d="M6 8h12l-1 12H7L6 8Z"
         stroke="currentColor"
         strokeWidth="1.8"
+        strokeLinejoin="round"
       />
-      <path d="M8 8V6.5A4 4 0 0 1 16 6.5V8" stroke="currentColor" strokeWidth="1.8" />
+      <path
+        d="M9 8V7a3 3 0 0 1 6 0v1"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -44,39 +64,60 @@ export function WhatWeBuild() {
   return (
     <section
       id="services"
-      className="section-pad container-narrow py-20 md:py-28"
+      className="bg-[#fafafa] py-20 md:py-28"
       aria-labelledby="services-heading"
     >
-      <FadeIn>
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-          {t.services.label}
-        </p>
-        <h2
-          id="services-heading"
-          className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
-        >
-          {t.services.heading}
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
-          {t.services.intro}
-        </p>
-      </FadeIn>
+      <div className="section-pad container-narrow">
+        <FadeIn variant="section">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-12">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0F6E56]">
+                {t.services.label}
+              </p>
+              <h2
+                id="services-heading"
+                className="mt-3 text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl"
+              >
+                {t.services.heading}
+              </h2>
+            </div>
+            <p className="max-w-md text-base font-normal leading-relaxed text-ink-muted md:max-w-sm md:pl-6 lg:max-w-md">
+              {t.services.intro}
+            </p>
+          </div>
 
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
-        {t.services.items.map((service, index) => (
-          <FadeIn key={service.title} delay={(index + 1) as 1 | 2 | 3}>
-            <article className="h-full border border-border bg-bg-elevated p-6 md:p-7">
-              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-accent">
-                <ServiceIcon type={service.icon} />
-              </div>
-              <h3 className="mt-6 text-xl font-semibold tracking-tight text-ink">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-base font-medium text-accent">{service.description}</p>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{service.detail}</p>
-            </article>
-          </FadeIn>
-        ))}
+          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+            {t.services.items.map((service) => (
+              <Link
+                key={service.icon}
+                href="/services"
+                className="offer-card block h-full border border-border bg-white p-6 outline-none md:p-7"
+              >
+                <div className="offer-card-badge flex h-11 w-11 items-center justify-center rounded-md">
+                  <ServiceIcon type={service.icon} />
+                </div>
+                <h3 className="mt-6 text-xl font-semibold tracking-tight text-ink">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                  {service.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center">
+            <Link
+              href="/services"
+              className="see-all-services inline-flex items-center gap-1.5 text-sm font-medium"
+            >
+              <span className="see-all-services-text">{t.services.seeAll}</span>
+              <span className="see-all-services-arrow" aria-hidden>
+                →
+              </span>
+            </Link>
+          </p>
+        </FadeIn>
       </div>
     </section>
   );

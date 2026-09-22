@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { useLocale } from "@/i18n/LocaleProvider";
 
@@ -23,18 +24,18 @@ export function Footer() {
           className="flex flex-wrap gap-5 text-sm font-medium text-ink-muted"
           aria-label="Footer"
         >
-          <a href="#services" className="hover:text-ink">
+          <Link href="/services" className="hover:text-ink">
             {t.footer.services}
-          </a>
-          <a href="#work" className="hover:text-ink">
+          </Link>
+          <Link href="/#work" className="hover:text-ink">
             {t.footer.work}
-          </a>
-          <a href="#team" className="hover:text-ink">
+          </Link>
+          <Link href="/#team" className="hover:text-ink">
             {t.footer.team}
-          </a>
-          <a href="#contact" className="hover:text-ink">
+          </Link>
+          <Link href="/#contact" className="hover:text-ink">
             {t.footer.contact}
-          </a>
+          </Link>
         </nav>
 
         <p className="text-sm text-ink-muted">© {year} Genesis</p>

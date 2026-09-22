@@ -25,11 +25,11 @@ export type Dictionary = {
     label: string;
     heading: string;
     intro: string;
+    seeAll: string;
     items: Array<{
       title: string;
       description: string;
-      detail: string;
-      icon: "app" | "web" | "shop";
+      icon: "app" | "agents" | "workflows" | "shop";
     }>;
   };
   work: {
@@ -152,30 +152,32 @@ export const dictionaries: Record<Locale, Dictionary> = {
       secondaryCta: "See our work",
     },
     services: {
-      label: "What we build",
-      heading: "Full development, end to end.",
+      label: "Services",
+      heading: "What we offer",
       intro:
-        "Bring the idea. We design, build, and ship a complete digital product — so you never need an in-house technical team to get to market.",
+        "We design, build, and deliver complete digital products — so you never need an in-house technical team.",
+      seeAll: "See all services",
       items: [
         {
-          title: "Product / Web Apps",
-          description: "Design to launch, built fast.",
-          detail:
-            "From first wireframe to production deploy — MVPs and full products that ship on a startup timeline.",
+          title: "App Development",
+          description:
+            "Custom product development, from the first wireframe to production deploy.",
           icon: "app",
         },
         {
-          title: "Websites",
-          description: "Fast, clean, built to convert.",
-          detail:
-            "Marketing sites and brand surfaces that load quickly, read clearly, and turn visitors into leads.",
-          icon: "web",
+          title: "AI Agents",
+          description:
+            "Custom agents that handle repetitive tasks and connect to the tools you already use.",
+          icon: "agents",
         },
         {
-          title: "Eshops",
-          description: "Ready to sell from day one.",
-          detail:
-            "Storefronts with checkout, inventory, and SEO baked in — so you can take orders without a tech team.",
+          title: "AI Workflows",
+          description: "Automation and AI integration into your everyday processes.",
+          icon: "workflows",
+        },
+        {
+          title: "Websites & Eshops",
+          description: "Marketing sites and online stores with SEO built in, ready to sell.",
           icon: "shop",
         },
       ],
@@ -276,30 +278,33 @@ export const dictionaries: Record<Locale, Dictionary> = {
       secondaryCta: "Δες τη δουλειά μας",
     },
     services: {
-      label: "Τι φτιάχνουμε",
-      heading: "Πλήρης ανάπτυξη, από την αρχή μέχρι το τέλος.",
+      label: "Υπηρεσίες",
+      heading: "Τι προσφέρουμε",
       intro:
-        "Εσύ φέρνεις την ιδέα. Εμείς σχεδιάζουμε, υλοποιούμε και παραδίδουμε ένα ολοκληρωμένο ψηφιακό προϊόν — χωρίς να χρειάζεσαι εσωτερική τεχνική ομάδα.",
+        "Σχεδιάζουμε, χτίζουμε και παραδίδουμε ολοκληρωμένα digital προϊόντα — χωρίς να χρειάζεσαι τεχνική ομάδα.",
+      seeAll: "Δες όλες τις υπηρεσίες",
       items: [
         {
-          title: "Product / Web Apps",
-          description: "Από το design μέχρι το launch, γρήγορα.",
-          detail:
-            "Από το πρώτο wireframe μέχρι το production deploy — MVPs και ολοκληρωμένα προϊόντα με ρυθμούς startup.",
+          title: "Ανάπτυξη Εφαρμογών",
+          description:
+            "Ανάπτυξη προϊόντος από το πρώτο wireframe έως το production deploy.",
           icon: "app",
         },
         {
-          title: "Websites",
-          description: "Γρήγορα, καθαρά, φτιαγμένα για conversion.",
-          detail:
-            "Marketing sites και brand surfaces που φορτώνουν γρήγορα, διαβάζονται καθαρά και μετατρέπουν επισκέπτες σε leads.",
-          icon: "web",
+          title: "AI Agents",
+          description:
+            "Agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείς.",
+          icon: "agents",
         },
         {
-          title: "Eshops",
-          description: "Έτοιμα να πουλήσουν από την πρώτη μέρα.",
-          detail:
-            "Καταστήματα με checkout, inventory και SEO από την αρχή — ώστε να δέχεσαι παραγγελίες χωρίς τεχνική ομάδα.",
+          title: "AI Workflows",
+          description: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σου διαδικασίες.",
+          icon: "workflows",
+        },
+        {
+          title: "Websites & Eshops",
+          description:
+            "Ιστοσελίδες και eshops με SEO από την πρώτη μέρα, έτοιμα να πουλήσουν.",
           icon: "shop",
         },
       ],
