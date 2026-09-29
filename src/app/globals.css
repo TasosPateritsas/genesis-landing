@@ -656,6 +656,10 @@ body {
   border-color: #dc2626;
 }
 
+.category-field > label.is-floated {
+  z-index: 1;
+}
+
 .category-control {
   position: relative;
 }
