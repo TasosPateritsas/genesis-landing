@@ -327,10 +327,63 @@ body {
   padding: 10px 22px;
 }
 
+.contact-teaser {
+  background:
+    radial-gradient(ellipse 70% 55% at 88% 12%, rgba(120, 196, 170, 0.38), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 8% 92%, rgba(8, 80, 65, 0.1), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 62% 78%, rgba(180, 220, 205, 0.35), transparent 50%),
+    linear-gradient(180deg, #f4faf7 0%, #f7faf8 48%, #f5f8f6 100%);
+}
+
+.contact-teaser-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #0f6e56;
+  padding: 16px 34px;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color 150ms ease-out;
+}
+
+.contact-teaser-cta:hover,
+.contact-teaser-cta:focus-visible {
+  background-color: #085041;
+  color: #ffffff;
+}
+
+.contact-direct-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #0f6e56;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 150ms ease-out;
+}
+
+.contact-direct-link-text {
+  text-underline-offset: 3px;
+}
+
+.contact-direct-link:hover,
+.contact-direct-link:focus-visible {
+  color: #085041;
+}
+
+.contact-direct-link:hover .contact-direct-link-text,
+.contact-direct-link:focus-visible .contact-direct-link-text {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
 .btn-primary {
   background-color: #0f6e56;
   color: #ffffff;
-  transition: background-color 150ms;
+  transition: background-color 150ms ease-out;
 }
 
 .btn-primary:hover,

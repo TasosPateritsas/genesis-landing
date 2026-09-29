@@ -1,6 +1,8 @@
 export const site = {
   name: "Genesis",
   email: "hello@genesis.studio",
+  phone: "+306999999999",
+  phoneHref: "tel:+306999999999",
   url: "https://genesis.studio",
 };
 
@@ -65,19 +67,8 @@ export type Dictionary = {
     label: string;
     heading: string;
     intro: string;
-    emailLabel: string;
-    basedInLabel: string;
-    location: string;
-    nameLabel: string;
-    namePlaceholder: string;
-    emailFieldLabel: string;
-    emailPlaceholder: string;
-    messageLabel: string;
-    messagePlaceholder: string;
-    submit: string;
-    sent: string;
-    preferEmail: string;
-    mailSubject: string;
+    cta: string;
+    directLabel: string;
   };
   backToTop: string;
   footer: {
@@ -270,20 +261,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Contact",
       heading: "Tell us what you want to build.",
       intro:
-        "Share a short brief — idea stage is fine. We usually reply within one business day with next steps and a realistic timeline.",
-      emailLabel: "Email",
-      basedInLabel: "Based in",
-      location: "Athens, Greece",
-      nameLabel: "Name",
-      namePlaceholder: "Alex Morgan",
-      emailFieldLabel: "Email",
-      emailPlaceholder: "alex@startup.com",
-      messageLabel: "Message",
-      messagePlaceholder: "What are you building, and when do you need it live?",
-      submit: "Send message",
-      sent: "Opening your email client — if nothing appears, write us at",
-      preferEmail: "Prefer email? Reach us directly at",
-      mailSubject: "Project inquiry from",
+        "Whatever your project needs — we reply within one business day and walk you through the next steps.",
+      cta: "Fill out the form!",
+      directLabel: "Prefer to reach us directly by email or phone?",
     },
     backToTop: "Back to top",
     footer: {
@@ -494,22 +474,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     contact: {
       label: "Επικοινωνία",
-      heading: "Πες μας τι θέλεις να φτιάξεις.",
+      heading: "Πείτε μας τι θέλετε να φτιάξετε.",
       intro:
-        "Στείλε ένα σύντομο brief — ακόμα και σε στάδιο ιδέας. Συνήθως απαντάμε μέσα σε μία εργάσιμη μέρα με επόμενα βήματα και ρεαλιστικό timeline.",
-      emailLabel: "Email",
-      basedInLabel: "Βασισμένοι στην",
-      location: "Αθήνα, Ελλάδα",
-      nameLabel: "Όνομα",
-      namePlaceholder: "Αλέξης Μόργκαν",
-      emailFieldLabel: "Email",
-      emailPlaceholder: "alex@startup.com",
-      messageLabel: "Μήνυμα",
-      messagePlaceholder: "Τι χτίζεις και πότε πρέπει να είναι live;",
-      submit: "Αποστολή",
-      sent: "Ανοίγει το email client σου — αν δεν εμφανιστεί τίποτα, γράψε μας στο",
-      preferEmail: "Προτιμάς email; Επικοινώνησε απευθείας στο",
-      mailSubject: "Ερώτηση έργου από",
+        "Ό,τι κι αν χρειάζεστε για το project σας — απαντάμε εντός μίας εργάσιμης ημέρας και σας λέμε τα επόμενα βήματα.",
+      cta: "Συμπληρώστε τη φόρμα!",
+      directLabel: "Προτιμάτε κατευθείαν email ή κινητό;",
     },
     backToTop: "Επιστροφή στην κορυφή",
     footer: {

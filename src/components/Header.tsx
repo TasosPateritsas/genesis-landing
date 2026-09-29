@@ -15,7 +15,7 @@ export function Header() {
     { href: "/services", label: t.nav.services },
     { href: "/#work", label: t.nav.work },
     { href: "/#team", label: t.nav.team },
-    { href: "/#contact", label: t.nav.contact },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   useEffect(() => {

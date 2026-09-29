@@ -33,7 +33,7 @@ export function Footer() {
           <Link href="/#team" className="hover:text-ink">
             {t.footer.team}
           </Link>
-          <Link href="/#contact" className="hover:text-ink">
+          <Link href="/contact" className="hover:text-ink">
             {t.footer.contact}
           </Link>
         </nav>
