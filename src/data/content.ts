@@ -462,18 +462,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",
-      headline: "Φτιάχνουμε το προϊόν σου, από την αρχή ως το τέλος.",
+      headline: "Φτιάχνουμε το προϊόν σας, από την αρχή ως το τέλος.",
       subtext:
-        "Agency ανάπτυξης λογισμικού στην Αθήνα — σχεδιάζουμε websites, εφαρμογές και eshops για startups και μικρές επιχειρήσεις, χωρίς να χρειάζεσαι τεχνική ομάδα.",
+        "Agency ανάπτυξης λογισμικού στην Αθήνα — σχεδιάζουμε websites, εφαρμογές και eshops για startups και μικρές επιχειρήσεις, χωρίς να χρειάζεστε τεχνική ομάδα.",
       primaryCta: "Ας μιλήσουμε!",
-      secondaryCta: "Δες τη δουλειά μας",
+      secondaryCta: "Δείτε τη δουλειά μας",
     },
     services: {
       label: "Υπηρεσίες",
       heading: "Τι προσφέρουμε",
       intro:
-        "Σχεδιάζουμε, χτίζουμε και παραδίδουμε ολοκληρωμένα digital προϊόντα — χωρίς να χρειάζεσαι τεχνική ομάδα.",
-      seeAll: "Δες όλες τις υπηρεσίες",
+        "Σχεδιάζουμε, χτίζουμε και παραδίδουμε ολοκληρωμένα digital προϊόντα — χωρίς να χρειάζεστε τεχνική ομάδα.",
+      seeAll: "Δείτε όλες τις υπηρεσίες",
       items: [
         {
           title: "Ανάπτυξη Εφαρμογών",
@@ -484,12 +484,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           title: "AI Agents",
           description:
-            "Agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείς.",
+            "Agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείτε.",
           icon: "agents",
         },
         {
           title: "AI Workflows",
-          description: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σου διαδικασίες.",
+          description: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σας διαδικασίες.",
           icon: "workflows",
         },
         {
@@ -505,7 +505,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       heading: "Προϊόντα που παραδώσαμε σε startups και μικρές ομάδες.",
       intro:
         "Πραγματικά briefs, στενά timelines, λειτουργικό λογισμικό. Κάθε έργο δείχνει το πρόβλημα που βρήκαμε και το αποτέλεσμα που αφήσαμε.",
-      viewProject: "Δες το έργο",
+      viewProject: "Δείτε το έργο",
       techLabel: "Τεχνολογίες",
       projects: [
         {
@@ -530,7 +530,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     team: {
       label: "Η ομάδα",
-      heading: "Τρεις μηχανικοί. Ένα studio. Μιλάς απευθείας με αυτούς που χτίζουν.",
+      heading: "Τρεις μηχανικοί. Ένα studio. Μιλάτε απευθείας με αυτούς που χτίζουν.",
       intro:
         "Είμαστε μια νέα ομάδα στην Αθήνα — αρκετά μικρή για να κινείται γρήγορα, αρκετά έμπειρη για να αναλάβει το πλήρες stack από το brief μέχρι το launch.",
       members: [
@@ -547,7 +547,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           ...teamShared.anastasis,
           role: "Ηλεκτρολόγος Μηχανικός",
-          bio: "Ο problem-solver της ομάδας — δώσ’ του ένα μπερδεμένο spec και θα γυρίσει με πλάνο. Καφές και deadlines.",
+          bio: "Ο problem-solver της ομάδας — δώστε του ένα μπερδεμένο spec και θα γυρίσει με πλάνο. Καφές και deadlines.",
         },
       ],
     },
@@ -614,15 +614,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",
-      heading: "Το προϊόν σου, από την ιδέα στην πραγματικότητα.",
+      heading: "Το προϊόν σας, από την ιδέα στην πραγματικότητα.",
       subtitle:
         "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, και websites & eshops — όλα σε ένα μέρος.",
       metaTitle: "Εφαρμογές, AI Agents & Workflows, Websites - Genesis",
       metaDescription:
         "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
       includedLabel: "Τι περιλαμβάνει",
-      cta: "Κλείσε μια συνάντηση γνωριμίας",
-      closingHeading: "Δεν ξέρεις τι χρειάζεσαι;",
+      cta: "Κλείστε μια συνάντηση γνωριμίας",
+      closingHeading: "Δεν ξέρετε τι χρειάζεστε;",
       closingSubtext: "Μια δωρεάν συνάντηση 30 λεπτών ορίζει το σωστό ξεκίνημα.",
       closingCta: "Ας μιλήσουμε!",
       blocks: [
@@ -631,7 +631,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           icon: "smartphone",
           kicker: "Ανάπτυξη εφαρμογών",
           heading: "Custom προϊόντα, έτοιμα να πετύχουν.",
-          body: "Ανάπτυξη προϊόντος, από το πρώτο wireframe έως το production deploy — websites, mobile apps και εσωτερικά εργαλεία, φτιαγμένα γύρω από το πώς δουλεύει πραγματικά η επιχείρησή σου.",
+          body: "Ανάπτυξη προϊόντος, από το πρώτο wireframe έως το production deploy — websites, mobile apps και εσωτερικά εργαλεία, φτιαγμένα γύρω από το πώς δουλεύει πραγματικά η επιχείρησή σας.",
           included: [
             "Ανάλυση απαιτήσεων και τεχνικός σχεδιασμός",
             "UI/UX design και prototyping",
@@ -649,11 +649,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
           id: "ai-agents",
           icon: "bot",
           kicker: "AI Agents",
-          heading: "Custom agents, έτοιμοι να δουλέψουν για σένα.",
-          body: "Custom agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείς — support, lead qualification, εσωτερικές διαδικασίες.",
+          heading: "Custom agents, έτοιμοι να δουλέψουν για σας.",
+          body: "Custom agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείτε — support, lead qualification, εσωτερικές διαδικασίες.",
           included: [
             "Ανάλυση διαδικασιών και ορισμός use-case",
-            "Custom ανάπτυξη agent, ενσωματωμένο στο CRM/εργαλεία σου",
+            "Custom ανάπτυξη agent, ενσωματωμένο στο CRM/εργαλεία σας",
             "Δοκιμές και σταδιακή εφαρμογή",
             "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
           ],
@@ -667,12 +667,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
           id: "ai-workflows",
           icon: "workflow",
           kicker: "AI Workflows",
-          heading: "Custom αυτοματισμοί, έτοιμοι να σου γλιτώσουν ώρες.",
-          body: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σου διαδικασίες — ώστε η ομάδα σου να ξοδεύει λιγότερο χρόνο σε χειροκίνητες εργασίες και περισσότερο σε αυτό που μετράει.",
+          heading: "Custom αυτοματισμοί, έτοιμοι να σας γλιτώσουν ώρες.",
+          body: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σας διαδικασίες — ώστε η ομάδα σας να ξοδεύει λιγότερο χρόνο σε χειροκίνητες εργασίες και περισσότερο σε αυτό που μετράει.",
           included: [
             "Ανάλυση διαδικασιών και εντοπισμός ευκαιριών αυτοματοποίησης",
             "Custom σχεδιασμός workflow και ενσωμάτωση AI",
-            "Ενσωμάτωση με τα εργαλεία που ήδη χρησιμοποιείς (CRM, email, spreadsheets κλπ)",
+            "Ενσωμάτωση με τα εργαλεία που ήδη χρησιμοποιείτε (CRM, email, spreadsheets κλπ)",
             "Δοκιμές και σταδιακή εφαρμογή",
             "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
           ],
