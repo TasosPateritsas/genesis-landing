@@ -712,9 +712,82 @@ body {
   background-color: #085041;
 }
 
-.contact-submit:disabled {
+.contact-submit:disabled,
+.contact-submit.is-loading {
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+.contact-spinner {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: contact-spin 0.7s linear infinite;
+}
+
+.contact-panel {
+  min-height: 460px;
+}
+
+.contact-success {
+  display: flex;
+  min-height: 420px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 8px;
+  text-align: center;
+}
+
+.contact-success-icon {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: #e1f5ee;
+  color: #0f6e56;
+}
+
+.contact-success-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.contact-success-title {
+  margin-top: 16px;
+  color: #14181a;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.contact-success-body {
+  margin-top: 8px;
+  max-width: 32ch;
+  color: #5b6b66;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.contact-success-again {
+  margin-top: 16px;
+  border: none;
+  background: none;
+  padding: 0;
+  color: #0f6e56;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.contact-success-again:hover,
+.contact-success-again:focus-visible {
+  color: #085041;
 }
 
 .contact-feedback {
@@ -773,6 +846,12 @@ body {
   }
 }
 
+@keyframes contact-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes other-reveal {
   from {
     opacity: 0;
@@ -828,7 +907,8 @@ body {
   }
 
   .animate-hero-copy,
-  .other-reveal {
+  .other-reveal,
+  .contact-spinner {
     animation: none;
   }
 }

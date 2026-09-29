@@ -89,7 +89,9 @@ export type Dictionary = {
     description: string;
     submit: string;
     sending: string;
-    success: string;
+    successTitle: string;
+    successBody: string;
+    sendAnother: string;
     error: string;
     bookingTitle: string;
     bookingNote: string;
@@ -324,8 +326,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
       description: "Description *",
       submit: "Send us your message",
       sending: "Sending...",
-      success: "Message sent.",
-      error: "Something went wrong.",
+      successTitle: "Thank you!",
+      successBody:
+        "We've received your message. We'll get back to you within one business day.",
+      sendAnother: "Send another message",
+      error: "Something went wrong. Please try again.",
       bookingTitle: "This is where the booking widget goes",
       bookingNote:
         "Integration with a scheduling tool (e.g. Calendly or Cal.com) — to be finalized during development.",
@@ -580,8 +585,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
       description: "Περιγραφή *",
       submit: "Στείλτε μας μήνυμα",
       sending: "Αποστολή...",
-      success: "Το μήνυμα στάλθηκε.",
-      error: "Κάτι πήγε στραβά.",
+      successTitle: "Ευχαριστούμε!",
+      successBody:
+        "Λάβαμε το μήνυμά σας. Θα επικοινωνήσουμε μαζί σας εντός μίας εργάσιμης ημέρας.",
+      sendAnother: "Στείλτε άλλο μήνυμα",
+      error: "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
       bookingTitle: "Εδώ μπαίνει το booking widget",
       bookingNote:
         "Ενσωμάτωση με εργαλείο κράτησης ραντεβού (π.χ. Calendly ή Cal.com) — θα οριστικοποιηθεί στο development.",

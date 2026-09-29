@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, Check } from "lucide-react";
 import { submitContactInquiry } from "@/lib/submitContactInquiry";
 import { useLocale } from "@/i18n/LocaleProvider";
 
@@ -93,7 +93,15 @@ export function ContactForm() {
       if (name === "category" && value !== "other") next.otherNeed = undefined;
       return next;
     });
-    if (status === "error" || status === "success") setStatus("idle");
+  }
+
+  function resetForm() {
+    setFields(EMPTY_FIELDS);
+    setErrors({});
+    setStatus("idle");
+    window.requestAnimationFrame(() => {
+      document.getElementById("firstName")?.focus();
+    });
   }
 
   function validate(current: Fields): Errors {
@@ -180,8 +188,20 @@ export function ContactForm() {
           id="contact-panel-message"
           role="tabpanel"
           aria-labelledby={messageTabId}
-          className="mt-5"
+          className="contact-panel mt-5"
         >
+          {status === "success" ? (
+            <div className="contact-success" role="status">
+              <div className="contact-success-icon" aria-hidden>
+                <Check strokeWidth={2.25} />
+              </div>
+              <p className="contact-success-title">{page.successTitle}</p>
+              <p className="contact-success-body">{page.successBody}</p>
+              <button type="button" className="contact-success-again" onClick={resetForm}>
+                {page.sendAnother}
+              </button>
+            </div>
+          ) : (
           <form onSubmit={onSubmit} noValidate>
             <div className="contact-name-row">
               <FloatField
@@ -269,24 +289,21 @@ export function ContactForm() {
 
             <button
               type="submit"
-              className="contact-submit"
+              className={`contact-submit${status === "loading" ? " is-loading" : ""}`}
               disabled={status === "loading"}
               aria-busy={status === "loading"}
             >
+              {status === "loading" ? <span className="contact-spinner" aria-hidden /> : null}
               {status === "loading" ? page.sending : page.submit}
             </button>
 
-            {status === "success" ? (
-              <p className="contact-feedback is-success" role="status">
-                {page.success}
-              </p>
-            ) : null}
             {status === "error" ? (
               <p className="contact-feedback is-error" role="alert">
                 {page.error}
               </p>
             ) : null}
           </form>
+          )}
         </div>
       ) : (
         <div
