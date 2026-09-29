@@ -21,6 +21,21 @@ export function Header() {
     { href: "/contact", label: t.nav.contact },
   ];
 
+  function isCurrent(href: string) {
+    return href === "/services" || href === "/contact" ? pathname === href : false;
+  }
+
+  function linkClass(href: string, mobile = false) {
+    const current = isCurrent(href);
+    const size = mobile ? "text-base" : "text-sm";
+    if (dark) {
+      return `${size} ${current ? "font-bold text-white" : "font-medium text-white/75 hover:text-white"}`;
+    }
+    return `${size} ${
+      current ? "font-bold text-[#14181a]" : "font-medium text-[#4b5563] hover:text-[#14181a]"
+    }`;
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -48,9 +63,8 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
-                dark ? "text-white/75 hover:text-white" : "text-ink-muted hover:text-ink"
-              }`}
+              aria-current={isCurrent(link.href) ? "page" : undefined}
+              className={`transition-colors ${linkClass(link.href)}`}
             >
               {link.label}
             </Link>
@@ -109,9 +123,8 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`block rounded-md px-3 py-3 text-base font-medium ${
-                    dark ? "text-white/75" : "text-ink"
-                  }`}
+                  aria-current={isCurrent(link.href) ? "page" : undefined}
+                  className={`block rounded-md px-3 py-3 transition-colors ${linkClass(link.href, true)}`}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
