@@ -73,6 +73,8 @@ export type Dictionary = {
   contactPage: {
     breadcrumb: string;
     heading: string;
+    metaTitle: string;
+    metaDescription: string;
     subtext: string;
     preferEmail: string;
     preferPhone: string;
@@ -303,6 +305,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     contactPage: {
       breadcrumb: "Genesis › Contact",
       heading: "Let's build something great, together!",
+      metaTitle: "Contact, Quotes & Booking - Genesis",
+      metaDescription:
+        "Send us a message or book an intro call with Genesis. App development, AI agents, automations and websites for startups. Based in Athens, working worldwide.",
       subtext:
         "Fill out the form and tell us your idea, whatever it is. We reply within one business day, once we've properly looked into it.",
       preferEmail: "Prefer email?",
@@ -562,6 +567,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     contactPage: {
       breadcrumb: "Genesis › Επικοινωνία",
       heading: "Ας φτιάξουμε κάτι σπουδαίο μαζί!",
+      metaTitle: "Επικοινωνία, Προσφορά & Ραντεβού - Genesis",
+      metaDescription:
+        "Στείλτε μας μήνυμα ή κλείστε ραντεβού γνωριμίας με τη Genesis. Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και websites για startups. Έδρα στην Αθήνα, δουλεύουμε παντού.",
       subtext:
         "Συμπληρώστε τη φόρμα και γράψτε μας την ιδέα σας, ό,τι κι αν χρειάζεστε. Απαντάμε εντός μίας εργάσιμης ημέρας, αφού δούμε διεξοδικά το θέμα σας.",
       preferEmail: "Προτιμάτε email;",
