@@ -201,15 +201,18 @@ body {
 .service-chip {
   background-color: rgba(255, 255, 255, 0.7);
   color: #0f6e56;
+  border: 1px solid rgba(15, 110, 86, 0.35);
   border-radius: 8px;
   transition:
     background-color 150ms,
+    border-color 150ms,
     color 150ms;
 }
 
 .service-chip:hover,
 .service-chip:focus-visible {
   background-color: #0f6e56;
+  border-color: #0f6e56;
   color: #ffffff;
 }
 
@@ -283,13 +286,28 @@ body {
   padding-left: 0.9rem;
 }
 
-.service-inline-cta {
+.service-discovery-cta {
   display: inline-flex;
   align-items: center;
   margin-top: 1.5rem;
-  padding: 10px 18px;
-  font-size: 0.875rem;
+  padding: 10px 22px;
+  border: 1.5px solid #0f6e56;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #0f6e56;
+  font-size: 14px;
   font-weight: 600;
+  transition:
+    background-color 150ms ease-out,
+    border-color 150ms ease-out,
+    color 150ms ease-out;
+}
+
+.service-discovery-cta:hover,
+.service-discovery-cta:focus-visible {
+  background-color: #085041;
+  border-color: #085041;
+  color: #ffffff;
 }
 
 .services-chips {
