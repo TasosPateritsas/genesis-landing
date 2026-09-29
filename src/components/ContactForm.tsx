@@ -2,6 +2,7 @@
 
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Calendar, Check } from "lucide-react";
+import { CategoryDropdown } from "@/components/CategoryDropdown";
 import { submitContactInquiry } from "@/lib/submitContactInquiry";
 import { useLocale } from "@/i18n/LocaleProvider";
 
@@ -235,34 +236,15 @@ export function ContactForm() {
               onChange={updateField}
             />
 
-            <div className={`float-field${errors.category ? " has-error" : ""}`}>
-              <select
-                id="category"
-                name="category"
-                className={fields.category ? undefined : "is-placeholder"}
-                value={fields.category}
-                aria-invalid={Boolean(errors.category)}
-                aria-describedby={errors.category ? "category-error" : undefined}
-                onChange={(event) => updateField("category", event.target.value)}
-              >
-                <option value="" disabled hidden>
-                  {page.categoryPlaceholder}
-                </option>
-                {page.categories.map((category) => (
-                  <option key={category.value} value={category.value}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="category" className="is-floated">
-                {page.category}
-              </label>
-              {errors.category ? (
-                <p id="category-error" className="field-error" role="alert">
-                  {errors.category}
-                </p>
-              ) : null}
-            </div>
+            <CategoryDropdown
+              id="category"
+              label={page.category}
+              placeholder={page.categoryPlaceholder}
+              value={fields.category}
+              options={page.categories}
+              error={errors.category}
+              onChange={(value) => updateField("category", value)}
+            />
 
             {fields.category === "other" ? (
               <div className="other-reveal">
