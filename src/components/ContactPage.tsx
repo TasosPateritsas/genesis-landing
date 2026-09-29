@@ -18,7 +18,7 @@ export function ContactPage() {
           <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
             <div>
               <p className="contact-breadcrumb">{page.breadcrumb}</p>
-              <h1 className="mt-10 max-w-xl text-[clamp(2rem,3.6vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-white">
+              <h1 className="max-w-xl text-[clamp(2rem,3.6vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-white">
                 {page.heading}
               </h1>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">

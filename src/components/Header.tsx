@@ -2,12 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 export function Header() {
   const { t } = useLocale();
+  const pathname = usePathname();
+  const dark = pathname === "/contact";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -27,15 +30,17 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-accent/25 transition-[background,backdrop-filter] duration-300 ${
-        scrolled || open
-          ? "bg-bg-elevated/90 backdrop-blur-md"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background,backdrop-filter] duration-300 ${
+        dark
+          ? "border-white/12 bg-[#0B3B30]"
+          : scrolled || open
+            ? "border-accent/25 bg-bg-elevated/90 backdrop-blur-md"
+            : "border-accent/25 bg-transparent"
       }`}
     >
       <div className="section-pad container-narrow flex h-16 items-center justify-between md:h-[4.25rem]">
         <Link href="/#top" className="text-lg md:text-xl" aria-label="Genesis home">
-          <Logo />
+          <Logo tone={dark ? "inverse" : "default"} />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
@@ -43,25 +48,33 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink-muted transition-colors hover:text-ink"
+              className={`text-sm font-medium transition-colors ${
+                dark ? "text-white/75 hover:text-white" : "text-ink-muted hover:text-ink"
+              }`}
             >
               {link.label}
             </Link>
           ))}
-          <LanguageToggle />
+          <LanguageToggle tone={dark ? "dark" : "default"} />
           <Link
             href="/#contact"
-            className="btn-primary inline-flex h-10 items-center rounded-md px-4 text-sm font-semibold"
+            className={`btn-primary inline-flex h-10 items-center rounded-md px-4 text-sm font-semibold${
+              dark ? " btn-primary-glow" : ""
+            }`}
           >
             {t.nav.cta}
           </Link>
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <LanguageToggle compact />
+          <LanguageToggle compact tone={dark ? "dark" : "default"} />
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-bg-elevated text-ink"
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-md border ${
+              dark
+                ? "border-white/20 bg-transparent text-white"
+                : "border-border bg-bg-elevated text-ink"
+            }`}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -70,13 +83,13 @@ export function Header() {
             <span className="sr-only">Menu</span>
             <span className="flex w-4 flex-col gap-1.5" aria-hidden>
               <span
-                className={`h-0.5 w-full bg-ink transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
+                className={`h-0.5 w-full transition-transform ${dark ? "bg-white" : "bg-ink"} ${open ? "translate-y-2 rotate-45" : ""}`}
               />
               <span
-                className={`h-0.5 w-full bg-ink transition-opacity ${open ? "opacity-0" : ""}`}
+                className={`h-0.5 w-full transition-opacity ${dark ? "bg-white" : "bg-ink"} ${open ? "opacity-0" : ""}`}
               />
               <span
-                className={`h-0.5 w-full bg-ink transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`}
+                className={`h-0.5 w-full transition-transform ${dark ? "bg-white" : "bg-ink"} ${open ? "-translate-y-2 -rotate-45" : ""}`}
               />
             </span>
           </button>
@@ -86,7 +99,9 @@ export function Header() {
       {open ? (
         <nav
           id="mobile-nav"
-          className="section-pad border-t border-border bg-bg-elevated pb-4 lg:hidden"
+          className={`section-pad border-t pb-4 lg:hidden ${
+            dark ? "border-white/12 bg-[#0B3B30]" : "border-border bg-bg-elevated"
+          }`}
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-1 pt-2">
@@ -94,7 +109,9 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block rounded-md px-3 py-3 text-base font-medium text-ink"
+                  className={`block rounded-md px-3 py-3 text-base font-medium ${
+                    dark ? "text-white/75" : "text-ink"
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -102,12 +119,14 @@ export function Header() {
               </li>
             ))}
             <li className="px-3 py-3">
-              <LanguageToggle />
+              <LanguageToggle tone={dark ? "dark" : "default"} />
             </li>
             <li className="pt-1">
               <Link
                 href="/#contact"
-                className="btn-primary flex h-11 items-center justify-center rounded-md text-sm font-semibold"
+                className={`btn-primary flex h-11 items-center justify-center rounded-md text-sm font-semibold${
+                  dark ? " btn-primary-glow" : ""
+                }`}
                 onClick={() => setOpen(false)}
               >
                 {t.nav.cta}
