@@ -1,5 +1,6 @@
 "use client";
 
+import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -27,11 +28,17 @@ export function ContactPage() {
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 <a className="contact-mini-card" href={`mailto:${site.email}`}>
                   <span className="contact-mini-kicker">{page.preferEmail}</span>
-                  <span className="contact-mini-value">{site.email}</span>
+                  <span className="contact-mini-value">
+                    <Mail className="contact-mini-icon" strokeWidth={1.75} aria-hidden />
+                    {site.email}
+                  </span>
                 </a>
                 <a className="contact-mini-card" href={site.phoneHref}>
                   <span className="contact-mini-kicker">{page.preferPhone}</span>
-                  <span className="contact-mini-value">{page.phoneDisplay}</span>
+                  <span className="contact-mini-value">
+                    <Phone className="contact-mini-icon" strokeWidth={1.75} aria-hidden />
+                    {page.phoneDisplay}
+                  </span>
                 </a>
               </div>
             </div>
