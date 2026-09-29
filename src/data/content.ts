@@ -70,6 +70,39 @@ export type Dictionary = {
     cta: string;
     directLabel: string;
   };
+  contactPage: {
+    breadcrumb: string;
+    heading: string;
+    subtext: string;
+    preferEmail: string;
+    preferPhone: string;
+    phoneDisplay: string;
+    tabMessage: string;
+    tabBooking: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    category: string;
+    categoryPlaceholder: string;
+    categories: Array<{ value: string; label: string }>;
+    otherLabel: string;
+    description: string;
+    submit: string;
+    sending: string;
+    success: string;
+    error: string;
+    bookingTitle: string;
+    bookingNote: string;
+    errors: {
+      firstName: string;
+      lastName: string;
+      emailRequired: string;
+      emailInvalid: string;
+      category: string;
+      other: string;
+      description: string;
+    };
+  };
   backToTop: string;
   footer: {
     tagline: string;
@@ -264,6 +297,47 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Whatever your project needs — we reply within one business day and walk you through the next steps.",
       cta: "Fill out the form!",
       directLabel: "Prefer to reach us directly by email or phone?",
+    },
+    contactPage: {
+      breadcrumb: "Genesis › Contact",
+      heading: "Let's build something great, together!",
+      subtext:
+        "Fill out the form and tell us your idea, whatever it is. We reply within one business day, once we've properly looked into it.",
+      preferEmail: "Prefer email?",
+      preferPhone: "Prefer a call?",
+      phoneDisplay: "+30 69 99999999",
+      tabMessage: "Send a message",
+      tabBooking: "Book a call",
+      firstName: "First name *",
+      lastName: "Last name *",
+      email: "Email *",
+      category: "Category *",
+      categoryPlaceholder: "Select a category",
+      categories: [
+        { value: "app", label: "App Development" },
+        { value: "agents", label: "AI Agents" },
+        { value: "workflows", label: "AI Workflows" },
+        { value: "shop", label: "Websites & Eshops" },
+        { value: "other", label: "Other" },
+      ],
+      otherLabel: "What else do you need? *",
+      description: "Description *",
+      submit: "Send us your message",
+      sending: "Sending...",
+      success: "Message sent.",
+      error: "Something went wrong.",
+      bookingTitle: "This is where the booking widget goes",
+      bookingNote:
+        "Integration with a scheduling tool (e.g. Calendly or Cal.com) — to be finalized during development.",
+      errors: {
+        firstName: "Enter your first name.",
+        lastName: "Enter your last name.",
+        emailRequired: "Enter your email.",
+        emailInvalid: "Enter a valid email address.",
+        category: "Select a category.",
+        other: "Tell us what else you need.",
+        description: "Enter a description.",
+      },
     },
     backToTop: "Back to top",
     footer: {
@@ -479,6 +553,47 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Ό,τι κι αν χρειάζεστε για το project σας — απαντάμε εντός μίας εργάσιμης ημέρας και σας λέμε τα επόμενα βήματα.",
       cta: "Συμπληρώστε τη φόρμα!",
       directLabel: "Προτιμάτε κατευθείαν email ή κινητό;",
+    },
+    contactPage: {
+      breadcrumb: "Genesis › Επικοινωνία",
+      heading: "Ας φτιάξουμε κάτι σπουδαίο μαζί!",
+      subtext:
+        "Συμπληρώστε τη φόρμα και γράψτε μας την ιδέα σας, ό,τι κι αν χρειάζεστε. Απαντάμε εντός μίας εργάσιμης ημέρας, αφού δούμε διεξοδικά το θέμα σας.",
+      preferEmail: "Προτιμάτε email;",
+      preferPhone: "Προτιμάτε τηλέφωνο;",
+      phoneDisplay: "+30 69 99999999",
+      tabMessage: "Στείλτε μήνυμα",
+      tabBooking: "Κλείστε ραντεβού",
+      firstName: "Όνομα *",
+      lastName: "Επώνυμο *",
+      email: "Email *",
+      category: "Κατηγορία *",
+      categoryPlaceholder: "Επιλέξτε κατηγορία",
+      categories: [
+        { value: "app", label: "Ανάπτυξη Εφαρμογών" },
+        { value: "agents", label: "AI Agents" },
+        { value: "workflows", label: "AI Workflows" },
+        { value: "shop", label: "Websites & Eshops" },
+        { value: "other", label: "Άλλο" },
+      ],
+      otherLabel: "Τι άλλο χρειάζεστε; *",
+      description: "Περιγραφή *",
+      submit: "Στείλτε μας μήνυμα",
+      sending: "Αποστολή...",
+      success: "Το μήνυμα στάλθηκε.",
+      error: "Κάτι πήγε στραβά.",
+      bookingTitle: "Εδώ μπαίνει το booking widget",
+      bookingNote:
+        "Ενσωμάτωση με εργαλείο κράτησης ραντεβού (π.χ. Calendly ή Cal.com) — θα οριστικοποιηθεί στο development.",
+      errors: {
+        firstName: "Συμπληρώστε το όνομά σας.",
+        lastName: "Συμπληρώστε το επώνυμό σας.",
+        emailRequired: "Συμπληρώστε το email σας.",
+        emailInvalid: "Συμπληρώστε ένα έγκυρο email.",
+        category: "Επιλέξτε κατηγορία.",
+        other: "Πείτε μας τι άλλο χρειάζεστε.",
+        description: "Συμπληρώστε την περιγραφή.",
+      },
     },
     backToTop: "Επιστροφή στην κορυφή",
     footer: {
