@@ -416,8 +416,8 @@ body {
   bottom: 24px;
   z-index: 40;
   display: inline-flex;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
   border: none;
@@ -445,8 +445,8 @@ body {
 .back-to-top-ring {
   position: absolute;
   inset: 0;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   transform: rotate(-90deg);
 }
 
@@ -468,8 +468,8 @@ body {
 .back-to-top-icon {
   position: relative;
   z-index: 1;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
 }
 
 @media (max-width: 640px) {
