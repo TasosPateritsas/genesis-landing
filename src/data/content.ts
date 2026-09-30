@@ -67,6 +67,7 @@ export type Dictionary = {
     label: string;
     heading: string;
     intro: string;
+    introDetail: string;
     cta: string;
     directLabel: string;
   };
@@ -106,6 +107,20 @@ export type Dictionary = {
       other: string;
       description: string;
     };
+  };
+  reviews: {
+    kicker: string;
+    heading: string;
+    reviewsOnGoogle: string;
+    cardSource: string;
+    ctaPrompt: string;
+    cta: string;
+    seeAll: string;
+    pagesLabel: string;
+    pageLabel: string;
+    previous: string;
+    next: string;
+    rated: string;
   };
   backToTop: string;
   footer: {
@@ -297,9 +312,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     contact: {
       label: "Contact",
       heading: "Tell us what you want to build.",
-      intro:
-        "Whatever your project needs — we reply within one business day and walk you through the next steps.",
-      cta: "Fill out the form!",
+      intro: "Whatever your project needs!",
+      introDetail: "We reply within one business day and walk you through the next steps.",
+      cta: "Fill out the form",
       directLabel: "Prefer to reach us directly by email or phone?",
     },
     contactPage: {
@@ -348,6 +363,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
         other: "Tell us what else you need.",
         description: "Enter a description.",
       },
+    },
+    reviews: {
+      kicker: "Reviews",
+      heading: "What our clients say",
+      reviewsOnGoogle: "{count} reviews on Google",
+      cardSource: "Review on Google",
+      ctaPrompt: "Worked with us?",
+      cta: "Leave us a review",
+      seeAll: "See all reviews on Google →",
+      pagesLabel: "Reviews pages",
+      pageLabel: "Page {page}",
+      previous: "Previous",
+      next: "Next",
+      rated: "Rated {rating} out of 5",
     },
     backToTop: "Back to top",
     footer: {
@@ -559,9 +588,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     contact: {
       label: "Επικοινωνία",
       heading: "Πείτε μας τι θέλετε να φτιάξετε.",
-      intro:
-        "Ό,τι κι αν χρειάζεστε για το project σας — απαντάμε εντός μίας εργάσιμης ημέρας και σας λέμε τα επόμενα βήματα.",
-      cta: "Συμπληρώστε τη φόρμα!",
+      intro: "Ό,τι κι αν χρειάζεστε για το project σας!",
+      introDetail: "Απαντάμε εντός μίας εργάσιμης ημέρας και σας λέμε τα επόμενα βήματα.",
+      cta: "Συμπληρώστε τη φόρμα",
       directLabel: "Προτιμάτε κατευθείαν email ή κινητό;",
     },
     contactPage: {
@@ -610,6 +639,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
         other: "Πείτε μας τι άλλο χρειάζεστε.",
         description: "Συμπληρώστε την περιγραφή.",
       },
+    },
+    reviews: {
+      kicker: "Κριτικές",
+      heading: "Τι λένε οι πελάτες μας",
+      reviewsOnGoogle: "{count} κριτικές στο Google",
+      cardSource: "Κριτική στο Google",
+      ctaPrompt: "Έχουμε συνεργαστεί;",
+      cta: "Αφήστε μας μια κριτική",
+      seeAll: "Δείτε όλες τις κριτικές στο Google →",
+      pagesLabel: "Σελίδες κριτικών",
+      pageLabel: "Σελίδα {page}",
+      previous: "Προηγούμενη",
+      next: "Επόμενη",
+      rated: "Βαθμολογία {rating} από 5",
     },
     backToTop: "Επιστροφή στην κορυφή",
     footer: {

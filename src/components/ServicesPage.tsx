@@ -3,19 +3,18 @@
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { LocaleDocumentMeta } from "@/components/LocaleDocumentMeta";
 import { ServiceDetail } from "@/components/ServiceDetail";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { contactHref } from "@/lib/contactHref";
 
 const placeholderIds = ["app-development", "ai-agents", "ai-workflows", "websites-eshops"] as const;
 
 export function ServicesPage() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const page = t.servicesPage;
 
   return (
     <>
-      <LocaleDocumentMeta title={page.metaTitle} description={page.metaDescription} />
       <Header />
       <main className="services-page pt-16 md:pt-[4.25rem]">
         <div className="section-pad container-narrow pt-8 md:pt-10">
@@ -83,7 +82,7 @@ export function ServicesPage() {
               {page.closingSubtext}
             </p>
             <Link
-              href="/#contact"
+              href={contactHref(locale, "message")}
               className="btn-primary services-closing-cta mt-6 inline-flex text-sm font-semibold"
             >
               {page.closingCta}

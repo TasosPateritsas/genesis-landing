@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { contactHref } from "@/lib/contactHref";
 
 export function Hero() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
 
   return (
     <section
@@ -31,12 +33,12 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href="#contact"
+            <Link
+              href={contactHref(locale, "message")}
               className="btn-primary inline-flex h-12 items-center justify-center rounded-md px-6 text-sm font-semibold"
             >
               {t.hero.primaryCta}
-            </a>
+            </Link>
             <a
               href="#work"
               className="inline-flex h-12 items-center justify-center rounded-md border border-border-strong bg-bg-elevated/70 px-6 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"

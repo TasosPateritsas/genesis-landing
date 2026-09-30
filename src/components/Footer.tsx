@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { useLocale } from "@/i18n/LocaleProvider";
+import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 
 export function Footer() {
   const { t } = useLocale();
+  const hrefFor = useLocalizedPath();
   const year = new Date().getFullYear();
 
   return (
@@ -24,16 +25,16 @@ export function Footer() {
           className="flex flex-wrap gap-5 text-sm font-medium text-ink-muted"
           aria-label="Footer"
         >
-          <Link href="/services" className="hover:text-ink">
+          <Link href={hrefFor("/services")} className="hover:text-ink">
             {t.footer.services}
           </Link>
-          <Link href="/#work" className="hover:text-ink">
+          <Link href={hrefFor("/#work")} className="hover:text-ink">
             {t.footer.work}
           </Link>
-          <Link href="/#team" className="hover:text-ink">
+          <Link href={hrefFor("/#team")} className="hover:text-ink">
             {t.footer.team}
           </Link>
-          <Link href="/contact" className="hover:text-ink">
+          <Link href={hrefFor("/contact")} className="hover:text-ink">
             {t.footer.contact}
           </Link>
         </nav>

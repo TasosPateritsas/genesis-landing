@@ -3,12 +3,12 @@ import { ServicesPage } from "@/components/ServicesPage";
 import { servicesMetadata } from "@/lib/seo";
 
 export function generateMetadata() {
-  return servicesMetadata("en");
+  return servicesMetadata("el");
 }
 
 export default function Page() {
   return (
-    <PageShell locale="en">
+    <PageShell locale="el">
       <ServicesPage />
     </PageShell>
   );

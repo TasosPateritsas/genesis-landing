@@ -3,12 +3,12 @@ import { PageShell } from "@/components/PageShell";
 import { homeMetadata } from "@/lib/seo";
 
 export function generateMetadata() {
-  return homeMetadata("en");
+  return homeMetadata("el");
 }
 
 export default function Page() {
   return (
-    <PageShell locale="en">
+    <PageShell locale="el">
       <HomePage />
     </PageShell>
   );

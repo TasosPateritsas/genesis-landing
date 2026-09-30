@@ -20,12 +20,12 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Language (EN / EL)
 
-The site is bilingual. Use the `[EN | EL]` toggle in the nav, or open with a URL param:
+The site is bilingual. English is the default and stays unprefixed. Greek lives under `/el`.
 
-- English (default): `/?lang=en`
-- Greek: `/?lang=el`
+- English: `/`, `/services`, `/contact`
+- Greek: `/el`, `/el/services`, `/el/contact`
 
-Selection persists in `localStorage` and the `lang` query param. The brand name **Genesis** never translates.
+The `[EN | EL]` toggle opens the same page in the other language. Old `?lang=el` links redirect to the matching `/el` URL. The brand name **Genesis** never translates.
 
 ## Build
 
