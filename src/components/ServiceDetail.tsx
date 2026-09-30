@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Bot, ShoppingBag, Smartphone, Workflow, type LucideIcon } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import type { Dictionary } from "@/data/content";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { contactHref } from "@/lib/contactHref";
 
 type ServiceBlock = Dictionary["servicesPage"]["blocks"][number];
 
@@ -22,6 +24,7 @@ type ServiceDetailProps = {
 };
 
 export function ServiceDetail({ block, includedLabel, cta, from }: ServiceDetailProps) {
+  const { locale } = useLocale();
   const Icon = icons[block.icon];
 
   return (
@@ -59,7 +62,7 @@ export function ServiceDetail({ block, includedLabel, cta, from }: ServiceDetail
               ))}
             </ol>
 
-            <Link href="/contact#booking" className="service-discovery-cta">
+            <Link href={contactHref(locale, "booking")} className="service-discovery-cta">
               {cta}
             </Link>
           </div>
