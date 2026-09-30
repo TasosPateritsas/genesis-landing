@@ -6,7 +6,6 @@ import { ContactReviews } from "@/components/ContactReviews";
 import { ContactStats } from "@/components/ContactStats";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { LocaleDocumentMeta } from "@/components/LocaleDocumentMeta";
 import { site } from "@/data/content";
 import { useLocale } from "@/i18n/LocaleProvider";
 
@@ -16,7 +15,6 @@ export function ContactPage() {
 
   return (
     <>
-      <LocaleDocumentMeta title={page.metaTitle} description={page.metaDescription} />
       <Header />
       <main>
         <div className="contact-page pt-16 md:pt-[4.25rem]">

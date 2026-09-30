@@ -5,30 +5,33 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
-import { useLocale } from "@/i18n/LocaleProvider";
+import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
+import { stripLocalePrefix } from "@/lib/routes";
 
 export function Header() {
   const { locale, t } = useLocale();
-  const talkHref = contactHref(locale, "message");
+  const hrefFor = useLocalizedPath();
   const pathname = usePathname();
-  const dark = pathname === "/contact";
+  const barePath = stripLocalePrefix(pathname);
+  const dark = barePath === "/contact";
+  const talkHref = contactHref(locale, "message");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: "/services", label: t.nav.services },
-    { href: "/#work", label: t.nav.work },
-    { href: "/#team", label: t.nav.team },
-    { href: "/contact", label: t.nav.contact },
+    { href: hrefFor("/services"), path: "/services", label: t.nav.services },
+    { href: hrefFor("/#work"), path: "", label: t.nav.work },
+    { href: hrefFor("/#team"), path: "", label: t.nav.team },
+    { href: hrefFor("/contact"), path: "/contact", label: t.nav.contact },
   ];
 
-  function isCurrent(href: string) {
-    return href === "/services" || href === "/contact" ? pathname === href : false;
+  function isCurrent(path: string) {
+    return path !== "" && barePath === path;
   }
 
-  function linkClass(href: string, mobile = false) {
-    const current = isCurrent(href);
+  function linkClass(path: string, mobile = false) {
+    const current = isCurrent(path);
     const size = mobile ? "text-base" : "text-sm";
     if (dark) {
       return `${size} ${current ? "font-bold text-white" : "font-medium text-white/75 hover:text-white"}`;
@@ -56,7 +59,7 @@ export function Header() {
       }`}
     >
       <div className="section-pad container-narrow flex h-16 items-center justify-between md:h-[4.25rem]">
-        <Link href="/#top" className="text-lg md:text-xl" aria-label="Genesis home">
+        <Link href={hrefFor("/#top")} className="text-lg md:text-xl" aria-label="Genesis home">
           <Logo tone={dark ? "inverse" : "default"} />
         </Link>
 
@@ -65,8 +68,8 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={isCurrent(link.href) ? "page" : undefined}
-              className={`transition-colors ${linkClass(link.href)}`}
+              aria-current={isCurrent(link.path) ? "page" : undefined}
+              className={`transition-colors ${linkClass(link.path)}`}
             >
               {link.label}
             </Link>
@@ -125,8 +128,8 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  aria-current={isCurrent(link.href) ? "page" : undefined}
-                  className={`block rounded-md px-3 py-3 transition-colors ${linkClass(link.href, true)}`}
+                  aria-current={isCurrent(link.path) ? "page" : undefined}
+                  className={`block rounded-md px-3 py-3 transition-colors ${linkClass(link.path, true)}`}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}

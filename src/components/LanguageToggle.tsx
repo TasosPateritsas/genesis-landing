@@ -1,7 +1,11 @@
 "use client";
 
-import { useLocale } from "@/i18n/LocaleProvider";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { Locale } from "@/data/content";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { localizePath, stripLocalePrefix } from "@/lib/routes";
 
 type LanguageToggleProps = {
   compact?: boolean;
@@ -14,23 +18,34 @@ export function LanguageToggle({
   className = "",
   tone = "default",
 }: LanguageToggleProps) {
-  const { locale, setLocale } = useLocale();
+  const { locale } = useLocale();
+  const pathname = usePathname();
+  const [hash, setHash] = useState("");
 
-  function select(next: Locale) {
-    setLocale(next);
+  useEffect(() => {
+    const sync = () => setHash(window.location.hash);
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, [pathname]);
+
+  function hrefFor(next: Locale) {
+    const bare = stripLocalePrefix(pathname);
+    return `${localizePath(bare, next)}${hash}`;
   }
 
   if (compact) {
+    const next = locale === "en" ? "el" : "en";
     return (
-      <button
-        type="button"
-        onClick={() => select(locale === "en" ? "el" : "en")}
-        className={`inline-flex h-9 cursor-pointer items-center rounded-md border px-2.5 text-xs font-semibold tracking-wide ${
+      <Link
+        href={hrefFor(next)}
+        className={`inline-flex h-9 items-center rounded-md border px-2.5 text-xs font-semibold tracking-wide no-underline ${
           tone === "dark"
             ? "border-white/20 bg-white/10 text-white"
             : "border-border bg-bg-elevated text-ink"
         } ${className}`}
         aria-label={locale === "en" ? "Switch to Greek" : "Switch to English"}
+        hrefLang={next}
       >
         <span
           className={`rounded px-1.5 py-0.5 ${
@@ -39,7 +54,7 @@ export function LanguageToggle({
         >
           {locale.toUpperCase()}
         </span>
-      </button>
+      </Link>
     );
   }
 
@@ -62,17 +77,17 @@ export function LanguageToggle({
             ? "text-[rgba(255,255,255,0.6)] hover:text-white"
             : "text-ink-muted opacity-50 hover:opacity-80";
         return (
-          <button
+          <Link
             key={code}
-            type="button"
-            onClick={() => select(code)}
-            aria-pressed={active}
-            className={`cursor-pointer rounded-full px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors ${
+            href={hrefFor(code)}
+            hrefLang={code}
+            aria-current={active ? "page" : undefined}
+            className={`rounded-full px-2.5 py-1 text-xs font-semibold tracking-wide no-underline transition-colors ${
               active ? activeClass : inactiveClass
             }`}
           >
             {code.toUpperCase()}
-          </button>
+          </Link>
         );
       })}
     </div>

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { LocaleDocumentMeta } from "@/components/LocaleDocumentMeta";
 import { ServiceDetail } from "@/components/ServiceDetail";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
@@ -16,7 +15,6 @@ export function ServicesPage() {
 
   return (
     <>
-      <LocaleDocumentMeta title={page.metaTitle} description={page.metaDescription} />
       <Header />
       <main className="services-page pt-16 md:pt-[4.25rem]">
         <div className="section-pad container-narrow pt-8 md:pt-10">

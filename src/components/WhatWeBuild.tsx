@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Bot, ShoppingBag, Smartphone, Workflow, type LucideIcon } from "lucide-react";
 import { FadeIn } from "./FadeIn";
-import { useLocale } from "@/i18n/LocaleProvider";
+import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 
 const serviceIcons: Record<"app" | "agents" | "workflows" | "shop", LucideIcon> = {
   app: Smartphone,
@@ -14,6 +14,7 @@ const serviceIcons: Record<"app" | "agents" | "workflows" | "shop", LucideIcon> 
 
 export function WhatWeBuild() {
   const { t } = useLocale();
+  const hrefFor = useLocalizedPath();
 
   return (
     <section
@@ -46,7 +47,7 @@ export function WhatWeBuild() {
               return (
                 <Link
                   key={service.icon}
-                  href="/services"
+                  href={hrefFor("/services")}
                   className="offer-card block h-full border border-border bg-white outline-none"
                 >
                   <div className="offer-card-badge flex items-center justify-center rounded-md">
@@ -65,7 +66,7 @@ export function WhatWeBuild() {
 
           <p className="mt-10 text-center">
             <Link
-              href="/services"
+              href={hrefFor("/services")}
               className="see-all-services inline-flex items-center gap-1.5 text-sm font-medium"
             >
               <span className="see-all-services-text">{t.services.seeAll}</span>

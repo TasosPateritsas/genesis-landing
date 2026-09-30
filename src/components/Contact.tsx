@@ -5,9 +5,10 @@ import { Mail, Phone } from "lucide-react";
 import { site } from "@/data/content";
 import { FadeIn } from "./FadeIn";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { contactHref } from "@/lib/contactHref";
 
 export function Contact() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
 
   return (
     <section id="contact" className="contact-teaser" aria-labelledby="contact-heading">
@@ -34,7 +35,7 @@ export function Contact() {
           </div>
 
           <div className="mt-12 flex flex-col items-center gap-8 sm:flex-row sm:justify-center sm:gap-12">
-            <Link href="/contact" className="contact-teaser-cta">
+            <Link href={contactHref(locale, "message")} className="contact-teaser-cta">
               {t.contact.cta}
             </Link>
 
