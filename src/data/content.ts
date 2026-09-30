@@ -67,6 +67,7 @@ export type Dictionary = {
     label: string;
     heading: string;
     intro: string;
+    introDetail: string;
     cta: string;
     directLabel: string;
   };
@@ -297,9 +298,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     contact: {
       label: "Contact",
       heading: "Tell us what you want to build.",
-      intro:
-        "Whatever your project needs — we reply within one business day and walk you through the next steps.",
-      cta: "Fill out the form!",
+      intro: "Whatever your project needs!",
+      introDetail: "We reply within one business day and walk you through the next steps.",
+      cta: "Fill out the form",
       directLabel: "Prefer to reach us directly by email or phone?",
     },
     contactPage: {
@@ -559,9 +560,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     contact: {
       label: "Επικοινωνία",
       heading: "Πείτε μας τι θέλετε να φτιάξετε.",
-      intro:
-        "Ό,τι κι αν χρειάζεστε για το project σας — απαντάμε εντός μίας εργάσιμης ημέρας και σας λέμε τα επόμενα βήματα.",
-      cta: "Συμπληρώστε τη φόρμα!",
+      intro: "Ό,τι κι αν χρειάζεστε για το project σας!",
+      introDetail: "Απαντάμε εντός μίας εργάσιμης ημέρας και σας λέμε τα επόμενα βήματα.",
+      cta: "Συμπληρώστε τη φόρμα",
       directLabel: "Προτιμάτε κατευθείαν email ή κινητό;",
     },
     contactPage: {
