@@ -6,9 +6,11 @@ import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { contactHref } from "@/lib/contactHref";
 
 export function Header() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
+  const talkHref = contactHref(locale, "message");
   const pathname = usePathname();
   const dark = pathname === "/contact";
   const [scrolled, setScrolled] = useState(false);
@@ -71,7 +73,7 @@ export function Header() {
           ))}
           <LanguageToggle tone={dark ? "dark" : "default"} />
           <Link
-            href="/#contact"
+            href={talkHref}
             className={`btn-primary inline-flex h-10 items-center rounded-md px-4 text-sm font-semibold${
               dark ? " btn-primary-glow" : ""
             }`}
@@ -136,7 +138,7 @@ export function Header() {
             </li>
             <li className="pt-1">
               <Link
-                href="/#contact"
+                href={talkHref}
                 className={`btn-primary flex h-11 items-center justify-center rounded-md text-sm font-semibold${
                   dark ? " btn-primary-glow" : ""
                 }`}
