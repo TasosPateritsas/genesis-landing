@@ -108,6 +108,20 @@ export type Dictionary = {
       description: string;
     };
   };
+  reviews: {
+    kicker: string;
+    heading: string;
+    reviewsOnGoogle: string;
+    cardSource: string;
+    ctaPrompt: string;
+    cta: string;
+    seeAll: string;
+    pagesLabel: string;
+    pageLabel: string;
+    previous: string;
+    next: string;
+    rated: string;
+  };
   backToTop: string;
   footer: {
     tagline: string;
@@ -349,6 +363,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
         other: "Tell us what else you need.",
         description: "Enter a description.",
       },
+    },
+    reviews: {
+      kicker: "Reviews",
+      heading: "What our clients say",
+      reviewsOnGoogle: "{count} reviews on Google",
+      cardSource: "Review on Google",
+      ctaPrompt: "Worked with us?",
+      cta: "Leave us a review",
+      seeAll: "See all reviews on Google →",
+      pagesLabel: "Reviews pages",
+      pageLabel: "Page {page}",
+      previous: "Previous",
+      next: "Next",
+      rated: "Rated {rating} out of 5",
     },
     backToTop: "Back to top",
     footer: {
@@ -611,6 +639,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
         other: "Πείτε μας τι άλλο χρειάζεστε.",
         description: "Συμπληρώστε την περιγραφή.",
       },
+    },
+    reviews: {
+      kicker: "Κριτικές",
+      heading: "Τι λένε οι πελάτες μας",
+      reviewsOnGoogle: "{count} κριτικές στο Google",
+      cardSource: "Κριτική στο Google",
+      ctaPrompt: "Έχουμε συνεργαστεί;",
+      cta: "Αφήστε μας μια κριτική",
+      seeAll: "Δείτε όλες τις κριτικές στο Google →",
+      pagesLabel: "Σελίδες κριτικών",
+      pageLabel: "Σελίδα {page}",
+      previous: "Προηγούμενη",
+      next: "Επόμενη",
+      rated: "Βαθμολογία {rating} από 5",
     },
     backToTop: "Επιστροφή στην κορυφή",
     footer: {

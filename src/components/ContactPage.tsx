@@ -2,6 +2,7 @@
 
 import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { ContactReviews } from "@/components/ContactReviews";
 import { ContactStats } from "@/components/ContactStats";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -51,6 +52,7 @@ export function ContactPage() {
           </div>
         </div>
         <ContactStats />
+        <ContactReviews />
       </main>
       <Footer />
     </>
