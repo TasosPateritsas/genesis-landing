@@ -50,6 +50,7 @@ export function Header() {
 
   return (
     <header
+      data-cursor={dark ? "dark" : undefined}
       className={`fixed inset-x-0 top-0 z-50 border-b transition-[background,backdrop-filter] duration-300 ${
         dark
           ? "border-white/12 bg-[#0B3B30]"

@@ -153,7 +153,7 @@ export function ContactForm() {
   const bookingTabId = "contact-tab-booking";
 
   return (
-    <div className="contact-card">
+    <div className="contact-card" data-cursor="light">
       <div
         className="contact-tabs"
         role="tablist"

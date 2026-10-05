@@ -211,6 +211,7 @@ export function ContactStats() {
 
           <div
             className="stat-card"
+            data-cursor="dark"
             onMouseEnter={() => api.current.pause()}
             onMouseLeave={() => api.current.resume()}
             onFocusCapture={() => api.current.pause()}

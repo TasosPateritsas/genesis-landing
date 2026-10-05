@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { headers } from "next/headers";
+import { CursorFollower } from "@/components/CursorFollower";
 import { SITE_URL } from "@/lib/routes";
 import "./globals.css";
 
@@ -34,7 +35,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       lang={locale}
       className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full`}
     >
-      <body className="min-h-full font-sans antialiased">{children}</body>
+      <body className="min-h-full font-sans antialiased">
+        {children}
+        <CursorFollower />
+      </body>
     </html>
   );
 }

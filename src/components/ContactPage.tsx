@@ -51,7 +51,7 @@ export function ContactPage() {
     <>
       <Header />
       <main>
-        <div className="contact-page pt-16 md:pt-[4.25rem]">
+        <div className="contact-page pt-16 md:pt-[4.25rem]" data-cursor="dark">
           <div className="section-pad container-narrow pb-16 pt-8 md:pb-24 md:pt-10">
             <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
               <div>
