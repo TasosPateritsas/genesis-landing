@@ -957,6 +957,33 @@ body {
   }
 }
 
+@keyframes contact-col-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.contact-col-item {
+  animation: contact-col-in 450ms ease-out both;
+}
+
+@media (max-width: 1023px) {
+  .contact-how:not(.is-inview) .contact-col-item {
+    animation: none;
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+
+  .contact-how.is-inview .contact-col-item {
+    animation-delay: var(--col-delay-mobile, 150ms);
+  }
+}
+
 .stats-photo {
   opacity: 0;
   transform: translateY(-40px);
@@ -1246,8 +1273,20 @@ body {
 
   .animate-hero-copy,
   .other-reveal,
-  .contact-spinner {
+  .contact-spinner,
+  .contact-col-item,
+  .contact-how .contact-col-item,
+  .contact-how:not(.is-inview) .contact-col-item,
+  .contact-how.is-inview .contact-col-item {
     animation: none;
+  }
+
+  .contact-col-item,
+  .contact-how .contact-col-item,
+  .contact-how:not(.is-inview) .contact-col-item,
+  .contact-how.is-inview .contact-col-item {
+    opacity: 1;
+    transform: none;
   }
 
   .stats-photo,
