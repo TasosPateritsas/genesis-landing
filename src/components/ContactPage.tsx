@@ -28,12 +28,8 @@ export function ContactPage() {
     const node = howRef.current;
     if (!node) return;
 
-    const desktop = window.matchMedia("(min-width: 1024px)");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (desktop.matches || reduce.matches) {
-      setHowInView(true);
-      return;
-    }
+    if (reduce.matches) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
