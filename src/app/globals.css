@@ -970,6 +970,7 @@ body {
 
 .contact-col-item {
   animation: contact-col-in 450ms ease-out both;
+  animation-delay: var(--col-delay, 0ms);
 }
 
 @media (max-width: 1023px) {
@@ -980,7 +981,7 @@ body {
   }
 
   .contact-how.is-inview .contact-col-item {
-    animation-delay: var(--col-delay-mobile, 150ms);
+    animation-delay: var(--col-delay-mobile, var(--col-delay, 0ms));
   }
 }
 

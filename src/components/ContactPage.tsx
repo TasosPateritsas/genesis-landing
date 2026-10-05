@@ -11,8 +11,8 @@ import { site } from "@/data/content";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 function colStyle(index: number, mobileIndex?: number): CSSProperties {
-  const style: CSSProperties & { "--col-delay-mobile"?: string } = {
-    animationDelay: `${150 + index * 70}ms`,
+  const style: CSSProperties & { "--col-delay": string; "--col-delay-mobile"?: string } = {
+    "--col-delay": `${150 + index * 70}ms`,
   };
   if (mobileIndex != null) style["--col-delay-mobile"] = `${150 + mobileIndex * 70}ms`;
   return style;
