@@ -195,10 +195,10 @@ export function ContactStats() {
 
   return (
     <section ref={sectionRef} className="bg-white">
-      <div className="contact-stats container-narrow py-16 md:py-24">
+      <div className="contact-stats container-narrow py-20 md:py-28">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_minmax(0,0.9fr)] md:gap-16">
           <div className={`stats-photo ${inView ? "is-visible" : ""}`}>
-            <div className="relative aspect-[5/8] overflow-hidden rounded-[4px]">
+            <div className="relative aspect-[5/8] overflow-hidden rounded-[12px]">
               <Image
                 src={statPhotos.left.src}
                 alt={statPhotos.left.alt[locale]}
@@ -261,7 +261,7 @@ export function ContactStats() {
           </div>
 
           <div className={`stats-photo stats-photo-delay md:mt-[70px] ${inView ? "is-visible" : ""}`}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[4px]">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[12px]">
               <Image
                 src={statPhotos.right.src}
                 alt={statPhotos.right.alt[locale]}
