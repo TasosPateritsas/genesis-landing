@@ -44,6 +44,30 @@ export function ContactPage() {
                     </span>
                   </a>
                 </div>
+                <div className="mt-8">
+                  <p className="text-xs font-medium uppercase tracking-[0.14em] text-white/55">
+                    {page.howWeWork.eyebrow}
+                  </p>
+                  <ol className="mt-4">
+                    {page.howWeWork.steps.map((step, index) => (
+                      <li key={step.title} className="relative flex gap-3 pb-4 last:pb-0">
+                        {index < page.howWeWork.steps.length - 1 ? (
+                          <span
+                            className="absolute bottom-0 left-[13.5px] top-7 w-px bg-white/[0.18]"
+                            aria-hidden
+                          />
+                        ) : null}
+                        <span className="relative z-10 flex size-7 shrink-0 items-center justify-center rounded-full border border-white/35 text-[13px] font-medium leading-none text-white">
+                          {index + 1}
+                        </span>
+                        <div className="min-w-0 pt-0.5">
+                          <p className="text-[15px] font-bold leading-tight text-white">{step.title}</p>
+                          <p className="mt-1 text-[14px] leading-snug text-white/60">{step.body}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               </div>
               <ContactForm />
             </div>
