@@ -107,6 +107,10 @@ export type Dictionary = {
       other: string;
       description: string;
     };
+    howWeWork: {
+      eyebrow: string;
+      steps: Array<{ title: string; body: string }>;
+    };
   };
   reviews: {
     kicker: string;
@@ -362,6 +366,27 @@ export const dictionaries: Record<Locale, Dictionary> = {
         category: "Select a category.",
         other: "Tell us what else you need.",
         description: "Enter a description.",
+      },
+      howWeWork: {
+        eyebrow: "How we work",
+        steps: [
+          {
+            title: "You reach out",
+            body: "Through the form, by email, by phone or by booking a meeting.",
+          },
+          {
+            title: "We discuss your needs",
+            body: "We learn what you need and ask the right questions.",
+          },
+          {
+            title: "You get a written proposal",
+            body: "Scope, timeline and cost.",
+          },
+          {
+            title: "We get started",
+            body: "With regular updates at every step, through to delivery.",
+          },
+        ],
       },
     },
     reviews: {
@@ -638,6 +663,27 @@ export const dictionaries: Record<Locale, Dictionary> = {
         category: "Επιλέξτε κατηγορία.",
         other: "Πείτε μας τι άλλο χρειάζεστε.",
         description: "Συμπληρώστε την περιγραφή.",
+      },
+      howWeWork: {
+        eyebrow: "Πώς δουλεύουμε",
+        steps: [
+          {
+            title: "Επικοινωνείτε μαζί μας",
+            body: "Με τη φόρμα, με email, τηλεφωνικά ή κλείνοντας ραντεβού.",
+          },
+          {
+            title: "Συζητάμε τις ανάγκες σας",
+            body: "Μαθαίνουμε τι χρειάζεστε και κάνουμε τις σωστές ερωτήσεις.",
+          },
+          {
+            title: "Λαμβάνετε γραπτή προσφορά",
+            body: "Με scope, χρονοδιάγραμμα και κόστος.",
+          },
+          {
+            title: "Ξεκινάμε",
+            body: "Με σταθερή ενημέρωση σε κάθε βήμα, μέχρι την παράδοση.",
+          },
+        ],
       },
     },
     reviews: {

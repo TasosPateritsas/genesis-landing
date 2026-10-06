@@ -195,10 +195,10 @@ export function ContactStats() {
 
   return (
     <section ref={sectionRef} className="bg-white">
-      <div className="contact-stats container-narrow py-16 md:py-24">
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)_minmax(0,0.95fr)] md:gap-10">
+      <div className="contact-stats container-narrow py-20 md:py-28">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_minmax(0,0.9fr)] md:gap-16">
           <div className={`stats-photo ${inView ? "is-visible" : ""}`}>
-            <div className="relative aspect-[3/4] overflow-hidden rounded-[4px]">
+            <div className="relative aspect-[5/8] overflow-hidden rounded-[12px]">
               <Image
                 src={statPhotos.left.src}
                 alt={statPhotos.left.alt[locale]}
@@ -211,6 +211,7 @@ export function ContactStats() {
 
           <div
             className="stat-card"
+            data-cursor="dark"
             onMouseEnter={() => api.current.pause()}
             onMouseLeave={() => api.current.resume()}
             onFocusCapture={() => api.current.pause()}
@@ -225,10 +226,8 @@ export function ContactStats() {
               <p className="text-white">
                 <span className="text-[72px] font-light leading-none tracking-[-0.03em] md:text-[96px]">
                   {displayed}
+                  <sup className="ml-1 align-super text-[0.4em] font-medium leading-none">{slide.suffix}</sup>
                 </span>
-                <sup className="ml-1 align-super text-[0.32em] font-medium leading-none">
-                  {slide.suffix}
-                </sup>
               </p>
               <p className="mt-4 text-[18px] font-medium leading-snug text-white">{slide.title[locale]}</p>
               <p className="mx-auto mt-2 max-w-[260px] text-[14px] leading-relaxed text-white/75">
@@ -263,7 +262,7 @@ export function ContactStats() {
           </div>
 
           <div className={`stats-photo stats-photo-delay md:mt-[70px] ${inView ? "is-visible" : ""}`}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[4px]">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[12px]">
               <Image
                 src={statPhotos.right.src}
                 alt={statPhotos.right.alt[locale]}
