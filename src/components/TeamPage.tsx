@@ -6,6 +6,7 @@ import { TeamAvatar } from "@/components/team/TeamAvatar";
 import { TeamFlow } from "@/components/team/TeamFlow";
 import { TeamProfiles } from "@/components/team/TeamProfiles";
 import { TeamPromises } from "@/components/team/TeamPromises";
+import { TeamStory } from "@/components/team/TeamStory";
 import { TeamVideo } from "@/components/team/TeamVideo";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { teamMembers } from "@/data/team";
@@ -48,6 +49,7 @@ export function TeamPage() {
         <TeamFlow />
         <TeamProfiles />
         <TeamPromises />
+        <TeamStory />
       </main>
       <Footer />
     </>

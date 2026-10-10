@@ -1958,6 +1958,157 @@ body {
   }
 }
 
+.team-story {
+  border-top: 1px solid #e3eae7;
+  background: #f3f8f5;
+  padding-block: 96px;
+}
+
+.team-story-card {
+  max-width: 800px;
+  margin-inline: auto;
+  border: 1px solid #dce8e2;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 36px 36px 8px;
+}
+
+.team-story-title {
+  margin-bottom: 10px;
+  color: #14181a;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.team-story-title span {
+  color: #0f6e56;
+}
+
+.team-story-command {
+  margin-bottom: 28px;
+  color: #6b7280;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.team-story-dollar {
+  color: #0f6e56;
+}
+
+.team-story-caret {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  margin-left: 3px;
+  background: #0f6e56;
+  vertical-align: -2px;
+  animation: team-caret-blink 1s steps(1) infinite;
+}
+
+@keyframes team-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.team-story-graph.is-hidden {
+  opacity: 0;
+}
+
+.team-story-graph path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.team-story-graph path[data-draw="future"] {
+  opacity: 0.6;
+}
+
+.team-story-branch {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.team-story-commit {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.team-story-meta {
+  text-align: center;
+}
+
+.team-story-mobile .team-story-meta {
+  text-align: left;
+}
+
+.team-story-year {
+  color: #6b7280;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.team-story-type {
+  color: #0f6e56;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.team-story-message {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #14181a;
+  font-size: 13px;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.team-story-message a {
+  color: #0f6e56;
+  font-weight: 600;
+}
+
+.team-story-message a:focus-visible {
+  outline: 2px solid #0f6e56;
+  outline-offset: 2px;
+}
+
+.team-story-desktop {
+  display: block;
+}
+
+.team-story-mobile {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .team-story-desktop {
+    display: none;
+  }
+
+  .team-story-mobile {
+    display: block;
+  }
+
+  .team-story-title {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-story-caret {
+    animation: none;
+  }
+}
+
 .cursor-follower {
   display: none;
 }
