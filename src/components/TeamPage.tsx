@@ -3,6 +3,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { TeamAvatar } from "@/components/team/TeamAvatar";
+import { TeamVideo } from "@/components/team/TeamVideo";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { teamMembers } from "@/data/team";
 
@@ -40,6 +41,7 @@ export function TeamPage() {
             </div>
           </div>
         </section>
+        <TeamVideo />
       </main>
       <Footer />
     </>

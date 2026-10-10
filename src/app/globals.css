@@ -1446,6 +1446,117 @@ body {
   line-height: 1.4;
 }
 
+.team-video {
+  background: #ffffff;
+  padding-block: 80px;
+}
+
+.team-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0b1f1a;
+  box-shadow: 0 24px 48px rgba(11, 59, 48, 0.18);
+  cursor: pointer;
+}
+
+.team-video-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 59, 48, 0.15) 0%,
+    rgba(11, 59, 48, 0) 40%,
+    rgba(11, 31, 26, 0.65) 100%
+  );
+}
+
+.team-video-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.team-video-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  border-radius: 999px;
+  background: rgba(11, 31, 26, 0.45);
+  padding: 6px 10px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+}
+
+.team-video-title {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  left: 24px;
+  max-width: 520px;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.team-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  width: 84px;
+  height: 84px;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  backdrop-filter: blur(6px);
+  transform: translate(-50%, -50%);
+}
+
+.team-video-play[data-follow="true"] {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.team-video-chapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.team-video-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dce8e2;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 8px 14px;
+  color: #14181a;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.team-video-time {
+  color: #0f6e56;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+}
+
 .cursor-follower {
   display: none;
 }
