@@ -1,32 +1,38 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { useLayoutEffect, useRef, type CSSProperties } from "react";
 import { teamPromises, teamPromisesCopy } from "@/data/teamPromises";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 export function TeamPromises() {
   const { locale } = useLocale();
   const rowRef = useRef<HTMLDivElement>(null);
-  const [phase, setPhase] = useState<"visible" | "pending" | "shown">("visible");
 
   useLayoutEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
-
-    setPhase("pending");
     const row = rowRef.current;
-    if (!row) return;
+    if (!row || reduce) return;
+
+    const items = [...row.querySelectorAll<HTMLElement>(".team-promise")];
+    items.forEach((item) => item.classList.add("is-pending"));
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setPhase("shown");
+        items.forEach((item) => {
+          item.classList.remove("is-pending");
+          item.classList.add("is-shown");
+        });
         observer.disconnect();
       },
       { threshold: 0.3 },
     );
     observer.observe(row);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      items.forEach((item) => item.classList.remove("is-pending", "is-shown"));
+    };
   }, []);
 
   return (
@@ -40,7 +46,7 @@ export function TeamPromises() {
           {teamPromises.map((item, index) => (
             <article
               key={item.title.en}
-              className={`team-promise${phase === "pending" ? " is-pending" : ""}${phase === "shown" ? " is-shown" : ""}`}
+              className="team-promise"
               style={{ "--promise-delay": `${index * 250}ms` } as CSSProperties}
             >
               <p className="team-promise-number">{String(index + 1).padStart(2, "0")}</p>

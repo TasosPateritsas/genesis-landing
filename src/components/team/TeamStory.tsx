@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { storyCommand, storyCommits, teamStoryCopy, type StoryCommit } from "@/data/teamStory";
 import type { Locale } from "@/data/content";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -205,36 +205,54 @@ function playGraph(svg: SVGSVGElement) {
 export function TeamStory() {
   const { locale } = useLocale();
   const cardRef = useRef<HTMLDivElement>(null);
-  const [typed, setTyped] = useState<string | null>(null);
-  const [graph, setGraph] = useState<"shown" | "hidden" | "draw">("shown");
-  const command = typed === null ? storyCommand : typed;
-  const dollar = command.startsWith("$");
+  const dollarRef = useRef<HTMLSpanElement>(null);
+  const restRef = useRef<HTMLSpanElement>(null);
+  const graphRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    const card = cardRef.current;
+    const dollar = dollarRef.current;
+    const rest = restRef.current;
+    const graph = graphRef.current;
+    if (!card || !dollar || !rest || !graph) return;
+
     let cancelled = false;
+    let frame = 0;
     const timers: number[] = [];
-    setTyped("");
-    setGraph("hidden");
+    dollar.textContent = "";
+    rest.textContent = "";
+    graph.classList.add("is-hidden");
+
+    const write = (value: string) => {
+      const hasDollar = value.startsWith("$");
+      dollar.textContent = hasDollar ? "$" : "";
+      rest.textContent = hasDollar ? value.slice(1) : value;
+    };
 
     const typeFrom = (index: number) => {
       if (cancelled) return;
       const next = index + 1;
-      setTyped(storyCommand.slice(0, next));
+      write(storyCommand.slice(0, next));
       if (next < storyCommand.length) {
         timers.push(window.setTimeout(() => typeFrom(next), 25 + Math.random() * 25));
         return;
       }
       timers.push(
         window.setTimeout(() => {
-          if (!cancelled) setGraph("draw");
+          if (cancelled) return;
+          const svg = visibleGraph(card);
+          if (svg) prepareGraph(svg);
+          graph.classList.remove("is-hidden");
+          if (!svg) return;
+          frame = window.requestAnimationFrame(() => {
+            if (!cancelled) playGraph(svg);
+          });
         }, 150),
       );
     };
 
-    const card = cardRef.current;
-    if (!card) return;
     const observer = new IntersectionObserver(
       (entries) => {
         if (cancelled || !entries.some((entry) => entry.isIntersecting)) return;
@@ -249,23 +267,12 @@ export function TeamStory() {
       cancelled = true;
       observer.disconnect();
       timers.forEach((timer) => window.clearTimeout(timer));
+      if (frame) window.cancelAnimationFrame(frame);
+      dollar.textContent = "$";
+      rest.textContent = storyCommand.slice(1);
+      graph.classList.remove("is-hidden");
     };
   }, []);
-
-  useLayoutEffect(() => {
-    if (graph !== "draw") return;
-    const svg = visibleGraph(cardRef.current);
-    if (!svg) return;
-    prepareGraph(svg);
-  }, [graph]);
-
-  useEffect(() => {
-    if (graph !== "draw") return;
-    const svg = visibleGraph(cardRef.current);
-    if (!svg) return;
-    const frame = window.requestAnimationFrame(() => playGraph(svg));
-    return () => window.cancelAnimationFrame(frame);
-  }, [graph]);
 
   return (
     <section className="team-story" aria-labelledby="team-story-heading">
@@ -277,11 +284,13 @@ export function TeamStory() {
           </h2>
           <p className="sr-only">{storyCommand}</p>
           <p className="team-story-command" aria-hidden="true">
-            {dollar ? <span className="team-story-dollar">$</span> : null}
-            {dollar ? command.slice(1) : command}
+            <span ref={dollarRef} className="team-story-dollar">
+              $
+            </span>
+            <span ref={restRef}>{storyCommand.slice(1)}</span>
             <span className="team-story-caret" />
           </p>
-          <div className={graph === "hidden" ? "team-story-graph is-hidden" : "team-story-graph"}>
+          <div ref={graphRef} className="team-story-graph">
             <DesktopGraph locale={locale} />
             <MobileGraph locale={locale} />
           </div>
