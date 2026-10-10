@@ -23,7 +23,7 @@ export async function buildPageMetadata({
   description,
 }: {
   locale: Locale;
-  path: "/" | "/services" | "/contact";
+  path: "/" | "/services" | "/team" | "/contact";
   title: string;
   description: string;
 }): Promise<Metadata> {
@@ -89,6 +89,16 @@ export function servicesMetadata(locale: Locale) {
   return buildPageMetadata({
     locale,
     path: "/services",
+    title: page.metaTitle,
+    description: page.metaDescription,
+  });
+}
+
+export function teamMetadata(locale: Locale) {
+  const page = dictionaries[locale].teamPage;
+  return buildPageMetadata({
+    locale,
+    path: "/team",
     title: page.metaTitle,
     description: page.metaDescription,
   });

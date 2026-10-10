@@ -31,7 +31,7 @@ export function Footer() {
           <Link href={hrefFor("/#work")} className="hover:text-ink">
             {t.footer.work}
           </Link>
-          <Link href={hrefFor("/#team")} className="hover:text-ink">
+          <Link href={hrefFor("/team")} className="hover:text-ink">
             {t.footer.team}
           </Link>
           <Link href={hrefFor("/contact")} className="hover:text-ink">

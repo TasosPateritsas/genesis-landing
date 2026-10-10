@@ -6,6 +6,7 @@ export const SITE_URL = "https://genesis.studio";
 export const publicRoutes = [
   { path: "/" },
   { path: "/services" },
+  { path: "/team" },
   { path: "/contact" },
 ] as const;
 

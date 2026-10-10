@@ -22,7 +22,7 @@ export function Header() {
   const links = [
     { href: hrefFor("/services"), path: "/services", label: t.nav.services },
     { href: hrefFor("/#work"), path: "", label: t.nav.work },
-    { href: hrefFor("/#team"), path: "", label: t.nav.team },
+    { href: hrefFor("/team"), path: "/team", label: t.nav.team },
     { href: hrefFor("/contact"), path: "/contact", label: t.nav.contact },
   ];
 

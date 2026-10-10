@@ -54,6 +54,7 @@ export type Dictionary = {
     label: string;
     heading: string;
     intro: string;
+    meet: string;
     members: Array<{
       name: string;
       role: string;
@@ -62,6 +63,12 @@ export type Dictionary = {
       github: string;
       linkedin: string;
     }>;
+  };
+  teamPage: {
+    breadcrumb: string;
+    heading: string;
+    metaTitle: string;
+    metaDescription: string;
   };
   contact: {
     label: string;
@@ -295,6 +302,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       heading: "Three engineers. One studio. You talk to the builders.",
       intro:
         "We're a newly founded team in Athens — small enough to move fast, senior enough to own the full stack from brief to launch.",
+      meet: "Meet the team",
       members: [
         {
           ...teamShared.despoina,
@@ -404,6 +412,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
       rated: "Rated {rating} out of 5",
     },
     backToTop: "Back to top",
+    teamPage: {
+      breadcrumb: "Genesis › Team",
+      heading: "Team",
+      metaTitle: "Team - Genesis",
+      metaDescription:
+        "We're a newly founded team in Athens — small enough to move fast, senior enough to own the full stack from brief to launch.",
+    },
     footer: {
       tagline: "Athens tech studio",
       location: "Athens, Greece",
@@ -592,6 +607,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       heading: "Τρεις μηχανικοί. Ένα studio. Μιλάτε απευθείας με αυτούς που χτίζουν.",
       intro:
         "Είμαστε μια νέα ομάδα στην Αθήνα — αρκετά μικρή για να κινείται γρήγορα, αρκετά έμπειρη για να αναλάβει το πλήρες stack από το brief μέχρι το launch.",
+      meet: "Γνωρίστε την ομάδα",
       members: [
         {
           ...teamShared.despoina,
@@ -701,6 +717,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
       rated: "Βαθμολογία {rating} από 5",
     },
     backToTop: "Επιστροφή στην κορυφή",
+    teamPage: {
+      breadcrumb: "Genesis › Ομάδα",
+      heading: "Ομάδα",
+      metaTitle: "Ομάδα - Genesis",
+      metaDescription:
+        "Είμαστε μια νέα ομάδα στην Αθήνα — αρκετά μικρή για να κινείται γρήγορα, αρκετά έμπειρη για να αναλάβει το πλήρες stack από το brief μέχρι το launch.",
+    },
     footer: {
       tagline: "Athens tech studio",
       location: "Αθήνα, Ελλάδα",

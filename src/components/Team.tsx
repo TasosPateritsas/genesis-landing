@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { FadeIn } from "./FadeIn";
-import { useLocale } from "@/i18n/LocaleProvider";
+import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 
 function GitHubIcon() {
   return (
@@ -21,6 +22,7 @@ function LinkedInIcon() {
 
 export function Team() {
   const { t } = useLocale();
+  const hrefFor = useLocalizedPath();
 
   return (
     <section
@@ -86,6 +88,18 @@ export function Team() {
           </FadeIn>
         ))}
       </div>
+
+      <p className="mt-10 text-center">
+        <Link
+          href={hrefFor("/team")}
+          className="see-all-services inline-flex items-center gap-1.5 text-sm font-medium"
+        >
+          <span className="see-all-services-text">{t.team.meet}</span>
+          <span className="see-all-services-arrow" aria-hidden>
+            →
+          </span>
+        </Link>
+      </p>
     </section>
   );
 }
