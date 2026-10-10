@@ -12,6 +12,9 @@ export type TeamMember = {
   role: string;
   discipline: Record<Locale, string>;
   bio: Record<Locale, string>;
+  education: Record<Locale, string>;
+  onProject: Record<Locale, readonly [string, string]>;
+  askAbout: Record<Locale, string>;
   chips: Record<Locale, readonly string[]>;
   github: string;
   linkedin: string;
@@ -19,6 +22,8 @@ export type TeamMember = {
   avatarBg: string;
   /** Filled in after the photoshoot. null keeps the initials placeholder. */
   photo: string | null;
+  /** Casual hover photo. null means the profile has no hover swap. */
+  photoCasual: string | null;
 };
 
 export const teamMembers: readonly TeamMember[] = [
@@ -36,6 +41,21 @@ export const teamMembers: readonly TeamMember[] = [
       en: "Turns your idea into a clear plan and a design you can click through. Keeps the project on track and keeps you in the loop.",
       el: "Μετατρέπει την ιδέα σας σε σαφές πλάνο και σε design που μπορείτε να δοκιμάσετε. Κρατά το project στο χρονοδιάγραμμα και σας ενημερώνει σε κάθε βήμα.",
     },
+    education: {
+      en: "Electrical & Computer Engineer, TUC",
+      el: "Ηλεκτρολόγος Μηχανικός & Μηχανικός Υπολογιστών, Πολυτεχνείο Κρήτης",
+    },
+    onProject: {
+      en: [
+        "Scopes the project and writes the proposal",
+        "Reviews and refines the UI of every release",
+      ],
+      el: ["Ορίζει το scope και γράφει την προσφορά", "Ελέγχει και βελτιώνει το UI σε κάθε release"],
+    },
+    askAbout: {
+      en: "UX, product scoping, turning a vague idea into a plan",
+      el: "UX, scoping προϊόντος, πώς μια θολή ιδέα γίνεται πλάνο",
+    },
     chips: {
       en: ["UI/UX", "Project management", "Client communication", "Prototyping"],
       el: ["UI/UX", "Διαχείριση project", "Επικοινωνία με τον πελάτη", "Prototyping"],
@@ -44,6 +64,7 @@ export const teamMembers: readonly TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/ntolka",
     avatarBg: "#EEF5F2",
     photo: null,
+    photoCasual: null,
   },
   {
     id: "pantelis",
@@ -59,6 +80,18 @@ export const teamMembers: readonly TeamMember[] = [
       en: "Turns designs into clean, fast, working code. Obsessed with performance — if it's slow, he'll fix it before you notice.",
       el: "Μετατρέπει τα σχέδια σε καθαρό, γρήγορο κώδικα που δουλεύει. Έχει εμμονή με την απόδοση: αν κάτι αργεί, θα το διορθώσει πριν το καταλάβετε.",
     },
+    education: {
+      en: "Electrical & Computer Engineer, TUC",
+      el: "Ηλεκτρολόγος Μηχανικός & Μηχανικός Υπολογιστών, Πολυτεχνείο Κρήτης",
+    },
+    onProject: {
+      en: ["Builds the front end and the back end", "Writes code that is yours, in your repo"],
+      el: ["Χτίζει το front end και το back end", "Γράφει κώδικα που ανήκει σε εσάς, στο δικό σας repo"],
+    },
+    askAbout: {
+      en: "Next.js, performance, why your site is slow",
+      el: "Next.js, απόδοση, γιατί αργεί το site σας",
+    },
     chips: {
       en: ["Next.js", "React", "TypeScript", "Node.js"],
       el: ["Next.js", "React", "TypeScript", "Node.js"],
@@ -67,6 +100,7 @@ export const teamMembers: readonly TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/panteliskaramailis",
     avatarBg: "#DDEDE6",
     photo: null,
+    photoCasual: null,
   },
   {
     id: "anastasis",
@@ -82,6 +116,18 @@ export const teamMembers: readonly TeamMember[] = [
       en: "Takes the code live and keeps it there, so launch day is a non-event.",
       el: "Βγάζει τον κώδικα live και τον κρατάει εκεί, ώστε η μέρα του launch να κυλάει χωρίς άγχος.",
     },
+    education: {
+      en: "Electrical & Computer Engineer, TUC",
+      el: "Ηλεκτρολόγος Μηχανικός & Μηχανικός Υπολογιστών, Πολυτεχνείο Κρήτης",
+    },
+    onProject: {
+      en: ["Sets up hosting, domains and CI/CD", "Monitors the site after launch"],
+      el: ["Στήνει hosting, domains και CI/CD", "Παρακολουθεί το site μετά το launch"],
+    },
+    askAbout: {
+      en: "Deployments, hosting, keeping a site up",
+      el: "Deployments, hosting, πώς ένα site μένει πάντα online",
+    },
     chips: {
       en: ["Vercel", "CI/CD", "Docker", "Monitoring"],
       el: ["Vercel", "CI/CD", "Docker", "Monitoring"],
@@ -90,6 +136,7 @@ export const teamMembers: readonly TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/anastassis-pateritsas",
     avatarBg: "#CBE3D8",
     photo: null,
+    photoCasual: null,
   },
 ];
 

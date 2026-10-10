@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { TeamAvatar } from "@/components/team/TeamAvatar";
 import { TeamFlow } from "@/components/team/TeamFlow";
+import { TeamProfiles } from "@/components/team/TeamProfiles";
 import { TeamVideo } from "@/components/team/TeamVideo";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { teamMembers } from "@/data/team";
@@ -44,6 +45,7 @@ export function TeamPage() {
         </section>
         <TeamVideo />
         <TeamFlow />
+        <TeamProfiles />
       </main>
       <Footer />
     </>
