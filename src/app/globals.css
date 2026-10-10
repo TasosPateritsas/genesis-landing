@@ -2253,6 +2253,55 @@ body {
   }
 }
 
+.team-cta {
+  background: linear-gradient(180deg, #f3f8f5 0%, #dcf0e7 100%);
+  padding-top: 96px;
+  padding-bottom: 88px;
+}
+
+.team-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.team-cta h2 {
+  margin-bottom: 8px;
+  color: #14181a;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.team-cta p {
+  max-width: 680px;
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+@media (min-width: 1200px) {
+  .team-cta p {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+.team-cta-button {
+  border-radius: 8px;
+  padding: 16px 22px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.team-footer-mint {
+  border-top: 1px solid #c5e0d3;
+  background: #dcf0e7;
+}
+
 .cursor-follower {
   display: none;
 }
