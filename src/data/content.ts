@@ -66,6 +66,8 @@ export type Dictionary = {
     people: string;
     metaTitle: string;
     metaDescription: string;
+    ogTitle: string;
+    imageAlt: string;
   };
   contact: {
     label: string;
@@ -380,9 +382,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
       subtext:
         "Three engineers, no account managers, no outsourcing. The people you meet on the first call are the people who build your product.",
       people: "Despoina, Pantelis & Anastasis · Athens",
-      metaTitle: "Team - Genesis",
+      metaTitle: "Meet the Team: Software Engineers in Athens - Genesis",
       metaDescription:
-        "We're a newly founded team in Athens — small enough to move fast, senior enough to own the full stack from brief to launch.",
+        "Meet Despoina, Pantelis and Anastasis, the engineers behind Genesis, a software development agency in Athens. Design, code and launch, with no outsourcing.",
+      ogTitle: "Meet the Team - Genesis",
+      imageAlt: "The Genesis team: Despoina, Pantelis and Anastasis",
     },
     footer: {
       tagline: "Athens tech studio",
@@ -674,9 +678,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
       subtext:
         "Τρεις μηχανικοί, χωρίς account managers, χωρίς outsourcing. Οι άνθρωποι που γνωρίζετε στην πρώτη κλήση είναι αυτοί που χτίζουν το προϊόν σας.",
       people: "Δέσποινα, Παντελής & Αναστάσης · Αθήνα",
-      metaTitle: "Ομάδα - Genesis",
+      metaTitle: "Η Ομάδα: Μηχανικοί Λογισμικού στην Αθήνα - Genesis",
       metaDescription:
-        "Είμαστε μια νέα ομάδα στην Αθήνα — αρκετά μικρή για να κινείται γρήγορα, αρκετά έμπειρη για να αναλάβει το πλήρες stack από το brief μέχρι το launch.",
+        "Γνωρίστε τη Δέσποινα, τον Παντελή και τον Αναστάση, τους μηχανικούς της Genesis, agency λογισμικού στην Αθήνα. Design, κώδικας και launch, χωρίς outsourcing.",
+      ogTitle: "Η Ομάδα - Genesis",
+      imageAlt: "Η ομάδα της Genesis: Δέσποινα, Παντελής και Αναστάσης",
     },
     footer: {
       tagline: "Athens tech studio",

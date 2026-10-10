@@ -21,14 +21,19 @@ export async function buildPageMetadata({
   path,
   title,
   description,
+  ogTitle,
+  imageAlt,
 }: {
   locale: Locale;
   path: "/" | "/services" | "/team" | "/contact";
   title: string;
   description: string;
+  ogTitle?: string;
+  imageAlt?: string;
 }): Promise<Metadata> {
   const preview = await isPreviewHost();
   const canonical = localizePath(path, locale);
+  const socialTitle = ogTitle ?? title;
 
   return {
     title,
@@ -50,20 +55,20 @@ export async function buildPageMetadata({
       alternateLocale: locale === "el" ? ["en_US"] : ["el_GR"],
       url: canonical,
       siteName: site.name,
-      title,
+      title: socialTitle,
       description,
       images: [
         {
           url: "/og.svg",
           width: 1200,
           height: 630,
-          alt: "Genesis — Athens tech studio",
+          alt: imageAlt ?? "Genesis — Athens tech studio",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: socialTitle,
       description,
       images: ["/og.svg"],
     },
@@ -101,6 +106,8 @@ export function teamMetadata(locale: Locale) {
     path: "/team",
     title: page.metaTitle,
     description: page.metaDescription,
+    ogTitle: page.ogTitle,
+    imageAlt: page.imageAlt,
   });
 }
 
