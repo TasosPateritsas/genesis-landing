@@ -1274,14 +1274,15 @@ body {
   }
 
   .cursor-follower[data-hover="true"] {
+    box-sizing: border-box;
     width: 44px;
     height: 44px;
-    border: 1.5px solid #0f6e56;
+    border: 0;
     background-color: rgba(15, 110, 86, 0.15);
   }
 
   .cursor-follower[data-hover="true"][data-dark="true"] {
-    border-color: #3dbb8a;
+    border: 0;
     background-color: rgba(61, 187, 138, 0.18);
   }
 }
