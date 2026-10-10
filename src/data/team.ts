@@ -14,6 +14,8 @@ export type TeamMember = {
   chips: Record<Locale, readonly string[]>;
   github: string;
   linkedin: string;
+  /** Round avatar fallback, used until photo is set. */
+  avatarBg: string;
   /** Filled in after the photoshoot. null keeps the initials placeholder. */
   photo: string | null;
 };
@@ -38,6 +40,7 @@ export const teamMembers: readonly TeamMember[] = [
     },
     github: "https://github.com/dntolka",
     linkedin: "https://www.linkedin.com/in/ntolka",
+    avatarBg: "#EEF5F2",
     photo: null,
   },
   {
@@ -59,6 +62,7 @@ export const teamMembers: readonly TeamMember[] = [
     },
     github: "https://github.com/pkaramailis",
     linkedin: "https://www.linkedin.com/in/panteliskaramailis",
+    avatarBg: "#DDEDE6",
     photo: null,
   },
   {
@@ -80,6 +84,7 @@ export const teamMembers: readonly TeamMember[] = [
     },
     github: "https://github.com/TasosPateritsas",
     linkedin: "https://www.linkedin.com/in/anastassis-pateritsas",
+    avatarBg: "#CBE3D8",
     photo: null,
   },
 ];

@@ -2,7 +2,9 @@
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { TeamAvatar } from "@/components/team/TeamAvatar";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { teamMembers } from "@/data/team";
 
 export function TeamPage() {
   const { t } = useLocale();
@@ -11,12 +13,33 @@ export function TeamPage() {
   return (
     <>
       <Header />
-      <main className="pt-16 md:pt-[4.25rem]">
-        <div className="section-pad container-narrow pt-8 pb-24 md:pt-10">
-          <p className="services-breadcrumb">{page.breadcrumb}</p>
-          <h1 className="mt-10 text-4xl font-semibold tracking-[-0.02em] text-ink">{page.heading}</h1>
-          <div className="min-h-48" />
-        </div>
+      <main>
+        <section className="team-hero" aria-labelledby="team-hero-heading">
+          <div className="team-hero-inner container-narrow pt-16 md:pt-[4.25rem]">
+            <div className="pt-8 md:pt-10">
+              <p className="services-breadcrumb">{page.breadcrumb}</p>
+              <h1 id="team-hero-heading" className="team-hero-title">
+                {page.titleLead}
+                <span className="text-[#0F6E56]">{page.titleAccent}</span>
+              </h1>
+              <p className="team-hero-subtext">{page.subtext}</p>
+              <div className="team-hero-people">
+                <div className="flex">
+                  {teamMembers.map((member, index) => (
+                    <TeamAvatar
+                      key={member.id}
+                      member={member}
+                      size={44}
+                      fontSize={14}
+                      className={index > 0 ? "-ml-2.5" : ""}
+                    />
+                  ))}
+                </div>
+                <p>{page.people}</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

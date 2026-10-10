@@ -60,7 +60,10 @@ export type Dictionary = {
   };
   teamPage: {
     breadcrumb: string;
-    heading: string;
+    titleLead: string;
+    titleAccent: string;
+    subtext: string;
+    people: string;
     metaTitle: string;
     metaDescription: string;
   };
@@ -372,7 +375,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     backToTop: "Back to top",
     teamPage: {
       breadcrumb: "Genesis › Team",
-      heading: "Team",
+      titleLead: "The people behind ",
+      titleAccent: "the code.",
+      subtext:
+        "Three engineers, no account managers, no outsourcing. The people you meet on the first call are the people who build your product.",
+      people: "Despoina, Pantelis & Anastasis · Athens",
       metaTitle: "Team - Genesis",
       metaDescription:
         "We're a newly founded team in Athens — small enough to move fast, senior enough to own the full stack from brief to launch.",
@@ -662,7 +669,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     backToTop: "Επιστροφή στην κορυφή",
     teamPage: {
       breadcrumb: "Genesis › Ομάδα",
-      heading: "Ομάδα",
+      titleLead: "Οι άνθρωποι πίσω από ",
+      titleAccent: "τον κώδικα.",
+      subtext:
+        "Τρεις μηχανικοί, χωρίς account managers, χωρίς outsourcing. Οι άνθρωποι που γνωρίζετε στην πρώτη κλήση είναι αυτοί που χτίζουν το προϊόν σας.",
+      people: "Δέσποινα, Παντελής & Αναστάσης · Αθήνα",
       metaTitle: "Ομάδα - Genesis",
       metaDescription:
         "Είμαστε μια νέα ομάδα στην Αθήνα — αρκετά μικρή για να κινείται γρήγορα, αρκετά έμπειρη για να αναλάβει το πλήρες stack από το brief μέχρι το launch.",
