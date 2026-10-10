@@ -6,6 +6,7 @@ export type TeamMemberId = "despoina" | "pantelis" | "anastasis";
 export type TeamMember = {
   id: TeamMemberId;
   name: string;
+  shortName: Record<Locale, string>;
   initials: string;
   /** English in both languages. */
   role: string;
@@ -24,6 +25,7 @@ export const teamMembers: readonly TeamMember[] = [
   {
     id: "despoina",
     name: "Despoina Ntolka",
+    shortName: { en: "Despoina", el: "Δέσποινα" },
     initials: "DN",
     role: "Product design & delivery",
     discipline: {
@@ -46,6 +48,7 @@ export const teamMembers: readonly TeamMember[] = [
   {
     id: "pantelis",
     name: "Pantelis Karamailis",
+    shortName: { en: "Pantelis", el: "Παντελής" },
     initials: "PK",
     role: "Development",
     discipline: {
@@ -68,6 +71,7 @@ export const teamMembers: readonly TeamMember[] = [
   {
     id: "anastasis",
     name: "Anastasis Pateritsas",
+    shortName: { en: "Anastasis", el: "Αναστάσης" },
     initials: "AP",
     role: "DevOps & deployment",
     discipline: {
