@@ -52,17 +52,11 @@ export type Dictionary = {
   };
   team: {
     label: string;
-    heading: string;
+    headingLead: string;
+    headingAccent: string;
     intro: string;
     meet: string;
-    members: Array<{
-      name: string;
-      role: string;
-      bio: string;
-      initials: string;
-      github: string;
-      linkedin: string;
-    }>;
+    photoSoon: string;
   };
   teamPage: {
     breadcrumb: string;
@@ -200,27 +194,6 @@ const projectsShared = {
   },
 };
 
-const teamShared = {
-  despoina: {
-    name: "Despoina Ntolka",
-    initials: "DN",
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/",
-  },
-  pantelis: {
-    name: "Pantelis Karamailis",
-    initials: "PK",
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/",
-  },
-  anastasis: {
-    name: "Anastasis Pateritsas",
-    initials: "AP",
-    github: "https://github.com/TasosPateritsas",
-    linkedin: "https://linkedin.com/",
-  },
-};
-
 export const dictionaries: Record<Locale, Dictionary> = {
   en: {
     nav: {
@@ -299,27 +272,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     team: {
       label: "The team",
-      heading: "Three engineers. One studio. You talk to the builders.",
+      headingLead: "Three engineers. One agency.",
+      headingAccent: "You talk to the builders.",
       intro:
-        "We're a newly founded team in Athens — small enough to move fast, senior enough to own the full stack from brief to launch.",
+        "A software development agency in Athens — small enough to move fast, experienced enough to own the full stack from brief to launch.",
       meet: "Meet the team",
-      members: [
-        {
-          ...teamShared.despoina,
-          role: "Electrical Engineer",
-          bio: "Turns ideas into working systems, one clean commit at a time. Believes good code should read like a good sentence.",
-        },
-        {
-          ...teamShared.pantelis,
-          role: "Electrical Engineer",
-          bio: "Obsessed with performance and pixel-perfect detail. If it's slow, he'll fix it before you notice.",
-        },
-        {
-          ...teamShared.anastasis,
-          role: "Electrical Engineer",
-          bio: "The problem-solver of the team — give him a messy spec and he'll come back with a plan. Coffee-fueled, deadline-proof.",
-        },
-      ],
+      photoSoon: "PHOTO SOON",
     },
     contact: {
       label: "Contact",
@@ -604,27 +562,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     team: {
       label: "Η ομάδα",
-      heading: "Τρεις μηχανικοί. Ένα studio. Μιλάτε απευθείας με αυτούς που χτίζουν.",
+      headingLead: "Τρεις μηχανικοί. Ένα agency.",
+      headingAccent: "Μιλάτε απευθείας με αυτούς που χτίζουν.",
       intro:
-        "Είμαστε μια νέα ομάδα στην Αθήνα — αρκετά μικρή για να κινείται γρήγορα, αρκετά έμπειρη για να αναλάβει το πλήρες stack από το brief μέχρι το launch.",
+        "Agency ανάπτυξης λογισμικού στην Αθήνα, αρκετά μικρό για να κινείται γρήγορα και αρκετά έμπειρο για να αναλαμβάνει όλο το stack, από το brief μέχρι το launch.",
       meet: "Γνωρίστε την ομάδα",
-      members: [
-        {
-          ...teamShared.despoina,
-          role: "Ηλεκτρολόγος Μηχανικός",
-          bio: "Μετατρέπει ιδέες σε λειτουργικά συστήματα, ένα καθαρό commit τη φορά. Πιστεύει ότι ο καλός κώδικας πρέπει να διαβάζεται σαν καλή πρόταση.",
-        },
-        {
-          ...teamShared.pantelis,
-          role: "Ηλεκτρολόγος Μηχανικός",
-          bio: "Εμμονή με την απόδοση και την pixel-perfect λεπτομέρεια. Αν είναι αργό, θα το διορθώσει πριν το προσέξεις.",
-        },
-        {
-          ...teamShared.anastasis,
-          role: "Ηλεκτρολόγος Μηχανικός",
-          bio: "Ο problem-solver της ομάδας — δώστε του ένα μπερδεμένο spec και θα γυρίσει με πλάνο. Καφές και deadlines.",
-        },
-      ],
+      photoSoon: "ΦΩΤΟΓΡΑΦΙΑ ΣΥΝΤΟΜΑ",
     },
     contact: {
       label: "Επικοινωνία",

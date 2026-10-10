@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "./FadeIn";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
+import { socialLabel, teamMembers } from "@/data/team";
 
 function GitHubIcon() {
   return (
@@ -21,7 +23,7 @@ function LinkedInIcon() {
 }
 
 export function Team() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const hrefFor = useLocalizedPath();
 
   return (
@@ -31,61 +33,78 @@ export function Team() {
       aria-labelledby="team-heading"
     >
       <FadeIn>
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-          {t.team.label}
-        </p>
-        <h2
-          id="team-heading"
-          className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl"
-        >
-          {t.team.heading}
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
-          {t.team.intro}
-        </p>
+        <div className="max-w-4xl">
+          <p className="service-kicker">{t.team.label}</p>
+          <h2
+            id="team-heading"
+            className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-[#14181a] md:text-4xl"
+          >
+            <span className="block">{t.team.headingLead}</span>
+            <span className="mt-1 block text-[#0F6E56] md:whitespace-nowrap">{t.team.headingAccent}</span>
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#4b5563] md:text-lg">
+            {t.team.intro}
+          </p>
+        </div>
       </FadeIn>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {t.team.members.map((member, index) => (
-          <FadeIn key={member.name} delay={(index + 1) as 1 | 2 | 3}>
-            <article className="h-full border border-border bg-bg-elevated p-6">
-              <div className="flex aspect-[4/5] items-end bg-accent-soft p-5" aria-hidden>
-                <div className="flex h-full w-full flex-col justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-md bg-accent text-xl font-bold text-white">
-                    {member.initials}
-                  </div>
-                  <p className="text-4xl font-bold leading-none tracking-tight text-accent/25">
-                    {member.initials}
-                  </p>
-                </div>
-              </div>
+      <div className="team-home-grid">
+        {teamMembers.map((member) => (
+          <article key={member.id} className="team-home-card">
+            <div className="team-home-photo">
+              {member.photo ? (
+                <Image
+                  src={member.photo}
+                  alt={member.name}
+                  fill
+                  sizes="(min-width: 1024px) 30vw, 100vw"
+                  className="object-cover"
+                />
+              ) : (
+                <>
+                  <span className="team-home-initials">{member.initials}</span>
+                  <span className="team-home-photo-caption">{t.team.photoSoon}</span>
+                </>
+              )}
+            </div>
 
-              <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink">{member.name}</h3>
-              <p className="mt-1 text-sm font-medium text-accent">{member.role}</p>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{member.bio}</p>
+            <div>
+              <h3 className="team-home-name">{member.name}</h3>
+              <p className="team-home-role">{member.role}</p>
+              <p className="team-home-discipline">{member.discipline[locale]}</p>
+            </div>
 
-              <div className="mt-5 flex gap-3">
-                <a
-                  href={member.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-ink-muted transition-colors hover:border-accent hover:text-accent"
-                  aria-label={`${member.name} on GitHub`}
-                >
-                  <GitHubIcon />
-                </a>
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-ink-muted transition-colors hover:border-accent hover:text-accent"
-                  aria-label={`${member.name} on LinkedIn`}
-                >
-                  <LinkedInIcon />
-                </a>
-              </div>
-            </article>
-          </FadeIn>
+            <p className="team-home-bio">{member.bio[locale]}</p>
+
+            <ul className="team-home-chips">
+              {member.chips[locale].map((chip) => (
+                <li key={chip} className="team-chip">
+                  {chip}
+                </li>
+              ))}
+            </ul>
+
+            <div className="team-home-socials">
+              <a
+                href={member.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="team-social"
+                aria-label={socialLabel(member.name, "GitHub", locale)}
+              >
+                <GitHubIcon />
+              </a>
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="team-social"
+                aria-label={socialLabel(member.name, "LinkedIn", locale)}
+              >
+                <LinkedInIcon />
+              </a>
+            </div>
+          </article>
         ))}
       </div>
 

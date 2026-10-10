@@ -1244,6 +1244,131 @@ body {
   cursor: default;
 }
 
+.team-home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  margin-top: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .team-home-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.team-home-card {
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
+  align-items: start;
+  border: 1px solid #dce8e2;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 18px;
+}
+
+.team-home-photo {
+  position: relative;
+  display: flex;
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #eef5f2;
+}
+
+.team-home-initials {
+  color: #9cc7b7;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.team-home-photo-caption {
+  color: #6b8a7e;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.team-home-name {
+  color: #14181a;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.team-home-role {
+  margin-top: 4px;
+  color: #0f6e56;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.team-home-discipline {
+  margin-top: 2px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.team-home-bio {
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.team-home-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  align-self: start;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-chip {
+  border: 1px solid #dce8e2;
+  border-radius: 6px;
+  background: #f3f8f5;
+  padding: 4px 9px;
+  color: #374151;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.team-home-socials {
+  display: flex;
+  align-self: start;
+  gap: 8px;
+}
+
+.team-social {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dce8e2;
+  border-radius: 8px;
+  color: #4b5563;
+  transition:
+    border-color 150ms ease-out,
+    color 150ms ease-out;
+}
+
+.team-social:hover,
+.team-social:focus-visible {
+  border-color: #0f6e56;
+  color: #0f6e56;
+}
+
 .cursor-follower {
   display: none;
 }
