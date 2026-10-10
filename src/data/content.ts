@@ -52,16 +52,22 @@ export type Dictionary = {
   };
   team: {
     label: string;
-    heading: string;
+    headingLead: string;
+    headingAccent: string;
     intro: string;
-    members: Array<{
-      name: string;
-      role: string;
-      bio: string;
-      initials: string;
-      github: string;
-      linkedin: string;
-    }>;
+    meet: string;
+    photoSoon: string;
+  };
+  teamPage: {
+    breadcrumb: string;
+    titleLead: string;
+    titleAccent: string;
+    subtext: string;
+    people: string;
+    metaTitle: string;
+    metaDescription: string;
+    ogTitle: string;
+    imageAlt: string;
   };
   contact: {
     label: string;
@@ -193,27 +199,6 @@ const projectsShared = {
   },
 };
 
-const teamShared = {
-  despoina: {
-    name: "Despoina Ntolka",
-    initials: "DN",
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/",
-  },
-  pantelis: {
-    name: "Pantelis Karamailis",
-    initials: "PK",
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/",
-  },
-  anastasis: {
-    name: "Anastasis Pateritsas",
-    initials: "AP",
-    github: "https://github.com/TasosPateritsas",
-    linkedin: "https://linkedin.com/",
-  },
-};
-
 export const dictionaries: Record<Locale, Dictionary> = {
   en: {
     nav: {
@@ -292,26 +277,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     team: {
       label: "The team",
-      heading: "Three engineers. One studio. You talk to the builders.",
+      headingLead: "Three engineers. One agency.",
+      headingAccent: "You talk to the builders.",
       intro:
-        "We're a newly founded team in Athens — small enough to move fast, senior enough to own the full stack from brief to launch.",
-      members: [
-        {
-          ...teamShared.despoina,
-          role: "Electrical Engineer",
-          bio: "Turns ideas into working systems, one clean commit at a time. Believes good code should read like a good sentence.",
-        },
-        {
-          ...teamShared.pantelis,
-          role: "Electrical Engineer",
-          bio: "Obsessed with performance and pixel-perfect detail. If it's slow, he'll fix it before you notice.",
-        },
-        {
-          ...teamShared.anastasis,
-          role: "Electrical Engineer",
-          bio: "The problem-solver of the team — give him a messy spec and he'll come back with a plan. Coffee-fueled, deadline-proof.",
-        },
-      ],
+        "A software development agency in Athens — small enough to move fast, experienced enough to own the full stack from brief to launch.",
+      meet: "Meet the team",
+      photoSoon: "PHOTO SOON",
     },
     contact: {
       label: "Contact",
@@ -404,6 +375,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
       rated: "Rated {rating} out of 5",
     },
     backToTop: "Back to top",
+    teamPage: {
+      breadcrumb: "Genesis › Team",
+      titleLead: "The people behind ",
+      titleAccent: "the code.",
+      subtext:
+        "Three engineers, no account managers, no outsourcing. The people you meet on the first call are the people who build your product.",
+      people: "Despoina, Pantelis & Anastasis · Athens",
+      metaTitle: "Meet the Team: Software Engineers in Athens - Genesis",
+      metaDescription:
+        "Meet Despoina, Pantelis and Anastasis, the engineers behind Genesis, a software development agency in Athens. Design, code and launch, with no outsourcing.",
+      ogTitle: "Meet the Team - Genesis",
+      imageAlt: "The Genesis team: Despoina, Pantelis and Anastasis",
+    },
     footer: {
       tagline: "Athens tech studio",
       location: "Athens, Greece",
@@ -455,7 +439,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Workflow audit and use-case scoping",
             "Custom agent build, integrated with your CRM/tools",
             "Testing and staged rollout",
-            "Optional monthly retainer for monitoring and updates",
+            "Optional yearly plan for monitoring and updates",
           ],
           steps: [
             { title: "Discover", detail: "Audit + roadmap" },
@@ -474,7 +458,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Custom workflow design and AI integration",
             "Integration with your existing tools (CRM, email, spreadsheets, etc.)",
             "Testing and staged rollout",
-            "Optional monthly retainer for monitoring and updates",
+            "Optional yearly plan for monitoring and updates",
           ],
           steps: [
             { title: "Discover", detail: "Audit + opportunities" },
@@ -589,26 +573,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     team: {
       label: "Η ομάδα",
-      heading: "Τρεις μηχανικοί. Ένα studio. Μιλάτε απευθείας με αυτούς που χτίζουν.",
+      headingLead: "Τρεις μηχανικοί. Ένα agency.",
+      headingAccent: "Μιλάτε απευθείας με αυτούς που χτίζουν.",
       intro:
-        "Είμαστε μια νέα ομάδα στην Αθήνα — αρκετά μικρή για να κινείται γρήγορα, αρκετά έμπειρη για να αναλάβει το πλήρες stack από το brief μέχρι το launch.",
-      members: [
-        {
-          ...teamShared.despoina,
-          role: "Ηλεκτρολόγος Μηχανικός",
-          bio: "Μετατρέπει ιδέες σε λειτουργικά συστήματα, ένα καθαρό commit τη φορά. Πιστεύει ότι ο καλός κώδικας πρέπει να διαβάζεται σαν καλή πρόταση.",
-        },
-        {
-          ...teamShared.pantelis,
-          role: "Ηλεκτρολόγος Μηχανικός",
-          bio: "Εμμονή με την απόδοση και την pixel-perfect λεπτομέρεια. Αν είναι αργό, θα το διορθώσει πριν το προσέξεις.",
-        },
-        {
-          ...teamShared.anastasis,
-          role: "Ηλεκτρολόγος Μηχανικός",
-          bio: "Ο problem-solver της ομάδας — δώστε του ένα μπερδεμένο spec και θα γυρίσει με πλάνο. Καφές και deadlines.",
-        },
-      ],
+        "Agency ανάπτυξης λογισμικού στην Αθήνα, αρκετά μικρό για να κινείται γρήγορα και αρκετά έμπειρο για να αναλαμβάνει όλο το stack, από το brief μέχρι το launch.",
+      meet: "Γνωρίστε την ομάδα",
+      photoSoon: "ΦΩΤΟΓΡΑΦΙΑ ΣΥΝΤΟΜΑ",
     },
     contact: {
       label: "Επικοινωνία",
@@ -701,6 +671,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
       rated: "Βαθμολογία {rating} από 5",
     },
     backToTop: "Επιστροφή στην κορυφή",
+    teamPage: {
+      breadcrumb: "Genesis › Ομάδα",
+      titleLead: "Οι άνθρωποι πίσω από ",
+      titleAccent: "τον κώδικα.",
+      subtext:
+        "Τρεις μηχανικοί, χωρίς account managers, χωρίς outsourcing. Οι άνθρωποι που γνωρίζετε στην πρώτη κλήση είναι αυτοί που χτίζουν το προϊόν σας.",
+      people: "Δέσποινα, Παντελής & Αναστάσης · Αθήνα",
+      metaTitle: "Η Ομάδα: Μηχανικοί Λογισμικού στην Αθήνα - Genesis",
+      metaDescription:
+        "Γνωρίστε τη Δέσποινα, τον Παντελή και τον Αναστάση, τους μηχανικούς της Genesis, agency λογισμικού στην Αθήνα. Design, κώδικας και launch, χωρίς outsourcing.",
+      ogTitle: "Η Ομάδα - Genesis",
+      imageAlt: "Η ομάδα της Genesis: Δέσποινα, Παντελής και Αναστάσης",
+    },
     footer: {
       tagline: "Athens tech studio",
       location: "Αθήνα, Ελλάδα",
@@ -752,7 +735,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Ανάλυση διαδικασιών και ορισμός use-case",
             "Custom ανάπτυξη agent, ενσωματωμένο στο CRM/εργαλεία σας",
             "Δοκιμές και σταδιακή εφαρμογή",
-            "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
+            "Προαιρετικό ετήσιο πακέτο για monitoring και ενημερώσεις",
           ],
           steps: [
             { title: "Ανάλυση", detail: "Audit + roadmap" },
@@ -771,7 +754,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Custom σχεδιασμός workflow και ενσωμάτωση AI",
             "Ενσωμάτωση με τα εργαλεία που ήδη χρησιμοποιείτε (CRM, email, spreadsheets κλπ)",
             "Δοκιμές και σταδιακή εφαρμογή",
-            "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
+            "Προαιρετικό ετήσιο πακέτο για monitoring και ενημερώσεις",
           ],
           steps: [
             { title: "Ανάλυση", detail: "Audit + ευκαιρίες" },

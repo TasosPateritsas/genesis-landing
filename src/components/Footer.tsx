@@ -4,13 +4,13 @@ import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 
-export function Footer() {
+export function Footer({ variant = "default" }: { variant?: "default" | "mint" }) {
   const { t } = useLocale();
   const hrefFor = useLocalizedPath();
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-bg py-10">
+    <footer className={variant === "mint" ? "team-footer-mint py-10" : "border-t border-border bg-bg py-10"}>
       <div className="section-pad container-narrow flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-lg">
@@ -31,7 +31,7 @@ export function Footer() {
           <Link href={hrefFor("/#work")} className="hover:text-ink">
             {t.footer.work}
           </Link>
-          <Link href={hrefFor("/#team")} className="hover:text-ink">
+          <Link href={hrefFor("/team")} className="hover:text-ink">
             {t.footer.team}
           </Link>
           <Link href={hrefFor("/contact")} className="hover:text-ink">
