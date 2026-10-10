@@ -435,7 +435,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Workflow audit and use-case scoping",
             "Custom agent build, integrated with your CRM/tools",
             "Testing and staged rollout",
-            "Optional monthly retainer for monitoring and updates",
+            "Optional yearly plan for monitoring and updates",
           ],
           steps: [
             { title: "Discover", detail: "Audit + roadmap" },
@@ -454,7 +454,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Custom workflow design and AI integration",
             "Integration with your existing tools (CRM, email, spreadsheets, etc.)",
             "Testing and staged rollout",
-            "Optional monthly retainer for monitoring and updates",
+            "Optional yearly plan for monitoring and updates",
           ],
           steps: [
             { title: "Discover", detail: "Audit + opportunities" },
@@ -729,7 +729,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Ανάλυση διαδικασιών και ορισμός use-case",
             "Custom ανάπτυξη agent, ενσωματωμένο στο CRM/εργαλεία σας",
             "Δοκιμές και σταδιακή εφαρμογή",
-            "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
+            "Προαιρετικό ετήσιο πακέτο για monitoring και ενημερώσεις",
           ],
           steps: [
             { title: "Ανάλυση", detail: "Audit + roadmap" },
@@ -748,7 +748,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             "Custom σχεδιασμός workflow και ενσωμάτωση AI",
             "Ενσωμάτωση με τα εργαλεία που ήδη χρησιμοποιείτε (CRM, email, spreadsheets κλπ)",
             "Δοκιμές και σταδιακή εφαρμογή",
-            "Προαιρετικό μηνιαίο πακέτο για monitoring και ενημερώσεις",
+            "Προαιρετικό ετήσιο πακέτο για monitoring και ενημερώσεις",
           ],
           steps: [
             { title: "Ανάλυση", detail: "Audit + ευκαιρίες" },

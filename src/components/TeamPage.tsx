@@ -3,6 +3,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { TeamAvatar } from "@/components/team/TeamAvatar";
+import { TeamFaq } from "@/components/team/TeamFaq";
 import { TeamFlow } from "@/components/team/TeamFlow";
 import { TeamProfiles } from "@/components/team/TeamProfiles";
 import { TeamPromises } from "@/components/team/TeamPromises";
@@ -50,6 +51,7 @@ export function TeamPage() {
         <TeamProfiles />
         <TeamPromises />
         <TeamStory />
+        <TeamFaq />
       </main>
       <Footer />
     </>
