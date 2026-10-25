@@ -38,17 +38,8 @@ export type Dictionary = {
     label: string;
     heading: string;
     intro: string;
-    viewProject: string;
-    techLabel: string;
-    projects: Array<{
-      slug: string;
-      title: string;
-      category: string;
-      summary: string;
-      tech: string[];
-      href: string;
-      accent: string;
-    }>;
+    more: string;
+    seeAll: string;
   };
   team: {
     label: string;
@@ -175,30 +166,6 @@ const serviceChipHrefs = {
   shop: "#websites-eshops",
 } as const;
 
-const projectsShared = {
-  fintra: {
-    slug: "fintra",
-    title: "Fintra",
-    tech: ["React Native", "Node.js", "PostgreSQL"] as string[],
-    href: "#",
-    accent: "#0B5C4D",
-  },
-  levante: {
-    slug: "levante-goods",
-    title: "Levante Goods",
-    tech: ["Next.js", "Stripe", "Sanity CMS"] as string[],
-    href: "#",
-    accent: "#1A4A5C",
-  },
-  orbit: {
-    slug: "orbit",
-    title: "Orbit",
-    tech: ["Next.js", "TypeScript", "Supabase"] as string[],
-    href: "#",
-    accent: "#244038",
-  },
-};
-
 export const dictionaries: Record<Locale, Dictionary> = {
   en: {
     nav: {
@@ -249,31 +216,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     work: {
       label: "Selected work",
-      heading: "Products we've shipped for startups and small teams.",
+      heading: "Live sites for real businesses.",
       intro:
-        "Real briefs, tight timelines, working software. Each project below shows the problem we walked into and the result we left behind.",
-      viewProject: "View project",
-      techLabel: "Technologies used",
-      projects: [
-        {
-          ...projectsShared.fintra,
-          category: "Expense Tracking App",
-          summary:
-            "A local startup needed a mobile-first expense tracker MVP to pitch to investors within 6 weeks. We designed and built a full React Native app with real-time sync, delivered on time and used to close their seed round.",
-        },
-        {
-          ...projectsShared.levante,
-          category: "Eshop",
-          summary:
-            "A small artisan brand needed an online store to replace manual Instagram sales. We built a fast, SEO-optimized eshop with custom checkout, cutting order processing time by half.",
-        },
-        {
-          ...projectsShared.orbit,
-          category: "Internal Tools Dashboard",
-          summary:
-            "A growing agency needed a custom admin dashboard to replace spreadsheets for tracking clients and invoices. We delivered a lightweight internal tool in 3 weeks, now used daily by their whole team.",
-        },
-      ],
+        "Eshops, booking sites and local businesses we designed, built and launched — from Marousi to Mykonos.",
+      more: "More websites, eshops and booking sites in our portfolio.",
+      seeAll: "See all work →",
     },
     team: {
       label: "The team",
@@ -545,31 +492,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     work: {
       label: "Επιλεγμένα έργα",
-      heading: "Προϊόντα που παραδώσαμε σε startups και μικρές ομάδες.",
+      heading: "Ζωντανά sites για πραγματικές επιχειρήσεις.",
       intro:
-        "Πραγματικά briefs, στενά timelines, λειτουργικό λογισμικό. Κάθε έργο δείχνει το πρόβλημα που βρήκαμε και το αποτέλεσμα που αφήσαμε.",
-      viewProject: "Δείτε το έργο",
-      techLabel: "Τεχνολογίες",
-      projects: [
-        {
-          ...projectsShared.fintra,
-          category: "Εφαρμογή εξόδων",
-          summary:
-            "Μια τοπική startup χρειαζόταν mobile-first expense tracker MVP για να παρουσιάσει σε επενδυτές μέσα σε 6 εβδομάδες. Σχεδιάσαμε και φτιάξαμε πλήρη React Native εφαρμογή με real-time sync, παραδόθηκε στην ώρα της και χρησιμοποιήθηκε για το seed round τους.",
-        },
-        {
-          ...projectsShared.levante,
-          category: "Eshop",
-          summary:
-            "Μια μικρή artisan μάρκα χρειαζόταν online κατάστημα για να αντικαταστήσει χειροκίνητες πωλήσεις στο Instagram. Φτιάξαμε γρήγορο, SEO-optimized eshop με custom checkout, μειώνοντας στο μισό τον χρόνο επεξεργασίας παραγγελιών.",
-        },
-        {
-          ...projectsShared.orbit,
-          category: "Internal Tools Dashboard",
-          summary:
-            "Ένα αναπτυσσόμενο agency χρειαζόταν custom admin dashboard για να αντικαταστήσει spreadsheets σε clients και invoices. Παραδώσαμε ελαφρύ εσωτερικό εργαλείο σε 3 εβδομάδες, που πλέον χρησιμοποιεί καθημερινά όλη η ομάδα.",
-        },
-      ],
+        "Eshops, booking sites και τοπικές επιχειρήσεις που σχεδιάσαμε, φτιάξαμε και βγάλαμε live — από το Μαρούσι ως τη Μύκονο.",
+      more: "Περισσότερα websites, eshops και booking sites στο portfolio μας.",
+      seeAll: "Δείτε όλα τα έργα →",
     },
     team: {
       label: "Η ομάδα",
