@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { dictionaries, site, type Locale } from "@/data/content";
-import { localizePath } from "@/lib/routes";
+import type { Project } from "@/data/projects";
+import { localizePath, type PublicPath } from "@/lib/routes";
 
 const HOME_EN = {
   title: "Genesis — We build your product, start to finish",
@@ -25,7 +26,7 @@ export async function buildPageMetadata({
   imageAlt,
 }: {
   locale: Locale;
-  path: "/" | "/services" | "/team" | "/contact";
+  path: PublicPath;
   title: string;
   description: string;
   ogTitle?: string;
@@ -108,6 +109,25 @@ export function teamMetadata(locale: Locale) {
     description: page.metaDescription,
     ogTitle: page.ogTitle,
     imageAlt: page.imageAlt,
+  });
+}
+
+export function workMetadata(locale: Locale) {
+  const page = dictionaries[locale].workPage;
+  return buildPageMetadata({
+    locale,
+    path: "/work",
+    title: page.metaTitle,
+    description: page.metaDescription,
+  });
+}
+
+export function projectMetadata(locale: Locale, project: Project) {
+  return buildPageMetadata({
+    locale,
+    path: `/work/${project.slug}` as PublicPath,
+    title: `${project.name} - Genesis`,
+    description: project.intro[locale],
   });
 }
 

@@ -28,7 +28,7 @@ export function Footer({ variant = "default" }: { variant?: "default" | "mint" }
           <Link href={hrefFor("/services")} className="hover:text-ink">
             {t.footer.services}
           </Link>
-          <Link href={hrefFor("/#work")} className="hover:text-ink">
+          <Link href={hrefFor("/work")} className="hover:text-ink">
             {t.footer.work}
           </Link>
           <Link href={hrefFor("/team")} className="hover:text-ink">

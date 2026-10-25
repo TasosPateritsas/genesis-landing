@@ -6,6 +6,14 @@ export const SITE_URL = "https://genesis.studio";
 export const publicRoutes = [
   { path: "/" },
   { path: "/services" },
+  { path: "/work" },
+  { path: "/work/salty-boat-trips" },
+  { path: "/work/dr-baumann" },
+  { path: "/work/techne" },
+  { path: "/work/chalkino-katsaroli" },
+  { path: "/work/pantazelos" },
+  { path: "/work/horizon-realty" },
+  { path: "/work/vasileiadis" },
   { path: "/team" },
   { path: "/contact" },
 ] as const;
