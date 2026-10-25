@@ -359,6 +359,64 @@ body {
   mask-image: radial-gradient(ellipse 80% 70% at 70% 0%, #000 0%, transparent 80%);
 }
 
+.work-soon {
+  position: relative;
+  overflow: hidden;
+  background: #0b3b30;
+}
+
+.work-soon-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 70% at 85% 60%, rgba(127, 205, 178, 0.22), transparent 65%);
+}
+
+.work-marquee {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 14px 0;
+  white-space: nowrap;
+}
+
+.work-marquee-track {
+  display: inline-flex;
+  min-width: max-content;
+  animation: work-marquee 40s linear infinite;
+}
+
+.work-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  color: #7fcdb2;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.work-marquee-star {
+  margin-inline: 22px;
+  color: rgba(127, 205, 178, 0.5);
+  letter-spacing: 0;
+}
+
+@keyframes work-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-marquee-track {
+    animation: none;
+  }
+}
+
 .work-project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

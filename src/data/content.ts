@@ -139,6 +139,11 @@ export type Dictionary = {
     metaTitle: string;
     metaDescription: string;
     viewProject: string;
+    comingTitle: string;
+    comingBody: string;
+    comingLabel: string;
+    comingImageAlt: string;
+    comingSteps: Array<{ label: string; state: "done" | "current" | "next" }>;
   };
   servicesPage: {
     breadcrumb: string;
@@ -359,6 +364,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaDescription:
         "Real businesses that run on what we built — every site here is live and in use.",
       viewProject: "View project",
+      comingTitle: "Coming soon.",
+      comingBody:
+        " — a planning and discovery platform for engaged couples and wedding professionals.",
+      comingLabel: "Web app · Weddings",
+      comingImageAlt: "Weddingflow homepage preview",
+      comingSteps: [
+        { label: "Design", state: "done" },
+        { label: "Build", state: "current" },
+        { label: "Launch", state: "next" },
+      ],
     },
     servicesPage: {
       breadcrumb: "Genesis › Services",
@@ -645,6 +660,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaDescription:
         "Πραγματικές επιχειρήσεις που δουλεύουν με ό,τι φτιάξαμε — κάθε site εδώ είναι live και σε χρήση.",
       viewProject: "Δείτε το έργο",
+      comingTitle: "Έρχεται σύντομα.",
+      comingBody:
+        " — μια πλατφόρμα οργάνωσης και αναζήτησης για ζευγάρια που παντρεύονται και επαγγελματίες του γάμου.",
+      comingLabel: "Web app · Γάμοι",
+      comingImageAlt: "Προεπισκόπηση της αρχικής του Weddingflow",
+      comingSteps: [
+        { label: "Σχεδιασμός", state: "done" },
+        { label: "Ανάπτυξη", state: "current" },
+        { label: "Launch", state: "next" },
+      ],
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",

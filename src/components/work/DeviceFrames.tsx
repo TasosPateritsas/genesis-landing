@@ -25,6 +25,7 @@ export function BrowserFrame({
   shadowClass = "",
   className = "",
   sizes,
+  barColor = "#F2F5F4",
 }: {
   image: string;
   alt: string;
@@ -36,10 +37,11 @@ export function BrowserFrame({
   shadowClass?: string;
   className?: string;
   sizes: string;
+  barColor?: string;
 }) {
   return (
-    <div className={`overflow-hidden bg-[#F2F5F4] ${radiusClass} ${shadowClass} ${className}`}>
-      <div className="relative flex items-center bg-[#F2F5F4] px-3" style={{ height: barHeight }}>
+    <div className={`overflow-hidden ${radiusClass} ${shadowClass} ${className}`} style={{ backgroundColor: barColor }}>
+      <div className="relative flex items-center px-3" style={{ height: barHeight, backgroundColor: barColor }}>
         <Dots size={dotSize} />
         {domain ? (
           <span
