@@ -151,6 +151,8 @@ export type Dictionary = {
     metaDid: string;
     metaStack: string;
     metaYear: string;
+    briefHeading: string;
+    builtHeading: string;
   };
   servicesPage: {
     breadcrumb: string;
@@ -388,6 +390,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaDid: "What we did",
       metaStack: "Built with",
       metaYear: "Year",
+      briefHeading: "The brief",
+      builtHeading: "What we built",
     },
     servicesPage: {
       breadcrumb: "Genesis › Services",
@@ -691,6 +695,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaDid: "Τι κάναμε",
       metaStack: "Τεχνολογία",
       metaYear: "Χρονιά",
+      briefHeading: "Το ζητούμενο",
+      builtHeading: "Τι φτιάξαμε",
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",

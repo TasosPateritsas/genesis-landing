@@ -3,6 +3,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ProjectHero, ProjectShowcase } from "@/components/work/ProjectHero";
+import { ProjectStory } from "@/components/work/ProjectStory";
 import { getProject } from "@/data/projects";
 
 export function ProjectPage({ slug }: { slug: string }) {
@@ -15,6 +16,7 @@ export function ProjectPage({ slug }: { slug: string }) {
       <main>
         <ProjectHero project={project} />
         <ProjectShowcase project={project} />
+        <ProjectStory project={project} />
       </main>
       <Footer />
     </>
