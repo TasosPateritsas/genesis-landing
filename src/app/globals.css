@@ -427,6 +427,50 @@ body {
   background: linear-gradient(#0b3b30 0 42%, #ffffff 42% 100%);
 }
 
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: background-size 300ms ease;
+}
+
+a:hover .link-underline,
+a:focus-visible .link-underline {
+  background-size: 100% 1px;
+}
+
+.work-next-card,
+.work-next-frame {
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.work-next-card:hover,
+.work-next-card:focus-visible {
+  border-color: #0f6e56;
+}
+
+.work-next-card:hover .work-next-frame,
+.work-next-card:focus-visible .work-next-frame {
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-underline,
+  .work-next-card,
+  .work-next-frame {
+    transition: none;
+  }
+
+  .work-next-card:hover .work-next-frame,
+  .work-next-card:focus-visible .work-next-frame {
+    transform: none;
+  }
+}
+
 .work-screen-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));

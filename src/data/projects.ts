@@ -633,4 +633,9 @@ export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
 
+export function nextProject(project: Project) {
+  const index = projects.findIndex((item) => item.slug === project.slug);
+  return projects[(index + 1) % projects.length];
+}
+
 export const selectedProjects = projects.slice(0, 3);

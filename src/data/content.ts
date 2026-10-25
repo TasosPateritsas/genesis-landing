@@ -154,6 +154,8 @@ export type Dictionary = {
     briefHeading: string;
     builtHeading: string;
     insideHeading: string;
+    allWork: string;
+    nextProject: string;
   };
   servicesPage: {
     breadcrumb: string;
@@ -394,6 +396,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       briefHeading: "The brief",
       builtHeading: "What we built",
       insideHeading: "Inside the site",
+      allWork: "All work",
+      nextProject: "Next project",
     },
     servicesPage: {
       breadcrumb: "Genesis › Services",
@@ -700,6 +704,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       briefHeading: "Το ζητούμενο",
       builtHeading: "Τι φτιάξαμε",
       insideHeading: "Μέσα στο site",
+      allWork: "Όλα τα έργα",
+      nextProject: "Επόμενο έργο",
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",
