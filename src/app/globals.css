@@ -427,6 +427,16 @@ body {
   background: linear-gradient(#0b3b30 0 42%, #ffffff 42% 100%);
 }
 
+.work-screen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+.work-screen-wide {
+  grid-column: 1 / -1;
+}
+
 .work-showcase-stage {
   border-radius: 16px;
   padding: clamp(28px, 5vw, 72px) clamp(28px, 6vw, 96px) clamp(40px, 6vw, 88px);

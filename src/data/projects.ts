@@ -2,6 +2,15 @@ import type { Locale } from "@/data/content";
 
 export type LocalizedText = Record<Locale, string>;
 
+export type ProjectScreen = {
+  image: string;
+  alt: LocalizedText;
+  caption: LocalizedText;
+  url?: string;
+  wide?: boolean;
+  phone?: boolean;
+};
+
 export type BuiltItem = {
   icon: string;
   title: LocalizedText;
@@ -28,6 +37,7 @@ export type Project = {
   storySubtitle: LocalizedText;
   brief: LocalizedText;
   built: BuiltItem[];
+  screens?: ProjectScreen[];
 };
 
 const delivered = {
@@ -117,6 +127,66 @@ export const projects: Project[] = [
         text: {
           en: "Real reviews from past guests, right on the homepage.",
           el: "Πραγματικές κριτικές από επισκέπτες, κατευθείαν στην αρχική.",
+        },
+      },
+    ],
+    screens: [
+      {
+        image: "/projects/salty-boat-trips/screen-1.jpg",
+        url: "saltyboattrips.com/fleet",
+        wide: true,
+        alt: {
+          en: "Salty Boat Trips fleet page hero",
+          el: "Hero της σελίδας στόλου της Salty Boat Trips",
+        },
+        caption: {
+          en: "Fleet page — full-bleed hero.",
+          el: "Σελίδα στόλου — hero σε όλο το πλάτος.",
+        },
+      },
+      {
+        image: "/projects/salty-boat-trips/screen-2.jpg",
+        alt: {
+          en: "Fleet cards with guests, year, engines and length",
+          el: "Κάρτες στόλου με επιβάτες, χρονιά, μηχανές και μήκος",
+        },
+        caption: {
+          en: "Every boat with guests, year, engines and length.",
+          el: "Κάθε σκάφος με επιβάτες, χρονιά, μηχανές και μήκος.",
+        },
+      },
+      {
+        image: "/projects/salty-boat-trips/screen-3.jpg",
+        alt: {
+          en: "Day trips carousel on the Salty Boat Trips homepage",
+          el: "Carousel με day trips στην αρχική της Salty Boat Trips",
+        },
+        caption: {
+          en: "Day trips carousel and transfer destinations.",
+          el: "Carousel με day trips και προορισμοί για transfers.",
+        },
+      },
+      {
+        image: "/projects/salty-boat-trips/screen-4.jpg",
+        alt: {
+          en: "Enquiry form to choose a service or message on WhatsApp",
+          el: "Φόρμα αιτήματος για επιλογή υπηρεσίας ή μήνυμα στο WhatsApp",
+        },
+        caption: {
+          en: "Enquiry: choose a service, or message on WhatsApp.",
+          el: "Αίτημα: διαλέγετε υπηρεσία ή στέλνετε μήνυμα στο WhatsApp.",
+        },
+      },
+      {
+        image: "/projects/salty-boat-trips/screen-5.jpg",
+        phone: true,
+        alt: {
+          en: "Salty Boat Trips homepage on a phone",
+          el: "Η αρχική της Salty Boat Trips σε κινητό",
+        },
+        caption: {
+          en: "Designed mobile-first, down to the enquiry form.",
+          el: "Σχεδιασμένο mobile-first, μέχρι και τη φόρμα αιτήματος.",
         },
       },
     ],
@@ -523,6 +593,40 @@ export const projects: Project[] = [
 
 export function projectLabel(project: Project, locale: Locale) {
   return `${project.type[locale]} · ${project.industry[locale]}`;
+}
+
+function fallbackScreens(project: Project): ProjectScreen[] {
+  return [
+    {
+      image: project.desktopImage,
+      url: project.domain,
+      wide: true,
+      alt: {
+        en: `${project.name} homepage`,
+        el: `Αρχική του ${project.name}`,
+      },
+      caption: {
+        en: "The homepage, as it ships.",
+        el: "Η αρχική, όπως είναι live.",
+      },
+    },
+    {
+      image: project.mobileImage,
+      phone: true,
+      alt: {
+        en: `${project.name} on a phone`,
+        el: `Το ${project.name} σε κινητό`,
+      },
+      caption: {
+        en: "The same site on a phone.",
+        el: "Το ίδιο site σε κινητό.",
+      },
+    },
+  ];
+}
+
+for (const project of projects) {
+  if (!project.screens) project.screens = fallbackScreens(project);
 }
 
 export function getProject(slug: string) {
