@@ -38,6 +38,7 @@ export type Project = {
   brief: LocalizedText;
   built: BuiltItem[];
   screens?: ProjectScreen[];
+  next?: string;
 };
 
 const delivered = {
@@ -48,6 +49,7 @@ const delivered = {
 export const projects: Project[] = [
   {
     slug: "salty-boat-trips",
+    next: "dr-baumann",
     name: "Salty Boat Trips",
     type: { en: "Booking site", el: "Booking site" },
     industry: { en: "Tourism", el: "Τουρισμός" },
@@ -193,6 +195,7 @@ export const projects: Project[] = [
   },
   {
     slug: "dr-baumann",
+    next: "techne",
     name: "Dr. Baumann Hellas",
     type: { en: "Eshop", el: "Eshop" },
     industry: { en: "Skincare", el: "Περιποίηση δέρματος" },
@@ -338,6 +341,7 @@ export const projects: Project[] = [
   },
   {
     slug: "techne",
+    next: "chalkino-katsaroli",
     name: "Techne.",
     type: { en: "Website", el: "Website" },
     industry: { en: "Architecture", el: "Αρχιτεκτονική" },
@@ -407,6 +411,7 @@ export const projects: Project[] = [
   },
   {
     slug: "chalkino-katsaroli",
+    next: "pantazelos",
     name: "Χάλκινο Κατσαρόλι",
     type: { en: "Website", el: "Website" },
     industry: { en: "Restaurant", el: "Εστίαση" },
@@ -476,6 +481,7 @@ export const projects: Project[] = [
   },
   {
     slug: "pantazelos",
+    next: "horizon-realty",
     name: "Pantazelos Real Estate",
     type: { en: "Website", el: "Website" },
     industry: { en: "Real estate", el: "Ακίνητα" },
@@ -545,6 +551,7 @@ export const projects: Project[] = [
   },
   {
     slug: "horizon-realty",
+    next: "vasileiadis",
     name: "Horizon Realty",
     type: { en: "Booking site", el: "Booking site" },
     industry: { en: "Hospitality", el: "Φιλοξενία" },
@@ -614,6 +621,7 @@ export const projects: Project[] = [
   },
   {
     slug: "vasileiadis",
+    next: "salty-boat-trips",
     name: "Αποφράξεις Βασιλειάδης",
     type: { en: "Website", el: "Website" },
     industry: { en: "Local services", el: "Τοπικές υπηρεσίες" },
@@ -726,6 +734,10 @@ export function getProject(slug: string) {
 }
 
 export function nextProject(project: Project) {
+  if (project.next) {
+    const named = projects.find((item) => item.slug === project.next);
+    if (named) return named;
+  }
   const index = projects.findIndex((item) => item.slug === project.slug);
   return projects[(index + 1) % projects.length];
 }
