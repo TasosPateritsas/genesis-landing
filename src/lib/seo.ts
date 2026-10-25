@@ -25,7 +25,7 @@ export async function buildPageMetadata({
   imageAlt,
 }: {
   locale: Locale;
-  path: "/" | "/services" | "/team" | "/contact";
+  path: "/" | "/services" | "/work" | "/team" | "/contact";
   title: string;
   description: string;
   ogTitle?: string;
@@ -108,6 +108,16 @@ export function teamMetadata(locale: Locale) {
     description: page.metaDescription,
     ogTitle: page.ogTitle,
     imageAlt: page.imageAlt,
+  });
+}
+
+export function workMetadata(locale: Locale) {
+  const page = dictionaries[locale].workPage;
+  return buildPageMetadata({
+    locale,
+    path: "/work",
+    title: page.metaTitle,
+    description: page.metaDescription,
   });
 }
 

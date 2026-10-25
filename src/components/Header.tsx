@@ -14,20 +14,22 @@ export function Header() {
   const hrefFor = useLocalizedPath();
   const pathname = usePathname();
   const barePath = stripLocalePrefix(pathname);
-  const dark = barePath === "/contact";
+  const dark = barePath === "/contact" || barePath === "/work" || barePath.startsWith("/work/");
   const talkHref = contactHref(locale, "message");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   const links = [
     { href: hrefFor("/services"), path: "/services", label: t.nav.services },
-    { href: hrefFor("/#work"), path: "", label: t.nav.work },
+    { href: hrefFor("/work"), path: "/work", label: t.nav.work },
     { href: hrefFor("/team"), path: "/team", label: t.nav.team },
     { href: hrefFor("/contact"), path: "/contact", label: t.nav.contact },
   ];
 
   function isCurrent(path: string) {
-    return path !== "" && barePath === path;
+    if (path === "") return false;
+    if (path === "/work") return barePath === "/work" || barePath.startsWith("/work/");
+    return barePath === path;
   }
 
   function linkClass(path: string, mobile = false) {

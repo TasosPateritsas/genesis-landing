@@ -298,6 +298,25 @@ body {
   position: relative;
 }
 
+.work-hero {
+  position: relative;
+  overflow: hidden;
+  background: #0b3b30;
+  color: #ffffff;
+}
+
+.work-hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 0%, #000 0%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 70% at 70% 0%, #000 0%, transparent 80%);
+}
+
 .work-selected-frame,
 .work-selected-arrow {
   transition: transform 200ms ease;

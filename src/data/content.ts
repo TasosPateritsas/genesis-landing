@@ -132,6 +132,13 @@ export type Dictionary = {
     team: string;
     contact: string;
   };
+  workPage: {
+    breadcrumb: string;
+    title: string;
+    subtitle: string;
+    metaTitle: string;
+    metaDescription: string;
+  };
   servicesPage: {
     breadcrumb: string;
     heading: string;
@@ -342,6 +349,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       work: "Work",
       team: "Team",
       contact: "Contact",
+    },
+    workPage: {
+      breadcrumb: "Work",
+      title: "Websites, eshops and booking sites — live and working.",
+      subtitle: "Real businesses that run on what we built — every site here is live and in use.",
+      metaTitle: "Websites, eshops and booking sites - Genesis",
+      metaDescription:
+        "Real businesses that run on what we built — every site here is live and in use.",
     },
     servicesPage: {
       breadcrumb: "Genesis › Services",
@@ -618,6 +633,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       work: "Έργα",
       team: "Ομάδα",
       contact: "Επικοινωνία",
+    },
+    workPage: {
+      breadcrumb: "Έργα",
+      title: "Websites, eshops και booking sites — live και σε λειτουργία.",
+      subtitle:
+        "Πραγματικές επιχειρήσεις που δουλεύουν με ό,τι φτιάξαμε — κάθε site εδώ είναι live και σε χρήση.",
+      metaTitle: "Websites, eshops και booking sites - Genesis",
+      metaDescription:
+        "Πραγματικές επιχειρήσεις που δουλεύουν με ό,τι φτιάξαμε — κάθε site εδώ είναι live και σε χρήση.",
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",
