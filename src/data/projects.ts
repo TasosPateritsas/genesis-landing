@@ -214,32 +214,64 @@ export const projects: Project[] = [
     stack: "Shopify",
     year: "2026",
     storyTitle: {
-      en: "A store for the science of skin.",
-      el: "Ένα κατάστημα για την επιστήμη της επιδερμίδας.",
+      en: "Skincare science, made shoppable.",
+      el: "Η επιστήμη της επιδερμίδας, έτοιμη για αγορά.",
     },
     storySubtitle: {
-      en: "Product lines, filters and checkout in one bilingual eshop.",
-      el: "Σειρές, φίλτρα και checkout σε ένα δίγλωσσο eshop.",
+      en: "An eshop that helps every customer find the right product for their skin.",
+      el: "Ένα eshop που βοηθά κάθε πελάτη να βρει το σωστό προϊόν για το δέρμα του.",
     },
     brief: {
-      en: "Dr. Baumann Hellas needed a bilingual store for its skincare lines, with a way to browse by collection and pay by card, PayPal or Viva.",
-      el: "Η Dr. Baumann Hellas χρειαζόταν ένα δίγλωσσο κατάστημα για τις σειρές περιποίησης, με περιήγηση ανά συλλογή και πληρωμή με κάρτα, PayPal ή Viva.",
+      en: "Dr. Baumann Hellas sells Dr. Baumann bionomic skincare in Greece. They needed an eshop that explains the science behind the products and helps customers find the right one for their skin — across five product lines and dozens of products.",
+      el: "Η Dr. Baumann Hellas φέρνει τα βιονομικά καλλυντικά Dr. Baumann στην Ελλάδα. Χρειαζόταν ένα eshop που εξηγεί την επιστήμη πίσω από τα προϊόντα και βοηθά τον πελάτη να βρει το σωστό για το δέρμα του — σε πέντε σειρές και δεκάδες προϊόντα.",
     },
     built: [
       {
-        icon: "layout-grid",
-        title: { en: "Collections", el: "Συλλογές" },
+        icon: "heart",
+        title: { en: "Shop by skin need", el: "Αγορά ανά ανάγκη" },
         text: {
-          en: "Each product line has its own collection page.",
-          el: "Κάθε σειρά έχει τη δική της σελίδα συλλογής.",
+          en: "A menu by skin type, care area and special needs — like care after 50 and for oncology patients.",
+          el: "Μενού ανά τύπο δέρματος, περιοχή φροντίδας και ειδικές ανάγκες — όπως φροντίδα μετά τα 50 και για ογκολογικούς ασθενείς.",
+        },
+      },
+      {
+        icon: "layout-grid",
+        title: { en: "Five product lines", el: "Πέντε σειρές" },
+        text: {
+          en: "A page for each line: Dr. Baumann, SkinIdent, BeauCaire, bionomeSPA and MakeUP.",
+          el: "Σελίδα για κάθε σειρά: Dr. Baumann, SkinIdent, BeauCaire, bionomeSPA και MakeUP.",
+        },
+      },
+      {
+        icon: "list-filter",
+        title: { en: "Filters and sorting", el: "Φίλτρα και ταξινόμηση" },
+        text: {
+          en: "Filter every line by need and product type, with a product count next to each option.",
+          el: "Φίλτρα ανά ανάγκη και τύπο προϊόντος σε κάθε σειρά, με τον αριθμό προϊόντων δίπλα σε κάθε επιλογή.",
         },
       },
       {
         icon: "credit-card",
         title: { en: "Payments", el: "Πληρωμές" },
         text: {
-          en: "Card, PayPal and Viva at checkout.",
-          el: "Κάρτα, PayPal και Viva στο checkout.",
+          en: "Card through Viva Wallet with interest-free instalments, PayPal, or bank transfer.",
+          el: "Κάρτα μέσω Viva Wallet με άτοκες δόσεις, PayPal ή τραπεζική κατάθεση.",
+        },
+      },
+      {
+        icon: "file-text",
+        title: { en: "Product pages", el: "Σελίδες προϊόντων" },
+        text: {
+          en: "Full details for every product: what it does, which skin it is for and how to use it.",
+          el: "Πλήρη στοιχεία για κάθε προϊόν: τι κάνει, για ποιο δέρμα είναι και πώς χρησιμοποιείται.",
+        },
+      },
+      {
+        icon: "search",
+        title: { en: "Built for search", el: "Φτιαγμένο για αναζήτηση" },
+        text: {
+          en: "Product, breadcrumb and organisation structured data for search results.",
+          el: "Structured data για προϊόντα, breadcrumbs και την εταιρεία, για τα αποτελέσματα αναζήτησης.",
         },
       },
     ],
