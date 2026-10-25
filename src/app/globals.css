@@ -423,6 +423,16 @@ body {
   gap: 24px;
 }
 
+.work-showcase {
+  background: linear-gradient(#0b3b30 0 42%, #ffffff 42% 100%);
+}
+
+.work-showcase-stage {
+  border-radius: 16px;
+  padding: clamp(28px, 5vw, 72px) clamp(28px, 6vw, 96px) clamp(40px, 6vw, 88px);
+  box-shadow: 0 40px 80px -48px rgba(0, 0, 0, 0.6);
+}
+
 .work-selected-frame,
 .work-selected-arrow {
   transition: transform 200ms ease;

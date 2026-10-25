@@ -146,6 +146,11 @@ export type Dictionary = {
     comingSteps: Array<{ label: string; state: "done" | "current" | "next" }>;
     ctaTitle: string;
     ctaBody: string;
+    visitLive: string;
+    metaClient: string;
+    metaDid: string;
+    metaStack: string;
+    metaYear: string;
   };
   servicesPage: {
     breadcrumb: string;
@@ -378,6 +383,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       ctaTitle: "Have a project in mind?",
       ctaBody: "Tell us what you want to build — we reply within one business day.",
+      visitLive: "Visit live site",
+      metaClient: "Client",
+      metaDid: "What we did",
+      metaStack: "Built with",
+      metaYear: "Year",
     },
     servicesPage: {
       breadcrumb: "Genesis › Services",
@@ -676,6 +686,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       ctaTitle: "Έχετε κάποιο project στο μυαλό σας;",
       ctaBody: "Πείτε μας τι θέλετε να φτιάξουμε — απαντάμε μέσα σε μία εργάσιμη.",
+      visitLive: "Δείτε το live site",
+      metaClient: "Πελάτης",
+      metaDid: "Τι κάναμε",
+      metaStack: "Τεχνολογία",
+      metaYear: "Χρονιά",
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",
