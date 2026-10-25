@@ -83,8 +83,9 @@ export function Work() {
   const [lead, ...rest] = selectedProjects;
 
   return (
-    <section id="work" className="border-y border-border bg-bg-elevated" aria-labelledby="work-heading">
-      <div className="section-pad container-narrow py-20 md:py-28">
+    <section id="work" aria-labelledby="work-heading">
+      <div className="work-grid-bg" aria-hidden />
+      <div className="container section-pad container-narrow relative py-20 md:py-28">
         <FadeIn>
           <p className="service-kicker">{t.work.label}</p>
           <h2

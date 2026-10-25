@@ -271,6 +271,33 @@ body {
   text-transform: none;
 }
 
+#work {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #d8e0dc;
+  border-bottom: 1px solid #d8e0dc;
+  background:
+    radial-gradient(60% 50% at 8% 0%, rgba(120, 196, 170, 0.32), rgba(0, 0, 0, 0) 60%),
+    radial-gradient(45% 40% at 96% 88%, rgba(180, 220, 205, 0.38), rgba(0, 0, 0, 0) 55%),
+    linear-gradient(#f4faf7, #f7faf8);
+}
+
+#work .work-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(8, 80, 65, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(8, 80, 65, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 0%, transparent 78%);
+}
+
+#work > .container {
+  position: relative;
+}
+
 .work-selected-frame,
 .work-selected-arrow {
   transition: transform 200ms ease;
