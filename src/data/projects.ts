@@ -275,6 +275,66 @@ export const projects: Project[] = [
         },
       },
     ],
+    screens: [
+      {
+        image: "/projects/dr-baumann/screen-1.jpg",
+        url: "dr-baumann.gr/collections/skinident",
+        wide: true,
+        alt: {
+          en: "SkinIdent collection page hero",
+          el: "Hero της σελίδας σειράς SkinIdent",
+        },
+        caption: {
+          en: "Collection page — every line opens with its own hero.",
+          el: "Σελίδα σειράς — κάθε σειρά ανοίγει με το δικό της hero.",
+        },
+      },
+      {
+        image: "/projects/dr-baumann/screen-2.jpg",
+        alt: {
+          en: "Needs menu open by skin type, care area and special needs",
+          el: "Ανοιχτό μενού αναγκών ανά τύπο δέρματος, περιοχή και ειδικές ανάγκες",
+        },
+        caption: {
+          en: "Menu by skin type, care area and special needs.",
+          el: "Μενού ανά τύπο δέρματος, περιοχή φροντίδας και ειδικές ανάγκες.",
+        },
+      },
+      {
+        image: "/projects/dr-baumann/screen-3.jpg",
+        alt: {
+          en: "SkinIdent filters and product grid",
+          el: "Φίλτρα και πλέγμα προϊόντων SkinIdent",
+        },
+        caption: {
+          en: "Filters by need and product type, with sorting.",
+          el: "Φίλτρα ανά ανάγκη και τύπο προϊόντος, με ταξινόμηση.",
+        },
+      },
+      {
+        image: "/projects/dr-baumann/screen-4.jpg",
+        alt: {
+          en: "Body Lotion Super product page",
+          el: "Σελίδα προϊόντος Body Lotion Super",
+        },
+        caption: {
+          en: "Product page with full description and how to use it.",
+          el: "Σελίδα προϊόντος με πλήρη περιγραφή και τρόπο χρήσης.",
+        },
+      },
+      {
+        image: "/projects/dr-baumann/screen-5.jpg",
+        phone: true,
+        alt: {
+          en: "Dr. Baumann Hellas homepage on a phone",
+          el: "Η αρχική της Dr. Baumann Hellas σε κινητό",
+        },
+        caption: {
+          en: "The full store, designed for mobile.",
+          el: "Όλο το κατάστημα, σχεδιασμένο για κινητό.",
+        },
+      },
+    ],
   },
   {
     slug: "techne",
