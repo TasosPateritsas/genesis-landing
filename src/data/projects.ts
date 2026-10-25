@@ -206,13 +206,13 @@ export const projects: Project[] = [
     desktopImage: "/projects/dr-baumann-desktop.jpg",
     mobileImage: "/projects/dr-baumann-mobile.jpg",
     intro: {
-      en: "Bilingual skincare store with filtered collections and card, PayPal and Viva payments.",
-      el: "Δίγλωσσο eshop περιποίησης δέρματος με φίλτρα συλλογών και πληρωμές με κάρτα, PayPal και Viva.",
+      en: "The Greek eshop for Dr. Baumann bionomic skincare — five product lines, shopping by skin need, and checkout by card, PayPal or bank transfer.",
+      el: "Το ελληνικό eshop για τα βιονομικά καλλυντικά Dr. Baumann — πέντε σειρές, αγορά ανά ανάγκη δέρματος και πληρωμή με κάρτα, PayPal ή κατάθεση.",
     },
     client: "Dr. Baumann Hellas",
     services: delivered,
-    stack: "—",
-    year: "—",
+    stack: "Shopify",
+    year: "2026",
     storyTitle: {
       en: "A store for the science of skin.",
       el: "Ένα κατάστημα για την επιστήμη της επιδερμίδας.",
