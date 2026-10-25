@@ -138,6 +138,7 @@ export type Dictionary = {
     subtitle: string;
     metaTitle: string;
     metaDescription: string;
+    viewProject: string;
   };
   servicesPage: {
     breadcrumb: string;
@@ -357,6 +358,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaTitle: "Websites, eshops and booking sites - Genesis",
       metaDescription:
         "Real businesses that run on what we built — every site here is live and in use.",
+      viewProject: "View project",
     },
     servicesPage: {
       breadcrumb: "Genesis › Services",
@@ -642,6 +644,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metaTitle: "Websites, eshops και booking sites - Genesis",
       metaDescription:
         "Πραγματικές επιχειρήσεις που δουλεύουν με ό,τι φτιάξαμε — κάθε site εδώ είναι live και σε χρήση.",
+      viewProject: "Δείτε το έργο",
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",
