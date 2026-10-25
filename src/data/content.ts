@@ -144,6 +144,8 @@ export type Dictionary = {
     comingLabel: string;
     comingImageAlt: string;
     comingSteps: Array<{ label: string; state: "done" | "current" | "next" }>;
+    ctaTitle: string;
+    ctaBody: string;
   };
   servicesPage: {
     breadcrumb: string;
@@ -374,6 +376,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { label: "Build", state: "current" },
         { label: "Launch", state: "next" },
       ],
+      ctaTitle: "Have a project in mind?",
+      ctaBody: "Tell us what you want to build — we reply within one business day.",
     },
     servicesPage: {
       breadcrumb: "Genesis › Services",
@@ -670,6 +674,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { label: "Ανάπτυξη", state: "current" },
         { label: "Launch", state: "next" },
       ],
+      ctaTitle: "Έχετε κάποιο project στο μυαλό σας;",
+      ctaBody: "Πείτε μας τι θέλετε να φτιάξουμε — απαντάμε μέσα σε μία εργάσιμη.",
     },
     servicesPage: {
       breadcrumb: "Genesis › Υπηρεσίες",
