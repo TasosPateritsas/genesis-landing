@@ -6,6 +6,7 @@ import { site } from "@/config/site";
 import type { Locale } from "@/data/content";
 import { teamFaqCopy, teamFaqs, type TeamFaqLink } from "@/data/teamFaq";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { stagger, useReveal } from "@/lib/reveal";
 import { localizePath } from "@/lib/routes";
 
 function linkHref(link: TeamFaqLink, locale: Locale) {
@@ -46,28 +47,30 @@ export function TeamFaq() {
   const { locale } = useLocale();
   const baseId = useId();
   const [open, setOpen] = useState(0);
+  const [ref, revealed] = useReveal<HTMLElement>();
 
   return (
-    <section className="team-faq" aria-labelledby="team-faq-heading">
-      <div className="section-pad container-narrow">
+    <section ref={ref} className={revealed ? "team-faq is-revealed" : "team-faq"} aria-labelledby="team-faq-heading">
+      <div className="wrap-content">
         <div className="team-faq-layout">
           <div className="team-faq-intro">
-            <p className="service-kicker is-literal">{teamFaqCopy.kicker[locale]}</p>
-            <h2 id="team-faq-heading" className="team-faq-title">
+            <p className="team-eyebrow gx-up">{teamFaqCopy.kicker[locale]}</p>
+            <h2 id="team-faq-heading" className="team-h2 team-faq-title gx-up" style={stagger(1)}>
               {teamFaqCopy.heading[locale]}
             </h2>
-            <p className="team-faq-subtext">{teamFaqCopy.subtext[locale]}</p>
-            <Link href={localizePath("/contact", locale)} className="team-faq-ask">
+            <p className="team-faq-subtext gx-up" style={stagger(2)}>
+              {teamFaqCopy.subtext[locale]}
+            </p>
+            <Link href={localizePath("/contact", locale)} className="team-faq-ask gx-up" style={stagger(3)}>
               {teamFaqCopy.ask[locale]} →
             </Link>
           </div>
-
           <div className="team-faq-list">
             {teamFaqs.map((item, index) => {
               const panelId = `${baseId}-faq-${index}`;
               const isOpen = open === index;
               return (
-                <div key={item.question.en} className="team-faq-item">
+                <div key={item.question.en} className="team-faq-item gx-up" style={stagger(index + 4)}>
                   <button
                     type="button"
                     className="team-faq-question"

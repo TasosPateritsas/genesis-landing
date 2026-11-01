@@ -344,8 +344,14 @@
 }
 
 .site-footer[data-variant="mint"] {
-  border-top-color: #c5e0d3;
+  border-top-color: rgba(15, 110, 86, 0.18);
   background-color: #dcf0e7;
+}
+
+.site-footer[data-variant="mint"] .site-footer-location,
+.site-footer[data-variant="mint"] .site-footer-bar,
+.site-footer[data-variant="mint"] .site-footer-bar .site-footer-link {
+  color: #53625d;
 }
 
 .site-footer[data-variant="dark"] {
@@ -456,7 +462,7 @@
 }
 
 .site-footer[data-variant="mint"] .site-footer-bottom {
-  border-top-color: #c5e0d3;
+  border-top-color: rgba(15, 110, 86, 0.18);
 }
 
 .site-footer[data-variant="dark"] .site-footer-location {

@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/PageShell";
 import { TeamPage } from "@/components/TeamPage";
+import { teamFonts } from "@/lib/teamFonts";
 import { teamMetadata } from "@/lib/seo";
 
 export function generateMetadata() {
@@ -9,7 +10,9 @@ export function generateMetadata() {
 export default function Page() {
   return (
     <PageShell locale="el">
-      <TeamPage />
+      <div className={teamFonts}>
+        <TeamPage />
+      </div>
     </PageShell>
   );
 }
