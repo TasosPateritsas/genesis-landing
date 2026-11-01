@@ -634,7 +634,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",
-      place: "ΑΘΗΝΑ, GR",
+      place: "ΑΘΗΝΑ",
       line1: "Τρεις μηχανικοί. Ένα agency.",
       line2: "Μιλάτε με αυτούς που χτίζουν.",
       subtext:
@@ -676,10 +676,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     work: {
       label: "Επιλεγμένα έργα",
-      heading: "Ζωντανά sites για πραγματικές επιχειρήσεις.",
+      heading: "Έργα που ήδη δουλεύουν για τους πελάτες μας.",
       intro:
         "Websites, eshops και πλατφόρμες κρατήσεων που σχεδιάσαμε, φτιάξαμε και βγάλαμε live — σε λειτουργία σήμερα, για πραγματικούς πελάτες.",
-      more: "Αυτή είναι μια επιλογή — υπάρχουν κι άλλα στο portfolio μας.",
+      more: "Μια μικρή γεύση από τη δουλειά μας.",
       seeAll: "Δείτε όλα τα έργα",
     },
     upcoming: {
