@@ -45,7 +45,7 @@ export function ContactPage() {
 
   return (
     <>
-      <Header />
+      <Header variant="dark" />
       <main>
         <div className="contact-page pt-16 md:pt-[4.25rem]" data-cursor="dark">
           <div className="section-pad container-narrow pb-16 pt-8 md:pb-24 md:pt-10">

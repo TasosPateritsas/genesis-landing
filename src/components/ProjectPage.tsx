@@ -15,7 +15,7 @@ export function ProjectPage({ slug }: { slug: string }) {
 
   return (
     <>
-      <Header />
+      <Header variant="dark" />
       <main>
         <ProjectHero project={project} />
         <ProjectShowcase project={project} />

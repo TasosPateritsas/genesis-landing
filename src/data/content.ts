@@ -2,11 +2,14 @@ export type Locale = "en" | "el";
 
 export type Dictionary = {
   nav: {
+    home: string;
     services: string;
     work: string;
     team: string;
     contact: string;
     cta: string;
+    openMenu: string;
+    closeMenu: string;
   };
   hero: {
     eyebrow: string;
@@ -186,11 +189,14 @@ const serviceChipHrefs = {
 export const dictionaries: Record<Locale, Dictionary> = {
   en: {
     nav: {
+      home: "Home",
       services: "Services",
       work: "Work",
       team: "Team",
       contact: "Contact",
-      cta: "Let's talk!",
+      cta: "Let's talk",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       eyebrow: "GENESIS · ATHENS, GR",
@@ -492,11 +498,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
   },
   el: {
     nav: {
+      home: "Αρχική",
       services: "Υπηρεσίες",
       work: "Έργα",
       team: "Ομάδα",
       contact: "Επικοινωνία",
-      cta: "Ας μιλήσουμε!",
+      cta: "Ας μιλήσουμε",
+      openMenu: "Άνοιγμα μενού",
+      closeMenu: "Κλείσιμο μενού",
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",
