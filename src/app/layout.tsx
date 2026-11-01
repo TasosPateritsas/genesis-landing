@@ -33,7 +33,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const locale = headerStore.get("x-locale") === "el" ? "el" : "en";
 
   return (
-    <html lang={locale} className={`${inter.variable} h-full`} style={colorTokens}>
+    <html lang={locale} className={`${inter.variable} h-full`} style={colorTokens} data-scroll-behavior="smooth">
       <body className="min-h-full font-sans antialiased">
         {children}
         <CursorFollower />
