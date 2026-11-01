@@ -6,8 +6,7 @@ type FadeInProps = {
   children: ReactNode;
   className?: string;
   delay?: 0 | 1 | 2 | 3;
-  /** "section" fades the whole block once, when about 20% is visible. */
-  variant?: "rise" | "section" | "from-left" | "from-right";
+  variant?: "rise" | "section";
 };
 
 export function FadeIn({
@@ -47,14 +46,7 @@ export function FadeIn({
           ? "fade-in-delay-3"
           : "";
 
-  const motionClass =
-    variant === "section"
-      ? "fade-in-section"
-      : variant === "from-left"
-        ? "service-enter-left"
-        : variant === "from-right"
-          ? "service-enter-right"
-          : "fade-in";
+  const motionClass = variant === "section" ? "fade-in-section" : "fade-in";
 
   return (
     <div ref={ref} className={`${motionClass} ${delayClass} ${className}`.trim()}>
