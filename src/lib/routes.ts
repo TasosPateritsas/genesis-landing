@@ -1,6 +1,7 @@
+import { site } from "@/config/site";
 import type { Locale } from "@/data/content";
 
-export const SITE_URL = "https://genesis.studio";
+export const SITE_URL = site.url;
 
 /** Add a page here and the sitemap picks up both language versions. */
 export const publicRoutes = [

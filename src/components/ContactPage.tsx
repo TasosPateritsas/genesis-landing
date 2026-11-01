@@ -7,7 +7,7 @@ import { ContactReviews } from "@/components/ContactReviews";
 import { ContactStats } from "@/components/ContactStats";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { site } from "@/data/content";
+import { phoneHref, site } from "@/config/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 function colStyle(index: number, mobileIndex?: number): CSSProperties {
@@ -74,7 +74,7 @@ export function ContactPage() {
                       {site.email}
                     </span>
                   </a>
-                  <a className="contact-mini-card" href={site.phoneHref}>
+                  <a className="contact-mini-card" href={phoneHref ?? undefined}>
                     <span className="contact-mini-kicker">{page.preferPhone}</span>
                     <span className="contact-mini-value">
                       <Phone className="contact-mini-icon" strokeWidth={1.75} aria-hidden />

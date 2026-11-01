@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useId, useState, type ReactNode } from "react";
-import { site, type Locale } from "@/data/content";
+import { site } from "@/config/site";
+import type { Locale } from "@/data/content";
 import { teamFaqCopy, teamFaqs, type TeamFaqLink } from "@/data/teamFaq";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { localizePath } from "@/lib/routes";

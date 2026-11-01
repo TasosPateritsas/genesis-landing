@@ -1,11 +1,3 @@
-export const site = {
-  name: "Genesis",
-  email: "hello@genesis.studio",
-  phone: "+306999999999",
-  phoneHref: "tel:+306999999999",
-  url: "https://genesis.studio",
-};
-
 export type Locale = "en" | "el";
 
 export type Dictionary = {
