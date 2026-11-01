@@ -224,8 +224,8 @@ body {
   border-top: 1px solid #d8e0dc;
   border-bottom: 1px solid #d8e0dc;
   background:
-    radial-gradient(60% 50% at 8% 0%, rgba(120, 196, 170, 0.32), rgba(0, 0, 0, 0) 60%),
-    radial-gradient(45% 40% at 96% 88%, rgba(180, 220, 205, 0.38), rgba(0, 0, 0, 0) 55%),
+    radial-gradient(60% 50% at 8% 0, rgba(120, 196, 170, 0.32), transparent 60%),
+    radial-gradient(60% 50% at 92% 100%, rgba(120, 196, 170, 0.32), transparent 60%),
     linear-gradient(#f4faf7, #f7faf8);
 }
 
@@ -237,8 +237,14 @@ body {
     linear-gradient(to right, rgba(8, 80, 65, 0.07) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(8, 80, 65, 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
-  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 0%, transparent 78%);
-  mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 0%, transparent 78%);
+  -webkit-mask-image:
+    radial-gradient(70% 50% at 0 0, #000, transparent 75%),
+    radial-gradient(70% 50% at 100% 100%, #000, transparent 75%);
+  mask-image:
+    radial-gradient(70% 50% at 0 0, #000, transparent 75%),
+    radial-gradient(70% 50% at 100% 100%, #000, transparent 75%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
 }
 
 #work > .container {
