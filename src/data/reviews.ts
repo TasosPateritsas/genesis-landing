@@ -1,6 +1,3 @@
-export const GOOGLE_REVIEW_URL = "";
-export const GOOGLE_PROFILE_URL = "";
-
 /** Flip to false before launch to publish the real Google reviews only. */
 export const USE_MOCK_REVIEWS = true;
 

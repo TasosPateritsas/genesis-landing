@@ -1,12 +1,10 @@
 "use client";
 
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-import { Calendar, Check } from "lucide-react";
+import { FormEvent, useRef, useState } from "react";
+import { Check } from "lucide-react";
 import { CategoryDropdown } from "@/components/CategoryDropdown";
 import { submitContactInquiry } from "@/lib/submitContactInquiry";
 import { useLocale } from "@/i18n/LocaleProvider";
-
-type Tab = "message" | "booking";
 
 type Fields = {
   firstName: string;
@@ -41,48 +39,13 @@ const FOCUS_ORDER: FieldName[] = [
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function tabFromHash(): Tab {
-  return window.location.hash === "#booking" ? "booking" : "message";
-}
-
 export function ContactForm() {
   const { t } = useLocale();
-  const page = t.contactPage;
-  const [tab, setTab] = useState<Tab>("message");
+  const page = t.contactPage.form;
   const [fields, setFields] = useState<Fields>(EMPTY_FIELDS);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
   const submitting = useRef(false);
-
-  useEffect(() => {
-    const sync = () => setTab(tabFromHash());
-    sync();
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
-  }, []);
-
-  function selectTab(next: Tab) {
-    setTab(next);
-    const url = new URL(window.location.href);
-    url.hash = next === "booking" ? "booking" : "";
-    window.history.replaceState(null, "", url);
-  }
-
-  function onTabKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-    const order: Tab[] = ["message", "booking"];
-    const index = order.indexOf(tab);
-    let next: Tab | null = null;
-
-    if (event.key === "ArrowRight") next = order[(index + 1) % order.length];
-    if (event.key === "ArrowLeft") next = order[(index - 1 + order.length) % order.length];
-    if (event.key === "Home") next = "message";
-    if (event.key === "End") next = "booking";
-    if (!next) return;
-
-    event.preventDefault();
-    selectTab(next);
-    document.getElementById(next === "message" ? "contact-tab-message" : "contact-tab-booking")?.focus();
-  }
 
   function updateField(name: FieldName, value: string) {
     setFields((current) => ({ ...current, [name]: value }));
@@ -149,159 +112,104 @@ export function ContactForm() {
     }
   }
 
-  const messageTabId = "contact-tab-message";
-  const bookingTabId = "contact-tab-booking";
-
-  return (
-    <div className="contact-card" data-cursor="light">
-      <div
-        className="contact-tabs"
-        role="tablist"
-        aria-label={page.heading}
-        onKeyDown={onTabKeyDown}
-      >
-        <button
-          id={messageTabId}
-          type="button"
-          role="tab"
-          aria-selected={tab === "message"}
-          aria-controls="contact-panel-message"
-          tabIndex={tab === "message" ? 0 : -1}
-          onClick={() => selectTab("message")}
-        >
-          {page.tabMessage}
-        </button>
-        <button
-          id={bookingTabId}
-          type="button"
-          role="tab"
-          aria-selected={tab === "booking"}
-          aria-controls="contact-panel-booking"
-          tabIndex={tab === "booking" ? 0 : -1}
-          onClick={() => selectTab("booking")}
-        >
-          {page.tabBooking}
+  if (status === "success") {
+    return (
+      <div className="contact-success" role="status">
+        <div className="contact-success-icon" aria-hidden>
+          <Check strokeWidth={2.25} />
+        </div>
+        <p className="contact-success-title">{page.successTitle}</p>
+        <p className="contact-success-body">{page.successBody}</p>
+        <button type="button" className="contact-success-again" onClick={resetForm}>
+          {page.sendAnother}
         </button>
       </div>
+    );
+  }
 
-      {tab === "message" ? (
-        <div
-          id="contact-panel-message"
-          role="tabpanel"
-          aria-labelledby={messageTabId}
-          className="contact-panel mt-5"
-        >
-          {status === "success" ? (
-            <div className="contact-success" role="status">
-              <div className="contact-success-icon" aria-hidden>
-                <Check strokeWidth={2.25} />
-              </div>
-              <p className="contact-success-title">{page.successTitle}</p>
-              <p className="contact-success-body">{page.successBody}</p>
-              <button type="button" className="contact-success-again" onClick={resetForm}>
-                {page.sendAnother}
-              </button>
-            </div>
-          ) : (
-          <form onSubmit={onSubmit} noValidate>
-            <div className="contact-name-row">
-              <FloatField
-                id="firstName"
-                name="firstName"
-                label={page.firstName}
-                value={fields.firstName}
-                error={errors.firstName}
-                autoComplete="given-name"
-                onChange={updateField}
-              />
-              <FloatField
-                id="lastName"
-                name="lastName"
-                label={page.lastName}
-                value={fields.lastName}
-                error={errors.lastName}
-                autoComplete="family-name"
-                onChange={updateField}
-              />
-            </div>
+  return (
+    <form className="contact-form" onSubmit={onSubmit} noValidate>
+      <div className="contact-name-row">
+        <FloatField
+          id="firstName"
+          name="firstName"
+          label={page.firstName}
+          value={fields.firstName}
+          error={errors.firstName}
+          autoComplete="given-name"
+          onChange={updateField}
+        />
+        <FloatField
+          id="lastName"
+          name="lastName"
+          label={page.lastName}
+          value={fields.lastName}
+          error={errors.lastName}
+          autoComplete="family-name"
+          onChange={updateField}
+        />
+      </div>
 
-            <FloatField
-              id="email"
-              name="email"
-              type="email"
-              label={page.email}
-              value={fields.email}
-              error={errors.email}
-              autoComplete="email"
-              onChange={updateField}
-            />
+      <FloatField
+        id="email"
+        name="email"
+        type="email"
+        label={page.email}
+        value={fields.email}
+        error={errors.email}
+        autoComplete="email"
+        onChange={updateField}
+      />
 
-            <CategoryDropdown
-              id="category"
-              label={page.category}
-              placeholder={page.categoryPlaceholder}
-              value={fields.category}
-              options={page.categories}
-              error={errors.category}
-              onChange={(value) => updateField("category", value)}
-            />
+      <CategoryDropdown
+        id="category"
+        label={page.category}
+        placeholder={page.categoryPlaceholder}
+        value={fields.category}
+        options={page.categories}
+        error={errors.category}
+        onChange={(value) => updateField("category", value)}
+      />
 
-            {fields.category === "other" ? (
-              <div className="other-reveal">
-                <FloatField
-                  id="otherNeed"
-                  name="otherNeed"
-                  label={page.otherLabel}
-                  value={fields.otherNeed}
-                  error={errors.otherNeed}
-                  onChange={updateField}
-                />
-              </div>
-            ) : null}
-
-            <FloatField
-              id="description"
-              name="description"
-              label={page.description}
-              value={fields.description}
-              error={errors.description}
-              multiline
-              onChange={updateField}
-            />
-
-            <button
-              type="submit"
-              className={`contact-submit${status === "loading" ? " is-loading" : ""}`}
-              disabled={status === "loading"}
-              aria-busy={status === "loading"}
-            >
-              {status === "loading" ? <span className="contact-spinner" aria-hidden /> : null}
-              {status === "loading" ? page.sending : page.submit}
-            </button>
-
-            {status === "error" ? (
-              <p className="contact-feedback is-error" role="alert">
-                {page.error}
-              </p>
-            ) : null}
-          </form>
-          )}
+      {fields.category === "other" ? (
+        <div className="other-reveal">
+          <FloatField
+            id="otherNeed"
+            name="otherNeed"
+            label={page.otherLabel}
+            value={fields.otherNeed}
+            error={errors.otherNeed}
+            onChange={updateField}
+          />
         </div>
-      ) : (
-        <div
-          id="contact-panel-booking"
-          role="tabpanel"
-          aria-labelledby={bookingTabId}
-          className="mt-5"
-        >
-          <div id="booking" className="booking-placeholder">
-            <Calendar className="booking-placeholder-icon" strokeWidth={1.5} aria-hidden />
-            <p className="booking-placeholder-title">{page.bookingTitle}</p>
-            <p className="booking-placeholder-note">{page.bookingNote}</p>
-          </div>
-        </div>
-      )}
-    </div>
+      ) : null}
+
+      <FloatField
+        id="description"
+        name="description"
+        label={page.description}
+        value={fields.description}
+        error={errors.description}
+        multiline
+        onChange={updateField}
+      />
+
+      <button
+        type="submit"
+        className={`contact-submit${status === "loading" ? " is-loading" : ""}`}
+        disabled={status === "loading"}
+        aria-busy={status === "loading"}
+      >
+        {status === "loading" ? <span className="contact-spinner" aria-hidden /> : null}
+        {status === "loading" ? page.sending : page.submit}
+      </button>
+
+      {status === "error" ? (
+        <p className="contact-feedback is-error" role="alert">
+          {page.error}
+        </p>
+      ) : null}
+    </form>
   );
 }
 
@@ -332,7 +240,7 @@ function FloatField({
   const describedBy = error ? errorId : undefined;
 
   return (
-    <div className={`float-field${error ? " has-error" : ""}`}>
+    <div className={`float-field${multiline ? " is-multiline" : ""}${error ? " has-error" : ""}`}>
       {multiline ? (
         <textarea
           id={id}

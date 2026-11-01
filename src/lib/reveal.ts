@@ -1,6 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
+
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+
+function subscribeReducedMotion(onChange: () => void) {
+  const query = window.matchMedia(REDUCED_MOTION);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+export function useReducedMotion() {
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia(REDUCED_MOTION).matches,
+    () => false,
+  );
+}
 
 /** Reveals a `.gx-up` group once, when `threshold` of the observed element is visible. */
 export function useReveal<T extends Element>(threshold = 0.15) {
@@ -24,7 +40,7 @@ export function useReveal<T extends Element>(threshold = 0.15) {
     return () => observer.disconnect();
   }, [threshold]);
 
-  return { ref, revealed };
+  return [ref, revealed] as const;
 }
 
 /** Entrance delay in seconds; `mobile` applies below 1024px. */
