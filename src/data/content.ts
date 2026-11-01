@@ -233,7 +233,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Services",
       heading: "What we offer",
       intro:
-        "We design, build, and deliver complete digital products — so you never need an in-house technical team.",
+        "Everything your product needs, under one roof. Start with one service, add more as you grow.",
       seeAll: "See all services",
       items: [
         {
@@ -577,7 +577,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Υπηρεσίες",
       heading: "Τι προσφέρουμε",
       intro:
-        "Σχεδιάζουμε, χτίζουμε και παραδίδουμε ολοκληρωμένα digital προϊόντα — χωρίς να χρειάζεστε τεχνική ομάδα.",
+        "Όλα όσα χρειάζεται το προϊόν σας, κάτω από μία στέγη. Ξεκινήστε με μία υπηρεσία και προσθέστε κι άλλες καθώς μεγαλώνετε.",
       seeAll: "Δείτε όλες τις υπηρεσίες",
       items: [
         {
