@@ -264,9 +264,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Selected work",
       heading: "Live sites for real businesses.",
       intro:
-        "Eshops, booking sites and local businesses we designed, built and launched — from Marousi to Mykonos.",
-      more: "More websites, eshops and booking sites in our portfolio.",
-      seeAll: "See all work →",
+        "Websites, eshops and booking platforms we designed, built and launched — live today, for real clients.",
+      more: "This is just a selection — there's more in our portfolio.",
+      seeAll: "Explore all projects",
     },
     team: {
       label: "The team",
@@ -609,9 +609,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Επιλεγμένα έργα",
       heading: "Ζωντανά sites για πραγματικές επιχειρήσεις.",
       intro:
-        "Eshops, booking sites και τοπικές επιχειρήσεις που σχεδιάσαμε, φτιάξαμε και βγάλαμε live — από το Μαρούσι ως τη Μύκονο.",
-      more: "Περισσότερα websites, eshops και booking sites στο portfolio μας.",
-      seeAll: "Δείτε όλα τα έργα →",
+        "Websites, eshops και πλατφόρμες κρατήσεων που σχεδιάσαμε, φτιάξαμε και βγάλαμε live — σε λειτουργία σήμερα, για πραγματικούς πελάτες.",
+      more: "Αυτή είναι μια επιλογή — υπάρχουν κι άλλα στο portfolio μας.",
+      seeAll: "Δείτε όλα τα έργα",
     },
     team: {
       label: "Η ομάδα",
