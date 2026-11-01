@@ -39,6 +39,25 @@ export const site = {
   images: {
     howWeWorkBg: "/contact/how-we-work.jpg",
     contactBand: ["/contact/stats-portrait.png", "/contact/stats-workspace.png"],
+    teamGroup: "",
+  },
+  video: {
+    src1080: "",
+    src720: "",
+    poster: "",
+    captions: { en: "", el: "" },
+    chapters: [
+      { seconds: 0, label: { en: "Who are we?", el: "Ποιοι είμαστε;" } },
+      { seconds: 45, label: { en: "Why did we start Genesis?", el: "Γιατί ξεκινήσαμε τη Genesis;" } },
+      {
+        seconds: 90,
+        label: { en: "What is it like to work with us?", el: "Πώς είναι να δουλεύει κανείς μαζί μας;" },
+      },
+      {
+        seconds: 135,
+        label: { en: "What kind of projects do we love?", el: "Τι projects αγαπάμε;" },
+      },
+    ],
   },
 } as const;
 

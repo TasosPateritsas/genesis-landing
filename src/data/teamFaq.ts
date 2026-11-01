@@ -82,7 +82,7 @@ export const teamFaqs: readonly TeamFaqItem[] = [
     },
     answer: {
       en: "The first call is with all three of us. After that, you mostly talk with Despoina about the design and progress, and Pantelis and Anastasis often join in too. You always get an answer within one business day.",
-      el: "Η πρώτη κλήση γίνεται και με τους τρεις μας. Στη συνέχεια μιλάτε κυρίως με τη Δέσποινα για το design και την πρόοδο, ενώ συχνά συμμετέχουν και ο Παντελής και ο Αναστάσης. Παίρνετε πάντα απάντηση εντός μίας εργάσιμης ημέρας.",
+      el: "Η αρχική συνάντηση γίνεται και με τους τρεις μας. Στη συνέχεια μιλάτε κυρίως με τη Δέσποινα για το design και την πρόοδο, ενώ συχνά συμμετέχουν και ο Παντελής και ο Αναστάσης. Παίρνετε πάντα απάντηση εντός μίας εργάσιμης ημέρας.",
     },
   },
   {

@@ -731,7 +731,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       titleLead: "Οι άνθρωποι πίσω από ",
       titleAccent: "τον κώδικα.",
       subtext:
-        "Τρεις μηχανικοί, χωρίς account managers, χωρίς outsourcing. Οι άνθρωποι που γνωρίζετε στην πρώτη κλήση είναι αυτοί που χτίζουν το προϊόν σας.",
+        "Τρεις μηχανικοί, χωρίς account managers, χωρίς outsourcing. Οι άνθρωποι που γνωρίζετε στην αρχική συνάντηση είναι αυτοί που χτίζουν το προϊόν σας.",
       people: "Δέσποινα, Παντελής & Αναστάσης · Αθήνα",
       metaTitle: "Η Ομάδα: Μηχανικοί Λογισμικού στην Αθήνα - Genesis",
       metaDescription:
