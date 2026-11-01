@@ -43,6 +43,35 @@ html {
   scroll-behavior: smooth;
 }
 
+:focus-visible {
+  outline: 2px solid #0f6e56;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.home-stats :focus-visible,
+.home-contact :focus-visible {
+  outline-color: #9fe3cf;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  z-index: 80;
+  transform: translateY(-160%);
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 8px 12px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
@@ -592,7 +621,7 @@ a:focus-visible .link-underline {
 }
 
 .team-home-photo-caption {
-  color: #6b8a7e;
+  color: #4f6f63;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;

@@ -39,7 +39,11 @@ function StatCell({ stat, active, delayMs }: { stat: Stat; active: boolean; dela
   const shown = reduced ? stat.value : value;
 
   return (
-    <div className="home-stat gx-up" style={stagger(site.stats.indexOf(stat))}>
+    <div
+      className="home-stat gx-up"
+      style={stagger(site.stats.indexOf(stat))}
+      aria-label={`${stat.value}${stat.suffix} ${label}`}
+    >
       <p className="home-stat-value">
         <span className="home-sr">
           {stat.value}

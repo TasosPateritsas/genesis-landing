@@ -62,7 +62,9 @@ export function Team() {
                 />
               ) : (
                 <>
-                  <span className="team-home-initials">{member.initials}</span>
+                  <span className="team-home-initials" aria-hidden>
+                    {member.initials}
+                  </span>
                   <span className="team-home-photo-caption">{t.team.photoSoon}</span>
                 </>
               )}

@@ -12,7 +12,7 @@ export function HomePage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <Hero />
         <StatsStrip />
         <WhatWeBuild />

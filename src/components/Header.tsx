@@ -87,6 +87,9 @@ export function Header({ variant = "light" }: { variant?: HeaderVariant }) {
 
   return (
     <>
+      <a href="#main" className="skip-link">
+        {t.nav.skip}
+      </a>
       <header
         className="site-header"
         data-variant={variant}

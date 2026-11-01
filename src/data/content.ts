@@ -12,6 +12,7 @@ export type Dictionary = {
     cta: string;
     openMenu: string;
     closeMenu: string;
+    skip: string;
   };
   hero: {
     eyebrow: string;
@@ -232,6 +233,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cta: "Let's talk",
       openMenu: "Open menu",
       closeMenu: "Close menu",
+      skip: "Skip to content",
     },
     hero: {
       eyebrow: "GENESIS · ATHENS, GR",
@@ -631,6 +633,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cta: "Ας μιλήσουμε",
       openMenu: "Άνοιγμα μενού",
       closeMenu: "Κλείσιμο μενού",
+      skip: "Μετάβαση στο περιεχόμενο",
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",

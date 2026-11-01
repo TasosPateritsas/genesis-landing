@@ -10,7 +10,7 @@ export function WorkPage() {
   return (
     <>
       <Header variant="dark" />
-      <main className="work-page">
+      <main id="main" className="work-page">
         <WorkHero />
         <WorkList kind="live" headingId="live-projects-heading" />
         <WorkList kind="upcoming" headingId="upcoming-projects-heading" />
