@@ -15,6 +15,7 @@ export type Dictionary = {
   };
   hero: {
     eyebrow: string;
+    place: string;
     line1: string;
     line2: string;
     subtext: string;
@@ -234,6 +235,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     hero: {
       eyebrow: "GENESIS · ATHENS, GR",
+      place: "ATHENS, GR",
       line1: "Three engineers. One agency.",
       line2: "You talk to the builders.",
       subtext:
@@ -632,6 +634,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",
+      place: "ΑΘΗΝΑ, GR",
       line1: "Τρεις μηχανικοί. Ένα agency.",
       line2: "Μιλάτε με αυτούς που χτίζουν.",
       subtext:

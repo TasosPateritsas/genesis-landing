@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import { site } from "@/config/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
 
@@ -17,7 +18,7 @@ export function Hero() {
       <div className="hero-mint" aria-hidden />
       <div className="wrap-hero home-hero-inner">
         <p className="home-eyebrow hero-rise" style={rise("0s")}>
-          {t.hero.eyebrow}
+          {site.name.toUpperCase()} · {t.hero.place}
         </p>
         <h1 id="hero-heading" className="home-hero-title hero-rise" style={rise("0.12s")}>
           <span className="home-hero-line">{t.hero.line1}</span>
