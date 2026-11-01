@@ -3,7 +3,7 @@ import type { Locale } from "@/data/content";
 export const projectCopy = {
   en: {
     visitLive: "Visit live site",
-    comingSoon: "Coming soon",
+    comingSoon: "COMING SOON",
     metaClient: "Client",
     metaDid: "What we did",
     metaCategory: "Category",
@@ -31,7 +31,7 @@ export const projectCopy = {
   },
   el: {
     visitLive: "Δείτε το site",
-    comingSoon: "Σύντομα",
+    comingSoon: "ΣΥΝΤΟΜΑ",
     metaClient: "Πελάτης",
     metaDid: "Τι κάναμε",
     metaCategory: "Κατηγορία",

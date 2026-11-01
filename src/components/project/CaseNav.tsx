@@ -80,12 +80,16 @@ export function CaseNav({ project }: { project: Project }) {
   );
 }
 
-export function CaseClosing() {
+export function CaseClosing({ lead = false }: { lead?: boolean }) {
   const { t } = useLocale();
   const hrefFor = useLocalizedPath();
   const [ref, on] = useReveal<HTMLElement>(0.15, caseRevealMargin);
   return (
-    <section ref={ref} className={on ? "case-close is-revealed" : "case-close"} aria-labelledby="case-close-title">
+    <section
+      ref={ref}
+      className={`${on ? "case-close is-revealed" : "case-close"}${lead ? " is-lead" : ""}`}
+      aria-labelledby="case-close-title"
+    >
       <div className="wrap-hero">
         <h2 id="case-close-title" className="gx-up">
           {t.workPage.ctaTitle}

@@ -6,11 +6,12 @@ import { pantazelos } from "@/data/cases/pantazelos";
 import { salty } from "@/data/cases/salty";
 import { techne } from "@/data/cases/techne";
 import { vasileiadis } from "@/data/cases/vasileiadis";
+import { weddingflow } from "@/data/cases/weddingflow";
 import type { Project } from "@/data/projectTypes";
 
 export type { Project, LocalizedText } from "@/data/projectTypes";
 
-export const projects: Project[] = [salty, baumann, techne, chalkino, pantazelos, horizon, vasileiadis];
+export const projects: Project[] = [salty, baumann, techne, chalkino, pantazelos, horizon, vasileiadis, weddingflow];
 
 export function projectLabel(project: Project, locale: Locale) {
   return `${project.type[locale]} · ${project.industry[locale]}`;

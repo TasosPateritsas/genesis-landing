@@ -15,6 +15,7 @@ export const publicRoutes = [
   { path: "/work/pantazelos" },
   { path: "/work/horizon-realty" },
   { path: "/work/vasileiadis" },
+  { path: "/work/weddingflow" },
   { path: "/team" },
   { path: "/contact" },
 ] as const;
