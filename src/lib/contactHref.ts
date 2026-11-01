@@ -1,8 +1,8 @@
 import type { Locale } from "@/data/content";
 import { localizePath } from "@/lib/routes";
 
-/** Contact page in the current language, with the message or booking tab active. */
-export function contactHref(locale: Locale, tab: "message" | "booking" = "message") {
-  const hash = tab === "booking" ? "#booking" : "";
+/** `"booking"` adds `#booking`, which opens the Calendly popup on arrival. */
+export function contactHref(locale: Locale, intent: "message" | "booking" = "message") {
+  const hash = intent === "booking" ? "#booking" : "";
   return `${localizePath("/contact", locale)}${hash}`;
 }
