@@ -27,7 +27,7 @@ const membersById = Object.fromEntries(teamMembers.map((member) => [member.id, m
   TeamMember
 >;
 
-function ProfileCard({ profile, fromEnd }: { profile: TeamProfileCopy; fromEnd: boolean }) {
+function ProfileCard({ profile }: { profile: TeamProfileCopy }) {
   const { locale, t } = useLocale();
   const member = membersById[profile.id];
   const [ref, revealed] = useReveal<HTMLElement>();
@@ -35,7 +35,7 @@ function ProfileCard({ profile, fromEnd }: { profile: TeamProfileCopy; fromEnd: 
   return (
     <article
       ref={ref}
-      className={`team-profile${fromEnd ? " is-reverse" : ""}${revealed ? " is-revealed" : ""}`}
+      className={`team-profile${revealed ? " is-revealed" : ""}`}
     >
       <div className="team-profile-photo">
         {member.photo ? (
@@ -124,8 +124,8 @@ export function TeamProfiles() {
           </p>
         </div>
         <div className="team-who-list">
-          {teamProfiles.map((profile, index) => (
-            <ProfileCard key={profile.id} profile={profile} fromEnd={index % 2 === 1} />
+          {teamProfiles.map((profile) => (
+            <ProfileCard key={profile.id} profile={profile} />
           ))}
         </div>
       </div>
