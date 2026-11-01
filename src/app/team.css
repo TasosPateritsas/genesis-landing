@@ -305,11 +305,19 @@
 
 .team-profile-bullets li {
   display: flex;
+  min-width: 0;
   gap: 8px;
+}
+
+.team-profile-bullets li > span:last-child {
+  min-width: 0;
 }
 
 .team-profile-tags {
   display: flex;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   flex-wrap: wrap;
   gap: 8px;
   margin: 16px 0 0;
@@ -1040,16 +1048,14 @@
     margin-bottom: 56px;
   }
 
-  .team-profile {
-    grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  .team-profile,
+  .team-profile.is-reverse {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: 48px;
     align-items: stretch;
     filter: blur(3px);
     translate: 0 48px;
     transition-duration: 1s;
-  }
-
-  .team-profile.is-reverse {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
   }
 
   .team-profile.is-revealed,
@@ -1058,22 +1064,21 @@
     filter: none;
   }
 
-  .team-profile-photo {
+  .team-profile > * {
+    min-width: 0;
+  }
+
+  .team-profile-photo,
+  .team-profile.is-reverse .team-profile-photo {
     order: 0;
     aspect-ratio: auto;
+    height: 100%;
     min-height: 100%;
   }
 
-  .team-profile.is-reverse .team-profile-photo {
-    order: 2;
-  }
-
-  .team-profile-body {
-    padding: 36px 36px 36px 0;
-  }
-
+  .team-profile-body,
   .team-profile.is-reverse .team-profile-body {
-    padding: 36px 0 36px 36px;
+    padding: 40px;
   }
 
   .team-video {
