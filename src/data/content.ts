@@ -1,3 +1,5 @@
+import type { StatId } from "@/config/site";
+
 export type Locale = "en" | "el";
 
 export type Dictionary = {
@@ -64,46 +66,58 @@ export type Dictionary = {
     directLabel: string;
   };
   contactPage: {
-    breadcrumb: string;
-    heading: string;
     metaTitle: string;
     metaDescription: string;
-    subtext: string;
-    preferEmail: string;
-    preferPhone: string;
-    phoneDisplay: string;
-    tabMessage: string;
-    tabBooking: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    category: string;
-    categoryPlaceholder: string;
-    categories: Array<{ value: string; label: string }>;
-    otherLabel: string;
-    description: string;
-    submit: string;
-    sending: string;
-    successTitle: string;
-    successBody: string;
-    sendAnother: string;
-    error: string;
-    bookingTitle: string;
-    bookingNote: string;
-    errors: {
+    hero: {
+      /** One entry per line-mask line; the h1 reads them joined with spaces. */
+      titleLines: string[];
+      intro: string;
+    };
+    ways: {
+      eyebrow: string;
+      heading: string;
+      message: { title: string; body: string };
+      /** `{minutes}` is filled from `site.booking.durationMin`. */
+      booking: { title: string; body: string; link: string };
+      email: { title: string; body: string };
+      phone: { title: string; body: string };
+    };
+    form: {
       firstName: string;
       lastName: string;
-      emailRequired: string;
-      emailInvalid: string;
+      email: string;
       category: string;
-      other: string;
+      categoryPlaceholder: string;
+      categories: Array<{ value: string; label: string }>;
+      otherLabel: string;
       description: string;
+      submit: string;
+      sending: string;
+      successTitle: string;
+      successBody: string;
+      sendAnother: string;
+      error: string;
+      errors: {
+        firstName: string;
+        lastName: string;
+        emailRequired: string;
+        emailInvalid: string;
+        category: string;
+        other: string;
+        description: string;
+      };
     };
     howWeWork: {
-      eyebrow: string;
+      title: string;
       steps: Array<{ title: string; body: string }>;
     };
+    band: {
+      slidesLabel: string;
+      /** `{index}` is the 1-based slide number. */
+      slideLabel: string;
+    };
   };
+  stats: Record<StatId, { label: string; note: string }>;
   reviews: {
     kicker: string;
     heading: string;
@@ -266,53 +280,63 @@ export const dictionaries: Record<Locale, Dictionary> = {
       directLabel: "Prefer to reach us directly by email or phone?",
     },
     contactPage: {
-      breadcrumb: "Genesis › Contact",
-      heading: "Let's build something great, together!",
       metaTitle: "Contact, Quotes & Booking - Genesis",
       metaDescription:
         "Send us a message or book an intro call with Genesis. App development, AI agents, automations and websites for startups. Based in Athens, working worldwide.",
-      subtext:
-        "Fill out the form and tell us your idea, whatever it is. We reply within one business day, once we've properly looked into it.",
-      preferEmail: "Prefer email?",
-      preferPhone: "Prefer a call?",
-      phoneDisplay: "+30 69 99999999",
-      tabMessage: "Send a message",
-      tabBooking: "Book a call",
-      firstName: "First name *",
-      lastName: "Last name *",
-      email: "Email *",
-      category: "Category *",
-      categoryPlaceholder: "Select a category",
-      categories: [
-        { value: "app", label: "App Development" },
-        { value: "agents", label: "AI Agents" },
-        { value: "workflows", label: "AI Workflows" },
-        { value: "shop", label: "Websites & Eshops" },
-        { value: "other", label: "Other" },
-      ],
-      otherLabel: "What else do you need? *",
-      description: "Description *",
-      submit: "Send us your message",
-      sending: "Sending...",
-      successTitle: "Thank you!",
-      successBody:
-        "We've received your message. We'll get back to you within one business day.",
-      sendAnother: "Send another message",
-      error: "Something went wrong. Please try again.",
-      bookingTitle: "This is where the booking widget goes",
-      bookingNote:
-        "Integration with a scheduling tool (e.g. Calendly or Cal.com) — to be finalized during development.",
-      errors: {
-        firstName: "Enter your first name.",
-        lastName: "Enter your last name.",
-        emailRequired: "Enter your email.",
-        emailInvalid: "Enter a valid email address.",
-        category: "Select a category.",
-        other: "Tell us what else you need.",
-        description: "Enter a description.",
+      hero: {
+        titleLines: ["Let's build something", "great, together!"],
+        intro:
+          "Fill out the form and tell us your idea, whatever it is. We reply within one business day, once we've properly looked into it.",
+      },
+      ways: {
+        eyebrow: "Get in touch",
+        heading: "Four ways to reach us.",
+        message: {
+          title: "Send a message",
+          body: "Tell us what you want to build. We reply within one business day.",
+        },
+        booking: {
+          title: "Book a call",
+          body: "Pick a {minutes}-minute slot that suits you.",
+          link: "Open the calendar",
+        },
+        email: { title: "Email us", body: "For briefs, questions or a quick hello." },
+        phone: { title: "Call us", body: "Mon–Fri, 10:00–18:00 (Athens)." },
+      },
+      form: {
+        firstName: "First name *",
+        lastName: "Last name *",
+        email: "Email *",
+        category: "Category *",
+        categoryPlaceholder: "Select a category",
+        categories: [
+          { value: "app", label: "App Development" },
+          { value: "agents", label: "AI Agents" },
+          { value: "workflows", label: "AI Workflows" },
+          { value: "shop", label: "Websites & Eshops" },
+          { value: "other", label: "Other" },
+        ],
+        otherLabel: "What else do you need? *",
+        description: "Description *",
+        submit: "Send us your message",
+        sending: "Sending...",
+        successTitle: "Thank you!",
+        successBody:
+          "We've received your message. We'll get back to you within one business day.",
+        sendAnother: "Send another message",
+        error: "Something went wrong. Please try again.",
+        errors: {
+          firstName: "Enter your first name.",
+          lastName: "Enter your last name.",
+          emailRequired: "Enter your email.",
+          emailInvalid: "Enter a valid email address.",
+          category: "Select a category.",
+          other: "Tell us what else you need.",
+          description: "Enter a description.",
+        },
       },
       howWeWork: {
-        eyebrow: "How we work",
+        title: "How we work",
         steps: [
           {
             title: "You reach out",
@@ -332,6 +356,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
           },
         ],
       },
+      band: {
+        slidesLabel: "Facts about Genesis",
+        slideLabel: "Show fact {index}",
+      },
+    },
+    stats: {
+      engineers: { label: "Senior engineers", note: "" },
+      projects: {
+        label: "Projects delivered",
+        note: "Websites, apps and eshops we've built and shipped.",
+      },
+      years: { label: "Years experience", note: "The team's experience, brought to every project." },
+      inHouse: { label: "In-house team", note: "No outsourcing — the three of us build everything." },
     },
     reviews: {
       kicker: "Reviews",
@@ -340,7 +377,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cardSource: "Review on Google",
       ctaPrompt: "Worked with us?",
       cta: "Leave us a review",
-      seeAll: "See all reviews on Google →",
+      seeAll: "See all reviews on Google ↗",
       pagesLabel: "Reviews pages",
       pageLabel: "Page {page}",
       previous: "Previous",
@@ -584,81 +621,104 @@ export const dictionaries: Record<Locale, Dictionary> = {
       directLabel: "Προτιμάτε κατευθείαν email ή κινητό;",
     },
     contactPage: {
-      breadcrumb: "Genesis › Επικοινωνία",
-      heading: "Ας φτιάξουμε κάτι σπουδαίο μαζί!",
       metaTitle: "Επικοινωνία, Προσφορά & Ραντεβού - Genesis",
       metaDescription:
         "Στείλτε μας μήνυμα ή κλείστε ραντεβού γνωριμίας με τη Genesis. Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και websites για startups. Έδρα στην Αθήνα, δουλεύουμε παντού.",
-      subtext:
-        "Συμπληρώστε τη φόρμα και γράψτε μας την ιδέα σας, ό,τι κι αν χρειάζεστε. Απαντάμε εντός μίας εργάσιμης ημέρας, αφού δούμε διεξοδικά το θέμα σας.",
-      preferEmail: "Προτιμάτε email;",
-      preferPhone: "Προτιμάτε τηλέφωνο;",
-      phoneDisplay: "+30 69 99999999",
-      tabMessage: "Στείλτε μήνυμα",
-      tabBooking: "Κλείστε ραντεβού",
-      firstName: "Όνομα *",
-      lastName: "Επώνυμο *",
-      email: "Email *",
-      category: "Κατηγορία *",
-      categoryPlaceholder: "Επιλέξτε κατηγορία",
-      categories: [
-        { value: "app", label: "Ανάπτυξη Εφαρμογών" },
-        { value: "agents", label: "AI Agents" },
-        { value: "workflows", label: "AI Workflows" },
-        { value: "shop", label: "Websites & Eshops" },
-        { value: "other", label: "Άλλο" },
-      ],
-      otherLabel: "Τι άλλο χρειάζεστε; *",
-      description: "Περιγραφή *",
-      submit: "Στείλτε μας μήνυμα",
-      sending: "Αποστολή...",
-      successTitle: "Ευχαριστούμε!",
-      successBody:
-        "Λάβαμε το μήνυμά σας. Θα επικοινωνήσουμε μαζί σας εντός μίας εργάσιμης ημέρας.",
-      sendAnother: "Στείλτε άλλο μήνυμα",
-      error: "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
-      bookingTitle: "Εδώ μπαίνει το booking widget",
-      bookingNote:
-        "Ενσωμάτωση με εργαλείο κράτησης ραντεβού (π.χ. Calendly ή Cal.com) — θα οριστικοποιηθεί στο development.",
-      errors: {
-        firstName: "Συμπληρώστε το όνομά σας.",
-        lastName: "Συμπληρώστε το επώνυμό σας.",
-        emailRequired: "Συμπληρώστε το email σας.",
-        emailInvalid: "Συμπληρώστε ένα έγκυρο email.",
-        category: "Επιλέξτε κατηγορία.",
-        other: "Πείτε μας τι άλλο χρειάζεστε.",
-        description: "Συμπληρώστε την περιγραφή.",
+      hero: {
+        titleLines: ["Ας φτιάξουμε κάτι", "σπουδαίο μαζί!"],
+        intro:
+          "Συμπληρώστε τη φόρμα και πείτε μας την ιδέα σας, όποια κι αν είναι. Απαντάμε μέσα σε μία εργάσιμη μέρα, αφού τη δούμε προσεκτικά.",
+      },
+      ways: {
+        eyebrow: "Επικοινωνία",
+        heading: "Τέσσερις τρόποι να μας βρείτε.",
+        message: {
+          title: "Στείλτε μήνυμα",
+          body: "Πείτε μας τι θέλετε να φτιάξετε. Απαντάμε μέσα σε μία εργάσιμη μέρα.",
+        },
+        booking: {
+          title: "Κλείστε μια κλήση",
+          body: "Διαλέξτε ένα {minutes}λεπτο που σας βολεύει.",
+          link: "Ανοίξτε το ημερολόγιο",
+        },
+        email: { title: "Στείλτε email", body: "Για brief, ερωτήσεις ή ένα γρήγορο γεια." },
+        phone: { title: "Καλέστε μας", body: "Δευ–Παρ, 10:00–18:00" },
+      },
+      form: {
+        firstName: "Όνομα *",
+        lastName: "Επώνυμο *",
+        email: "Email *",
+        category: "Κατηγορία *",
+        categoryPlaceholder: "Επιλέξτε κατηγορία",
+        categories: [
+          { value: "app", label: "Ανάπτυξη Εφαρμογών" },
+          { value: "agents", label: "AI Agents" },
+          { value: "workflows", label: "AI Workflows" },
+          { value: "shop", label: "Websites & Eshops" },
+          { value: "other", label: "Άλλο" },
+        ],
+        otherLabel: "Τι άλλο χρειάζεστε; *",
+        description: "Περιγραφή *",
+        submit: "Στείλτε το μήνυμα",
+        sending: "Αποστολή...",
+        successTitle: "Ευχαριστούμε!",
+        successBody:
+          "Λάβαμε το μήνυμά σας. Θα επικοινωνήσουμε μαζί σας εντός μίας εργάσιμης ημέρας.",
+        sendAnother: "Στείλτε άλλο μήνυμα",
+        error: "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
+        errors: {
+          firstName: "Συμπληρώστε το όνομά σας.",
+          lastName: "Συμπληρώστε το επώνυμό σας.",
+          emailRequired: "Συμπληρώστε το email σας.",
+          emailInvalid: "Συμπληρώστε ένα έγκυρο email.",
+          category: "Επιλέξτε κατηγορία.",
+          other: "Πείτε μας τι άλλο χρειάζεστε.",
+          description: "Συμπληρώστε την περιγραφή.",
+        },
       },
       howWeWork: {
-        eyebrow: "Πώς δουλεύουμε",
+        title: "Πώς δουλεύουμε",
         steps: [
           {
-            title: "Επικοινωνείτε μαζί μας",
-            body: "Με τη φόρμα, με email, τηλεφωνικά ή κλείνοντας ραντεβού.",
+            title: "Επικοινωνείτε",
+            body: "Μέσω φόρμας, email, τηλεφώνου ή κλείνοντας ραντεβού.",
           },
           {
             title: "Συζητάμε τις ανάγκες σας",
             body: "Μαθαίνουμε τι χρειάζεστε και κάνουμε τις σωστές ερωτήσεις.",
           },
           {
-            title: "Λαμβάνετε γραπτή προσφορά",
-            body: "Με scope, χρονοδιάγραμμα και κόστος.",
+            title: "Παίρνετε γραπτή πρόταση",
+            body: "Αντικείμενο, χρονοδιάγραμμα και κόστος.",
           },
           {
             title: "Ξεκινάμε",
-            body: "Με σταθερή ενημέρωση σε κάθε βήμα, μέχρι την παράδοση.",
+            body: "Με τακτικές ενημερώσεις σε κάθε βήμα, μέχρι την παράδοση.",
           },
         ],
       },
+      band: {
+        slidesLabel: "Στοιχεία για τη Genesis",
+        slideLabel: "Δείτε το στοιχείο {index}",
+      },
+    },
+    stats: {
+      engineers: { label: "Senior μηχανικοί", note: "" },
+      projects: {
+        label: "Έργα που παραδώσαμε",
+        note: "Websites, εφαρμογές και eshops που έχουμε φτιάξει και παραδώσει.",
+      },
+      years: { label: "Χρόνια εμπειρίας", note: "Η εμπειρία της ομάδας μας, σε κάθε project." },
+      inHouse: { label: "In-house ομάδα", note: "Χωρίς outsourcing — όλα τα φτιάχνουμε οι τρεις μας." },
     },
     reviews: {
       kicker: "Κριτικές",
       heading: "Τι λένε οι πελάτες μας",
       reviewsOnGoogle: "{count} κριτικές στο Google",
       cardSource: "Κριτική στο Google",
-      ctaPrompt: "Έχουμε συνεργαστεί;",
+      ctaPrompt: "Συνεργαστήκαμε;",
       cta: "Αφήστε μας μια κριτική",
-      seeAll: "Δείτε όλες τις κριτικές στο Google →",
+      seeAll: "Δείτε όλες τις κριτικές στο Google ↗",
       pagesLabel: "Σελίδες κριτικών",
       pageLabel: "Σελίδα {page}",
       previous: "Προηγούμενη",

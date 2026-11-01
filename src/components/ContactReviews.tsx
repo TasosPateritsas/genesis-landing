@@ -1,24 +1,13 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import {
-  AVERAGE_RATING,
-  GOOGLE_PROFILE_URL,
-  GOOGLE_REVIEW_URL,
-  TOTAL_REVIEWS,
-  reviews,
-  type Review,
-} from "@/data/reviews";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { site } from "@/config/site";
+import { AVERAGE_RATING, TOTAL_REVIEWS, reviews, type Review } from "@/data/reviews";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { fill } from "@/lib/fill";
+import { stagger, useReveal } from "@/lib/reveal";
 import { paginationItems, reviewPages } from "@/lib/reviewSlider";
-
-function fill(template: string, values: Record<string, string | number>) {
-  return Object.entries(values).reduce(
-    (text, [key, value]) => text.replace(`{${key}}`, String(value)),
-    template,
-  );
-}
 
 function initial(name: string) {
   const cleaned = name.replace(/^\[Mock\]\s*/, "");
@@ -48,40 +37,26 @@ function GoogleMark() {
   );
 }
 
-function QuietLink({
-  href,
-  className,
-  children,
+function ReviewCard({
+  review,
+  ratedLabel,
+  sourceLabel,
+  style,
 }: {
-  href: string;
-  className: string;
-  children: ReactNode;
+  review: Review;
+  ratedLabel: string;
+  sourceLabel: string;
+  style: CSSProperties;
 }) {
-  if (!href) {
-    return (
-      <button type="button" className={className}>
-        {children}
-      </button>
-    );
-  }
-
   return (
-    <a href={href} className={className} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  );
-}
-
-function ReviewCard({ review, ratedLabel, sourceLabel }: { review: Review; ratedLabel: string; sourceLabel: string }) {
-  return (
-    <article className="review-card">
+    <article className="review-card gx-up" style={style}>
       <div className="flex items-center gap-3">
         <span className="review-avatar" aria-hidden>
           {initial(review.name)}
         </span>
         <div className="min-w-0">
-          <p className="text-sm font-medium text-ink">{review.name}</p>
-          <p className="text-xs text-ink-muted">{review.date}</p>
+          <p className="review-name">{review.name}</p>
+          <p className="review-date">{review.date}</p>
         </div>
       </div>
       <p className="mt-3 flex gap-0.5" aria-label={ratedLabel}>
@@ -94,7 +69,7 @@ function ReviewCard({ review, ratedLabel, sourceLabel }: { review: Review; rated
           />
         ))}
       </p>
-      <p className="mt-3 mb-4 text-[14px] leading-[1.6] text-ink">{review.text}</p>
+      <p className="review-text">{review.text}</p>
       <div className="review-card-footer">
         <GoogleMark />
         <span>{sourceLabel}</span>
@@ -111,6 +86,7 @@ export function ContactReviews() {
   const [pageSize, setPageSize] = useState(3);
   const [page, setPage] = useState(0);
   const touchX = useRef<number | null>(null);
+  const [sectionRef, revealed] = useReveal<HTMLElement>();
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 768px)");
@@ -135,47 +111,51 @@ export function ContactReviews() {
     setPage(Math.max(0, Math.min(pageCount - 1, next)));
   }
 
+  function card(review: Review, index: number) {
+    return (
+      <ReviewCard
+        key={`${review.name}-${review.date}`}
+        review={review}
+        ratedLabel={fill(copy.rated, { rating: review.rating })}
+        sourceLabel={copy.cardSource}
+        style={stagger(index + 1)}
+      />
+    );
+  }
+
   return (
-    <section className="contact-reviews" aria-labelledby={showCards ? "reviews-heading" : undefined}>
-      <div className="container-narrow">
+    <section
+      ref={sectionRef}
+      className={`contact-reviews${revealed ? " is-revealed" : ""}`}
+      aria-labelledby={showCards ? "reviews-heading" : undefined}
+    >
+      <div className="wrap-content">
         {showCards ? (
-          <header className="text-center">
-            <p className="service-kicker">{copy.kicker}</p>
-            <h2
-              id="reviews-heading"
-              className="mt-3 text-[clamp(1.75rem,3vw,2.25rem)] font-semibold tracking-[-0.02em] text-ink"
-            >
+          <header className="reviews-header gx-up text-center">
+            <p className="contact-eyebrow">{copy.kicker}</p>
+            <h2 id="reviews-heading" className="contact-h2 reviews-heading">
               {copy.heading}
             </h2>
-            <p className="mt-3 flex flex-wrap items-center justify-center gap-x-1.5 text-[13px] text-ink-muted">
+            <p className="reviews-rating">
               <span className="inline-flex gap-0.5" aria-hidden>
                 {Array.from({ length: 5 }, (_, star) => (
                   <Star key={star} className="h-3.5 w-3.5 fill-[#F5B301] text-[#F5B301]" strokeWidth={1.75} />
                 ))}
               </span>
-              <span className="font-medium text-ink">{ratingText}</span>
+              <span className="reviews-rating-value">{ratingText}</span>
               <span>· {fill(copy.reviewsOnGoogle, { count: TOTAL_REVIEWS })}</span>
             </p>
           </header>
         ) : null}
 
         {showCards && !useSlider ? (
-          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {reviews.map((review) => (
-              <ReviewCard
-                key={`${review.name}-${review.date}`}
-                review={review}
-                ratedLabel={fill(copy.rated, { rating: review.rating })}
-                sourceLabel={copy.cardSource}
-              />
-            ))}
-          </div>
+          <div className="reviews-grid">{reviews.map(card)}</div>
         ) : null}
 
         {useSlider ? (
           <>
             <div
-              className="mt-10 overflow-hidden"
+              className="reviews-viewport"
               onTouchStart={(event) => {
                 touchX.current = event.touches[0]?.clientX ?? null;
               }}
@@ -190,21 +170,14 @@ export function ContactReviews() {
             >
               <div className="reviews-track flex" style={{ transform: `translateX(-${safePage * 100}%)` }}>
                 {pages.map((group, groupIndex) => (
-                  <div key={groupIndex} className="grid w-full shrink-0 grid-cols-1 gap-4 md:grid-cols-3">
-                    {group.map((review) => (
-                      <ReviewCard
-                        key={`${review.name}-${review.date}`}
-                        review={review}
-                        ratedLabel={fill(copy.rated, { rating: review.rating })}
-                        sourceLabel={copy.cardSource}
-                      />
-                    ))}
+                  <div key={groupIndex} className="reviews-grid w-full shrink-0">
+                    {group.map(card)}
                   </div>
                 ))}
               </div>
             </div>
 
-            <nav className="mt-8 flex items-center justify-center gap-2" aria-label={copy.pagesLabel}>
+            <nav className="reviews-pages" aria-label={copy.pagesLabel}>
               <button
                 type="button"
                 className="review-page-arrow"
@@ -216,7 +189,7 @@ export function ContactReviews() {
               </button>
               {paginationItems(safePage + 1, pageCount).map((item, itemIndex) =>
                 item === "ellipsis" ? (
-                  <span key={`ellipsis-${itemIndex}`} className="px-1 text-sm text-[#0B4F40]" aria-hidden>
+                  <span key={`ellipsis-${itemIndex}`} className="reviews-ellipsis" aria-hidden>
                     …
                   </span>
                 ) : (
@@ -245,18 +218,18 @@ export function ContactReviews() {
           </>
         ) : null}
 
-        <div className={`text-center ${showCards ? "mt-12" : ""}`}>
-          <p className="text-base text-ink">{copy.ctaPrompt}</p>
-          <QuietLink href={GOOGLE_REVIEW_URL} className="review-leave-cta">
+        <div className={`reviews-cta gx-up${showCards ? " has-cards" : ""}`} style={stagger(4)}>
+          <p className="reviews-cta-prompt">{copy.ctaPrompt}</p>
+          <a href={site.google.reviewUrl} className="review-leave-cta" target="_blank" rel="noopener">
             <Star className="h-4 w-4" strokeWidth={1.75} aria-hidden />
             {copy.cta}
             <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
-          </QuietLink>
-          {reviews.length >= 3 ? (
+          </a>
+          {showCards ? (
             <div>
-              <QuietLink href={GOOGLE_PROFILE_URL} className="review-see-all">
+              <a href={site.google.profileUrl} className="review-see-all" target="_blank" rel="noopener">
                 {copy.seeAll}
-              </QuietLink>
+              </a>
             </div>
           ) : null}
         </div>
