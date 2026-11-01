@@ -914,7 +914,9 @@
 }
 
 .home-contact-aside {
-  flex: 0 0 440px;
+  flex: none;
+  width: 100%;
+  max-width: 520px;
 }
 
 .home-contact-intro,
@@ -986,8 +988,9 @@
   }
 
   .home-contact-aside {
-    flex-basis: 360px;
+    flex: 0 0 360px;
     width: 360px;
+    max-width: none;
   }
 }
 
@@ -997,8 +1000,9 @@
   }
 
   .home-contact-aside {
-    flex-basis: 440px;
+    flex: 0 0 440px;
     width: 440px;
+    max-width: none;
   }
 
   .home-contact-row {
