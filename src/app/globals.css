@@ -585,9 +585,9 @@ a:focus-visible .link-underline {
 
 .team-home-role {
   margin-top: 4px;
-  color: #0f6e56;
-  font-size: 13px;
-  font-weight: 600;
+  color: var(--g-brand);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .team-home-discipline {
