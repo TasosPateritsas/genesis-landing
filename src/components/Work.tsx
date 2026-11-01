@@ -65,7 +65,7 @@ function SelectedCard({ project, size }: { project: Project; size: "large" | "sm
           <p className="home-work-desc">{project.description[locale]}</p>
         </div>
         <span className="home-work-arrow" aria-hidden>
-          ↗
+          →
         </span>
       </div>
     </Link>

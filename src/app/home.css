@@ -431,6 +431,9 @@
   border: 1px solid var(--border);
   background: #ffffff;
   color: inherit;
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
 }
 
 .home-work-media {
@@ -538,9 +541,19 @@
   color: var(--g-brand);
   font-size: 22px;
   line-height: 1;
-  transition-property: transform;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition-property: opacity, transform;
   transition-duration: 250ms;
   transition-timing-function: ease-out;
+}
+
+.home-work-card:focus-visible {
+  border-color: rgb(15 110 86 / 45%);
+}
+
+.home-work-card:focus-visible .home-work-arrow {
+  opacity: 1;
 }
 
 .home-work-more {
@@ -612,9 +625,15 @@
     transform: translate(10px, -18px) rotate(2deg);
   }
 
+  .home-work-card:hover,
+  .home-work-card:focus-visible {
+    border-color: rgb(15 110 86 / 45%);
+  }
+
   .home-work-card:hover .home-work-arrow,
   .home-work-card:focus-visible .home-work-arrow {
-    transform: translate(3px, -3px);
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .home-work-more-cta:hover .cta-arrow,
@@ -629,6 +648,12 @@
   .home-work-phone,
   .home-work-arrow {
     transition: none;
+  }
+
+  .home-work-card:hover .home-work-arrow,
+  .home-work-card:focus-visible .home-work-arrow {
+    opacity: 1;
+    transform: none;
   }
 }
 
