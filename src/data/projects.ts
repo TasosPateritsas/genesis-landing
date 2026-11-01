@@ -1,10 +1,11 @@
 import type { Locale } from "@/data/content";
+import { baumann } from "@/data/cases/baumann";
 import { salty } from "@/data/cases/salty";
 import type { Project } from "@/data/projectTypes";
 
 export type { Project, LocalizedText } from "@/data/projectTypes";
 
-export const projects: Project[] = [salty];
+export const projects: Project[] = [salty, baumann];
 
 export function projectLabel(project: Project, locale: Locale) {
   return `${project.type[locale]} · ${project.industry[locale]}`;
