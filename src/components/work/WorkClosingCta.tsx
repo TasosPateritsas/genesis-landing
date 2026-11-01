@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
+import { stagger, useReveal } from "@/lib/reveal";
 
-export function WorkClosingCta() {
+function WorkClosingPlain() {
   const { t } = useLocale();
   const hrefFor = useLocalizedPath();
 
@@ -28,4 +29,39 @@ export function WorkClosingCta() {
       </div>
     </section>
   );
+}
+
+function WorkClosingDark() {
+  const { t } = useLocale();
+  const hrefFor = useLocalizedPath();
+  const [ref, on] = useReveal<HTMLElement>();
+
+  return (
+    <section
+      ref={ref}
+      className={on ? "work-closing is-revealed" : "work-closing"}
+      data-cursor="dark"
+      aria-labelledby="work-cta-heading"
+    >
+      <div className="wrap-hero">
+        <h2 id="work-cta-heading" className="work-closing-title gx-up">
+          {t.workPage.ctaTitle}
+        </h2>
+        <p className="work-closing-text gx-up" style={stagger(1)}>
+          {t.workPage.ctaBody}
+        </p>
+        <Link href={hrefFor("/contact")} className="work-closing-cta gx-up" style={stagger(2)}>
+          {t.nav.cta}
+          <span className="work-closing-arrow" aria-hidden>
+            →
+          </span>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+export function WorkClosingCta({ tone = "plain" }: { tone?: "plain" | "dark" }) {
+  if (tone === "dark") return <WorkClosingDark />;
+  return <WorkClosingPlain />;
 }

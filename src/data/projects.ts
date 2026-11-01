@@ -39,7 +39,13 @@ export type Project = {
   built: BuiltItem[];
   screens?: ProjectScreen[];
   next?: string;
+  image: LocalizedText;
+  listingTitle?: LocalizedText;
 };
+
+function localeImage(en: string, el = en): LocalizedText {
+  return { en, el };
+}
 
 const delivered = {
   en: "Design · Development · Launch",
@@ -61,6 +67,7 @@ export const projects: Project[] = [
     domain: "saltyboattrips.com",
     liveUrl: "https://www.saltyboattrips.com/",
     desktopImage: "/projects/salty-boat-trips-desktop.jpg",
+    image: localeImage("/projects/salty-boat-trips-desktop.jpg"),
     mobileImage: "/projects/salty-boat-trips-mobile.jpg",
     intro: {
       en: "A premium charter site for private RIB trips, day cruises and boat transfers in Mykonos — built to turn browsing into booking requests.",
@@ -200,13 +207,14 @@ export const projects: Project[] = [
     type: { en: "Eshop", el: "Eshop" },
     industry: { en: "Skincare", el: "Περιποίηση δέρματος" },
     description: {
-      en: "Bilingual skincare store with filtered collections and card, PayPal and Viva payments.",
-      el: "Δίγλωσσο eshop περιποίησης δέρματος με φίλτρα συλλογών και πληρωμές με κάρτα, PayPal και Viva.",
+      en: "Skincare eshop with filtered collections and card, PayPal and Viva payments.",
+      el: "Eshop περιποίησης δέρματος με φίλτρα συλλογών και πληρωμές με κάρτα, PayPal και Viva.",
     },
     stage: "#EAE3D8",
     domain: "dr-baumann.gr",
     liveUrl: "https://dr-baumann.gr/",
     desktopImage: "/projects/dr-baumann-desktop.jpg",
+    image: localeImage("/projects/dr-baumann-desktop.jpg"),
     mobileImage: "/projects/dr-baumann-mobile.jpg",
     intro: {
       en: "The Greek eshop for Dr. Baumann bionomic skincare — five product lines, shopping by skin need, and checkout by card, PayPal or bank transfer.",
@@ -352,7 +360,8 @@ export const projects: Project[] = [
     stage: "#3A0D0D",
     domain: "technebuild.com",
     liveUrl: "https://technebuild.com/",
-    desktopImage: "/projects/techne-desktop.jpg",
+    desktopImage: "/projects/techne-desktop-en.jpg",
+    image: localeImage("/projects/techne-desktop-en.jpg", "/projects/techne-desktop-el.jpg"),
     mobileImage: "/projects/techne-mobile.jpg",
     intro: {
       en: "A bilingual site for an Athens design and build studio, presenting services, built work and developments still to come.",
@@ -413,6 +422,7 @@ export const projects: Project[] = [
     slug: "chalkino-katsaroli",
     next: "pantazelos",
     name: "Χάλκινο Κατσαρόλι",
+    listingTitle: { en: "Chalkino Katsaroli", el: "Χάλκινο Κατσαρόλι" },
     type: { en: "Website", el: "Website" },
     industry: { en: "Restaurant", el: "Εστίαση" },
     description: {
@@ -423,6 +433,10 @@ export const projects: Project[] = [
     domain: "chalkino-katsaroli.gr",
     liveUrl: "https://www.chalkino-katsaroli.gr/",
     desktopImage: "/projects/chalkino-katsaroli-desktop.jpg",
+    image: localeImage(
+      "/projects/chalkino-katsaroli-desktop-en.jpg",
+      "/projects/chalkino-katsaroli-desktop.jpg",
+    ),
     mobileImage: "/projects/chalkino-katsaroli-mobile.jpg",
     intro: {
       en: "A mobile-first site for two home-cooking kitchens in Chalkida and Artaki, built around the daily menu and local search.",
@@ -493,6 +507,7 @@ export const projects: Project[] = [
     domain: "pantazelosrealestate.gr",
     liveUrl: "https://www.pantazelosrealestate.gr/",
     desktopImage: "/projects/pantazelos-desktop.jpg",
+    image: localeImage("/projects/pantazelos-desktop-en.jpg", "/projects/pantazelos-desktop.jpg"),
     mobileImage: "/projects/pantazelos-mobile.jpg",
     intro: {
       en: "A site for the real-estate office in Skroponeria, covering buying and selling with engineering and legal support.",
@@ -563,6 +578,7 @@ export const projects: Project[] = [
     domain: "horizonrealty.gr",
     liveUrl: "https://www.horizonrealty.gr/",
     desktopImage: "/projects/horizon-realty-desktop.jpg",
+    image: localeImage("/projects/horizon-realty-desktop.jpg"),
     mobileImage: "/projects/horizon-realty-mobile.jpg",
     intro: {
       en: "A booking site for boutique short-term stays in Chalkida, with direct booking that skips the platforms.",
@@ -623,6 +639,7 @@ export const projects: Project[] = [
     slug: "vasileiadis",
     next: "salty-boat-trips",
     name: "Αποφράξεις Βασιλειάδης",
+    listingTitle: { en: "Vasileiadis Drain Services", el: "Αποφράξεις Βασιλειάδης" },
     type: { en: "Website", el: "Website" },
     industry: { en: "Local services", el: "Τοπικές υπηρεσίες" },
     description: {
@@ -633,6 +650,7 @@ export const projects: Project[] = [
     domain: "apofraxeisvasileiadis.gr",
     liveUrl: "https://www.apofraxeisvasileiadis.gr/",
     desktopImage: "/projects/vasileiadis-desktop.jpg",
+    image: localeImage("/projects/vasileiadis-desktop.jpg"),
     mobileImage: "/projects/vasileiadis-mobile.jpg",
     intro: {
       en: "A site for a 24/7 drain-clearing service across Attica, built so a visitor can call straight away.",

@@ -147,15 +147,17 @@ export type Dictionary = {
   workPage: {
     breadcrumb: string;
     title: string;
+    titleLines: [string, string];
     subtitle: string;
     metaTitle: string;
     metaDescription: string;
     viewProject: string;
-    comingTitle: string;
-    comingBody: string;
-    comingLabel: string;
-    comingImageAlt: string;
-    comingSteps: Array<{ label: string; state: "done" | "current" | "next" }>;
+    liveDivider: string;
+    upcomingDivider: string;
+    comingSoon: string;
+    pagesLabel: string;
+    previousPage: string;
+    nextPage: string;
     ctaTitle: string;
     ctaBody: string;
     visitLive: string;
@@ -419,21 +421,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
     workPage: {
       breadcrumb: "Work",
       title: "Websites, eshops and booking sites — live and working.",
+      titleLines: ["Websites, eshops and booking", "sites — live and working."],
       subtitle: "Real businesses that run on what we built — every site here is live and in use.",
       metaTitle: "Websites, eshops and booking sites - Genesis",
       metaDescription:
         "Real businesses that run on what we built — every site here is live and in use.",
       viewProject: "View project",
-      comingTitle: "Coming soon.",
-      comingBody:
-        " — a planning and discovery platform for engaged couples and wedding professionals.",
-      comingLabel: "Web app · Weddings",
-      comingImageAlt: "Weddingflow homepage preview",
-      comingSteps: [
-        { label: "Design", state: "done" },
-        { label: "Build", state: "current" },
-        { label: "Launch", state: "next" },
-      ],
+      liveDivider: "Live projects",
+      upcomingDivider: "Upcoming",
+      comingSoon: "Coming soon",
+      pagesLabel: "Project pages",
+      previousPage: "Previous page",
+      nextPage: "Next page",
       ctaTitle: "Have a project in mind?",
       ctaBody: "Tell us what you want to build — we reply within one business day.",
       visitLive: "Visit live site",
@@ -767,22 +766,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
     workPage: {
       breadcrumb: "Έργα",
       title: "Websites, eshops και booking sites — live και σε λειτουργία.",
-      subtitle:
-        "Πραγματικές επιχειρήσεις που δουλεύουν με ό,τι φτιάξαμε — κάθε site εδώ είναι live και σε χρήση.",
+      titleLines: ["Websites, eshops και booking", "sites — live και σε λειτουργία."],
+      subtitle: "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
       metaTitle: "Websites, eshops και booking sites - Genesis",
       metaDescription:
-        "Πραγματικές επιχειρήσεις που δουλεύουν με ό,τι φτιάξαμε — κάθε site εδώ είναι live και σε χρήση.",
+        "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
       viewProject: "Δείτε το έργο",
-      comingTitle: "Έρχεται σύντομα.",
-      comingBody:
-        " — μια πλατφόρμα οργάνωσης και αναζήτησης για ζευγάρια που παντρεύονται και επαγγελματίες του γάμου.",
-      comingLabel: "Web app · Γάμοι",
-      comingImageAlt: "Προεπισκόπηση της αρχικής του Weddingflow",
-      comingSteps: [
-        { label: "Σχεδιασμός", state: "done" },
-        { label: "Ανάπτυξη", state: "current" },
-        { label: "Launch", state: "next" },
-      ],
+      liveDivider: "Έργα σε λειτουργία",
+      upcomingDivider: "Επερχόμενα έργα",
+      comingSoon: "Σύντομα",
+      pagesLabel: "Σελίδες έργων",
+      previousPage: "Προηγούμενη σελίδα",
+      nextPage: "Επόμενη σελίδα",
       ctaTitle: "Έχετε κάποιο project στο μυαλό σας;",
       ctaBody: "Πείτε μας τι θέλετε να φτιάξουμε — απαντάμε μέσα σε μία εργάσιμη.",
       visitLive: "Δείτε το live site",
