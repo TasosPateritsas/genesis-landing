@@ -286,7 +286,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       text: "The first Greek platform that brings wedding venues, professionals and planning tools together — for engaged couples and wedding pros.",
       launch: "Launch:",
       soon: "soon.",
-      photoAlt: "Weddingflow",
+      photoAlt: "Weddingflow — wedding table under olive trees",
     },
     team: {
       label: "The team",
@@ -685,7 +685,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       text: "Η πρώτη ελληνική πλατφόρμα που συγκεντρώνει χώρους γάμου, επαγγελματίες και εργαλεία σχεδιασμού — για ζευγάρια και επαγγελματίες του γάμου.",
       launch: "Launch:",
       soon: "σύντομα.",
-      photoAlt: "Weddingflow",
+      photoAlt: "Weddingflow — τραπέζι γάμου κάτω από ελιές",
     },
     team: {
       label: "Η ομάδα",

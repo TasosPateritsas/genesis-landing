@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { stagger, useReveal } from "@/lib/reveal";
 
@@ -15,8 +16,12 @@ export function Upcoming() {
       aria-labelledby="upcoming-heading"
     >
       <div className="home-upcoming-photo gx-up">
-        {/* Replaced with next/image in the photo-wiring pass. */}
-        <img src="/projects/weddingflow-table.jpg" alt={t.upcoming.photoAlt} />
+        <Image
+          src="/projects/weddingflow-table.jpg"
+          alt={t.upcoming.photoAlt}
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
       </div>
       <div className="home-upcoming-copy gx-up" style={stagger(1)}>
         <div className="home-upcoming-inner">
