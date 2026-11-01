@@ -14,7 +14,7 @@ export function TeamPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <TeamHero />
         <TeamProfiles />
         <TeamVideo />

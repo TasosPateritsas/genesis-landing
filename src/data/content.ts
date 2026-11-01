@@ -12,10 +12,13 @@ export type Dictionary = {
     cta: string;
     openMenu: string;
     closeMenu: string;
+    skip: string;
   };
   hero: {
     eyebrow: string;
-    headline: string;
+    place: string;
+    line1: string;
+    line2: string;
     subtext: string;
     primaryCta: string;
     secondaryCta: string;
@@ -38,10 +41,17 @@ export type Dictionary = {
     more: string;
     seeAll: string;
   };
+  upcoming: {
+    eyebrow: string;
+    title: string;
+    text: string;
+    launch: string;
+    soon: string;
+    photoAlt: string;
+  };
   team: {
     label: string;
-    headingLead: string;
-    headingAccent: string;
+    heading: string;
     intro: string;
     meet: string;
     photoSoon: string;
@@ -144,6 +154,11 @@ export type Dictionary = {
     privacy: string;
     cookies: string;
   };
+  legal: {
+    updated: string;
+    privacy: { title: string; description: string; sections: Array<{ heading: string; body: string }> };
+    cookies: { title: string; description: string; sections: Array<{ heading: string; body: string }> };
+  };
   workPage: {
     breadcrumb: string;
     title: string;
@@ -218,20 +233,23 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cta: "Let's talk",
       openMenu: "Open menu",
       closeMenu: "Close menu",
+      skip: "Skip to content",
     },
     hero: {
       eyebrow: "GENESIS · ATHENS, GR",
-      headline: "We build your product, start to finish.",
+      place: "ATHENS, GR",
+      line1: "Three engineers. One agency.",
+      line2: "You talk to the builders.",
       subtext:
-        "A software development agency in Athens, building websites, apps, and eshops for startups and small businesses — no technical team required.",
-      primaryCta: "Let's talk!",
+        "We build your product from start to finish — websites, eshops, apps, AI agents and AI workflows — and run the technology behind it, as your own in-house team would.",
+      primaryCta: "Let's talk",
       secondaryCta: "See our work",
     },
     services: {
       label: "Services",
       heading: "What we offer",
       intro:
-        "We design, build, and deliver complete digital products — so you never need an in-house technical team.",
+        "Everything your product needs, under one roof. Start with one service, add more as you grow.",
       seeAll: "See all services",
       items: [
         {
@@ -262,16 +280,22 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Selected work",
       heading: "Live sites for real businesses.",
       intro:
-        "Eshops, booking sites and local businesses we designed, built and launched — from Marousi to Mykonos.",
-      more: "More websites, eshops and booking sites in our portfolio.",
-      seeAll: "See all work →",
+        "Websites, eshops and booking platforms we designed, built and launched — live today, for real clients.",
+      more: "Just a glimpse of what we've built.",
+      seeAll: "Explore all projects",
+    },
+    upcoming: {
+      eyebrow: "Upcoming projects",
+      title: "Weddingflow",
+      text: "The first Greek platform that brings wedding venues, professionals and planning tools together — for engaged couples and wedding pros.",
+      launch: "Launch:",
+      soon: "soon.",
+      photoAlt: "Weddingflow — wedding table under olive trees",
     },
     team: {
       label: "The team",
-      headingLead: "Three engineers. One agency.",
-      headingAccent: "You talk to the builders.",
-      intro:
-        "A software development agency in Athens — small enough to move fast, experienced enough to own the full stack from brief to launch.",
+      heading: "Meet the builders.",
+      intro: "Small enough to move fast, experienced enough to own the full stack — from brief to launch.",
       meet: "Meet the team",
       photoSoon: "PHOTO SOON",
     },
@@ -418,6 +442,54 @@ export const dictionaries: Record<Locale, Dictionary> = {
       privacy: "Privacy Policy",
       cookies: "Cookie Policy",
     },
+    legal: {
+      updated: "Working draft. The final text will be confirmed before launch.",
+      privacy: {
+        title: "Privacy Policy",
+        description:
+          "How Genesis handles the name and email you send through the contact form, and the rights you have over that data.",
+        sections: [
+          {
+            heading: "Who is responsible",
+            body: "{name} is operated by Despoina Ntolka, Pantelis Karamailis and Anastasis Pateritsas, working as freelancers in Athens, Greece. For anything about your data, write to {email}.",
+          },
+          {
+            heading: "What we collect",
+            body: "When you write to us through the contact form, we collect your name, your email address, the category you choose and the message you send.",
+          },
+          {
+            heading: "Why we collect it",
+            body: "We use that information only to reply to your enquiry and, if you ask us to, to prepare a proposal. We do not sell it and we do not use it for advertising.",
+          },
+          {
+            heading: "How long we keep it",
+            body: "We keep enquiry messages for as long as we need them to answer you and to keep a record of the work we discussed. You can ask us to delete them.",
+          },
+          {
+            heading: "Your rights",
+            body: "You can ask to access, correct or delete your data, or to limit how we use it. Write to {email}. You can also lodge a complaint with the Hellenic Data Protection Authority.",
+          },
+        ],
+      },
+      cookies: {
+        title: "Cookie Policy",
+        description: "Which cookies Genesis uses today, and why.",
+        sections: [
+          {
+            heading: "What we use today",
+            body: "This site sets only the cookies that are strictly necessary to show you the pages and to remember a choice the site itself needs in order to work.",
+          },
+          {
+            heading: "What we do not use",
+            body: "We do not use analytics cookies, advertising cookies or embedded third-party players. If we add any of those later, this page will say so before they are switched on.",
+          },
+          {
+            heading: "Your browser",
+            body: "You can block or delete cookies in your browser. Strictly necessary cookies are required for the site to load correctly.",
+          },
+        ],
+      },
+    },
     workPage: {
       breadcrumb: "Work",
       title: "Websites, eshops and booking sites — live and working.",
@@ -561,20 +633,23 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cta: "Ας μιλήσουμε",
       openMenu: "Άνοιγμα μενού",
       closeMenu: "Κλείσιμο μενού",
+      skip: "Μετάβαση στο περιεχόμενο",
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",
-      headline: "Φτιάχνουμε το προϊόν σας, από την αρχή ως το τέλος.",
+      place: "ΑΘΗΝΑ",
+      line1: "Τρεις μηχανικοί. Ένα agency.",
+      line2: "Μιλάτε με αυτούς που χτίζουν.",
       subtext:
-        "Agency ανάπτυξης λογισμικού στην Αθήνα — σχεδιάζουμε websites, εφαρμογές και eshops για startups και μικρές επιχειρήσεις, χωρίς να χρειάζεστε τεχνική ομάδα.",
-      primaryCta: "Ας μιλήσουμε!",
+        "Φτιάχνουμε το προϊόν σας από την αρχή ως το τέλος — websites, eshops, εφαρμογές, AI agents και AI workflows — και αναλαμβάνουμε όλο το τεχνικό κομμάτι, όπως θα έκανε η δική σας in-house ομάδα.",
+      primaryCta: "Ας μιλήσουμε",
       secondaryCta: "Δείτε τη δουλειά μας",
     },
     services: {
       label: "Υπηρεσίες",
       heading: "Τι προσφέρουμε",
       intro:
-        "Σχεδιάζουμε, χτίζουμε και παραδίδουμε ολοκληρωμένα digital προϊόντα — χωρίς να χρειάζεστε τεχνική ομάδα.",
+        "Όλα όσα χρειάζεται το προϊόν σας, κάτω από μία στέγη. Ξεκινήστε με μία υπηρεσία και προσθέστε κι άλλες καθώς μεγαλώνετε.",
       seeAll: "Δείτε όλες τις υπηρεσίες",
       items: [
         {
@@ -604,18 +679,25 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     work: {
       label: "Επιλεγμένα έργα",
-      heading: "Ζωντανά sites για πραγματικές επιχειρήσεις.",
+      heading: "Έργα που ήδη δουλεύουν για τους πελάτες μας.",
       intro:
-        "Eshops, booking sites και τοπικές επιχειρήσεις που σχεδιάσαμε, φτιάξαμε και βγάλαμε live — από το Μαρούσι ως τη Μύκονο.",
-      more: "Περισσότερα websites, eshops και booking sites στο portfolio μας.",
-      seeAll: "Δείτε όλα τα έργα →",
+        "Websites, eshops και πλατφόρμες κρατήσεων που σχεδιάσαμε, φτιάξαμε και βγάλαμε live — σε λειτουργία σήμερα, για πραγματικούς πελάτες.",
+      more: "Μια μικρή γεύση από τη δουλειά μας.",
+      seeAll: "Δείτε όλα τα έργα",
+    },
+    upcoming: {
+      eyebrow: "Επερχόμενα έργα",
+      title: "Weddingflow",
+      text: "Η πρώτη ελληνική πλατφόρμα που συγκεντρώνει χώρους γάμου, επαγγελματίες και εργαλεία σχεδιασμού — για ζευγάρια και επαγγελματίες του γάμου.",
+      launch: "Launch:",
+      soon: "σύντομα.",
+      photoAlt: "Weddingflow — τραπέζι γάμου κάτω από ελιές",
     },
     team: {
       label: "Η ομάδα",
-      headingLead: "Τρεις μηχανικοί. Ένα agency.",
-      headingAccent: "Μιλάτε απευθείας με αυτούς που χτίζουν.",
+      heading: "Γνωρίστε αυτούς που χτίζουν.",
       intro:
-        "Agency ανάπτυξης λογισμικού στην Αθήνα, αρκετά μικρό για να κινείται γρήγορα και αρκετά έμπειρο για να αναλαμβάνει όλο το stack, από το brief μέχρι το launch.",
+        "Μικρή ομάδα για να κινούμαστε γρήγορα, με την εμπειρία να αναλάβουμε όλο το έργο — από την ιδέα ως το launch.",
       meet: "Γνωρίστε την ομάδα",
       photoSoon: "ΦΩΤΟΓΡΑΦΙΑ ΣΥΝΤΟΜΑ",
     },
@@ -762,6 +844,54 @@ export const dictionaries: Record<Locale, Dictionary> = {
       rights: "Με επιφύλαξη παντός δικαιώματος.",
       privacy: "Πολιτική απορρήτου",
       cookies: "Πολιτική cookies",
+    },
+    legal: {
+      updated: "Πρόχειρο κείμενο. Το τελικό κείμενο θα επιβεβαιωθεί πριν από τη δημοσίευση.",
+      privacy: {
+        title: "Πολιτική απορρήτου",
+        description:
+          "Πώς η Genesis χειρίζεται το όνομα και το email που στέλνετε μέσω της φόρμας επικοινωνίας, και ποια δικαιώματα έχετε πάνω σε αυτά τα δεδομένα.",
+        sections: [
+          {
+            heading: "Ποιοι είναι υπεύθυνοι",
+            body: "Η {name} λειτουργεί από τη Δέσποινα Ντόλκα, τον Παντελή Καραμαΐλη και τον Αναστάση Πατερίτσα, ελεύθερους επαγγελματίες με έδρα την Αθήνα. Για οτιδήποτε αφορά τα δεδομένα σας, γράψτε στο {email}.",
+          },
+          {
+            heading: "Τι συλλέγουμε",
+            body: "Όταν μας γράφετε μέσω της φόρμας επικοινωνίας, συλλέγουμε το όνομά σας, τη διεύθυνση email, την κατηγορία που επιλέγετε και το μήνυμα που στέλνετε.",
+          },
+          {
+            heading: "Γιατί τα συλλέγουμε",
+            body: "Χρησιμοποιούμε αυτά τα στοιχεία μόνο για να απαντήσουμε στο αίτημά σας και, αν μας το ζητήσετε, για να ετοιμάσουμε μια πρόταση. Δεν τα πουλάμε και δεν τα χρησιμοποιούμε για διαφήμιση.",
+          },
+          {
+            heading: "Για πόσο τα κρατάμε",
+            body: "Κρατάμε τα μηνύματα για όσο χρειάζεται ώστε να σας απαντήσουμε και να έχουμε αρχείο της συζήτησης. Μπορείτε να μας ζητήσετε να τα διαγράψουμε.",
+          },
+          {
+            heading: "Τα δικαιώματά σας",
+            body: "Μπορείτε να ζητήσετε πρόσβαση, διόρθωση ή διαγραφή των δεδομένων σας, ή περιορισμό της χρήσης τους. Γράψτε στο {email}. Μπορείτε επίσης να υποβάλετε καταγγελία στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα.",
+          },
+        ],
+      },
+      cookies: {
+        title: "Πολιτική cookies",
+        description: "Ποια cookies χρησιμοποιεί σήμερα η Genesis και γιατί.",
+        sections: [
+          {
+            heading: "Τι χρησιμοποιούμε σήμερα",
+            body: "Αυτός ο ιστότοπος θέτει μόνο τα cookies που είναι απολύτως απαραίτητα για να εμφανίζονται οι σελίδες και για να θυμάται μια επιλογή που χρειάζεται ο ίδιος για να λειτουργεί.",
+          },
+          {
+            heading: "Τι δεν χρησιμοποιούμε",
+            body: "Δεν χρησιμοποιούμε cookies ανάλυσης, διαφημιστικά cookies ή ενσωματωμένους players τρίτων. Αν προσθέσουμε κάτι από αυτά αργότερα, η σελίδα αυτή θα το αναφέρει πριν ενεργοποιηθούν.",
+          },
+          {
+            heading: "Το πρόγραμμα περιήγησής σας",
+            body: "Μπορείτε να αποκλείσετε ή να διαγράψετε τα cookies από το πρόγραμμα περιήγησής σας. Τα απολύτως απαραίτητα cookies χρειάζονται για να φορτώνει σωστά ο ιστότοπος.",
+          },
+        ],
+      },
     },
     workPage: {
       breadcrumb: "Έργα",

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FadeIn } from "./FadeIn";
+import { SectionHeading } from "@/components/SectionHeading";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
+import { revealDelay, useReveal } from "@/lib/reveal";
 import { socialLabel, teamMembers } from "@/data/team";
 
 function GitHubIcon() {
@@ -25,32 +26,31 @@ function LinkedInIcon() {
 export function Team() {
   const { locale, t } = useLocale();
   const hrefFor = useLocalizedPath();
+  const [ref, revealed] = useReveal<HTMLElement>();
 
   return (
     <section
+      ref={ref}
       id="team"
-      className="section-pad container-narrow py-20 md:py-28"
+      className={`home-team offer-section container-narrow${revealed ? " is-revealed" : ""}`}
       aria-labelledby="team-heading"
     >
-      <FadeIn>
-        <div className="max-w-4xl">
-          <p className="service-kicker">{t.team.label}</p>
-          <h2
-            id="team-heading"
-            className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-[#14181a] md:text-4xl"
-          >
-            <span className="block">{t.team.headingLead}</span>
-            <span className="mt-1 block text-[#0F6E56] md:whitespace-nowrap">{t.team.headingAccent}</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#4b5563] md:text-lg">
-            {t.team.intro}
-          </p>
-        </div>
-      </FadeIn>
+      <div className="gx-up">
+        <SectionHeading
+          id="team-heading"
+          eyebrow={t.team.label}
+          title={t.team.heading}
+          intro={t.team.intro}
+        />
+      </div>
 
       <div className="team-home-grid">
-        {teamMembers.map((member) => (
-          <article key={member.id} className="team-home-card">
+        {teamMembers.map((member, index) => (
+          <article
+            key={member.id}
+            className="team-home-card gx-up"
+            style={revealDelay(index * 0.15, Math.min(index * 0.06, 0.3))}
+          >
             <div className="team-home-photo">
               {member.photo ? (
                 <Image
@@ -62,7 +62,9 @@ export function Team() {
                 />
               ) : (
                 <>
-                  <span className="team-home-initials">{member.initials}</span>
+                  <span className="team-home-initials" aria-hidden>
+                    {member.initials}
+                  </span>
                   <span className="team-home-photo-caption">{t.team.photoSoon}</span>
                 </>
               )}

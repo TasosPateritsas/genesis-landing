@@ -169,8 +169,11 @@
 }
 
 .team-divider-line {
-  height: 1px;
   flex: 1;
+  align-self: flex-start;
+  height: 0;
+  margin-top: 10px;
+  border-top: 1px solid rgba(15, 110, 86, 0.28);
   transform: scaleX(0);
   transition-property: transform;
   transition-duration: 1.4s;
@@ -179,13 +182,11 @@
 }
 
 .team-divider-line.is-left {
-  background: linear-gradient(90deg, rgba(15, 110, 86, 0), rgba(15, 110, 86, 0.28));
-  transform-origin: right;
+  transform-origin: right center;
 }
 
 .team-divider-line.is-right {
-  background: linear-gradient(90deg, rgba(15, 110, 86, 0.28), rgba(15, 110, 86, 0));
-  transform-origin: left;
+  transform-origin: left center;
 }
 
 .is-revealed .team-divider-line {
@@ -977,6 +978,14 @@
 }
 
 @media (min-width: 1024px) {
+  .team-divider-line.is-left {
+    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0), rgba(15, 110, 86, 0.28)) 1;
+  }
+
+  .team-divider-line.is-right {
+    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0.28), rgba(15, 110, 86, 0)) 1;
+  }
+
   .team-hero {
     padding: calc(76px + 80px) 0 72px;
   }

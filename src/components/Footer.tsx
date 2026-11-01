@@ -27,7 +27,7 @@ function FooterItem({ link }: { link: FooterLink }) {
 }
 
 export function Footer({ variant = "light" }: { variant?: FooterVariant }) {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const hrefFor = useLocalizedPath();
   const year = new Date().getFullYear();
 
@@ -56,7 +56,7 @@ export function Footer({ variant = "light" }: { variant?: FooterVariant }) {
           <Link href={hrefFor("/")} className="site-footer-logo" aria-label={`${site.name} home`}>
             <Logo tone={variant === "dark" ? "inverse" : "default"} />
           </Link>
-          <p className="site-footer-location">{t.footer.location}</p>
+          <p className="site-footer-location">{site.location[locale]}</p>
           <p className="site-footer-tagline">{t.footer.tagline}</p>
         </div>
         {columns.map((column) => (

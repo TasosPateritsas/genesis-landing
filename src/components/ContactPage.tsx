@@ -12,7 +12,7 @@ export function ContactPage() {
   return (
     <>
       <Header variant="dark" />
-      <main>
+      <main id="main">
         <ContactHero />
         <ContactWays />
         <ContactHowWeWork />

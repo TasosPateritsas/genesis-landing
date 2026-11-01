@@ -5,11 +5,18 @@ import { dictionaries, type Locale } from "@/data/content";
 import type { Project } from "@/data/projects";
 import { localizePath, type PublicPath } from "@/lib/routes";
 
-const HOME_EN = {
-  title: "Genesis — We build your product, start to finish",
-  description:
-    "A software development agency in Athens, building websites, apps, and eshops for startups and small businesses — no technical team required.",
-};
+const HOME = {
+  en: {
+    title: "Genesis — Websites, Apps & AI Agents | Software Agency in Athens",
+    description:
+      "Three engineers in Athens building websites, eshops, apps, AI agents and AI workflows — and running the tech behind them as your in-house team.",
+  },
+  el: {
+    title: "Genesis — Websites, Εφαρμογές & AI Agents | Agency Λογισμικού στην Αθήνα",
+    description:
+      "Τρεις μηχανικοί στην Αθήνα φτιάχνουμε websites, eshops, εφαρμογές, AI agents και AI workflows — και τρέχουμε την τεχνολογία τους σαν δική σας in-house ομάδα.",
+  },
+} as const;
 
 export async function isPreviewHost() {
   const headerStore = await headers();
@@ -78,17 +85,7 @@ export async function buildPageMetadata({
 }
 
 export function homeMetadata(locale: Locale) {
-  if (locale === "en") {
-    return buildPageMetadata({ locale, path: "/", ...HOME_EN });
-  }
-
-  const hero = dictionaries.el.hero;
-  return buildPageMetadata({
-    locale,
-    path: "/",
-    title: `Genesis — ${hero.headline.replace(/\.$/, "")}`,
-    description: hero.subtext,
-  });
+  return buildPageMetadata({ locale, path: "/", ...HOME[locale] });
 }
 
 export function servicesMetadata(locale: Locale) {
@@ -129,6 +126,16 @@ export function projectMetadata(locale: Locale, project: Project) {
     path: `/work/${project.slug}` as PublicPath,
     title: `${project.name[locale]} - Genesis`,
     description: project.intro[locale],
+  });
+}
+
+export function legalMetadata(locale: Locale, kind: "privacy" | "cookies") {
+  const page = dictionaries[locale].legal[kind];
+  return buildPageMetadata({
+    locale,
+    path: kind === "privacy" ? "/privacy" : "/cookies",
+    title: `${page.title} - ${site.name}`,
+    description: page.description,
   });
 }
 

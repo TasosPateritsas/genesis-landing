@@ -57,8 +57,8 @@ export const teamMembers: readonly TeamMember[] = [
       el: "UX, scoping προϊόντος, πώς μια θολή ιδέα γίνεται πλάνο",
     },
     chips: {
-      en: ["UI/UX", "Project management", "Client communication", "Prototyping"],
-      el: ["UI/UX", "Διαχείριση project", "Επικοινωνία με τον πελάτη", "Prototyping"],
+      en: ["Product strategy", "UI/UX design", "Prototyping", "Project delivery"],
+      el: ["Στρατηγική προϊόντος", "UI/UX design", "Prototyping", "Παράδοση project"],
     },
     github: "https://github.com/dntolka",
     linkedin: "https://www.linkedin.com/in/ntolka",
@@ -93,8 +93,8 @@ export const teamMembers: readonly TeamMember[] = [
       el: "Next.js, απόδοση, γιατί αργεί το site σας",
     },
     chips: {
-      en: ["Next.js", "React", "TypeScript", "Node.js"],
-      el: ["Next.js", "React", "TypeScript", "Node.js"],
+      en: ["Frontend", "Backend & APIs", "Performance", "AI integrations"],
+      el: ["Frontend", "Backend & APIs", "Απόδοση", "AI integrations"],
     },
     github: "https://github.com/pkaramailis",
     linkedin: "https://www.linkedin.com/in/panteliskaramailis",
@@ -129,8 +129,8 @@ export const teamMembers: readonly TeamMember[] = [
       el: "Deployments, hosting, πώς ένα site μένει πάντα online",
     },
     chips: {
-      en: ["Vercel", "CI/CD", "Docker", "Monitoring"],
-      el: ["Vercel", "CI/CD", "Docker", "Monitoring"],
+      en: ["Cloud & hosting", "Automated deploys", "Monitoring", "Security"],
+      el: ["Cloud & hosting", "Αυτόματα deploys", "Monitoring", "Ασφάλεια"],
     },
     github: "https://github.com/TasosPateritsas",
     linkedin: "https://www.linkedin.com/in/anastassis-pateritsas",

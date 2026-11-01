@@ -106,7 +106,7 @@
 }
 
 .lang-switch-link {
-  color: #9ca3af;
+  color: #6b7280;
   transition: color 150ms ease;
 }
 
@@ -602,7 +602,7 @@
   }
 
   .lang-switch-link:not([aria-current="page"]):hover {
-    color: #4b5563;
+    color: #374151;
   }
 
   .site-header-cta:hover,

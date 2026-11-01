@@ -1,76 +1,88 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { FadeIn } from "./FadeIn";
 import { BrowserFrame, PhoneFrame } from "./work/DeviceFrames";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
+import { stagger, useReveal } from "@/lib/reveal";
 import { projectLabel, selectedProjects, type Project } from "@/data/projects";
+
+const homeStage: Record<string, string> = {
+  "salty-boat-trips": "#D9E8E2",
+  "dr-baumann": "#EFE7DA",
+  techne: "#F1E3E1",
+};
+
+const homePhone: Record<string, "bottom-left" | "right" | "left"> = {
+  "salty-boat-trips": "bottom-left",
+  "dr-baumann": "right",
+  techne: "left",
+};
+
+/** Homepage frames use the shared @2x captures. Project pages keep their own shots. */
+const homeShots: Record<string, { desktop: { en: string; el: string }; mobile: string }> = {
+  "salty-boat-trips": {
+    desktop: {
+      en: "/projects/salty-boat-trips-desktop.jpg",
+      el: "/projects/salty-boat-trips-desktop.jpg",
+    },
+    mobile: "/projects/salty-boat-trips-mobile.jpg",
+  },
+  "dr-baumann": {
+    desktop: { en: "/projects/dr-baumann-desktop.jpg", el: "/projects/dr-baumann-desktop.jpg" },
+    mobile: "/projects/dr-baumann-mobile.jpg",
+  },
+  techne: {
+    desktop: { en: "/projects/techne-desktop-en.jpg", el: "/projects/techne-desktop-el.jpg" },
+    mobile: "/projects/techne-mobile.jpg",
+  },
+};
 
 function SelectedCard({ project, size }: { project: Project; size: "large" | "small" }) {
   const { locale } = useLocale();
   const hrefFor = useLocalizedPath();
   const large = size === "large";
+  const phone = homePhone[project.slug] ?? "right";
+  const name = project.name[locale];
+  const shots = homeShots[project.slug];
+  const desktopAlt =
+    locale === "el" ? `Ο ιστότοπος ${name} σε υπολογιστή` : `${name} website on desktop`;
+  const mobileAlt =
+    locale === "el" ? `Ο ιστότοπος ${name} σε κινητό` : `${name} website on mobile`;
 
   return (
-    <Link
-      href={hrefFor(`/work/${project.slug}`)}
-      className="work-selected-card group flex h-full flex-col border border-[#D8E0DC] bg-white"
-    >
-      <div className="relative min-h-[210px] flex-1" style={{ backgroundColor: project.stage }}>
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className={`absolute left-1/2 -translate-x-1/2 ${
-              large ? "top-1/2 w-[86%] -translate-y-1/2" : "bottom-0 w-[80%]"
-            }`}
-          >
-            <div className="work-selected-frame">
-              <BrowserFrame
-                image={project.desktopImage}
-                alt=""
-                domain={project.domain}
-                barHeight={large ? 30 : 24}
-                dotSize={8}
-                domainSize={11}
-                radiusClass={large ? "rounded-lg" : "rounded-t-lg"}
-                shadowClass="shadow-[0_30px_60px_-24px_rgba(0,0,0,0.6)]"
-                sizes={large ? "(max-width: 1024px) 86vw, 40vw" : "(max-width: 1024px) 80vw, 22vw"}
-              />
-            </div>
-          </div>
+    <Link href={hrefFor(`/work/${project.slug}`)} className={`home-work-card ${large ? "is-large" : "is-small"}`}>
+      <div className="home-work-media" style={{ backgroundColor: homeStage[project.slug] ?? "#E7F0EC" }}>
+        <div className={`home-work-browser is-${phone}`}>
+          <BrowserFrame
+            image={shots?.desktop[locale] ?? project.image[locale]}
+            alt={desktopAlt}
+            domain={project.domain}
+            barHeight={large ? 22 : 16}
+            dotSize={large ? 7 : 6}
+            domainSize={11}
+            radiusClass="rounded-tl-xl"
+            className="home-work-browser-frame"
+            sizes={large ? "(max-width: 1024px) 92vw, 58vw" : "(max-width: 1024px) 92vw, 42vw"}
+            barColor="#ffffff"
+          />
         </div>
         <PhoneFrame
-          image={project.mobileImage}
-          alt=""
-          border={6}
+          image={shots?.mobile ?? project.mobileImage}
+          alt={mobileAlt}
+          border={large ? 7 : 5}
           radius={large ? 26 : 20}
-          sizes="120px"
-          className={`absolute ${
-            large ? "right-[5%] bottom-[9%] w-[20%]" : "right-[6%] -bottom-9 w-[19%]"
-          }`}
+          sizes={large ? "24vw" : "30vw"}
+          className={`home-work-phone is-${phone}`}
         />
       </div>
-
-      <div className={`flex items-center gap-4 ${large ? "px-6 py-6" : "px-5 pb-5 pt-8"}`}>
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-[#085041]">{projectLabel(project, locale)}</p>
-          <h3
-            className={`mt-1.5 font-semibold tracking-tight text-[#15201C] ${
-              large ? "text-[30px] leading-tight" : "text-[22px] leading-snug"
-            }`}
-          >
-            {project.name[locale]}
-          </h3>
-          <p className={`mt-2 leading-relaxed text-[#5A675F] ${large ? "text-base" : "text-[15px]"}`}>
-            {project.description[locale]}
-          </p>
+      <div className="home-work-body">
+        <div className="min-w-0">
+          <p className="home-work-kicker">{projectLabel(project, locale)}</p>
+          <h3 className="home-work-title">{name}</h3>
+          <p className="home-work-desc">{project.description[locale]}</p>
         </div>
-        <span className="flex size-12 shrink-0 items-center justify-center border border-[#D8E0DC] text-[#15201C]">
-          <ArrowUpRight
-            className="work-selected-arrow size-5"
-            strokeWidth={1.75}
-            aria-hidden
-          />
+        <span className="home-work-arrow" aria-hidden>
+          →
         </span>
       </div>
     </Link>
@@ -81,44 +93,40 @@ export function Work() {
   const { t } = useLocale();
   const hrefFor = useLocalizedPath();
   const [lead, ...rest] = selectedProjects;
+  const [ref, revealed] = useReveal<HTMLElement>();
 
   return (
-    <section id="work" aria-labelledby="work-heading">
+    <section ref={ref} id="work" className={revealed ? "is-revealed" : ""} aria-labelledby="work-heading">
       <div className="work-grid-bg" aria-hidden />
-      <div className="container section-pad container-narrow relative py-20 md:py-28">
-        <FadeIn>
-          <p className="service-kicker">{t.work.label}</p>
-          <h2
-            id="work-heading"
-            className="mt-3 max-w-3xl text-3xl font-semibold tracking-[-0.02em] text-ink md:text-5xl"
-          >
+      <div className="offer-section container-narrow home-work-inner">
+        <div className="gx-up">
+          <p className="home-section-eyebrow">{t.work.label}</p>
+          <h2 id="work-heading" className="home-section-title">
             {t.work.heading}
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
-            {t.work.intro}
-          </p>
-        </FadeIn>
+          <p className="home-section-intro home-work-intro">{t.work.intro}</p>
+        </div>
 
-        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-12">
-          <FadeIn className="h-full lg:col-span-7">
+        <div className="home-work-grid">
+          <div className="gx-up" style={stagger(0)}>
             <SelectedCard project={lead} size="large" />
-          </FadeIn>
-          <div className="flex h-full flex-col gap-6 lg:col-span-5">
+          </div>
+          <div className="home-work-stack">
             {rest.map((project, index) => (
-              <FadeIn key={project.slug} className="min-h-0 flex-1" delay={(index + 1) as 1 | 2}>
+              <div key={project.slug} className="gx-up" style={stagger(index + 1)}>
                 <SelectedCard project={project} size="small" />
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-5 border-t border-[#D8E0DC] pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-base text-[#5A675F]">{t.work.more}</p>
-          <Link
-            href={hrefFor("/work")}
-            className="btn-primary inline-flex h-12 shrink-0 items-center justify-center rounded-md px-6 text-sm font-semibold"
-          >
+        <div className="home-work-more">
+          <p>{t.work.more}</p>
+          <Link href={hrefFor("/work")} className="btn-primary home-work-more-cta">
             {t.work.seeAll}
+            <span className="cta-arrow" aria-hidden>
+              →
+            </span>
           </Link>
         </div>
       </div>
