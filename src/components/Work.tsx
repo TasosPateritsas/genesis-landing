@@ -85,7 +85,7 @@ export function Work() {
   return (
     <section id="work" aria-labelledby="work-heading">
       <div className="work-grid-bg" aria-hidden />
-      <div className="container section-pad container-narrow relative py-20 md:py-28">
+      <div className="offer-section container-narrow relative py-20 md:py-28">
         <FadeIn>
           <p className="service-kicker">{t.work.label}</p>
           <h2

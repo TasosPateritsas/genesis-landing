@@ -29,7 +29,7 @@ export function Team() {
   return (
     <section
       id="team"
-      className="section-pad container-narrow py-20 md:py-28"
+      className="offer-section container-narrow py-20 md:py-28"
       aria-labelledby="team-heading"
     >
       <FadeIn>
