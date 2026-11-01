@@ -880,7 +880,7 @@
 
 .home-contact-inner {
   position: relative;
-  padding-block: 72px;
+  padding-block: 64px;
 }
 
 .home-contact-row {
@@ -1011,7 +1011,7 @@
 
 @media (min-width: 1024px) {
   .home-contact-inner {
-    padding-block: 112px;
+    padding-block: 96px;
   }
 
   .home-contact-aside {

@@ -558,7 +558,7 @@ a:focus-visible .link-underline {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 20px;
-  margin-top: 3rem;
+  margin-top: 40px;
 }
 
 @media (min-width: 768px) {
@@ -582,6 +582,7 @@ a:focus-visible .link-underline {
 @media (min-width: 1024px) {
   .team-home-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 56px;
   }
 
   .team-home-photo {
