@@ -44,7 +44,7 @@ function StatCell({ stat, active, delayMs }: { stat: Stat; active: boolean; dela
       style={stagger(site.stats.indexOf(stat))}
       aria-label={`${stat.value}${stat.suffix} ${label}`}
     >
-      <p className="home-stat-value">
+      <p className="home-stat-value" aria-hidden>
         <span className="home-sr">
           {stat.value}
           {stat.suffix} {label}
@@ -56,7 +56,9 @@ function StatCell({ stat, active, delayMs }: { stat: Stat; active: boolean; dela
           </span>
         ) : null}
       </p>
-      <p className="home-stat-label">{label}</p>
+      <p className="home-stat-label" aria-hidden>
+        {label}
+      </p>
     </div>
   );
 }
