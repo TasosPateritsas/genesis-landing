@@ -170,13 +170,14 @@ export type Dictionary = {
     nextProject: string;
   };
   servicesPage: {
-    breadcrumb: string;
-    heading: string;
+    titleLines: Array<Array<{ text: string; accent?: true }>>;
     subtitle: string;
     metaTitle: string;
     metaDescription: string;
+    divider: string;
     includedLabel: string;
     cta: string;
+    proof: string;
     closingHeading: string;
     closingSubtext: string;
     closingCta: string;
@@ -192,6 +193,7 @@ export type Dictionary = {
       body: string;
       included: string[];
       steps: Array<{ title: string; detail: string }>;
+      proof?: true;
     }>;
   };
 };
@@ -446,18 +448,23 @@ export const dictionaries: Record<Locale, Dictionary> = {
       nextProject: "Next project",
     },
     servicesPage: {
-      breadcrumb: "Genesis › Services",
-      heading: "Everything your product needs to launch and grow.",
+      titleLines: [
+        [{ text: "Everything your product needs" }],
+        [{ text: "to launch " }, { text: "and grow.", accent: true }],
+      ],
       subtitle:
         "App development, AI agents, workflow automation, and websites & eshops — all under one roof.",
       metaTitle: "App Development, AI Agents & Workflows, Websites - Genesis",
       metaDescription:
         "Custom app development, AI agents, AI workflow automation, websites and eshops for startups and small businesses. Based in Athens, working worldwide.",
+      divider: "Services",
       includedLabel: "What's included",
       cta: "Book a discovery call",
+      proof: "See related work",
       closingHeading: "Not sure what you need?",
-      closingSubtext: "A free 30-minute call scopes the right starting point.",
-      closingCta: "Let's talk!",
+      closingSubtext:
+        "A free 30-minute call scopes the right starting point — and every project gets a written proposal with scope, timeline and cost before any work starts.",
+      closingCta: "Let's talk",
       blocks: [
         {
           id: "app-development",
@@ -534,6 +541,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { title: "Build", detail: "Design + development" },
             { title: "Launch", detail: "SEO + deploy" },
           ],
+          proof: true,
         },
       ],
       chips: [
@@ -789,18 +797,23 @@ export const dictionaries: Record<Locale, Dictionary> = {
       nextProject: "Επόμενο έργο",
     },
     servicesPage: {
-      breadcrumb: "Genesis › Υπηρεσίες",
-      heading: "Το προϊόν σας, από την ιδέα στην πραγματικότητα.",
+      titleLines: [
+        [{ text: "Το προϊόν σας, από την ιδέα" }],
+        [{ text: "στην πραγματικότητα.", accent: true }],
+      ],
       subtitle:
         "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, και websites & eshops — όλα σε ένα μέρος.",
       metaTitle: "Εφαρμογές, AI Agents & Workflows, Websites - Genesis",
       metaDescription:
         "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+      divider: "Υπηρεσίες",
       includedLabel: "Τι περιλαμβάνει",
       cta: "Κλείστε μια συνάντηση γνωριμίας",
+      proof: "Δείτε σχετικά έργα",
       closingHeading: "Δεν ξέρετε τι χρειάζεστε;",
-      closingSubtext: "Μια δωρεάν συνάντηση 30 λεπτών ορίζει το σωστό ξεκίνημα.",
-      closingCta: "Ας μιλήσουμε!",
+      closingSubtext:
+        "Μια δωρεάν 30λεπτη συζήτηση ορίζει το σωστό σημείο εκκίνησης — και κάθε project παίρνει γραπτή προσφορά με scope, χρονοδιάγραμμα και κόστος πριν ξεκινήσει οποιαδήποτε δουλειά.",
+      closingCta: "Ας μιλήσουμε",
       blocks: [
         {
           id: "app-development",
@@ -877,6 +890,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             { title: "Ανάπτυξη", detail: "Design + development" },
             { title: "Παράδοση", detail: "SEO + deploy" },
           ],
+          proof: true,
         },
       ],
       chips: [

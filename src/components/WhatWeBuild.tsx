@@ -19,7 +19,7 @@ export function WhatWeBuild() {
   return (
     <section
       id="services"
-      className="bg-[#fafafa] py-20 md:py-28"
+      className="py-20 md:py-28"
       aria-labelledby="services-heading"
     >
       <div className="offer-section container-narrow">

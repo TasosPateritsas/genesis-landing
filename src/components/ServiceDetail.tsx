@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { Bot, ShoppingBag, Smartphone, Workflow, type LucideIcon } from "lucide-react";
-import { FadeIn } from "@/components/FadeIn";
 import type { Dictionary } from "@/data/content";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
+import { useReveal } from "@/lib/reveal";
 
 type ServiceBlock = Dictionary["servicesPage"]["blocks"][number];
 
@@ -20,54 +20,72 @@ type ServiceDetailProps = {
   block: ServiceBlock;
   includedLabel: string;
   cta: string;
-  from: "left" | "right";
+  proofLabel: string;
+  proofHref: string;
+  fromRight: boolean;
 };
 
-export function ServiceDetail({ block, includedLabel, cta, from }: ServiceDetailProps) {
+export function ServiceDetail({ block, includedLabel, cta, proofLabel, proofHref, fromRight }: ServiceDetailProps) {
   const { locale } = useLocale();
   const Icon = icons[block.icon];
+  const [ref, revealed] = useReveal<HTMLElement>();
+  const className = [
+    "service-detail",
+    fromRight ? "is-from-right" : "",
+    revealed ? "is-revealed" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <FadeIn variant={from === "left" ? "from-left" : "from-right"}>
-      <section id={block.id} className="scroll-mt-24" aria-labelledby={`${block.id}-heading`}>
-        <article className="service-detail">
-          <div className="service-detail-badge" aria-hidden>
-            <Icon className="h-5 w-5" strokeWidth={1.8} />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p className="service-kicker">{block.kicker}</p>
-            <h2
-              id={`${block.id}-heading`}
-              className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-ink"
-            >
-              {block.heading}
-            </h2>
-            <p className="mt-3 max-w-3xl text-base leading-relaxed text-ink-muted">{block.body}</p>
+    <section id={block.id} className="service-block" aria-labelledby={`${block.id}-heading`}>
+      <article ref={ref} className={className}>
+        <div className="service-detail-badge" aria-hidden>
+          <Icon className="h-5 w-5" strokeWidth={1.8} />
+        </div>
+        <div className="service-detail-body">
+          <p className="service-kicker">{block.kicker}</p>
+          <h2 id={`${block.id}-heading`} className="service-title">
+            {block.heading}
+          </h2>
+          <p className="service-body">{block.body}</p>
 
-            <p className="service-included-label mt-6">{includedLabel}</p>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-ink-muted">
-              {block.included.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+          <p className="service-included-label">{includedLabel}</p>
+          <ul className="service-included">
+            {block.included.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
 
-            <ol className="service-steps mt-6">
-              {block.steps.map((step, index) => (
-                <li key={step.title} className="service-step">
-                  <p className="text-sm font-semibold text-ink">
-                    {index + 1}. {step.title}
-                  </p>
-                  <p className="mt-1 text-sm text-ink-muted">{step.detail}</p>
-                </li>
-              ))}
-            </ol>
+          <ol className="service-steps">
+            {block.steps.map((step, index) => (
+              <li key={step.title} className="service-step">
+                <p className="service-step-title">
+                  {index + 1}. {step.title}
+                </p>
+                <p className="service-step-detail">{step.detail}</p>
+              </li>
+            ))}
+          </ol>
 
-            <Link href={contactHref(locale, "booking")} className="service-discovery-cta">
+          <div className="service-actions">
+            <Link href={contactHref(locale, "booking")} className="services-primary">
               {cta}
+              <span className="services-primary-arrow" aria-hidden>
+                →
+              </span>
             </Link>
+            {block.proof ? (
+              <Link href={proofHref} className="services-proof">
+                <span className="services-proof-text">{proofLabel}</span>
+                <span className="services-proof-arrow" aria-hidden>
+                  →
+                </span>
+              </Link>
+            ) : null}
           </div>
-        </article>
-      </section>
-    </FadeIn>
+        </div>
+      </article>
+    </section>
   );
 }
