@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./motion.css";
+@import "./chrome.css";
 
 :root {
   --accent: #085041;
@@ -7,8 +9,8 @@
   --accent-soft: #eef6f3;
   --bg: #f7faf8;
   --bg-elevated: #ffffff;
-  --ink: #15201c;
-  --ink-muted: #5a675f;
+  --ink: #14181a;
+  --ink-muted: #5b6b66;
   --border: #d8e0dc;
   --border-strong: #b8c5bf;
 }
@@ -24,8 +26,12 @@
   --color-ink-muted: var(--ink-muted);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
-  --font-sans: var(--font-ibm-plex-sans);
-  --font-mono: var(--font-ibm-plex-mono);
+  --color-g-dark: var(--g-dark);
+  --color-g-brand: var(--g-brand);
+  --color-g-mint: var(--g-mint);
+  --color-g-light: var(--g-light);
+  --font-sans: var(--font-inter);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 html {
@@ -35,7 +41,7 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-ibm-plex-sans), "Segoe UI", sans-serif;
+  font-family: var(--font-inter), "Segoe UI", sans-serif;
 }
 
 ::selection {
@@ -2549,11 +2555,6 @@ a:focus-visible .link-underline {
   padding: 16px 22px;
   font-size: 15px;
   font-weight: 600;
-}
-
-.team-footer-mint {
-  border-top: 1px solid #c5e0d3;
-  background: #dcf0e7;
 }
 
 .cursor-follower {

@@ -1,6 +1,7 @@
+import { site } from "@/config/site";
 import type { Locale } from "@/data/content";
 
-export const SITE_URL = "https://genesis.studio";
+export const SITE_URL = site.url;
 
 /** Add a page here and the sitemap picks up both language versions. */
 export const publicRoutes = [
@@ -19,6 +20,14 @@ export const publicRoutes = [
 ] as const;
 
 export type PublicPath = (typeof publicRoutes)[number]["path"];
+
+export const primaryNav = [
+  { path: "/", label: "home" },
+  { path: "/services", label: "services" },
+  { path: "/work", label: "work" },
+  { path: "/team", label: "team" },
+  { path: "/contact", label: "contact" },
+] as const satisfies ReadonlyArray<{ path: PublicPath; label: string }>;
 
 export function stripLocalePrefix(pathname: string) {
   const normalized =

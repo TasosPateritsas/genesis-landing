@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
-import { site } from "@/data/content";
+import { phoneHref, site } from "@/config/site";
 import { FadeIn } from "./FadeIn";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
@@ -46,9 +46,9 @@ export function Contact() {
                   <Mail className="h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden />
                   <span className="contact-direct-link-text">{site.email}</span>
                 </a>
-                <a href={site.phoneHref} className="contact-direct-link">
+                <a href={phoneHref ?? undefined} className="contact-direct-link">
                   <Phone className="h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden />
-                  <span className="contact-direct-link-text">{site.phone}</span>
+                  <span className="contact-direct-link-text">{site.phoneDisplay}</span>
                 </a>
               </div>
             </div>

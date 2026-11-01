@@ -5,17 +5,18 @@ export function Logo({
   className?: string;
   tone?: "default" | "inverse";
 }) {
-  const accent = tone === "inverse" ? "text-white" : "text-accent";
+  const initial = tone === "inverse" ? "text-white" : "text-accent";
   const word = tone === "inverse" ? "text-white" : "text-ink";
+  const dot = tone === "inverse" ? "text-g-mint" : "text-accent";
 
   return (
     <span
-      className={`inline-flex items-baseline font-semibold tracking-tight ${className}`}
+      className={`inline-flex items-baseline font-semibold tracking-[-0.03em] ${className}`}
       aria-label="Genesis"
     >
-      <span className={accent}>G</span>
+      <span className={initial}>G</span>
       <span className={word}>enesis</span>
-      <span className={accent}>.</span>
+      <span className={dot}>.</span>
     </span>
   );
 }

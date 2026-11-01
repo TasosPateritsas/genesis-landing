@@ -1,161 +1,187 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
+import { site } from "@/config/site";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
-import { stripLocalePrefix } from "@/lib/routes";
+import { primaryNav, stripLocalePrefix } from "@/lib/routes";
 
-export function Header() {
+export type HeaderVariant = "light" | "dark";
+
+const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function isCurrent(path: string, barePath: string) {
+  if (path === "/") return barePath === "/";
+  return barePath === path || barePath.startsWith(`${path}/`);
+}
+
+export function Header({ variant = "light" }: { variant?: HeaderVariant }) {
   const { locale, t } = useLocale();
   const hrefFor = useLocalizedPath();
-  const pathname = usePathname();
-  const barePath = stripLocalePrefix(pathname);
-  const dark = barePath === "/contact" || barePath === "/work" || barePath.startsWith("/work/");
+  const barePath = stripLocalePrefix(usePathname());
   const talkHref = contactHref(locale, "message");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const links = [
-    { href: hrefFor("/services"), path: "/services", label: t.nav.services },
-    { href: hrefFor("/work"), path: "/work", label: t.nav.work },
-    { href: hrefFor("/team"), path: "/team", label: t.nav.team },
-    { href: hrefFor("/contact"), path: "/contact", label: t.nav.contact },
-  ];
-
-  function isCurrent(path: string) {
-    if (path === "") return false;
-    if (path === "/work") return barePath === "/work" || barePath.startsWith("/work/");
-    return barePath === path;
-  }
-
-  function linkClass(path: string, mobile = false) {
-    const current = isCurrent(path);
-    const size = mobile ? "text-base" : "text-sm";
-    if (dark) {
-      return `${size} ${current ? "font-bold text-white" : "font-medium text-white/75 hover:text-white"}`;
-    }
-    return `${size} ${
-      current ? "font-bold text-[#14181a]" : "font-medium text-[#4b5563] hover:text-[#14181a]"
-    }`;
-  }
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const dark = variant === "dark";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const root = document.documentElement;
+    const previousOverflow = root.style.overflow;
+    root.style.overflow = "hidden";
+
+    const close = () => {
+      setOpen(false);
+      toggleRef.current?.focus();
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const panelItems = Array.from(panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []);
+      const items = [toggleRef.current, ...panelItems].filter((item): item is HTMLElement => item != null);
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onResize = () => {
+      if (desktop.matches) setOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      root.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [open]);
+
+  const closeMenu = () => setOpen(false);
+
   return (
-    <header
-      data-cursor={dark ? "dark" : undefined}
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background,backdrop-filter] duration-300 ${
-        dark
-          ? "border-white/12 bg-[#0B3B30]"
-          : scrolled || open
-            ? "border-accent/25 bg-bg-elevated/90 backdrop-blur-md"
-            : "border-accent/25 bg-transparent"
-      }`}
-    >
-      <div className="section-pad container-narrow flex h-16 items-center justify-between md:h-[4.25rem]">
-        <Link href={hrefFor("/#top")} className="text-lg md:text-xl" aria-label="Genesis home">
-          <Logo tone={dark ? "inverse" : "default"} />
-        </Link>
-
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={isCurrent(link.path) ? "page" : undefined}
-              className={`transition-colors ${linkClass(link.path)}`}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <LanguageToggle tone={dark ? "dark" : "default"} />
-          <Link
-            href={talkHref}
-            className={`btn-primary inline-flex h-10 items-center rounded-md px-4 text-sm font-semibold${
-              dark ? " btn-primary-glow" : ""
-            }`}
-          >
-            {t.nav.cta}
+    <>
+      <header
+        className="site-header"
+        data-variant={variant}
+        data-scrolled={scrolled}
+        data-open={open}
+        data-cursor={dark ? "dark" : undefined}
+      >
+        <div className="site-header-bar">
+          <Link href={hrefFor("/")} className="site-header-logo" aria-label={`${site.name} home`} onClick={closeMenu}>
+            <Logo tone={dark ? "inverse" : "default"} />
           </Link>
-        </nav>
 
-        <div className="flex items-center gap-2 lg:hidden">
-          <LanguageToggle compact tone={dark ? "dark" : "default"} />
-          <button
-            type="button"
-            className={`inline-flex h-10 w-10 items-center justify-center rounded-md border ${
-              dark
-                ? "border-white/20 bg-transparent text-white"
-                : "border-border bg-bg-elevated text-ink"
-            }`}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span className="sr-only">Menu</span>
-            <span className="flex w-4 flex-col gap-1.5" aria-hidden>
-              <span
-                className={`h-0.5 w-full transition-transform ${dark ? "bg-white" : "bg-ink"} ${open ? "translate-y-2 rotate-45" : ""}`}
-              />
-              <span
-                className={`h-0.5 w-full transition-opacity ${dark ? "bg-white" : "bg-ink"} ${open ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`h-0.5 w-full transition-transform ${dark ? "bg-white" : "bg-ink"} ${open ? "-translate-y-2 -rotate-45" : ""}`}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
-
-      {open ? (
-        <nav
-          id="mobile-nav"
-          className={`section-pad border-t pb-4 lg:hidden ${
-            dark ? "border-white/12 bg-[#0B3B30]" : "border-border bg-bg-elevated"
-          }`}
-          aria-label="Mobile"
-        >
-          <ul className="flex flex-col gap-1 pt-2">
-            {links.map((link) => (
-              <li key={link.href}>
+          <nav className="site-header-nav" aria-label="Primary">
+            {primaryNav.map((item) => {
+              const current = isCurrent(item.path, barePath);
+              return (
                 <Link
-                  href={link.href}
-                  aria-current={isCurrent(link.path) ? "page" : undefined}
-                  className={`block rounded-md px-3 py-3 transition-colors ${linkClass(link.path, true)}`}
-                  onClick={() => setOpen(false)}
+                  key={item.path}
+                  href={hrefFor(item.path)}
+                  aria-current={current ? "page" : undefined}
+                  className="site-nav-link"
                 >
-                  {link.label}
+                  {t.nav[item.label]}
+                  <span className="site-nav-underline" aria-hidden />
                 </Link>
-              </li>
-            ))}
-            <li className="px-3 py-3">
-              <LanguageToggle tone={dark ? "dark" : "default"} />
-            </li>
-            <li className="pt-1">
-              <Link
-                href={talkHref}
-                className={`btn-primary flex h-11 items-center justify-center rounded-md text-sm font-semibold${
-                  dark ? " btn-primary-glow" : ""
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                {t.nav.cta}
-              </Link>
-            </li>
+              );
+            })}
+          </nav>
+
+          <div className="site-header-actions">
+            <LanguageToggle className="site-header-lang" />
+            <Link href={talkHref} className="site-header-cta" tabIndex={open ? -1 : undefined} aria-hidden={open || undefined}>
+              {t.nav.cta}
+              <span className="cta-arrow" aria-hidden>
+                →
+              </span>
+            </Link>
+            <button
+              ref={toggleRef}
+              type="button"
+              className="site-header-burger"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+              onClick={() => setOpen((value) => !value)}
+            >
+              <span aria-hidden />
+              <span aria-hidden />
+              <span aria-hidden />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div
+        ref={panelRef}
+        id="mobile-nav"
+        className="site-menu"
+        data-variant={variant}
+        data-open={open}
+        inert={!open}
+        data-cursor={dark ? "dark" : undefined}
+      >
+        <nav aria-label="Mobile">
+          <ul>
+            {primaryNav.map((item) => {
+              const current = isCurrent(item.path, barePath);
+              return (
+                <li key={item.path}>
+                  <Link
+                    href={hrefFor(item.path)}
+                    aria-current={current ? "page" : undefined}
+                    className="site-menu-link"
+                    onClick={closeMenu}
+                  >
+                    {t.nav[item.label]}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
-      ) : null}
-    </header>
+        <div className="site-menu-bottom">
+          <LanguageToggle className="lang-switch-lg" onNavigate={closeMenu} />
+          <Link href={talkHref} className="site-menu-cta" onClick={closeMenu}>
+            {t.nav.cta}
+            <span className="cta-arrow" aria-hidden>
+              →
+            </span>
+          </Link>
+          <a href={`mailto:${site.email}`} className="site-menu-email">
+            {site.email}
+          </a>
+        </div>
+      </div>
+    </>
   );
 }

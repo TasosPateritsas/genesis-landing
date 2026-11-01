@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { dictionaries, site, type Locale } from "@/data/content";
+import { site } from "@/config/site";
+import { dictionaries, type Locale } from "@/data/content";
 import type { Project } from "@/data/projects";
 import { localizePath, type PublicPath } from "@/lib/routes";
 

@@ -10,7 +10,7 @@ import { WorkHero } from "@/components/work/WorkHero";
 export function WorkPage() {
   return (
     <>
-      <Header />
+      <Header variant="dark" />
       <main>
         <WorkHero />
         <WorkGrid />
