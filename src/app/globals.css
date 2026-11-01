@@ -5,6 +5,7 @@
 @import "./team.css";
 @import "./services.css";
 @import "./work.css";
+@import "./home.css";
 
 :root {
   --accent: #085041;

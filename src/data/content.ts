@@ -15,7 +15,8 @@ export type Dictionary = {
   };
   hero: {
     eyebrow: string;
-    headline: string;
+    line1: string;
+    line2: string;
     subtext: string;
     primaryCta: string;
     secondaryCta: string;
@@ -221,10 +222,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     hero: {
       eyebrow: "GENESIS · ATHENS, GR",
-      headline: "We build your product, start to finish.",
+      line1: "Three engineers. One agency.",
+      line2: "You talk to the builders.",
       subtext:
-        "A software development agency in Athens, building websites, apps, and eshops for startups and small businesses — no technical team required.",
-      primaryCta: "Let's talk!",
+        "We build your product from start to finish — websites, eshops, apps, AI agents and AI workflows — and run the technology behind it, as your own in-house team would.",
+      primaryCta: "Let's talk",
       secondaryCta: "See our work",
     },
     services: {
@@ -564,10 +566,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     hero: {
       eyebrow: "GENESIS · ΑΘΗΝΑ, GR",
-      headline: "Φτιάχνουμε το προϊόν σας, από την αρχή ως το τέλος.",
+      line1: "Τρεις μηχανικοί. Ένα agency.",
+      line2: "Μιλάτε με αυτούς που χτίζουν.",
       subtext:
-        "Agency ανάπτυξης λογισμικού στην Αθήνα — σχεδιάζουμε websites, εφαρμογές και eshops για startups και μικρές επιχειρήσεις, χωρίς να χρειάζεστε τεχνική ομάδα.",
-      primaryCta: "Ας μιλήσουμε!",
+        "Φτιάχνουμε το προϊόν σας από την αρχή ως το τέλος — websites, eshops, εφαρμογές, AI agents και AI workflows — και αναλαμβάνουμε όλο το τεχνικό κομμάτι, όπως θα έκανε η δική σας in-house ομάδα.",
+      primaryCta: "Ας μιλήσουμε",
       secondaryCta: "Δείτε τη δουλειά μας",
     },
     services: {

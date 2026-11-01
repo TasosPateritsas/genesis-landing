@@ -86,7 +86,7 @@ export function homeMetadata(locale: Locale) {
   return buildPageMetadata({
     locale,
     path: "/",
-    title: `Genesis — ${hero.headline.replace(/\.$/, "")}`,
+    title: `Genesis — ${hero.line1.replace(/\.$/, "")}`,
     description: hero.subtext,
   });
 }

@@ -1,0 +1,136 @@
+.home-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-hero-inner {
+  position: relative;
+  display: flex;
+  min-height: calc(86svh - 4.25rem);
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 64px;
+  padding-bottom: 72px;
+}
+
+.home-eyebrow {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.home-hero-title {
+  margin: 22px 0 0;
+  color: var(--ink);
+  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+.home-hero-line {
+  display: block;
+}
+
+.home-hero-line.is-accent {
+  color: var(--g-brand);
+}
+
+.home-hero-bottom {
+  display: grid;
+  gap: 32px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(15, 110, 86, 0.15);
+}
+
+.home-hero-lead {
+  max-width: 580px;
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-hero-primary,
+.home-hero-secondary {
+  display: inline-flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 0 18px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.home-hero-secondary {
+  border: 1px solid var(--border-strong);
+  background: rgb(255 255 255 / 70%);
+  color: var(--ink);
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.hero-rise {
+  animation: hero-rise-in 0.7s cubic-bezier(0.33, 1, 0.68, 1) both;
+  animation-delay: var(--hero-delay, 0s);
+}
+
+@keyframes hero-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@media (min-width: 768px) {
+  .home-hero-line {
+    white-space: nowrap;
+  }
+
+  .home-hero-bottom {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .home-hero-actions {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-hero-primary,
+  .home-hero-secondary {
+    width: 100%;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-hero-primary:hover .cta-arrow,
+  .home-hero-primary:focus-visible .cta-arrow {
+    transform: translateX(3px);
+  }
+
+  .home-hero-secondary:hover,
+  .home-hero-secondary:focus-visible {
+    border-color: var(--g-brand);
+    color: var(--g-brand);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+  }
+}
