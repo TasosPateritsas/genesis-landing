@@ -61,7 +61,37 @@ function WorkClosingDark() {
   );
 }
 
-export function WorkClosingCta({ tone = "plain" }: { tone?: "plain" | "dark" }) {
+function WorkClosingLight() {
+  const { t } = useLocale();
+  const hrefFor = useLocalizedPath();
+  const [ref, on] = useReveal<HTMLElement>();
+
+  return (
+    <section
+      ref={ref}
+      className={on ? "case-closing is-revealed" : "case-closing"}
+      aria-labelledby="case-closing-heading"
+    >
+      <div className="wrap-hero">
+        <h2 id="case-closing-heading" className="case-closing-title gx-up">
+          {t.workPage.ctaTitle}
+        </h2>
+        <p className="case-closing-text gx-up" style={stagger(1)}>
+          {t.workPage.ctaBody}
+        </p>
+        <Link href={hrefFor("/contact")} className="case-closing-cta gx-up" style={stagger(2)}>
+          {t.nav.cta}
+          <span className="case-closing-arrow" aria-hidden>
+            →
+          </span>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+export function WorkClosingCta({ tone = "plain" }: { tone?: "plain" | "dark" | "light" }) {
   if (tone === "dark") return <WorkClosingDark />;
+  if (tone === "light") return <WorkClosingLight />;
   return <WorkClosingPlain />;
 }

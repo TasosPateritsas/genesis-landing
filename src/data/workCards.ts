@@ -11,16 +11,15 @@ export type WorkCard = {
 };
 
 function liveCard(project: Project): WorkCard {
-  const title = project.listingTitle ?? { en: project.name, el: project.name };
   return {
     slug: project.slug,
-    title,
+    title: project.title,
     meta: { en: projectLabel(project, "en"), el: projectLabel(project, "el") },
     description: project.description,
-    image: project.image,
+    image: project.showcase.desktop,
     imageAlt: {
-      en: `${title.en} homepage`,
-      el: `Αρχική σελίδα, ${title.el}`,
+      en: `${project.title.en} homepage`,
+      el: `Αρχική σελίδα, ${project.title.el}`,
     },
   };
 }

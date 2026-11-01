@@ -26,7 +26,7 @@ function SelectedCard({ project, size }: { project: Project; size: "large" | "sm
           >
             <div className="work-selected-frame">
               <BrowserFrame
-                image={project.desktopImage}
+                image={project.showcase.desktop[locale]}
                 alt=""
                 domain={project.domain}
                 barHeight={large ? 30 : 24}
@@ -40,7 +40,7 @@ function SelectedCard({ project, size }: { project: Project; size: "large" | "sm
           </div>
         </div>
         <PhoneFrame
-          image={project.mobileImage}
+          image={project.showcase.mobile[locale]}
           alt=""
           border={6}
           radius={large ? 26 : 20}

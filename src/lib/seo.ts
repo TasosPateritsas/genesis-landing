@@ -127,7 +127,7 @@ export function projectMetadata(locale: Locale, project: Project) {
   return buildPageMetadata({
     locale,
     path: `/work/${project.slug}` as PublicPath,
-    title: `${project.name} - Genesis`,
+    title: `${project.title[locale]} - Genesis`,
     description: project.intro[locale],
   });
 }
