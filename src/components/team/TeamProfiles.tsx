@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type PointerEvent } from "react";
-import { teamWhoCopy } from "@/data/teamWho";
+import { teamIntroCopy, teamProfiles, type TeamProfileCopy } from "@/data/teamPage";
 import { socialLabel, teamMembers, type TeamMember } from "@/data/team";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { revealDelay, useReveal } from "@/lib/reveal";
 
 function GitHubIcon() {
   return (
@@ -22,122 +22,110 @@ function LinkedInIcon() {
   );
 }
 
-function canHoverSwap(event: PointerEvent<HTMLDivElement>) {
-  if (event.pointerType !== "mouse") return false;
-  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-}
+const membersById = Object.fromEntries(teamMembers.map((member) => [member.id, member])) as Record<
+  TeamMember["id"],
+  TeamMember
+>;
 
-function ProfilePhoto({ member, caption }: { member: TeamMember; caption: string }) {
-  const [casual, setCasual] = useState(false);
-  const canSwap = Boolean(member.photo && member.photoCasual);
+function ProfileCard({ profile, fromEnd }: { profile: TeamProfileCopy; fromEnd: boolean }) {
+  const { locale, t } = useLocale();
+  const member = membersById[profile.id];
+  const [ref, revealed] = useReveal<HTMLElement>();
 
   return (
-    <div
-      className="team-profile-photo"
-      onPointerEnter={(event) => {
-        if (canSwap && canHoverSwap(event)) setCasual(true);
-      }}
-      onPointerLeave={() => setCasual(false)}
+    <article
+      ref={ref}
+      className={`team-profile${fromEnd ? " is-reverse" : ""}${revealed ? " is-revealed" : ""}`}
     >
-      {member.photo ? (
-        <>
-          <Image
-            src={member.photo}
-            alt={member.name}
-            fill
-            sizes="380px"
-            className="team-profile-shot object-cover"
-          />
-          {member.photoCasual ? (
-            <Image
-              src={member.photoCasual}
-              alt=""
-              fill
-              sizes="380px"
-              className={`team-profile-shot team-profile-shot-casual object-cover${casual ? " is-on" : ""}`}
-            />
-          ) : null}
-        </>
-      ) : (
-        <>
-          <span className="team-profile-initials">{member.initials}</span>
-          <span className="team-home-photo-caption">{caption}</span>
-        </>
-      )}
-    </div>
+      <div className="team-profile-photo">
+        {member.photo ? (
+          <Image src={member.photo} alt={profile.name[locale]} fill sizes="(min-width: 1024px) 380px, 100vw" className="object-cover" />
+        ) : (
+          <div className="team-profile-fallback">
+            <span className="team-profile-initials" aria-hidden>
+              {member.initials}
+            </span>
+            <span className="team-photo-label">{t.team.photoSoon}</span>
+          </div>
+        )}
+      </div>
+      <div className="team-profile-body">
+        <p className="team-profile-role">{member.role}</p>
+        <h3 className="team-profile-name">{profile.name[locale]}</h3>
+        <p className="team-profile-quote">{profile.quote[locale]}</p>
+        <p className="team-eyebrow team-profile-label">{teamIntroCopy.onProject[locale]}</p>
+        <ul className="team-profile-bullets">
+          {profile.bullets[locale].map((item) => (
+            <li key={item}>
+              <span aria-hidden>→</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <ul className="team-profile-tags">
+          {profile.tags.map((tag) => (
+            <li key={tag} className="team-profile-tag">
+              {tag}
+            </li>
+          ))}
+        </ul>
+        <div className="team-profile-credentials">
+          <p>
+            <strong>{teamIntroCopy.experience[locale].strong}</strong> {teamIntroCopy.experience[locale].rest}
+          </p>
+          {profile.degrees[locale].map((degree) => (
+            <p key={degree}>{degree}</p>
+          ))}
+        </div>
+        <div className="team-profile-socials">
+          <a
+            href={member.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="team-profile-social"
+            aria-label={socialLabel(profile.name[locale], "GitHub", locale)}
+          >
+            <GitHubIcon />
+          </a>
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="team-profile-social"
+            aria-label={socialLabel(profile.name[locale], "LinkedIn", locale)}
+          >
+            <LinkedInIcon />
+          </a>
+        </div>
+      </div>
+    </article>
   );
 }
 
 export function TeamProfiles() {
-  const { locale, t } = useLocale();
+  const { locale } = useLocale();
+  const [ref, revealed] = useReveal<HTMLDivElement>();
 
   return (
-    <section className="team-who" aria-labelledby="team-who-heading">
-      <div className="section-pad container-narrow">
-        <div className="team-who-header">
-          <h2 id="team-who-heading" className="team-who-title">
-            {teamWhoCopy.titleLead[locale]}
-            <span className="team-who-accent">{teamWhoCopy.titleAccent[locale]}</span>
+    <section className="team-who team-section" aria-labelledby="team-who-heading">
+      <div className="wrap-content">
+        <div ref={ref} className={revealed ? "is-revealed" : undefined}>
+          <div className="team-divider">
+            <span className="team-divider-line is-left" aria-hidden />
+            <p className="team-divider-label">{teamIntroCopy.divider[locale]}</p>
+            <span className="team-divider-line is-right" aria-hidden />
+          </div>
+          <h2 id="team-who-heading" className="team-h2 gx-up">
+            {teamIntroCopy.titleLead[locale]}
+            <span className="is-accent">{teamIntroCopy.titleAccent[locale]}</span>
           </h2>
-          <p className="team-who-subtext">{teamWhoCopy.subtext[locale]}</p>
+          <p className="team-who-sub gx-up" style={revealDelay(0.1, 0.06)}>
+            {teamIntroCopy.subtext[locale]}
+          </p>
         </div>
-
         <div className="team-who-list">
-          {teamMembers.map((member, index) => (
-            <article
-              key={member.id}
-              className={index % 2 === 1 ? "team-profile is-reverse" : "team-profile"}
-            >
-              <ProfilePhoto member={member} caption={t.team.photoSoon} />
-              <div>
-                <p className="team-profile-role">{member.role}</p>
-                <h3 className="team-profile-name">{member.name}</h3>
-                <p className="team-profile-education">{member.education[locale]}</p>
-                <p className="team-profile-bio">{member.bio[locale]}</p>
-                <p className="team-profile-on">{teamWhoCopy.onProject[locale]}</p>
-                <ul className="team-profile-bullets">
-                  {member.onProject[locale].map((item) => (
-                    <li key={item}>
-                      <span className="team-profile-arrow" aria-hidden>
-                        →
-                      </span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="team-profile-ask">
-                  <strong>{teamWhoCopy.ask[locale]} </strong>
-                  {member.askAbout[locale]}
-                </p>
-                <ul className="team-profile-chips">
-                  {member.chips[locale].map((chip) => (
-                    <li key={chip} className="team-chip">
-                      {chip}
-                    </li>
-                  ))}
-                </ul>
-                <div className="team-profile-socials">
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="team-social"
-                    aria-label={socialLabel(member.name, "GitHub", locale)}
-                  >
-                    <GitHubIcon />
-                  </a>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="team-social"
-                    aria-label={socialLabel(member.name, "LinkedIn", locale)}
-                  >
-                    <LinkedInIcon />
-                  </a>
-                </div>
-              </div>
-            </article>
+          {teamProfiles.map((profile, index) => (
+            <ProfileCard key={profile.id} profile={profile} fromEnd={index % 2 === 1} />
           ))}
         </div>
       </div>

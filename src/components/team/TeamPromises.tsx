@@ -1,59 +1,58 @@
 "use client";
 
-import { useLayoutEffect, useRef, type CSSProperties } from "react";
-import { teamPromises, teamPromisesCopy } from "@/data/teamPromises";
+import { useEffect, useState } from "react";
+import { promisesTitle, teamPromises } from "@/data/teamPage";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { revealDelay, useReducedMotion, useReveal } from "@/lib/reveal";
+import { SideTitle } from "@/components/team/SideTitle";
+
+function PromiseCheck({ ticked }: { ticked: boolean }) {
+  return (
+    <span className={ticked ? "team-check is-ticked" : "team-check"} aria-hidden>
+      <svg viewBox="0 0 20 20" width="20" height="20">
+        <path d="M4.5 10.4 L8.2 14.1 L15.6 6.2" />
+      </svg>
+    </span>
+  );
+}
 
 export function TeamPromises() {
   const { locale } = useLocale();
-  const rowRef = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const [ref, revealed] = useReveal<HTMLDivElement>();
+  const [ticked, setTicked] = useState(0);
 
-  useLayoutEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const row = rowRef.current;
-    if (!row || reduce) return;
-
-    const items = [...row.querySelectorAll<HTMLElement>(".team-promise")];
-    items.forEach((item) => item.classList.add("is-pending"));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
-        items.forEach((item) => {
-          item.classList.remove("is-pending");
-          item.classList.add("is-shown");
-        });
-        observer.disconnect();
-      },
-      { threshold: 0.3 },
+  useEffect(() => {
+    if (!revealed || reduced) return;
+    const timers = teamPromises.map((_, index) =>
+      window.setTimeout(() => {
+        setTicked((count) => Math.max(count, index + 1));
+      }, 500 + index * 180),
     );
-    observer.observe(row);
-
-    return () => {
-      observer.disconnect();
-      items.forEach((item) => item.classList.remove("is-pending", "is-shown"));
-    };
-  }, []);
+    return () => timers.forEach((timer) => window.clearTimeout(timer));
+  }, [revealed, reduced]);
 
   return (
-    <section className="team-promises" data-cursor="dark" aria-labelledby="team-promises-heading">
-      <div className="section-pad container-narrow">
-        <p className="service-kicker team-promises-kicker">{teamPromisesCopy.kicker[locale]}</p>
-        <h2 id="team-promises-heading" className="team-promises-title">
-          {teamPromisesCopy.heading[locale]}
-        </h2>
-        <div ref={rowRef} className="team-promises-grid">
-          {teamPromises.map((item, index) => (
-            <article
-              key={item.title.en}
-              className="team-promise"
-              style={{ "--promise-delay": `${index * 250}ms` } as CSSProperties}
-            >
-              <p className="team-promise-number">{String(index + 1).padStart(2, "0")}</p>
-              <h3 className="team-promise-title">{item.title[locale]}</h3>
-              <p className="team-promise-text">{item.text[locale]}</p>
-            </article>
-          ))}
+    <section className="team-promises team-section" data-cursor="dark" aria-labelledby="team-promises-heading">
+      <div className="wrap-content">
+        <div ref={ref} className={revealed ? "team-pair is-revealed" : "team-pair"}>
+          <SideTitle id="team-promises-heading" title={promisesTitle} className="gx-up" />
+          <div className="team-promise-grid">
+            {teamPromises.map((item, index) => {
+              const checked = reduced || ticked > index;
+              return (
+                <article key={item.title.en} className="team-promise gx-up" style={revealDelay(0.1 + index * 0.1, Math.min(0.1 + index * 0.06, 0.3))}>
+                  <div className="team-promise-body">
+                    <PromiseCheck ticked={checked} />
+                    <div>
+                      <h3 className="team-promise-title">{item.title[locale]}</h3>
+                      <p className="team-promise-text">{item.text[locale]}</p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -2,84 +2,70 @@
 
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
-import { storyCommand, storyCommits, teamStoryCopy, type StoryCommit } from "@/data/teamStory";
 import type { Locale } from "@/data/content";
+import { storyCommand, storyCommits, storyTitle } from "@/data/teamPage";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { useReveal } from "@/lib/reveal";
 import { localizePath } from "@/lib/routes";
+import { SideTitle } from "@/components/team/SideTitle";
 
+const EASE = "cubic-bezier(.33,1,.68,1)";
 const DESKTOP_X = [260, 480, 700, 920] as const;
 const MOBILE_Y = [78, 230, 382, 520] as const;
 
-function CommitMeta({
+function CommitCopy({
   commit,
   locale,
-  href,
 }: {
-  commit: StoryCommit;
+  commit: (typeof storyCommits)[number];
   locale: Locale;
-  href?: string;
 }) {
-  const message = commit.text[locale];
+  const href = "href" in commit ? localizePath(commit.href, locale) : undefined;
   return (
     <div className="team-story-meta">
       <p className="team-story-year">{commit.year}</p>
       <p className="team-story-type">{commit.type}</p>
-      <p className={`team-story-message${commit.href ? " is-link" : ""}`}>
-        {href ? <Link href={href}>{message}</Link> : message}
-      </p>
+      <p className="team-story-message">{href ? <Link href={href}>{commit.message}</Link> : commit.message}</p>
     </div>
   );
 }
 
 function DesktopGraph({ locale }: { locale: Locale }) {
   return (
-    <svg
-      className="team-story-desktop"
-      data-axis="x"
-      data-origin="260"
-      data-span="440"
-      viewBox="0 0 1000 300"
-      width="100%"
-      role="img"
-      aria-label="Genesis timeline"
-    >
-      <text x="20" y="32" className="team-story-branch" fill="#0F6E56">
+    <svg className="team-story-desktop" viewBox="0 0 1120 320" role="img" aria-label="Genesis timeline">
+      <text className="team-story-branch is-despoina" x="20" y="32">
         despoina
       </text>
-      <text x="20" y="102" className="team-story-branch" fill="#1E8A6C">
+      <text className="team-story-branch is-pantelis" x="20" y="102">
         pantelis
       </text>
-      <text x="20" y="198" className="team-story-branch" fill="#6B8A7E">
+      <text className="team-story-branch is-anastasis" x="20" y="198">
         anastasis
       </text>
-      <text x="700" y="96" textAnchor="middle" className="team-story-branch" fill="#14181A">
+      <text className="team-story-branch is-main" x="700" y="96" textAnchor="middle">
         main
       </text>
-      <path data-draw="branch" d="M20 40 H150 C210 40 210 110 260 110" stroke="#0F6E56" />
-      <path data-draw="branch" d="M20 110 H260" stroke="#34D399" />
-      <path data-draw="branch" d="M20 180 H150 C210 180 210 110 260 110" stroke="#9CC7B7" />
-      <path data-draw="main" d="M260 110 H700" stroke="#14181A" />
-      <path data-draw="future" d="M700 110 H960" stroke="#14181A" strokeDasharray="2 8" />
+      <path className="is-despoina" data-draw="branch" d="M20 40 H150 C210 40 210 110 260 110" />
+      <path className="is-pantelis" data-draw="branch" d="M20 110 H260" />
+      <path className="is-anastasis" data-draw="branch" d="M20 180 H150 C210 180 210 110 260 110" />
+      <path className="is-main" data-draw="main" d="M260 110 H700" />
+      <path className="is-future" data-draw="future" d="M700 110 H1080" />
       {storyCommits.map((commit, index) => {
-        const x = DESKTOP_X[index];
+        const x = DESKTOP_X[index] ?? 0;
         const future = index === storyCommits.length - 1;
-        const href = commit.href ? localizePath(commit.href, locale) : undefined;
         return (
-          <g key={commit.year}>
-            <g data-commit={future ? "future" : "solid"} data-pos={x} className="team-story-commit">
-              <circle
-                cx={x}
-                cy="110"
-                r="10"
-                fill={future ? "none" : "#ffffff"}
-                stroke="#0F6E56"
-                strokeWidth="3"
-                strokeDasharray={future ? "2 3" : undefined}
-              />
-              {future ? null : <circle cx={x} cy="110" r="4" fill="#0F6E56" />}
-            </g>
-            <foreignObject x={x - 78} y="128" width="156" height="96" data-meta={future ? "future" : "solid"}>
-              <CommitMeta commit={commit} locale={locale} href={href} />
+          <g key={commit.year} data-commit="">
+            <circle
+              cx={x}
+              cy="110"
+              r="8"
+              fill="#1d1f21"
+              stroke={future ? "#9FE3CF" : "#e6e6e6"}
+              strokeWidth="2.5"
+              strokeDasharray={future ? "3 3" : undefined}
+            />
+            <foreignObject x={x + 16} y="124" width="180" height="160">
+              <CommitCopy commit={commit} locale={locale} />
             </foreignObject>
           </g>
         );
@@ -90,53 +76,37 @@ function DesktopGraph({ locale }: { locale: Locale }) {
 
 function MobileGraph({ locale }: { locale: Locale }) {
   return (
-    <svg
-      className="team-story-mobile"
-      data-axis="y"
-      data-origin="78"
-      data-span="304"
-      viewBox="0 0 400 620"
-      width="100%"
-      role="img"
-      aria-label="Genesis timeline"
-    >
-      <text x="18" y="20" className="team-story-branch" fill="#0F6E56">
+    <svg className="team-story-mobile" viewBox="0 0 400 640" role="img" aria-label="Genesis timeline">
+      <text className="team-story-branch is-despoina" x="18" y="20">
         despoina
       </text>
-      <text x="18" y="70" className="team-story-branch" fill="#1E8A6C">
+      <text className="team-story-branch is-pantelis" x="18" y="70">
         pantelis
       </text>
-      <text x="18" y="148" className="team-story-branch" fill="#6B8A7E">
+      <text className="team-story-branch is-anastasis" x="18" y="148">
         anastasis
       </text>
-      <text x="96" y="70" className="team-story-branch" fill="#14181A">
-        main
-      </text>
-      <path data-draw="branch" d="M18 28 H48 C66 28 66 78 78 78" stroke="#0F6E56" />
-      <path data-draw="branch" d="M18 78 H78" stroke="#34D399" />
-      <path data-draw="branch" d="M18 128 H48 C66 128 66 78 78 78" stroke="#9CC7B7" />
-      <path data-draw="main" d="M78 78 V382" stroke="#14181A" />
-      <path data-draw="future" d="M78 382 V520" stroke="#14181A" strokeDasharray="2 8" />
+      <path className="is-despoina" data-draw="branch" d="M18 28 H48 C66 28 66 78 78 78" />
+      <path className="is-pantelis" data-draw="branch" d="M18 78 H78" />
+      <path className="is-anastasis" data-draw="branch" d="M18 128 H48 C66 128 66 78 78 78" />
+      <path className="is-main" data-draw="main" d="M78 78 V382" />
+      <path className="is-future" data-draw="future" d="M78 382 V520" />
       {storyCommits.map((commit, index) => {
-        const y = MOBILE_Y[index];
+        const y = MOBILE_Y[index] ?? 0;
         const future = index === storyCommits.length - 1;
-        const href = commit.href ? localizePath(commit.href, locale) : undefined;
         return (
-          <g key={commit.year}>
-            <g data-commit={future ? "future" : "solid"} data-pos={y} className="team-story-commit">
-              <circle
-                cx="78"
-                cy={y}
-                r="10"
-                fill={future ? "none" : "#ffffff"}
-                stroke="#0F6E56"
-                strokeWidth="3"
-                strokeDasharray={future ? "2 3" : undefined}
-              />
-              {future ? null : <circle cx="78" cy={y} r="4" fill="#0F6E56" />}
-            </g>
-            <foreignObject x="108" y={y - 28} width="270" height="72" data-meta={future ? "future" : "solid"}>
-              <CommitMeta commit={commit} locale={locale} href={href} />
+          <g key={commit.year} data-commit="">
+            <circle
+              cx="78"
+              cy={y}
+              r="8"
+              fill="#1d1f21"
+              stroke={future ? "#9FE3CF" : "#e6e6e6"}
+              strokeWidth="2.5"
+              strokeDasharray={future ? "3 3" : undefined}
+            />
+            <foreignObject x="108" y={y - 20} width="280" height="120">
+              <CommitCopy commit={commit} locale={locale} />
             </foreignObject>
           </g>
         );
@@ -145,85 +115,83 @@ function MobileGraph({ locale }: { locale: Locale }) {
   );
 }
 
-function visibleGraph(root: HTMLElement | null) {
-  if (!root) return null;
-  const graphs = [...root.querySelectorAll("svg")];
-  return graphs.find((svg) => svg.getClientRects().length > 0) ?? null;
+function visibleGraph(root: HTMLElement) {
+  return [...root.querySelectorAll<SVGSVGElement>("svg")].find((svg) => svg.getClientRects().length > 0) ?? null;
 }
 
-function prepareGraph(svg: SVGSVGElement) {
-  svg.querySelectorAll<SVGPathElement>("[data-draw='branch'], [data-draw='main']").forEach((path) => {
+function hideGraph(svg: SVGSVGElement) {
+  svg.querySelectorAll<SVGGeometryElement>("[data-draw='branch'], [data-draw='main']").forEach((path) => {
     const length = path.getTotalLength();
-    if (!length) return;
     path.style.strokeDasharray = `${length}`;
     path.style.strokeDashoffset = `${length}`;
-  });
-  svg.querySelectorAll<SVGPathElement>("[data-draw='future']").forEach((path) => {
     path.style.opacity = "0";
+  });
+  svg.querySelectorAll<SVGGeometryElement>("[data-draw='future']").forEach((path) => {
+    path.style.opacity = "0";
+  });
+  svg.querySelectorAll<SVGTextElement>(".team-story-branch").forEach((node) => {
+    node.style.opacity = "0";
   });
   svg.querySelectorAll<SVGGElement>("[data-commit]").forEach((node) => {
     node.style.opacity = "0";
-    node.style.transform = "scale(0.6)";
+    node.style.translate = "0 12px";
   });
-  svg.querySelectorAll<SVGForeignObjectElement>("[data-meta]").forEach((node) => {
-    node.style.opacity = "0";
+}
+
+function clearGraph(svg: SVGSVGElement) {
+  svg.querySelectorAll<SVGElement>("[data-draw], .team-story-branch, [data-commit]").forEach((node) => {
+    node.style.transition = "";
+    node.style.opacity = "";
+    node.style.strokeDasharray = "";
+    node.style.strokeDashoffset = "";
+    node.style.translate = "";
   });
 }
 
 function playGraph(svg: SVGSVGElement) {
-  const origin = Number(svg.dataset.origin);
-  const span = Number(svg.dataset.span);
-  svg.querySelectorAll<SVGPathElement>("[data-draw='branch']").forEach((path, index) => {
-    path.style.transition = `stroke-dashoffset 0.6s ease ${index * 0.08}s`;
+  svg.querySelectorAll<SVGGeometryElement>("[data-draw='branch']").forEach((path) => {
+    path.style.transition = `stroke-dashoffset 1.1s ${EASE}, opacity 0.4s ${EASE}`;
+    path.style.opacity = "1";
     path.style.strokeDashoffset = "0";
   });
-  svg.querySelectorAll<SVGPathElement>("[data-draw='main']").forEach((path) => {
-    path.style.transition = "stroke-dashoffset 0.8s linear 0.6s";
-    path.style.strokeDashoffset = "0";
-  });
-  svg.querySelectorAll<SVGPathElement>("[data-draw='future']").forEach((path) => {
-    path.style.transition = "opacity 0.4s ease 1.4s";
-    path.style.opacity = "0.6";
-  });
-  svg.querySelectorAll<SVGGElement>("[data-commit]").forEach((node) => {
-    const pos = Number(node.dataset.pos);
-    const delay = node.dataset.commit === "future" ? 1.5 : 0.6 + 0.8 * ((pos - origin) / span);
-    node.style.transition = `opacity 0.3s ease ${delay}s, transform 0.3s ease ${delay}s`;
+  svg.querySelectorAll<SVGTextElement>(".team-story-branch").forEach((node) => {
+    node.style.transition = `opacity 0.45s ${EASE}`;
     node.style.opacity = "1";
-    node.style.transform = "scale(1)";
   });
-  svg.querySelectorAll<SVGForeignObjectElement>("[data-meta]").forEach((node) => {
-    const commit = node.closest("g")?.querySelector<SVGGElement>("[data-commit]");
-    const pos = Number(commit?.dataset.pos);
-    const delay =
-      node.dataset.meta === "future" ? 1.6 : 0.6 + 0.8 * ((pos - origin) / span) + 0.1;
-    node.style.transition = `opacity 0.3s ease ${delay}s`;
+  [...svg.querySelectorAll<SVGGeometryElement>("[data-draw='main'], [data-draw='future']")].forEach((path, index) => {
+    const delay = 1.1 + index * 0.7;
+    path.style.transition = `stroke-dashoffset 0.7s ${EASE} ${delay}s, opacity 0.4s ${EASE} ${delay}s`;
+    path.style.opacity = "1";
+    if (path.dataset.draw === "main") path.style.strokeDashoffset = "0";
+  });
+  svg.querySelectorAll<SVGGElement>("[data-commit]").forEach((node, index) => {
+    const delay = 0.35 * (index + 1);
+    node.style.transition = `opacity 0.45s ${EASE} ${delay}s, translate 0.45s ${EASE} ${delay}s`;
     node.style.opacity = "1";
+    node.style.translate = "0 0";
   });
 }
 
 export function TeamStory() {
   const { locale } = useLocale();
-  const cardRef = useRef<HTMLDivElement>(null);
+  const [pairRef, revealed] = useReveal<HTMLDivElement>();
+  const terminalRef = useRef<HTMLDivElement>(null);
   const dollarRef = useRef<HTMLSpanElement>(null);
   const restRef = useRef<HTMLSpanElement>(null);
-  const graphRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const card = cardRef.current;
+    const terminal = terminalRef.current;
     const dollar = dollarRef.current;
     const rest = restRef.current;
-    const graph = graphRef.current;
-    if (!card || !dollar || !rest || !graph) return;
+    if (!terminal || !dollar || !rest) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let cancelled = false;
-    let frame = 0;
     const timers: number[] = [];
+    const svg = visibleGraph(terminal);
+    if (svg) hideGraph(svg);
     dollar.textContent = "";
     rest.textContent = "";
-    graph.classList.add("is-hidden");
 
     const write = (value: string) => {
       const hasDollar = value.startsWith("$");
@@ -236,20 +204,19 @@ export function TeamStory() {
       const next = index + 1;
       write(storyCommand.slice(0, next));
       if (next < storyCommand.length) {
-        timers.push(window.setTimeout(() => typeFrom(next), 25 + Math.random() * 25));
+        timers.push(window.setTimeout(() => typeFrom(next), 40 + Math.random() * 30));
         return;
       }
       timers.push(
         window.setTimeout(() => {
           if (cancelled) return;
-          const svg = visibleGraph(card);
-          if (svg) prepareGraph(svg);
-          graph.classList.remove("is-hidden");
-          if (!svg) return;
-          frame = window.requestAnimationFrame(() => {
-            if (!cancelled) playGraph(svg);
+          const current = visibleGraph(terminal);
+          if (!current) return;
+          hideGraph(current);
+          window.requestAnimationFrame(() => {
+            if (!cancelled) playGraph(current);
           });
-        }, 150),
+        }, 350),
       );
     };
 
@@ -257,54 +224,59 @@ export function TeamStory() {
       (entries) => {
         if (cancelled || !entries.some((entry) => entry.isIntersecting)) return;
         observer.disconnect();
-        timers.push(window.setTimeout(() => typeFrom(0), 200));
+        timers.push(window.setTimeout(() => typeFrom(0), 400));
       },
-      { threshold: 0.3 },
+      { threshold: 0.45 },
     );
-    observer.observe(card);
+    observer.observe(terminal);
 
     return () => {
       cancelled = true;
       observer.disconnect();
       timers.forEach((timer) => window.clearTimeout(timer));
-      if (frame) window.cancelAnimationFrame(frame);
       dollar.textContent = "$";
       rest.textContent = storyCommand.slice(1);
-      graph.classList.remove("is-hidden");
+      if (svg) clearGraph(svg);
     };
   }, []);
 
   return (
-    <section className="team-story" aria-labelledby="team-story-heading">
-      <div className="section-pad container-narrow">
-        <div ref={cardRef} className="team-story-card">
-          <h2 id="team-story-heading" className="team-story-title">
-            {teamStoryCopy.titleLead[locale]}
-            <span>{teamStoryCopy.titleAccent[locale]}</span>
-          </h2>
-          <p className="sr-only">{storyCommand}</p>
-          <p className="team-story-command" aria-hidden="true">
-            <span ref={dollarRef} className="team-story-dollar">
-              $
-            </span>
-            <span ref={restRef}>{storyCommand.slice(1)}</span>
-            <span className="team-story-caret" />
-          </p>
-          <div ref={graphRef} className="team-story-graph">
-            <DesktopGraph locale={locale} />
-            <MobileGraph locale={locale} />
+    <section className="team-story team-section" aria-labelledby="team-story-heading">
+      <div className="wrap-content">
+        <div ref={pairRef} className={revealed ? "team-pair is-revealed" : "team-pair"}>
+          <SideTitle id="team-story-heading" title={storyTitle} className="gx-up" />
+          <div ref={terminalRef} className="team-terminal">
+            <div className="team-terminal-bar">
+              <p className="team-terminal-title">team@genesis: ~/genesis</p>
+              <div className="team-terminal-controls" aria-hidden>
+                <span />
+                <span />
+                <span className="is-close" />
+              </div>
+            </div>
+            <div className="team-terminal-body">
+              <p className="sr-only">{storyCommand}</p>
+              <p className="team-story-command" aria-hidden>
+                <span ref={dollarRef} className="team-story-dollar">
+                  $
+                </span>
+                <span ref={restRef}>{storyCommand.slice(1)}</span>
+                <span className="team-story-caret" />
+              </p>
+              <DesktopGraph locale={locale} />
+              <MobileGraph locale={locale} />
+            </div>
+            <ol className="sr-only">
+              {storyCommits.map((commit) => {
+                const href = "href" in commit ? localizePath(commit.href, locale) : undefined;
+                return (
+                  <li key={commit.year}>
+                    {commit.year} {commit.type}: {href ? <Link href={href}>{commit.message}</Link> : commit.message}
+                  </li>
+                );
+              })}
+            </ol>
           </div>
-          <ol className="sr-only">
-            {storyCommits.map((commit) => {
-              const href = commit.href ? localizePath(commit.href, locale) : undefined;
-              return (
-                <li key={commit.year}>
-                  {commit.year} {commit.type}:{" "}
-                  {href ? <Link href={href}>{commit.text[locale]}</Link> : commit.text[locale]}
-                </li>
-              );
-            })}
-          </ol>
         </div>
       </div>
     </section>
