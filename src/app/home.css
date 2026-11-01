@@ -206,7 +206,7 @@
 }
 
 .hero-rise {
-  animation: hero-rise-in 0.7s cubic-bezier(0.33, 1, 0.68, 1) both;
+  animation: hero-rise-in 0.6s cubic-bezier(0.33, 1, 0.68, 1) both;
   animation-delay: var(--hero-delay, 0s);
 }
 
@@ -217,8 +217,15 @@
   }
 }
 
+@media (max-width: 767px) {
+  .home-hero-title .gx-mask-line {
+    overflow: visible;
+  }
+}
+
 @media (min-width: 768px) {
-  .home-hero-line {
+  .home-hero-line,
+  .home-hero-line > span {
     white-space: nowrap;
   }
 

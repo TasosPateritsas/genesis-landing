@@ -17,14 +17,18 @@ export function Hero() {
     <section id="top" className="home-hero" aria-labelledby="hero-heading">
       <div className="hero-mint" aria-hidden />
       <div className="wrap-hero home-hero-inner">
-        <p className="home-eyebrow hero-rise" style={rise("0s")}>
+        <p className="home-eyebrow hero-rise" style={rise("0.1s")}>
           {site.name.toUpperCase()} · {t.hero.place}
         </p>
-        <h1 id="hero-heading" className="home-hero-title hero-rise" style={rise("0.12s")}>
-          <span className="home-hero-line">{t.hero.line1}</span>
-          <span className="home-hero-line is-accent">{t.hero.line2}</span>
+        <h1 id="hero-heading" className="home-hero-title">
+          <span className="gx-mask-line home-hero-line" style={{ "--line": 0 } as CSSProperties}>
+            <span>{t.hero.line1}</span>
+          </span>
+          <span className="gx-mask-line home-hero-line is-accent" style={{ "--line": 1 } as CSSProperties}>
+            <span>{t.hero.line2}</span>
+          </span>
         </h1>
-        <div className="home-hero-bottom hero-rise" style={rise("0.24s")}>
+        <div className="home-hero-bottom hero-rise" style={rise("0.3s")}>
           <p className="home-hero-lead">{t.hero.subtext}</p>
           <div className="home-hero-actions">
             <Link href={contactHref(locale, "message")} className="btn-primary home-hero-primary group">
