@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FadeIn } from "./FadeIn";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
+import { stagger, useReveal } from "@/lib/reveal";
 import { socialLabel, teamMembers } from "@/data/team";
 
 function GitHubIcon() {
@@ -25,14 +25,16 @@ function LinkedInIcon() {
 export function Team() {
   const { locale, t } = useLocale();
   const hrefFor = useLocalizedPath();
+  const [ref, revealed] = useReveal<HTMLElement>();
 
   return (
     <section
+      ref={ref}
       id="team"
-      className="offer-section container-narrow py-20 md:py-28"
+      className={`offer-section container-narrow py-20 md:py-28${revealed ? " is-revealed" : ""}`}
       aria-labelledby="team-heading"
     >
-      <FadeIn>
+      <div className="gx-up">
         <div className="max-w-4xl">
           <p className="service-kicker">{t.team.label}</p>
           <h2
@@ -46,11 +48,11 @@ export function Team() {
             {t.team.intro}
           </p>
         </div>
-      </FadeIn>
+      </div>
 
       <div className="team-home-grid">
-        {teamMembers.map((member) => (
-          <article key={member.id} className="team-home-card">
+        {teamMembers.map((member, index) => (
+          <article key={member.id} className="team-home-card gx-up" style={stagger(index)}>
             <div className="team-home-photo">
               {member.photo ? (
                 <Image

@@ -3,17 +3,23 @@
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { phoneHref, site } from "@/config/site";
-import { FadeIn } from "./FadeIn";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { useReveal } from "@/lib/reveal";
 import { contactHref } from "@/lib/contactHref";
 
 export function Contact() {
   const { locale, t } = useLocale();
+  const [ref, revealed] = useReveal<HTMLElement>();
 
   return (
-    <section id="contact" className="contact-teaser" aria-labelledby="contact-heading">
+    <section
+      ref={ref}
+      id="contact"
+      className={`contact-teaser${revealed ? " is-revealed" : ""}`}
+      aria-labelledby="contact-heading"
+    >
       <div className="section-pad container-narrow py-20 md:py-28">
-        <FadeIn variant="section">
+        <div className="gx-up">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-12">
             <div className="lg:w-[42%] lg:shrink-0">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0F6E56]">
@@ -53,7 +59,7 @@ export function Contact() {
               </div>
             </div>
           </div>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );
