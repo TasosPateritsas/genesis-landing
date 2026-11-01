@@ -144,6 +144,11 @@ export type Dictionary = {
     privacy: string;
     cookies: string;
   };
+  legal: {
+    updated: string;
+    privacy: { title: string; description: string; sections: Array<{ heading: string; body: string }> };
+    cookies: { title: string; description: string; sections: Array<{ heading: string; body: string }> };
+  };
   workPage: {
     breadcrumb: string;
     title: string;
@@ -416,6 +421,54 @@ export const dictionaries: Record<Locale, Dictionary> = {
       rights: "All rights reserved.",
       privacy: "Privacy Policy",
       cookies: "Cookie Policy",
+    },
+    legal: {
+      updated: "Working draft. The final text will be confirmed before launch.",
+      privacy: {
+        title: "Privacy Policy",
+        description:
+          "How Genesis handles the name and email you send through the contact form, and the rights you have over that data.",
+        sections: [
+          {
+            heading: "Who is responsible",
+            body: "{name} is operated by Despoina Ntolka, Pantelis Karamailis and Anastasis Pateritsas, working as freelancers in Athens, Greece. For anything about your data, write to {email}.",
+          },
+          {
+            heading: "What we collect",
+            body: "When you write to us through the contact form, we collect your name, your email address, the category you choose and the message you send.",
+          },
+          {
+            heading: "Why we collect it",
+            body: "We use that information only to reply to your enquiry and, if you ask us to, to prepare a proposal. We do not sell it and we do not use it for advertising.",
+          },
+          {
+            heading: "How long we keep it",
+            body: "We keep enquiry messages for as long as we need them to answer you and to keep a record of the work we discussed. You can ask us to delete them.",
+          },
+          {
+            heading: "Your rights",
+            body: "You can ask to access, correct or delete your data, or to limit how we use it. Write to {email}. You can also lodge a complaint with the Hellenic Data Protection Authority.",
+          },
+        ],
+      },
+      cookies: {
+        title: "Cookie Policy",
+        description: "Which cookies Genesis uses today, and why.",
+        sections: [
+          {
+            heading: "What we use today",
+            body: "This site sets only the cookies that are strictly necessary to show you the pages and to remember a choice the site itself needs in order to work.",
+          },
+          {
+            heading: "What we do not use",
+            body: "We do not use analytics cookies, advertising cookies or embedded third-party players. If we add any of those later, this page will say so before they are switched on.",
+          },
+          {
+            heading: "Your browser",
+            body: "You can block or delete cookies in your browser. Strictly necessary cookies are required for the site to load correctly.",
+          },
+        ],
+      },
     },
     workPage: {
       breadcrumb: "Work",
@@ -761,6 +814,54 @@ export const dictionaries: Record<Locale, Dictionary> = {
       rights: "Με επιφύλαξη παντός δικαιώματος.",
       privacy: "Πολιτική απορρήτου",
       cookies: "Πολιτική cookies",
+    },
+    legal: {
+      updated: "Πρόχειρο κείμενο. Το τελικό κείμενο θα επιβεβαιωθεί πριν από τη δημοσίευση.",
+      privacy: {
+        title: "Πολιτική απορρήτου",
+        description:
+          "Πώς η Genesis χειρίζεται το όνομα και το email που στέλνετε μέσω της φόρμας επικοινωνίας, και ποια δικαιώματα έχετε πάνω σε αυτά τα δεδομένα.",
+        sections: [
+          {
+            heading: "Ποιοι είναι υπεύθυνοι",
+            body: "Η {name} λειτουργεί από τη Δέσποινα Ντόλκα, τον Παντελή Καραμαΐλη και τον Αναστάση Πατερίτσα, ελεύθερους επαγγελματίες με έδρα την Αθήνα. Για οτιδήποτε αφορά τα δεδομένα σας, γράψτε στο {email}.",
+          },
+          {
+            heading: "Τι συλλέγουμε",
+            body: "Όταν μας γράφετε μέσω της φόρμας επικοινωνίας, συλλέγουμε το όνομά σας, τη διεύθυνση email, την κατηγορία που επιλέγετε και το μήνυμα που στέλνετε.",
+          },
+          {
+            heading: "Γιατί τα συλλέγουμε",
+            body: "Χρησιμοποιούμε αυτά τα στοιχεία μόνο για να απαντήσουμε στο αίτημά σας και, αν μας το ζητήσετε, για να ετοιμάσουμε μια πρόταση. Δεν τα πουλάμε και δεν τα χρησιμοποιούμε για διαφήμιση.",
+          },
+          {
+            heading: "Για πόσο τα κρατάμε",
+            body: "Κρατάμε τα μηνύματα για όσο χρειάζεται ώστε να σας απαντήσουμε και να έχουμε αρχείο της συζήτησης. Μπορείτε να μας ζητήσετε να τα διαγράψουμε.",
+          },
+          {
+            heading: "Τα δικαιώματά σας",
+            body: "Μπορείτε να ζητήσετε πρόσβαση, διόρθωση ή διαγραφή των δεδομένων σας, ή περιορισμό της χρήσης τους. Γράψτε στο {email}. Μπορείτε επίσης να υποβάλετε καταγγελία στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα.",
+          },
+        ],
+      },
+      cookies: {
+        title: "Πολιτική cookies",
+        description: "Ποια cookies χρησιμοποιεί σήμερα η Genesis και γιατί.",
+        sections: [
+          {
+            heading: "Τι χρησιμοποιούμε σήμερα",
+            body: "Αυτός ο ιστότοπος θέτει μόνο τα cookies που είναι απολύτως απαραίτητα για να εμφανίζονται οι σελίδες και για να θυμάται μια επιλογή που χρειάζεται ο ίδιος για να λειτουργεί.",
+          },
+          {
+            heading: "Τι δεν χρησιμοποιούμε",
+            body: "Δεν χρησιμοποιούμε cookies ανάλυσης, διαφημιστικά cookies ή ενσωματωμένους players τρίτων. Αν προσθέσουμε κάτι από αυτά αργότερα, η σελίδα αυτή θα το αναφέρει πριν ενεργοποιηθούν.",
+          },
+          {
+            heading: "Το πρόγραμμα περιήγησής σας",
+            body: "Μπορείτε να αποκλείσετε ή να διαγράψετε τα cookies από το πρόγραμμα περιήγησής σας. Τα απολύτως απαραίτητα cookies χρειάζονται για να φορτώνει σωστά ο ιστότοπος.",
+          },
+        ],
+      },
     },
     workPage: {
       breadcrumb: "Έργα",

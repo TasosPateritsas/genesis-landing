@@ -132,6 +132,16 @@ export function projectMetadata(locale: Locale, project: Project) {
   });
 }
 
+export function legalMetadata(locale: Locale, kind: "privacy" | "cookies") {
+  const page = dictionaries[locale].legal[kind];
+  return buildPageMetadata({
+    locale,
+    path: kind === "privacy" ? "/privacy" : "/cookies",
+    title: `${page.title} - ${site.name}`,
+    description: page.description,
+  });
+}
+
 export function contactMetadata(locale: Locale) {
   const page = dictionaries[locale].contactPage;
   return buildPageMetadata({
