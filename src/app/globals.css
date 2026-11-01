@@ -5,10 +5,11 @@
 @import "./team.css";
 @import "./services.css";
 @import "./work.css";
+@import "./home.css";
 
 :root {
-  --accent: #085041;
-  --accent-hover: #0a6552;
+  --accent: #0f6e56;
+  --accent-hover: #0c5c48;
   --accent-muted: #d7ebe5;
   --accent-soft: #eef6f3;
   --bg: #f7faf8;
@@ -40,6 +41,35 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid #0f6e56;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.home-stats :focus-visible,
+.home-contact :focus-visible {
+  outline-color: #9fe3cf;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  z-index: 80;
+  transform: translateY(-160%);
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 8px 12px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: none;
 }
 
 body {
@@ -92,7 +122,7 @@ body {
 .hero-mint {
   background:
     radial-gradient(ellipse 70% 55% at 88% 18%, rgba(120, 196, 170, 0.38), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 12% 88%, rgba(8, 80, 65, 0.1), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 12% 88%, rgba(15, 110, 86, 0.1), transparent 55%),
     radial-gradient(ellipse 40% 35% at 70% 75%, rgba(180, 220, 205, 0.35), transparent 50%),
     linear-gradient(180deg, #f4faf7 0%, #f7faf8 45%, #f5f8f6 100%);
 }
@@ -223,8 +253,8 @@ body {
   border-top: 1px solid #d8e0dc;
   border-bottom: 1px solid #d8e0dc;
   background:
-    radial-gradient(60% 50% at 8% 0%, rgba(120, 196, 170, 0.32), rgba(0, 0, 0, 0) 60%),
-    radial-gradient(45% 40% at 96% 88%, rgba(180, 220, 205, 0.38), rgba(0, 0, 0, 0) 55%),
+    radial-gradient(60% 50% at 8% 0, rgba(120, 196, 170, 0.32), transparent 60%),
+    radial-gradient(60% 50% at 92% 100%, rgba(120, 196, 170, 0.32), transparent 60%),
     linear-gradient(#f4faf7, #f7faf8);
 }
 
@@ -233,11 +263,17 @@ body {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, rgba(8, 80, 65, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(8, 80, 65, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 110, 86, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 110, 86, 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
-  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 0%, transparent 78%);
-  mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 0%, transparent 78%);
+  -webkit-mask-image:
+    radial-gradient(70% 50% at 0 0, #000, transparent 75%),
+    radial-gradient(70% 50% at 100% 100%, #000, transparent 75%);
+  mask-image:
+    radial-gradient(70% 50% at 0 0, #000, transparent 75%),
+    radial-gradient(70% 50% at 100% 100%, #000, transparent 75%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
 }
 
 #work > .container {
@@ -389,7 +425,7 @@ a:focus-visible .link-underline {
 
 .contact-teaser-cta:hover,
 .contact-teaser-cta:focus-visible {
-  background-color: #085041;
+  background-color: #0c5c48;
   color: #ffffff;
 }
 
@@ -409,7 +445,7 @@ a:focus-visible .link-underline {
 
 .contact-direct-link:hover,
 .contact-direct-link:focus-visible {
-  color: #085041;
+  color: #0c5c48;
 }
 
 .contact-direct-link:hover .contact-direct-link-text,
@@ -426,7 +462,7 @@ a:focus-visible .link-underline {
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background-color: #085041;
+  background-color: #0c5c48;
   color: #ffffff;
 }
 
@@ -459,7 +495,7 @@ a:focus-visible .link-underline {
 
 .back-to-top:hover,
 .back-to-top:focus-visible {
-  background-color: #085041;
+  background-color: #0c5c48;
 }
 
 .back-to-top-ring {
@@ -522,12 +558,35 @@ a:focus-visible .link-underline {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 20px;
-  margin-top: 3rem;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .team-home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-home-photo {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .team-home-grid > :last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 10px);
+  }
 }
 
 @media (min-width: 1024px) {
   .team-home-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 56px;
+  }
+
+  .team-home-photo {
+    aspect-ratio: 1;
   }
 }
 
@@ -536,8 +595,8 @@ a:focus-visible .link-underline {
   grid-row: span 5;
   grid-template-rows: subgrid;
   align-items: start;
-  border: 1px solid #dce8e2;
-  border-radius: 14px;
+  border: 1px solid var(--border);
+  border-radius: 0;
   background: #ffffff;
   padding: 18px;
 }
@@ -551,7 +610,7 @@ a:focus-visible .link-underline {
   justify-content: center;
   gap: 8px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 0;
   background: #eef5f2;
 }
 
@@ -563,24 +622,24 @@ a:focus-visible .link-underline {
 }
 
 .team-home-photo-caption {
-  color: #6b8a7e;
+  color: #4f6f63;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
 
 .team-home-name {
-  color: #14181a;
-  font-size: 18px;
+  color: var(--ink);
+  font-size: 22px;
   font-weight: 600;
   line-height: 1.3;
 }
 
 .team-home-role {
   margin-top: 4px;
-  color: #0f6e56;
-  font-size: 13px;
-  font-weight: 600;
+  color: var(--g-brand);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .team-home-discipline {
@@ -590,8 +649,8 @@ a:focus-visible .link-underline {
 }
 
 .team-home-bio {
-  color: #4b5563;
-  font-size: 14px;
+  color: var(--ink-muted);
+  font-size: 15px;
   line-height: 1.6;
 }
 

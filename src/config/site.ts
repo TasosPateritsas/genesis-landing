@@ -20,6 +20,8 @@ export const site = {
   /** E.164 number. `tel:` links render only once this is set. */
   phone: null as string | null,
   phoneDisplay: "+30 69X XXX XXXX",
+  founders: ["Despoina Ntolka", "Pantelis Karamailis", "Anastasis Pateritsas"] as const,
+  location: { en: "Athens, Greece", el: "Αθήνα, Ελλάδα" },
   colors: {
     dark: "#0B3B30",
     brand: "#0F6E56",

@@ -1,48 +1,43 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Link from "next/link";
+import { site } from "@/config/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
+
+function rise(delay: string): CSSProperties {
+  return { "--hero-delay": delay } as CSSProperties;
+}
 
 export function Hero() {
   const { locale, t } = useLocale();
 
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden pt-16 md:pt-[4.25rem]"
-      aria-labelledby="hero-heading"
-    >
-      <div className="hero-mint absolute inset-0" aria-hidden />
-
-      <div className="section-pad container-narrow relative flex min-h-[calc(100svh-4rem)] flex-col justify-center pb-16 pt-16 md:min-h-[calc(100svh-4.25rem)] md:pb-24 md:pt-20">
-        <div className="max-w-3xl animate-hero-copy">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted md:text-sm">
-            {t.hero.eyebrow}
-          </p>
-
-          <h1
-            id="hero-heading"
-            className="mt-5 text-[clamp(2.1rem,5.2vw,3.75rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-ink"
-          >
-            {t.hero.headline}
-          </h1>
-
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
-            {t.hero.subtext}
-          </p>
-
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link
-              href={contactHref(locale, "message")}
-              className="btn-primary inline-flex h-12 items-center justify-center rounded-md px-6 text-sm font-semibold"
-            >
+    <section id="top" className="home-hero" aria-labelledby="hero-heading">
+      <div className="hero-mint" aria-hidden />
+      <div className="wrap-hero home-hero-inner">
+        <p className="home-eyebrow hero-rise" style={rise("0.1s")}>
+          {site.name.toUpperCase()} · {t.hero.place}
+        </p>
+        <h1 id="hero-heading" className="home-hero-title">
+          <span className="gx-mask-line home-hero-line" style={{ "--line": 0 } as CSSProperties}>
+            <span>{t.hero.line1}</span>
+          </span>
+          <span className="gx-mask-line home-hero-line is-accent" style={{ "--line": 1 } as CSSProperties}>
+            <span>{t.hero.line2}</span>
+          </span>
+        </h1>
+        <div className="home-hero-bottom hero-rise" style={rise("0.3s")}>
+          <p className="home-hero-lead">{t.hero.subtext}</p>
+          <div className="home-hero-actions">
+            <Link href={contactHref(locale, "message")} className="btn-primary home-hero-primary group">
               {t.hero.primaryCta}
+              <span className="cta-arrow" aria-hidden>
+                →
+              </span>
             </Link>
-            <a
-              href="#work"
-              className="inline-flex h-12 items-center justify-center rounded-md border border-border-strong bg-bg-elevated/70 px-6 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
-            >
+            <a href="#work" className="home-hero-secondary">
               {t.hero.secondaryCta}
             </a>
           </div>

@@ -38,7 +38,7 @@ export function ServicesPage() {
   return (
     <>
       <Header />
-      <main className="services-page">
+      <main id="main" className="services-page">
         <section className="services-hero" aria-labelledby="services-hero-heading">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
           <div className="services-hero-wrap">

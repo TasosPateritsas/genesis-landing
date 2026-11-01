@@ -17,6 +17,8 @@ export const publicRoutes = [
   { path: "/work/vasileiadis" },
   { path: "/team" },
   { path: "/contact" },
+  { path: "/privacy" },
+  { path: "/cookies" },
 ] as const;
 
 export type PublicPath = (typeof publicRoutes)[number]["path"];
