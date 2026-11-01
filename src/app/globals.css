@@ -8,8 +8,8 @@
 @import "./home.css";
 
 :root {
-  --accent: #085041;
-  --accent-hover: #0a6552;
+  --accent: #0f6e56;
+  --accent-hover: #0c5c48;
   --accent-muted: #d7ebe5;
   --accent-soft: #eef6f3;
   --bg: #f7faf8;
@@ -122,7 +122,7 @@ body {
 .hero-mint {
   background:
     radial-gradient(ellipse 70% 55% at 88% 18%, rgba(120, 196, 170, 0.38), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 12% 88%, rgba(8, 80, 65, 0.1), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 12% 88%, rgba(15, 110, 86, 0.1), transparent 55%),
     radial-gradient(ellipse 40% 35% at 70% 75%, rgba(180, 220, 205, 0.35), transparent 50%),
     linear-gradient(180deg, #f4faf7 0%, #f7faf8 45%, #f5f8f6 100%);
 }
@@ -263,8 +263,8 @@ body {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, rgba(8, 80, 65, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(8, 80, 65, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 110, 86, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 110, 86, 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image:
     radial-gradient(70% 50% at 0 0, #000, transparent 75%),
@@ -425,7 +425,7 @@ a:focus-visible .link-underline {
 
 .contact-teaser-cta:hover,
 .contact-teaser-cta:focus-visible {
-  background-color: #085041;
+  background-color: #0c5c48;
   color: #ffffff;
 }
 
@@ -445,7 +445,7 @@ a:focus-visible .link-underline {
 
 .contact-direct-link:hover,
 .contact-direct-link:focus-visible {
-  color: #085041;
+  color: #0c5c48;
 }
 
 .contact-direct-link:hover .contact-direct-link-text,
@@ -462,7 +462,7 @@ a:focus-visible .link-underline {
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background-color: #085041;
+  background-color: #0c5c48;
   color: #ffffff;
 }
 
@@ -495,7 +495,7 @@ a:focus-visible .link-underline {
 
 .back-to-top:hover,
 .back-to-top:focus-visible {
-  background-color: #085041;
+  background-color: #0c5c48;
 }
 
 .back-to-top-ring {
