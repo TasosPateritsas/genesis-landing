@@ -726,6 +726,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #e6ece9;
   background: #f7faf8;
 }
 
