@@ -21,6 +21,14 @@ export const publicRoutes = [
 
 export type PublicPath = (typeof publicRoutes)[number]["path"];
 
+export const primaryNav = [
+  { path: "/", label: "home" },
+  { path: "/services", label: "services" },
+  { path: "/work", label: "work" },
+  { path: "/team", label: "team" },
+  { path: "/contact", label: "contact" },
+] as const satisfies ReadonlyArray<{ path: PublicPath; label: string }>;
+
 export function stripLocalePrefix(pathname: string) {
   const normalized =
     pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;

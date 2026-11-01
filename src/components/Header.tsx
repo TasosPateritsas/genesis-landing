@@ -6,20 +6,11 @@ import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
 import { site } from "@/config/site";
-import type { Dictionary } from "@/data/content";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
-import { stripLocalePrefix } from "@/lib/routes";
+import { primaryNav, stripLocalePrefix } from "@/lib/routes";
 
 export type HeaderVariant = "light" | "dark";
-
-const NAV_ITEMS: ReadonlyArray<{ path: string; label: keyof Dictionary["nav"] }> = [
-  { path: "/", label: "home" },
-  { path: "/services", label: "services" },
-  { path: "/work", label: "work" },
-  { path: "/team", label: "team" },
-  { path: "/contact", label: "contact" },
-];
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -109,7 +100,7 @@ export function Header({ variant = "light" }: { variant?: HeaderVariant }) {
           </Link>
 
           <nav className="site-header-nav" aria-label="Primary">
-            {NAV_ITEMS.map((item) => {
+            {primaryNav.map((item) => {
               const current = isCurrent(item.path, barePath);
               return (
                 <Link
@@ -161,7 +152,7 @@ export function Header({ variant = "light" }: { variant?: HeaderVariant }) {
       >
         <nav aria-label="Mobile">
           <ul>
-            {NAV_ITEMS.map((item) => {
+            {primaryNav.map((item) => {
               const current = isCurrent(item.path, barePath);
               return (
                 <li key={item.path}>

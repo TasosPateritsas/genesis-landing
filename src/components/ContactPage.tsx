@@ -121,7 +121,7 @@ export function ContactPage() {
         <ContactStats />
         <ContactReviews />
       </main>
-      <Footer />
+      <Footer variant="dark" />
     </>
   );
 }

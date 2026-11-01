@@ -2557,11 +2557,6 @@ a:focus-visible .link-underline {
   font-weight: 600;
 }
 
-.team-footer-mint {
-  border-top: 1px solid #c5e0d3;
-  background: #dcf0e7;
-}
-
 .cursor-follower {
   display: none;
 }

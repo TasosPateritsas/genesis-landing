@@ -122,10 +122,13 @@ export type Dictionary = {
   footer: {
     tagline: string;
     location: string;
-    services: string;
-    work: string;
-    team: string;
-    contact: string;
+    companyTitle: string;
+    servicesTitle: string;
+    contactTitle: string;
+    services: Array<{ href: string; label: string }>;
+    rights: string;
+    privacy: string;
+    cookies: string;
   };
   workPage: {
     breadcrumb: string;
@@ -359,12 +362,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
       imageAlt: "The Genesis team: Despoina, Pantelis and Anastasis",
     },
     footer: {
-      tagline: "Athens tech studio",
+      tagline: "Websites, apps and AI — designed, built and run by three engineers.",
       location: "Athens, Greece",
-      services: "Services",
-      work: "Work",
-      team: "Team",
-      contact: "Contact",
+      companyTitle: "Company",
+      servicesTitle: "Services",
+      contactTitle: "Get in touch",
+      services: [
+        { href: "/services#app-development", label: "App development" },
+        { href: "/services#ai-agents", label: "AI agents" },
+        { href: "/services#ai-workflows", label: "AI workflows" },
+        { href: "/services#websites-eshops", label: "Websites & eshops" },
+      ],
+      rights: "All rights reserved.",
+      privacy: "Privacy Policy",
+      cookies: "Cookie Policy",
     },
     workPage: {
       breadcrumb: "Work",
@@ -669,12 +680,21 @@ export const dictionaries: Record<Locale, Dictionary> = {
       imageAlt: "Η ομάδα της Genesis: Δέσποινα, Παντελής και Αναστάσης",
     },
     footer: {
-      tagline: "Athens tech studio",
+      tagline:
+        "Websites, εφαρμογές και AI — σχεδιασμένα, χτισμένα και υποστηριζόμενα από τρεις μηχανικούς.",
       location: "Αθήνα, Ελλάδα",
-      services: "Υπηρεσίες",
-      work: "Έργα",
-      team: "Ομάδα",
-      contact: "Επικοινωνία",
+      companyTitle: "Εταιρεία",
+      servicesTitle: "Υπηρεσίες",
+      contactTitle: "Επικοινωνία",
+      services: [
+        { href: "/services#app-development", label: "Ανάπτυξη εφαρμογών" },
+        { href: "/services#ai-agents", label: "AI agents" },
+        { href: "/services#ai-workflows", label: "AI workflows" },
+        { href: "/services#websites-eshops", label: "Websites & eshops" },
+      ],
+      rights: "Με επιφύλαξη παντός δικαιώματος.",
+      privacy: "Πολιτική απορρήτου",
+      cookies: "Πολιτική cookies",
     },
     workPage: {
       breadcrumb: "Έργα",
