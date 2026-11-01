@@ -701,6 +701,134 @@
   line-height: 1.6;
 }
 
+.home-upcoming {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid #e6ece9;
+  background: #f7faf8;
+}
+
+.home-upcoming-photo {
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.home-upcoming-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition-property: transform;
+  transition-duration: 1.4s;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.home-upcoming-copy {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f7faf8;
+}
+
+.home-upcoming-copy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(15 110 86 / 7%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 110 86 / 7%) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(70% 80% at 0 50%, #000, transparent 75%);
+  mask-image: radial-gradient(70% 80% at 0 50%, #000, transparent 75%);
+}
+
+.home-upcoming-inner {
+  position: relative;
+  width: 100%;
+  padding: 48px 20px;
+}
+
+.home-upcoming-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-upcoming-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--g-brand);
+}
+
+.home-upcoming-title {
+  margin: 16px 0 0;
+  color: var(--ink);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.home-upcoming-bar {
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin: 22px 0 26px;
+  background: var(--g-brand);
+}
+
+.home-upcoming-text {
+  max-width: 480px;
+  margin: 0;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.home-upcoming-launch {
+  margin: 20px 0 0;
+  color: var(--ink-muted);
+  font-size: 15px;
+}
+
+.home-upcoming-launch span {
+  color: var(--g-brand);
+}
+
+@media (min-width: 1024px) {
+  .home-upcoming {
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .home-upcoming-photo {
+    min-height: 600px;
+  }
+
+  .home-upcoming-inner {
+    padding: 72px 20px 72px 72px;
+    padding-right: max(20px, calc(50vw - 36rem + 20px));
+  }
+
+  .home-upcoming-title {
+    font-size: 56px;
+  }
+
+  .home-upcoming-text {
+    font-size: 22px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-upcoming-photo:hover img {
+    transform: scale(1.06);
+  }
+}
+
 .home-contact {
   position: relative;
   overflow: hidden;
