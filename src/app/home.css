@@ -479,7 +479,11 @@
 }
 
 .home-work-card.is-small .home-work-browser.is-left {
-  left: 20%;
+  left: 34%;
+}
+
+.home-work-card.is-large .home-work-browser.is-left {
+  left: 24%;
 }
 
 .home-work-browser-frame span {
@@ -515,10 +519,14 @@
   width: 24%;
 }
 
-.home-work-phone.is-bottom-left,
-.home-work-phone.is-left {
+.home-work-phone.is-bottom-left {
   bottom: 8%;
   left: 6%;
+}
+
+.home-work-phone.is-left {
+  bottom: 4%;
+  left: 4%;
 }
 
 .home-work-phone.is-right {
