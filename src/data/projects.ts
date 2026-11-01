@@ -1,12 +1,13 @@
 import type { Locale } from "@/data/content";
 import { baumann } from "@/data/cases/baumann";
+import { chalkino } from "@/data/cases/chalkino";
 import { salty } from "@/data/cases/salty";
 import { techne } from "@/data/cases/techne";
 import type { Project } from "@/data/projectTypes";
 
 export type { Project, LocalizedText } from "@/data/projectTypes";
 
-export const projects: Project[] = [salty, baumann, techne];
+export const projects: Project[] = [salty, baumann, techne, chalkino];
 
 export function projectLabel(project: Project, locale: Locale) {
   return `${project.type[locale]} · ${project.industry[locale]}`;
