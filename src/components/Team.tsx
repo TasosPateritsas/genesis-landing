@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { SectionHeading } from "@/components/SectionHeading";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 import { stagger, useReveal } from "@/lib/reveal";
 import { socialLabel, teamMembers } from "@/data/team";
@@ -31,23 +32,16 @@ export function Team() {
     <section
       ref={ref}
       id="team"
-      className={`offer-section container-narrow py-20 md:py-28${revealed ? " is-revealed" : ""}`}
+      className={`home-team offer-section container-narrow${revealed ? " is-revealed" : ""}`}
       aria-labelledby="team-heading"
     >
       <div className="gx-up">
-        <div className="max-w-4xl">
-          <p className="service-kicker">{t.team.label}</p>
-          <h2
-            id="team-heading"
-            className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-[#14181a] md:text-4xl"
-          >
-            <span className="block">{t.team.headingLead}</span>
-            <span className="mt-1 block text-[#0F6E56] md:whitespace-nowrap">{t.team.headingAccent}</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#4b5563] md:text-lg">
-            {t.team.intro}
-          </p>
-        </div>
+        <SectionHeading
+          id="team-heading"
+          eyebrow={t.team.label}
+          title={t.team.heading}
+          intro={t.team.intro}
+        />
       </div>
 
       <div className="team-home-grid">

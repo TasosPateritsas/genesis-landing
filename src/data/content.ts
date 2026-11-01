@@ -41,8 +41,7 @@ export type Dictionary = {
   };
   team: {
     label: string;
-    headingLead: string;
-    headingAccent: string;
+    heading: string;
     intro: string;
     meet: string;
     photoSoon: string;
@@ -270,10 +269,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     team: {
       label: "The team",
-      headingLead: "Three engineers. One agency.",
-      headingAccent: "You talk to the builders.",
-      intro:
-        "A software development agency in Athens — small enough to move fast, experienced enough to own the full stack from brief to launch.",
+      heading: "Meet the builders.",
+      intro: "Small enough to move fast, experienced enough to own the full stack — from brief to launch.",
       meet: "Meet the team",
       photoSoon: "PHOTO SOON",
     },
@@ -615,10 +612,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     team: {
       label: "Η ομάδα",
-      headingLead: "Τρεις μηχανικοί. Ένα agency.",
-      headingAccent: "Μιλάτε απευθείας με αυτούς που χτίζουν.",
+      heading: "Γνωρίστε αυτούς που χτίζουν.",
       intro:
-        "Agency ανάπτυξης λογισμικού στην Αθήνα, αρκετά μικρό για να κινείται γρήγορα και αρκετά έμπειρο για να αναλαμβάνει όλο το stack, από το brief μέχρι το launch.",
+        "Μικρή ομάδα για να κινούμαστε γρήγορα, με την εμπειρία να αναλάβουμε όλο το έργο — από την ιδέα ως το launch.",
       meet: "Γνωρίστε την ομάδα",
       photoSoon: "ΦΩΤΟΓΡΑΦΙΑ ΣΥΝΤΟΜΑ",
     },

@@ -259,7 +259,8 @@
   }
 }
 
-.home-services {
+.home-services,
+.home-team {
   background: var(--bg);
   padding-block: 64px;
 }
@@ -365,7 +366,8 @@
 }
 
 @media (min-width: 1024px) {
-  .home-services {
+  .home-services,
+  .home-team {
     padding-block: 96px;
   }
 
