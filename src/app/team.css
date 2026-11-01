@@ -1058,6 +1058,10 @@
     transition-duration: 1s;
   }
 
+  .team-profile.is-reverse {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
   .team-profile.is-revealed,
   .team-profile.is-revealed.is-reverse {
     translate: 0 0;
@@ -1071,13 +1075,19 @@
   .team-profile-photo,
   .team-profile.is-reverse .team-profile-photo {
     order: 0;
+    width: 100%;
     aspect-ratio: auto;
     height: 100%;
     min-height: 100%;
   }
 
+  .team-profile.is-reverse .team-profile-photo {
+    order: 2;
+  }
+
   .team-profile-body,
   .team-profile.is-reverse .team-profile-body {
+    width: 100%;
     padding: 40px;
   }
 
