@@ -279,7 +279,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       heading: "Live sites for real businesses.",
       intro:
         "Websites, eshops and booking platforms we designed, built and launched — live today, for real clients.",
-      more: "This is just a selection — there's more in our portfolio.",
+      more: "Just a glimpse of what we've built.",
       seeAll: "Explore all projects",
     },
     upcoming: {
