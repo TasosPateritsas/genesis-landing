@@ -2,29 +2,38 @@
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { ProjectHero, ProjectShowcase } from "@/components/work/ProjectHero";
-import { ProjectNext } from "@/components/work/ProjectNext";
-import { ProjectScreens } from "@/components/work/ProjectScreens";
-import { ProjectStory } from "@/components/work/ProjectStory";
-import { WorkClosingCta } from "@/components/work/WorkClosingCta";
-import { getProject } from "@/data/projects";
+import { CaseClosing, CaseNav } from "@/components/project/CaseNav";
+import { CaseGallery } from "@/components/project/CaseGallery";
+import { CaseHero } from "@/components/project/CaseHero";
+import { CaseQuote } from "@/components/project/CaseQuote";
+import { CaseResults } from "@/components/project/CaseResults";
+import { CaseShowcase } from "@/components/project/CaseShowcase";
+import { CaseStory } from "@/components/project/CaseStory";
+import { WeddingflowSections } from "@/components/project/WeddingflowSections";
+import { getProject, projectNeighbors } from "@/data/projects";
 
 export function ProjectPage({ slug }: { slug: string }) {
   const project = getProject(slug);
   if (!project) return null;
+  const live = project.kind === "live";
+  const neighbors = projectNeighbors(project);
+  const hasNav = Boolean(neighbors.prev || neighbors.next);
 
   return (
-    <>
+    <div className="case-page">
       <Header variant="dark" />
       <main>
-        <ProjectHero project={project} />
-        <ProjectShowcase project={project} />
-        <ProjectStory project={project} />
-        <ProjectScreens project={project} />
-        <ProjectNext project={project} />
-        <WorkClosingCta />
+        <CaseHero project={project} />
+        <CaseShowcase project={project} />
+        <CaseStory project={project} />
+        {live ? <CaseGallery project={project} /> : null}
+        {project.weddingflow ? <WeddingflowSections project={project} /> : null}
+        {live ? <CaseResults project={project} /> : null}
+        {live ? <CaseQuote project={project} /> : null}
+        <CaseNav project={project} />
+        <CaseClosing lead={!hasNav} />
       </main>
-      <Footer />
-    </>
+      <Footer variant="dark" />
+    </div>
   );
 }

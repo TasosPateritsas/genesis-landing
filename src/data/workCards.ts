@@ -11,22 +11,21 @@ export type WorkCard = {
 };
 
 function liveCard(project: Project): WorkCard {
-  const title = project.listingTitle ?? { en: project.name, el: project.name };
   return {
     slug: project.slug,
-    title,
+    title: project.name,
     meta: { en: projectLabel(project, "en"), el: projectLabel(project, "el") },
     description: project.description,
     image: project.image,
     imageAlt: {
-      en: `${title.en} homepage`,
-      el: `Αρχική σελίδα, ${title.el}`,
+      en: `${project.name.en} homepage`,
+      el: `Αρχική σελίδα, ${project.name.el}`,
     },
   };
 }
 
 export function liveCards(): WorkCard[] {
-  return projects.map(liveCard);
+  return projects.filter((project) => project.kind === "live").map(liveCard);
 }
 
 export const upcomingCards: readonly WorkCard[] = [
