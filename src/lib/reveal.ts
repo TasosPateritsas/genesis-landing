@@ -19,7 +19,7 @@ export function useReducedMotion() {
 }
 
 /** Reveals a `.gx-up` group once, when `threshold` of the observed element is visible. */
-export function useReveal<T extends Element>(threshold = 0.15) {
+export function useReveal<T extends Element>(threshold = 0.15, rootMargin?: string) {
   const ref = useRef<T>(null);
   const [revealed, setRevealed] = useState(false);
 
@@ -34,11 +34,14 @@ export function useReveal<T extends Element>(threshold = 0.15) {
         setRevealed(true);
         observer.disconnect();
       },
-      { threshold, rootMargin: desktop ? "0px 0px -10% 0px" : "0px 0px -5% 0px" },
+      {
+        threshold,
+        rootMargin: rootMargin ?? (desktop ? "0px 0px -10% 0px" : "0px 0px -5% 0px"),
+      },
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, rootMargin]);
 
   return [ref, revealed] as const;
 }

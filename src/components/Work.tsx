@@ -59,7 +59,7 @@ function SelectedCard({ project, size }: { project: Project; size: "large" | "sm
               large ? "text-[30px] leading-tight" : "text-[22px] leading-snug"
             }`}
           >
-            {project.name}
+            {project.name[locale]}
           </h3>
           <p className={`mt-2 leading-relaxed text-[#5A675F] ${large ? "text-base" : "text-[15px]"}`}>
             {project.description[locale]}
