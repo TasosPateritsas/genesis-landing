@@ -542,6 +542,14 @@ a:focus-visible .link-underline {
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .team-home-grid > :last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 10px);
+  }
+}
+
 @media (min-width: 1024px) {
   .team-home-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
