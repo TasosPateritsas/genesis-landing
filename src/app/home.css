@@ -481,6 +481,10 @@
   left: 20%;
 }
 
+.home-work-browser-frame span {
+  color: var(--ink-muted);
+}
+
 .home-work-browser-frame {
   border: 1px solid rgb(0 0 0 / 8%);
   background: #ffffff;
@@ -638,6 +642,49 @@
 
   .home-work-card.is-small .home-work-media {
     min-height: 210px;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-work-browser,
+  .home-work-card.is-large .home-work-browser,
+  .home-work-card.is-small .home-work-browser.is-left {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+
+  .home-work-phone,
+  .home-work-card.is-large .home-work-phone,
+  .home-work-phone.is-bottom-left,
+  .home-work-phone.is-left,
+  .home-work-phone.is-right {
+    position: relative;
+    inset: auto;
+    width: 42%;
+    margin-top: 12px;
+  }
+
+  .home-work-media {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 0;
+    padding: 16px 16px 20px;
+  }
+
+  .home-work-browser-frame,
+  .home-work-browser-frame img,
+  .home-work-phone,
+  .home-work-card:hover .home-work-browser-frame,
+  .home-work-card:focus-visible .home-work-browser-frame,
+  .home-work-card:hover .home-work-browser-frame img,
+  .home-work-card:focus-visible .home-work-browser-frame img,
+  .home-work-card:hover .home-work-phone,
+  .home-work-card:focus-visible .home-work-phone {
+    transform: none;
+    rotate: none;
+    scale: none;
   }
 }
 
