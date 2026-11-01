@@ -310,11 +310,19 @@
 }
 
 .home-card-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   margin-top: 40px;
+}
+
+.home-card-grid > * {
+  min-width: 0;
+  height: 100%;
 }
 
 .home-card-title {
   margin: 24px 0 0;
+  max-width: 100%;
   color: var(--ink);
   font-size: 22px;
   font-weight: 600;
@@ -323,19 +331,31 @@
 
 .home-card-body {
   margin: 12px 0 0;
+  max-width: 100%;
   color: var(--ink-muted);
   font-size: 15px;
   line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 .home-service-card {
+  display: flex;
   position: relative;
+  width: 100%;
+  min-width: 0;
   height: 100%;
-  border-color: var(--border);
+  flex-direction: column;
+  border: 1px solid var(--border);
   background: #ffffff;
   transition-property: transform, box-shadow, border-color;
   transition-duration: 250ms;
   transition-timing-function: ease-out;
+}
+
+.home-service-card .offer-card-badge,
+.home-card-title,
+.home-card-body {
+  position: relative;
 }
 
 .home-card-arrow {
@@ -346,6 +366,7 @@
   font-size: 18px;
   line-height: 1;
   opacity: 0;
+  pointer-events: none;
   transform: translateX(-6px);
   transition-property: opacity, transform;
   transition-duration: 250ms;
@@ -373,6 +394,12 @@
   }
 }
 
+@media (min-width: 640px) {
+  .home-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 1024px) {
   .home-services,
   .home-team {
@@ -380,6 +407,7 @@
   }
 
   .home-card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-top: 56px;
   }
 }

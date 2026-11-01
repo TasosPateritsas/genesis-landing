@@ -1,4 +1,5 @@
 .team-hero {
+  overflow-x: clip;
   background: linear-gradient(180deg, #dcf0e7 0%, #edf7f2 46%, #f7faf8 100%);
   padding: calc(64px + 56px) 0 56px;
 }
@@ -150,10 +151,11 @@
 .team-divider {
   display: flex;
   align-items: center;
-  width: 100vw;
+  width: auto;
   height: 20px;
   margin-bottom: 28px;
   margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   gap: 20px;
 }
 
@@ -204,12 +206,17 @@
 
 .team-who-list {
   display: flex;
+  width: 100%;
+  min-width: 0;
   flex-direction: column;
   gap: 24px;
 }
 
 .team-profile {
   display: grid;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid rgba(15, 110, 86, 0.14);
   background: #ffffff;
@@ -229,7 +236,9 @@
 .team-profile-photo {
   position: relative;
   order: -1;
+  min-width: 0;
   aspect-ratio: 4 / 3;
+  overflow: hidden;
   background: #eef4f1;
 }
 
@@ -248,7 +257,9 @@
 }
 
 .team-profile-body {
+  min-width: 0;
   padding: 22px;
+  overflow-wrap: break-word;
 }
 
 .team-profile-role {
@@ -268,7 +279,7 @@
 }
 
 .team-profile-quote {
-  max-width: 520px;
+  max-width: min(520px, 100%);
   margin-top: 12px;
   color: #14181a;
   font-size: 18px;
@@ -1030,21 +1041,21 @@
   }
 
   .team-profile {
-    grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
     align-items: stretch;
     filter: blur(3px);
-    translate: -48px 0;
+    translate: 0 48px;
     transition-duration: 1s;
   }
 
   .team-profile.is-reverse {
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 380px);
-    translate: 48px 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
   }
 
   .team-profile.is-revealed,
   .team-profile.is-revealed.is-reverse {
     translate: 0 0;
+    filter: none;
   }
 
   .team-profile-photo {
