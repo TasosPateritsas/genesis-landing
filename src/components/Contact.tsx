@@ -15,48 +15,46 @@ export function Contact() {
     <section
       ref={ref}
       id="contact"
-      className={`contact-teaser${revealed ? " is-revealed" : ""}`}
+      className={`home-contact${revealed ? " is-revealed" : ""}`}
       aria-labelledby="contact-heading"
     >
-      <div className="section-pad container-narrow py-20 md:py-28">
-        <div className="gx-up">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-12">
-            <div className="lg:w-[42%] lg:shrink-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0F6E56]">
-                {t.contact.label}
-              </p>
-              <h2
-                id="contact-heading"
-                className="mt-3 text-[clamp(1.85rem,4vw,2.625rem)] font-bold leading-[1.15] tracking-[-0.02em] text-ink"
-              >
-                {t.contact.heading}
-              </h2>
-            </div>
-            <div className="text-center lg:flex-1">
-              <p className="text-lg font-medium leading-tight text-[#4b5563]">{t.contact.intro}</p>
-              <p className="mt-1 text-lg font-medium leading-tight text-[#0f6e56] md:whitespace-nowrap">
-                {t.contact.introDetail}
-              </p>
-            </div>
+      <div className="home-contact-grid" aria-hidden />
+      <div className="wrap-hero home-contact-inner">
+        <div className={`home-contact-row gx-up`}>
+          <div className="home-contact-copy">
+            <p className="home-contact-eyebrow">{t.contact.label}</p>
+            <h2 id="contact-heading" className="home-contact-title">
+              {t.contact.heading}
+            </h2>
+            <Link href={contactHref(locale, "message")} className="home-contact-cta">
+              {t.contact.cta}
+              <span className="cta-arrow" aria-hidden>
+                →
+              </span>
+            </Link>
           </div>
 
-          <div className="mt-12 flex flex-col items-center gap-8 sm:flex-row sm:justify-center sm:gap-12">
-            <Link href={contactHref(locale, "message")} className="contact-teaser-cta">
-              {t.contact.cta}
-            </Link>
-
-            <div className="text-center">
-              <p className="text-[13px] leading-snug text-[#5b6b66]">{t.contact.directLabel}</p>
-              <div className="mt-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-                <a href={`mailto:${site.email}`} className="contact-direct-link">
-                  <Mail className="h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden />
-                  <span className="contact-direct-link-text">{site.email}</span>
+          <div className="home-contact-aside">
+            <p className="home-contact-intro">{t.contact.intro}</p>
+            <p className="home-contact-detail">{t.contact.introDetail}</p>
+            <hr className="home-contact-rule" />
+            <p className="home-contact-direct-label">{t.contact.directLabel}</p>
+            <div className="home-contact-links">
+              <a href={`mailto:${site.email}`} className="home-contact-link">
+                <Mail className="home-contact-icon" strokeWidth={1.75} aria-hidden />
+                {site.email}
+              </a>
+              {phoneHref ? (
+                <a href={phoneHref} className="home-contact-link">
+                  <Phone className="home-contact-icon" strokeWidth={1.75} aria-hidden />
+                  {site.phoneDisplay}
                 </a>
-                <a href={phoneHref ?? undefined} className="contact-direct-link">
-                  <Phone className="h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden />
-                  <span className="contact-direct-link-text">{site.phoneDisplay}</span>
-                </a>
-              </div>
+              ) : (
+                <span className="home-contact-link">
+                  <Phone className="home-contact-icon" strokeWidth={1.75} aria-hidden />
+                  {site.phoneDisplay}
+                </span>
+              )}
             </div>
           </div>
         </div>
