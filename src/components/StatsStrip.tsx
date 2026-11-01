@@ -5,7 +5,7 @@ import { site, type Stat } from "@/config/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { stagger, useReducedMotion, useReveal } from "@/lib/reveal";
 
-const COUNT_MS = 2200;
+const COUNT_MS = 1600;
 
 function easeOutQuart(progress: number) {
   return 1 - (1 - progress) ** 4;

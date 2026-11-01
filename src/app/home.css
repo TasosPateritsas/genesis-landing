@@ -376,6 +376,14 @@
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .home-service-card:hover,
+  .home-service-card:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .home-service-card:hover,
   .home-service-card:focus-visible {

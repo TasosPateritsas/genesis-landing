@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
-import { stagger, useReveal } from "@/lib/reveal";
+import { revealDelay, useReveal } from "@/lib/reveal";
 import { socialLabel, teamMembers } from "@/data/team";
 
 function GitHubIcon() {
@@ -46,7 +46,11 @@ export function Team() {
 
       <div className="team-home-grid">
         {teamMembers.map((member, index) => (
-          <article key={member.id} className="team-home-card gx-up" style={stagger(index)}>
+          <article
+            key={member.id}
+            className="team-home-card gx-up"
+            style={revealDelay(index * 0.15, Math.min(index * 0.06, 0.3))}
+          >
             <div className="team-home-photo">
               {member.photo ? (
                 <Image
