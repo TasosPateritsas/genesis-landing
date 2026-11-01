@@ -46,11 +46,10 @@ export function WhatWeBuild() {
           {t.services.items.map((service, index) => {
             const Icon = serviceIcons[service.icon];
             return (
+              <div key={service.icon} className="gx-up h-full" style={stagger(index)}>
               <Link
-                key={service.icon}
                 href={hrefFor(serviceAnchors[service.icon])}
-                className="offer-card home-service-card gx-up"
-                style={stagger(index)}
+                className="offer-card home-service-card"
               >
                 <span className="home-card-arrow" aria-hidden>
                   →
@@ -61,6 +60,7 @@ export function WhatWeBuild() {
                 <h3 className="home-card-title">{service.title}</h3>
                 <p className="home-card-body">{service.description}</p>
               </Link>
+              </div>
             );
           })}
         </div>

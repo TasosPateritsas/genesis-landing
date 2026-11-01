@@ -330,6 +330,7 @@
 
 .home-service-card {
   position: relative;
+  height: 100%;
   border-color: var(--border);
   background: #ffffff;
   transition-property: transform, box-shadow, border-color;
@@ -971,8 +972,10 @@
   color: var(--g-dark);
   font-size: 15px;
   font-weight: 600;
-  transition-property: background-color;
-  transition-duration: 150ms;
+  transition-property: background-color, opacity, transform, filter;
+  transition-duration: 150ms, 0.7s, 0.7s, 0.7s;
+  transition-timing-function: ease, cubic-bezier(0.33, 1, 0.68, 1), cubic-bezier(0.33, 1, 0.68, 1),
+    cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .home-contact-aside {
@@ -1076,6 +1079,10 @@
 
   .home-contact-title {
     font-size: 56px;
+  }
+
+  .home-contact-cta {
+    transition-duration: 150ms, 1s, 1s, 1s;
   }
 }
 
