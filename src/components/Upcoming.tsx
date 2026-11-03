@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { site } from "@/config/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { stagger, useReveal } from "@/lib/reveal";
 
@@ -34,9 +35,20 @@ export function Upcoming() {
           </h2>
           <span className="home-upcoming-bar" aria-hidden />
           <p className="home-upcoming-text">{t.upcoming.text}</p>
+          <div className="home-upcoming-tags">
+            {t.upcoming.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
           <p className="home-upcoming-launch">
             {t.upcoming.launch} <span>{t.upcoming.soon}</span>
           </p>
+          <a className="btn-primary home-upcoming-cta" href={`mailto:${site.email}?subject=Weddingflow%20launch`}>
+            {t.upcoming.notify}
+            <span className="cta-arrow" aria-hidden>
+              →
+            </span>
+          </a>
         </div>
       </div>
     </section>
