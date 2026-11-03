@@ -32,7 +32,7 @@ export const upcomingCards: readonly WorkCard[] = [
   {
     slug: "weddingflow",
     title: { en: "Weddingflow", el: "Weddingflow" },
-    meta: { en: "Web app · Weddings", el: "Web app · Γάμοι" },
+    meta: { en: "Web app · Weddings", el: "Web app · γάμοι" },
     description: {
       en: "The first Greek platform that brings wedding venues, professionals and planning tools together — for engaged couples and wedding pros.",
       el: "Η πρώτη ελληνική πλατφόρμα που συγκεντρώνει χώρους γάμου, επαγγελματίες και εργαλεία σχεδιασμού — για ζευγάρια και επαγγελματίες του γάμου.",

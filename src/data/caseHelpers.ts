@@ -39,4 +39,4 @@ export const scores = (
   accessibility: number,
 ): ScoreSet => ({ performance, lcp, seo, accessibility });
 
-export const delivered = L("Design · Development · Launch", "Σχεδιασμός · Ανάπτυξη · Launch");
+export const delivered = L("Design · Development · Launch", "Σχεδιασμός · ανάπτυξη · launch");

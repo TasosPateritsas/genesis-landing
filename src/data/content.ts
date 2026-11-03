@@ -657,24 +657,24 @@ export const dictionaries: Record<Locale, Dictionary> = {
       seeAll: "Δείτε όλες τις υπηρεσίες",
       items: [
         {
-          title: "Ανάπτυξη Εφαρμογών",
+          title: "Ανάπτυξη εφαρμογών",
           description:
             "Ανάπτυξη προϊόντος από το πρώτο wireframe έως το production deploy.",
           icon: "app",
         },
         {
-          title: "AI Agents",
+          title: "AI agents",
           description:
             "Agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείτε.",
           icon: "agents",
         },
         {
-          title: "AI Workflows",
+          title: "AI workflows",
           description: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σας διαδικασίες.",
           icon: "workflows",
         },
         {
-          title: "Websites & Eshops",
+          title: "Websites & eshops",
           description:
             "Ιστοσελίδες και eshops με SEO από την πρώτη μέρα, έτοιμα να πουλήσουν.",
           icon: "shop",
@@ -746,10 +746,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         category: "Κατηγορία *",
         categoryPlaceholder: "Επιλέξτε κατηγορία",
         categories: [
-          { value: "app", label: "Ανάπτυξη Εφαρμογών" },
-          { value: "agents", label: "AI Agents" },
-          { value: "workflows", label: "AI Workflows" },
-          { value: "shop", label: "Websites & Eshops" },
+          { value: "app", label: "Ανάπτυξη εφαρμογών" },
+          { value: "agents", label: "AI agents" },
+          { value: "workflows", label: "AI workflows" },
+          { value: "shop", label: "Websites & eshops" },
           { value: "other", label: "Άλλο" },
         ],
         otherLabel: "Τι άλλο χρειάζεστε; *",
@@ -798,7 +798,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
     },
     stats: {
-      engineers: { label: "Senior μηχανικοί", note: "" },
+      engineers: { label: "senior μηχανικοί", note: "" },
       projects: {
         label: "Έργα που παραδώσαμε",
         note: "Websites, εφαρμογές και eshops που έχουμε φτιάξει και παραδώσει.",
@@ -968,7 +968,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           id: "ai-agents",
           icon: "bot",
-          kicker: "AI Agents",
+          kicker: "AI agents",
           heading: "Custom agents, έτοιμοι να δουλέψουν για σας.",
           body: "Custom agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείτε — support, lead qualification, εσωτερικές διαδικασίες.",
           included: [
@@ -986,7 +986,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           id: "ai-workflows",
           icon: "workflow",
-          kicker: "AI Workflows",
+          kicker: "AI workflows",
           heading: "Custom αυτοματισμοί, έτοιμοι να σας γλιτώσουν ώρες.",
           body: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σας διαδικασίες — ώστε η ομάδα σας να ξοδεύει λιγότερο χρόνο σε χειροκίνητες εργασίες και περισσότερο σε αυτό που μετράει.",
           included: [
@@ -1005,7 +1005,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           id: "websites-eshops",
           icon: "shopping-bag",
-          kicker: "Websites & Eshops",
+          kicker: "Websites & eshops",
           heading: "Custom ιστοσελίδες και eshops, έτοιμα να πουλήσουν.",
           body: "Ιστοσελίδες και online καταστήματα, γρήγορα, με SEO ενσωματωμένο από την πρώτη μέρα — έτοιμα να βγουν live και να αρχίσουν να πουλάνε αμέσως.",
           included: [
@@ -1025,10 +1025,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         },
       ],
       chips: [
-        { href: serviceChipHrefs.app, label: "Ανάπτυξη Εφαρμογών" },
-        { href: serviceChipHrefs.agents, label: "AI Agents" },
-        { href: serviceChipHrefs.workflows, label: "AI Workflows" },
-        { href: serviceChipHrefs.shop, label: "Websites & Eshops" },
+        { href: serviceChipHrefs.app, label: "Ανάπτυξη εφαρμογών" },
+        { href: serviceChipHrefs.agents, label: "AI agents" },
+        { href: serviceChipHrefs.workflows, label: "AI workflows" },
+        { href: serviceChipHrefs.shop, label: "Websites & eshops" },
       ],
     },
   },

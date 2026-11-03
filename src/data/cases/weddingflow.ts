@@ -198,9 +198,9 @@ export const weddingflow: Project = {
     next: {
       title: L("One release at a time.", "Μία έκδοση τη φορά."),
       cards: [
-        { tag: L("Ready", "Έτοιμο"), tone: "ready", title: L("Venues and Couples", "Χώροι και Ζευγάρια"), text: L("Sign-up and roles, every onboarding, venue search and pages, requests, deposits, guests and seating.", "Εγγραφή και ρόλοι, όλα τα onboarding, αναζήτηση και σελίδες χώρων, αιτήματα, προκαταβολές, καλεσμένοι και πλάνο θέσεων.") },
-        { tag: L("In progress", "Σε εξέλιξη"), tone: "progress", title: L("Wedding Pros and Dashboards", "Επαγγελματίες και Dashboards"), text: L("Professional pages and request forms, reviews, and the last details of all three dashboards.", "Σελίδες επαγγελματιών και φόρμες αιτημάτων, αξιολογήσεις και οι τελευταίες λεπτομέρειες στα τρία dashboards.") },
-        { tag: L("Next", "Επόμενο"), tone: "next", title: L("Payments and Planning", "Πληρωμές και Οργάνωση"), text: L("Online deposits, email notifications and a planning checklist with a timeline.", "Online προκαταβολές, ειδοποιήσεις με email και λίστα εργασιών με χρονοδιάγραμμα.") },
+        { tag: L("Ready", "Έτοιμο"), tone: "ready", title: L("Venues and Couples", "Χώροι και ζευγάρια"), text: L("Sign-up and roles, every onboarding, venue search and pages, requests, deposits, guests and seating.", "Εγγραφή και ρόλοι, όλα τα onboarding, αναζήτηση και σελίδες χώρων, αιτήματα, προκαταβολές, καλεσμένοι και πλάνο θέσεων.") },
+        { tag: L("In progress", "Σε εξέλιξη"), tone: "progress", title: L("Wedding Pros and Dashboards", "Επαγγελματίες και dashboards"), text: L("Professional pages and request forms, reviews, and the last details of all three dashboards.", "Σελίδες επαγγελματιών και φόρμες αιτημάτων, αξιολογήσεις και οι τελευταίες λεπτομέρειες στα τρία dashboards.") },
+        { tag: L("Next", "Επόμενο"), tone: "next", title: L("Payments and Planning", "Πληρωμές και οργάνωση"), text: L("Online deposits, email notifications and a planning checklist with a timeline.", "Online προκαταβολές, ειδοποιήσεις με email και λίστα εργασιών με χρονοδιάγραμμα.") },
       ],
     },
   },
