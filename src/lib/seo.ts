@@ -1,55 +1,50 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { site } from "@/config/site";
 import { dictionaries, type Locale } from "@/data/content";
 import type { Project } from "@/data/projects";
 import { localizePath, type PublicPath } from "@/lib/routes";
+import { isProductionIndexable } from "@/lib/siteUrl";
 
 const HOME = {
   en: {
-    title: "Genesis — Websites, Apps & AI Agents | Software Agency in Athens",
+    title: "Genesis — Software Agency in Athens | Websites, Apps & AI",
     description:
       "Three engineers in Athens building websites, eshops, apps, AI agents and AI workflows — and running the tech behind them as your in-house team.",
   },
   el: {
-    title: "Genesis — Websites, Εφαρμογές & AI Agents | Agency Λογισμικού στην Αθήνα",
+    title: "Genesis — Κατασκευή ιστοσελίδων, εφαρμογών & AI | Αθήνα",
     description:
-      "Τρεις μηχανικοί στην Αθήνα φτιάχνουμε websites, eshops, εφαρμογές, AI agents και AI workflows — και τρέχουμε την τεχνολογία τους σαν δική σας in-house ομάδα.",
+      "Κατασκευή ιστοσελίδων, eshop, εφαρμογών και AI agents στην Αθήνα. Τρεις μηχανικοί που χτίζουν και υποστηρίζουν το προϊόν σας σαν in-house ομάδα.",
   },
 } as const;
 
-export async function isPreviewHost() {
-  const headerStore = await headers();
-  const raw = headerStore.get("x-forwarded-host") ?? headerStore.get("host") ?? "";
-  const host = raw.split(",")[0]?.trim().split(":")[0] ?? "";
-  return host.endsWith(".vercel.app");
+export function indexingRobots(): Metadata["robots"] {
+  return isProductionIndexable()
+    ? { index: true, follow: true }
+    : { index: false, follow: false };
 }
 
-export async function buildPageMetadata({
+/** `title` is the page name. The root template appends " | Genesis", except for absolute homepage titles. */
+export function buildPageMetadata({
   locale,
   path,
   title,
   description,
-  ogTitle,
-  imageAlt,
+  absolute = false,
 }: {
   locale: Locale;
   path: PublicPath;
   title: string;
   description: string;
-  ogTitle?: string;
-  imageAlt?: string;
-}): Promise<Metadata> {
-  const preview = await isPreviewHost();
+  absolute?: boolean;
+}): Metadata {
   const canonical = localizePath(path, locale);
-  const socialTitle = ogTitle ?? title;
+  const socialTitle = absolute ? title : `${title} | Genesis`;
 
   return {
-    title,
+    title: absolute ? { absolute: title } : title,
     description,
-    robots: preview
-      ? { index: false, follow: false }
-      : { index: true, follow: true },
+    robots: indexingRobots(),
     alternates: {
       canonical,
       languages: {
@@ -66,26 +61,17 @@ export async function buildPageMetadata({
       siteName: site.name,
       title: socialTitle,
       description,
-      images: [
-        {
-          url: "/og.svg",
-          width: 1200,
-          height: 630,
-          alt: imageAlt ?? "Genesis — Athens tech studio",
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: ["/og.svg"],
     },
   };
 }
 
 export function homeMetadata(locale: Locale) {
-  return buildPageMetadata({ locale, path: "/", ...HOME[locale] });
+  return buildPageMetadata({ locale, path: "/", ...HOME[locale], absolute: true });
 }
 
 export function servicesMetadata(locale: Locale) {
@@ -105,8 +91,6 @@ export function teamMetadata(locale: Locale) {
     path: "/team",
     title: page.metaTitle,
     description: page.metaDescription,
-    ogTitle: page.ogTitle,
-    imageAlt: page.imageAlt,
   });
 }
 
@@ -124,7 +108,7 @@ export function projectMetadata(locale: Locale, project: Project) {
   return buildPageMetadata({
     locale,
     path: `/work/${project.slug}` as PublicPath,
-    title: `${project.name[locale]} - Genesis`,
+    title: project.name[locale],
     description: project.intro[locale],
   });
 }
@@ -134,7 +118,7 @@ export function legalMetadata(locale: Locale, kind: "privacy" | "cookies") {
   return buildPageMetadata({
     locale,
     path: kind === "privacy" ? "/privacy" : "/cookies",
-    title: `${page.title} - ${site.name}`,
+    title: page.title,
     description: page.description,
   });
 }

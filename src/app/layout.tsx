@@ -6,6 +6,7 @@ import { CursorFollower } from "@/components/CursorFollower";
 import { ScrollReset } from "@/components/ScrollReset";
 import { site } from "@/config/site";
 import { SITE_URL } from "@/lib/routes";
+import { indexingRobots } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -24,36 +25,51 @@ const colorTokens = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Genesis",
+    template: "%s | Genesis",
+  },
   applicationName: site.name,
   authors: [{ name: site.name }],
   creator: site.name,
+  robots: indexingRobots(),
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  url: site.url,
-  description: "Software agency in Athens building websites, eshops, apps, AI agents and AI workflows.",
-  email: site.email,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Athens",
-    addressCountry: "GR",
-  },
-  areaServed: "Worldwide",
-  knowsAbout: ["Web development", "Eshops", "App development", "AI agents", "AI workflows"],
-  founder: site.founders.map((name) => ({ "@type": "Person", name })),
-};
+function structuredData(isHome: boolean) {
+  const organization = {
+    "@type": "ProfessionalService",
+    name: site.name,
+    url: SITE_URL,
+    description: "Software agency in Athens building websites, eshops, apps, AI agents and AI workflows.",
+    email: site.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Athens",
+      addressCountry: "GR",
+    },
+    areaServed: "Worldwide",
+    knowsAbout: ["Web development", "Eshops", "App development", "AI agents", "AI workflows"],
+    founder: site.founders.map((name) => ({ "@type": "Person", name })),
+  };
+  const graph = isHome
+    ? [{ "@type": "WebSite", name: "Genesis", url: SITE_URL }, organization]
+    : [organization];
+  return { "@context": "https://schema.org", "@graph": graph };
+}
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const headerStore = await headers();
   const locale = headerStore.get("x-locale") === "el" ? "el" : "en";
+  const pathname = headerStore.get("x-pathname") ?? "/";
+  const isHome = pathname === "/" || pathname === "/el";
 
   return (
     <html lang={locale} className={`${inter.variable} h-full`} style={colorTokens} data-scroll-behavior="smooth">
       <body className="min-h-full font-sans antialiased">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(isHome)) }}
+        />
         {children}
         <ScrollReset />
         <CursorFollower />

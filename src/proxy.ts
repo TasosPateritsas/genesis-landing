@@ -22,6 +22,7 @@ export function proxy(request: NextRequest) {
   const locale =
     url.pathname === "/el" || url.pathname.startsWith("/el/") ? "el" : "en";
   requestHeaders.set("x-locale", locale);
+  requestHeaders.set("x-pathname", url.pathname);
 
   return NextResponse.next({
     request: { headers: requestHeaders },

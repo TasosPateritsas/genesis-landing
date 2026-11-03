@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/lib/siteUrl";
+
 export type StatId = "engineers" | "projects" | "years" | "inHouse";
 
 export type Stat = {
@@ -15,7 +17,7 @@ const stats: readonly Stat[] = [
 
 export const site = {
   name: "Genesis",
-  url: "https://genesis.studio",
+  url: SITE_URL,
   email: "hello@genesis.studio",
   /** E.164 number. Falls back to the placeholder display until this is set. */
   phone: null as string | null,

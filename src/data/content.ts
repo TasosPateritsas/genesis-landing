@@ -312,7 +312,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       directLabel: "Prefer to reach us directly by email or phone?",
     },
     contactPage: {
-      metaTitle: "Contact, Quotes & Booking - Genesis",
+      metaTitle: "Contact: Quotes & Booking",
       metaDescription:
         "Send us a message or book an intro call with Genesis. App development, AI agents, automations and websites for startups. Based in Athens, working worldwide.",
       hero: {
@@ -424,10 +424,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       subtext:
         "Three engineers, no account managers, no outsourcing. The people you meet on the first call are the people who build your product.",
       people: "Despoina, Pantelis & Anastasis · Athens",
-      metaTitle: "Meet the Team: Software Engineers in Athens - Genesis",
+      metaTitle: "Team: Software Engineers in Athens",
       metaDescription:
         "Meet Despoina, Pantelis and Anastasis, the engineers behind Genesis, a software development agency in Athens. Design, code and launch, with no outsourcing.",
-      ogTitle: "Meet the Team - Genesis",
+      ogTitle: "Team: Software Engineers in Athens",
       imageAlt: "The Genesis team: Despoina, Pantelis and Anastasis",
     },
     footer: {
@@ -499,7 +499,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Websites, eshops and booking sites — live and working.",
       titleLines: ["Websites, eshops and booking", "sites — live and working."],
       subtitle: "Real businesses that run on what we built — every site here is live and in use.",
-      metaTitle: "Websites, eshops and booking sites - Genesis",
+      metaTitle: "Work: Websites, Eshops & Booking",
       metaDescription:
         "Real businesses that run on what we built — every site here is live and in use.",
       viewProject: "View project",
@@ -529,7 +529,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       subtitle:
         "App development, AI agents, workflow automation, and websites & eshops — all under one roof.",
-      metaTitle: "App Development, AI Agents & Workflows, Websites - Genesis",
+      metaTitle: "Services: Apps, AI Agents & Websites",
       metaDescription:
         "Custom app development, AI agents, AI workflow automation, websites and eshops for startups and small businesses. Based in Athens, working worldwide.",
       divider: "Services",
@@ -716,7 +716,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       directLabel: "Προτιμάτε κατευθείαν email ή κινητό;",
     },
     contactPage: {
-      metaTitle: "Επικοινωνία, Προσφορά & Ραντεβού - Genesis",
+      metaTitle: "Επικοινωνία: προσφορά ή ραντεβού",
       metaDescription:
         "Στείλτε μας μήνυμα ή κλείστε ραντεβού γνωριμίας με τη Genesis. Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και websites για startups. Έδρα στην Αθήνα, δουλεύουμε παντού.",
       hero: {
@@ -828,10 +828,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       subtext:
         "Τρεις μηχανικοί, χωρίς account managers, χωρίς outsourcing. Οι άνθρωποι που γνωρίζετε στην αρχική συνάντηση είναι αυτοί που χτίζουν το προϊόν σας.",
       people: "Δέσποινα, Παντελής & Αναστάσης · Αθήνα",
-      metaTitle: "Η Ομάδα: Μηχανικοί Λογισμικού στην Αθήνα - Genesis",
+      metaTitle: "Η ομάδα: μηχανικοί λογισμικού στην Αθήνα",
       metaDescription:
         "Γνωρίστε τη Δέσποινα, τον Παντελή και τον Αναστάση, τους μηχανικούς της Genesis, agency λογισμικού στην Αθήνα. Design, κώδικας και launch, χωρίς outsourcing.",
-      ogTitle: "Η Ομάδα - Genesis",
+      ogTitle: "Η ομάδα: μηχανικοί λογισμικού στην Αθήνα",
       imageAlt: "Η ομάδα της Genesis: Δέσποινα, Παντελής και Αναστάσης",
     },
     footer: {
@@ -904,7 +904,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Websites, eshops και booking sites — live και σε λειτουργία.",
       titleLines: ["Websites, eshops και booking", "sites — live και σε λειτουργία."],
       subtitle: "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
-      metaTitle: "Websites, eshops και booking sites - Genesis",
+      metaTitle: "Έργα: websites, eshops & booking",
       metaDescription:
         "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
       viewProject: "Δείτε το έργο",
@@ -934,7 +934,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       subtitle:
         "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, και websites & eshops — όλα σε ένα μέρος.",
-      metaTitle: "Εφαρμογές, AI Agents & Workflows, Websites - Genesis",
+      metaTitle: "Υπηρεσίες: εφαρμογές, AI agents & websites",
       metaDescription:
         "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
       divider: "Υπηρεσίες",
