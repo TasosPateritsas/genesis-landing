@@ -23,6 +23,7 @@
   --layout-max: 72rem;
   --layout-chrome: var(--layout-max);
   --layout-pad: 20px;
+  --header-h: 64px;
   --layout-hero-pad: 20px;
   --layout-chrome-pad: var(--layout-pad);
 }
@@ -30,6 +31,7 @@
 @media (min-width: 1024px) {
   :root {
     --layout-hero-pad: 48px;
+    --header-h: 76px;
   }
 }
 
