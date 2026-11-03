@@ -9,6 +9,14 @@ export const vasileiadis: Project = {
   slug: "vasileiadis",
   kind: "live",
   name: L("Vasileiadis Drain Cleaning", "Αποφράξεις Βασιλειάδης"),
+  metaTitle: L(
+    "Vasileiadis Drain Cleaning: 24/7 Website, Attica",
+    "Αποφράξεις Βασιλειάδης: site 24/7, Αττική",
+  ),
+  metaDescription: L(
+    "A 24/7 drain-clearing site for all of Attica, in Greek, English and Russian, with the right phone number for the time of day on every page.",
+    "Site για αποφράξεις 24/7 σε όλη την Αττική, σε ελληνικά, αγγλικά και ρωσικά, με το σωστό τηλέφωνο ανάλογα με την ώρα σε κάθε σελίδα.",
+  ),
   type: L("Website", "Website"),
   industry: L("Local services", "Τοπικές υπηρεσίες"),
   description: L(

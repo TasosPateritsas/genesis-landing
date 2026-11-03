@@ -102,6 +102,7 @@ export const weddingflow: Project = {
   slug: "weddingflow",
   kind: "upcoming",
   name: L("Weddingflow", "Weddingflow"),
+  metaTitle: L("Weddingflow: Wedding Planning Platform", "Weddingflow: πλατφόρμα οργάνωσης γάμου"),
   type: L("Web app", "Web app"),
   industry: L("Weddings", "Γάμοι"),
   description: L(

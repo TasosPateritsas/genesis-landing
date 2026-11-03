@@ -108,8 +108,8 @@ export function projectMetadata(locale: Locale, project: Project) {
   return buildPageMetadata({
     locale,
     path: `/work/${project.slug}` as PublicPath,
-    title: project.name[locale],
-    description: project.intro[locale],
+    title: project.metaTitle[locale],
+    description: project.metaDescription?.[locale] ?? project.intro[locale],
   });
 }
 

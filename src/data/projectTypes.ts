@@ -29,6 +29,10 @@ export type Project = {
   slug: string;
   kind: ProjectKind;
   name: LocalizedText;
+  /** Document title before the " | Genesis" template. The visible h1 stays `name`. */
+  metaTitle: LocalizedText;
+  /** Meta description. Falls back to `intro` when omitted. */
+  metaDescription?: LocalizedText;
   type: LocalizedText;
   industry: LocalizedText;
   description: LocalizedText;

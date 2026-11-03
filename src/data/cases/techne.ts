@@ -9,6 +9,10 @@ export const techne: Project = {
   slug: "techne",
   kind: "live",
   name: L("Techne.", "Techne."),
+  metaTitle: L(
+    "Techne: Architecture Studio Website, Athens",
+    "Techne: site αρχιτεκτονικού γραφείου, Αθήνα",
+  ),
   type: L("Website", "Website"),
   industry: L("Architecture", "Αρχιτεκτονική"),
   description: L(

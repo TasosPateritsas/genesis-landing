@@ -9,6 +9,10 @@ export const chalkino: Project = {
   slug: "chalkino-katsaroli",
   kind: "live",
   name: L("Chalkino Katsaroli", "Χάλκινο Κατσαρόλι"),
+  metaTitle: L(
+    "Chalkino Katsaroli: Home-Cooking Kitchen, Chalkida",
+    "Χάλκινο Κατσαρόλι: site μαγειρείου, Χαλκίδα",
+  ),
   type: L("Website", "Website"),
   industry: L("Restaurant", "Εστίαση"),
   description: L(

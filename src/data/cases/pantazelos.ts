@@ -9,6 +9,10 @@ export const pantazelos: Project = {
   slug: "pantazelos",
   kind: "live",
   name: L("Pantazelos Real Estate", "Pantazelos Real Estate"),
+  metaTitle: L(
+    "Pantazelos Real Estate: Website, Skroponeria",
+    "Pantazelos Real Estate: μεσιτικό site, Σκροπονέρια",
+  ),
   type: L("Website", "Website"),
   industry: L("Real estate", "Ακίνητα"),
   description: L(

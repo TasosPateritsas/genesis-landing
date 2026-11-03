@@ -7,6 +7,14 @@ export const salty: Project = {
   slug: "salty-boat-trips",
   kind: "live",
   name: L("Salty Boat Trips", "Salty Boat Trips"),
+  metaTitle: L(
+    "Salty Boat Trips: Boat Tour Booking Site, Mykonos",
+    "Salty Boat Trips: site κρατήσεων εκδρομών, Μύκονος",
+  ),
+  metaDescription: L(
+    "A premium charter site for private RIB trips, day cruises and boat transfers in Mykonos — built to turn browsing into booking requests.",
+    "Premium site για ιδιωτικές εκδρομές με RIB, κρουαζιέρες και θαλάσσιες μεταφορές στη Μύκονο, φτιαγμένο για να φέρνει αιτήματα κράτησης.",
+  ),
   type: L("Booking site", "Booking site"),
   industry: L("Tourism", "Τουρισμός"),
   description: L(
