@@ -437,6 +437,12 @@
   border-top: 1px solid var(--border);
 }
 
+@media (max-width: 1279px) {
+  .site-footer-bottom {
+    padding-right: 64px;
+  }
+}
+
 .site-footer-bar {
   display: flex;
   flex-direction: column;
