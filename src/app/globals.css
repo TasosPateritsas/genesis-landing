@@ -23,6 +23,7 @@
   --layout-max: 72rem;
   --layout-chrome: var(--layout-max);
   --layout-pad: 20px;
+  --header-h: 64px;
   --layout-hero-pad: 20px;
   --layout-chrome-pad: var(--layout-pad);
 }
@@ -30,6 +31,7 @@
 @media (min-width: 1024px) {
   :root {
     --layout-hero-pad: 48px;
+    --header-h: 76px;
   }
 }
 
@@ -584,11 +586,49 @@ a:focus-visible .link-underline {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 640px) and (max-width: 1023px) {
+  .team-home-grid {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .team-home-grid > .team-home-card,
   .team-home-grid > :last-child {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: calc(50% - 10px);
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+    width: auto;
+    max-width: none;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 28px;
+    row-gap: 14px;
+    align-content: start;
+  }
+
+  .team-home-card > .team-home-photo {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    align-self: start;
+  }
+
+  .team-home-card > :not(.team-home-photo) {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 639px) {
+  .team-home-card > .team-home-photo {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .team-home-photo img {
+    object-fit: cover;
+    object-position: center 25%;
   }
 }
 

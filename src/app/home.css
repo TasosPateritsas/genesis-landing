@@ -122,6 +122,58 @@
   }
 }
 
+@media (max-width: 768px) {
+  .home-stat:nth-child(n + 3) {
+    box-shadow: none;
+  }
+
+  .home-stat:nth-child(4) {
+    box-shadow: inset 1px 0 0 rgb(255 255 255 / 18%);
+  }
+
+  .home-stats-inner::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: rgb(255 255 255 / 18%);
+    pointer-events: none;
+  }
+
+  .home-stat:nth-child(3)::before,
+  .home-stat:nth-child(4)::after,
+  .home-stats-inner::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    box-sizing: border-box;
+    border: 1px solid rgb(255 255 255 / 50%);
+    pointer-events: none;
+  }
+
+  .home-stat:nth-child(3)::before {
+    top: -4px;
+    left: -20px;
+  }
+
+  .home-stat:nth-child(4)::after {
+    top: -4px;
+    right: -20px;
+  }
+
+  .home-stat:nth-child(4)::before {
+    top: -4px;
+  }
+
+  .home-stats-inner::after {
+    bottom: 0;
+    left: calc(50% - 4px);
+  }
+}
+
 .home-hero {
   position: relative;
   isolation: isolate;
@@ -175,6 +227,12 @@
   padding-bottom: 72px;
 }
 
+@media (max-width: 768px) {
+  .home-hero-inner {
+    padding-top: calc(var(--header-h) + 48px);
+  }
+}
+
 .home-eyebrow {
   margin: 0;
   color: var(--ink-muted);
@@ -196,6 +254,7 @@
 
 .home-hero-line {
   display: block;
+  text-wrap: balance;
 }
 
 .home-hero-line.is-accent {
@@ -435,6 +494,12 @@
 @media (min-width: 640px) {
   .home-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .home-services {
+    padding-top: 80px;
   }
 }
 
@@ -723,7 +788,7 @@
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .home-work-card.is-large .home-work-browser {
     top: 19%;
   }
@@ -769,32 +834,84 @@
   }
 }
 
-@media (max-width: 639px) {
-  .home-work-browser,
+@media (min-width: 640px) and (max-width: 1023px) {
+  .home-work-media,
+  .home-work-card.is-large .home-work-media,
+  .home-work-card.is-small .home-work-media {
+    position: relative;
+    flex: none;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .home-work-card .home-work-browser,
   .home-work-card.is-large .home-work-browser,
-  .home-work-card.is-small .home-work-browser.is-left {
+  .home-work-card.is-small .home-work-browser.is-left,
+  .home-work-card.is-small .home-work-browser.is-right {
+    position: absolute;
+    inset: auto;
+    top: 12%;
+    right: auto;
+    bottom: auto;
+    left: 4%;
+    width: 74%;
+  }
+
+  .home-work-card .home-work-phone,
+  .home-work-card.is-large .home-work-phone,
+  .home-work-phone.is-bottom-left,
+  .home-work-phone.is-left,
+  .home-work-phone.is-right {
+    position: absolute;
+    inset: auto;
+    top: 13%;
+    right: 4%;
+    bottom: auto;
+    left: auto;
+    width: 22%;
+    height: auto;
+    margin: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-work-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 0;
+    aspect-ratio: auto;
+    padding: 16px 16px 20px;
+  }
+
+  .home-work-card .home-work-browser,
+  .home-work-card.is-large .home-work-browser,
+  .home-work-card.is-small .home-work-browser.is-left,
+  .home-work-card.is-small .home-work-browser.is-right {
     position: relative;
     inset: auto;
     width: 100%;
   }
 
-  .home-work-phone,
+  .home-work-card .home-work-phone,
   .home-work-card.is-large .home-work-phone,
   .home-work-phone.is-bottom-left,
   .home-work-phone.is-left,
   .home-work-phone.is-right {
     position: relative;
     inset: auto;
-    width: 42%;
-    margin-top: 12px;
+    width: 44%;
+    margin-top: 0;
   }
 
-  .home-work-media {
+  .home-work-more {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    min-height: 0;
-    padding: 16px 16px 20px;
+    align-items: center;
+    text-align: center;
   }
 
   .home-work-browser-frame,
@@ -1215,18 +1332,7 @@
   color: var(--g-mint);
 }
 
-@media (min-width: 640px) and (max-width: 1023px) {
-  .home-work-card.is-small .home-work-media {
-    flex: none;
-    aspect-ratio: 16 / 10;
-    height: auto;
-    min-height: 0;
-  }
-}
-
 @media (min-width: 768px) and (max-width: 1023px) {
-  .home-work-media,
-  .home-work-card.is-small .home-work-media,
   .home-upcoming-photo {
     aspect-ratio: 16 / 9;
     min-height: 0;
