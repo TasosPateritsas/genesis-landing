@@ -128,6 +128,31 @@
   overflow: hidden;
 }
 
+@media (min-width: 1280px) {
+  .home-hero,
+  .home-stats,
+  .home-contact {
+    --hero-inset: 64px;
+  }
+
+  .wrap-hero.home-hero-inner,
+  .wrap-hero.home-contact-inner {
+    padding-inline: calc(var(--layout-hero-pad) + var(--hero-inset));
+  }
+
+  .home-stats-inner {
+    transform: translateX(calc(var(--hero-inset) - 28px));
+  }
+}
+
+@media (min-width: 1600px) {
+  .home-hero,
+  .home-stats,
+  .home-contact {
+    --hero-inset: 80px;
+  }
+}
+
 .home-hero > .hero-mint {
   position: absolute;
   inset: 0;
