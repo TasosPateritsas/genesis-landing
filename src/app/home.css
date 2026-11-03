@@ -691,7 +691,56 @@
   }
 
   .home-work-card.is-small .home-work-media {
-    min-height: 210px;
+    flex: none;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    min-height: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .home-work-card.is-large .home-work-browser {
+    top: 19%;
+  }
+
+  .home-work-card.is-large .home-work-phone.is-bottom-left {
+    top: 53%;
+    bottom: auto;
+    height: auto;
+  }
+
+  .home-work-card.is-small .home-work-browser.is-right {
+    top: 12%;
+    right: auto;
+    bottom: auto;
+    left: 4%;
+    width: 76%;
+  }
+
+  .home-work-card.is-small .home-work-phone.is-right {
+    top: 13%;
+    right: 4%;
+    bottom: auto;
+    left: auto;
+    width: 22%;
+    height: auto;
+  }
+
+  .home-work-card.is-small .home-work-browser.is-left {
+    top: 12%;
+    right: auto;
+    bottom: auto;
+    left: 30%;
+    width: 72%;
+  }
+
+  .home-work-card.is-small .home-work-phone.is-left {
+    top: 30%;
+    right: auto;
+    bottom: auto;
+    left: 4%;
+    width: 31%;
+    height: auto;
   }
 }
 
@@ -1086,8 +1135,18 @@
   color: var(--g-mint);
 }
 
+@media (min-width: 640px) and (max-width: 1023px) {
+  .home-work-card.is-small .home-work-media {
+    flex: none;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    min-height: 0;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .home-work-media,
+  .home-work-card.is-small .home-work-media,
   .home-upcoming-photo {
     aspect-ratio: 16 / 9;
     min-height: 0;
