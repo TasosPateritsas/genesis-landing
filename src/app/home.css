@@ -124,7 +124,20 @@
 
 .home-hero {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
+}
+
+.home-hero > .hero-mint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home-hero > :not(.hero-mint) {
+  position: relative;
+  z-index: 1;
 }
 
 .home-hero-inner {
