@@ -1146,12 +1146,33 @@
 }
 
 .home-contact-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #ffffff;
   font-size: 15px;
   font-weight: 500;
+  text-decoration: none;
+}
+
+.home-contact-link .label {
+  position: relative;
+  display: inline-block;
+}
+
+.home-contact-link .label::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: #9fe3cf;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .home-contact-icon {
@@ -1229,4 +1250,12 @@
   .home-contact-cta:focus-visible .cta-arrow {
     transform: translateX(3px);
   }
+
+  .home-contact-link:hover .label::after {
+    transform: scaleX(1);
+  }
+}
+
+.home-contact-link:focus-visible .label::after {
+  transform: scaleX(1);
 }

@@ -52,19 +52,12 @@ export function Contact() {
             <div className="home-contact-links gx-up" style={revealDelay(0.5, 0.3)}>
               <a href={`mailto:${site.email}`} className="home-contact-link">
                 <Mail className="home-contact-icon" strokeWidth={1.75} aria-hidden />
-                {site.email}
+                <span className="label">{site.email}</span>
               </a>
-              {phoneHref ? (
-                <a href={phoneHref} className="home-contact-link">
-                  <Phone className="home-contact-icon" strokeWidth={1.75} aria-hidden />
-                  {site.phoneDisplay}
-                </a>
-              ) : (
-                <span className="home-contact-link">
-                  <Phone className="home-contact-icon" strokeWidth={1.75} aria-hidden />
-                  {site.phoneDisplay}
-                </span>
-              )}
+              <a href={phoneHref} className="home-contact-link">
+                <Phone className="home-contact-icon" strokeWidth={1.75} aria-hidden />
+                <span className="label">{site.phoneDisplay}</span>
+              </a>
             </div>
           </div>
         </div>

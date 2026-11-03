@@ -17,7 +17,7 @@ export const site = {
   name: "Genesis",
   url: "https://genesis.studio",
   email: "hello@genesis.studio",
-  /** E.164 number. `tel:` links render only once this is set. */
+  /** E.164 number. Falls back to the placeholder display until this is set. */
   phone: null as string | null,
   phoneDisplay: "+30 69X XXX XXXX",
   founders: ["Despoina Ntolka", "Pantelis Karamailis", "Anastasis Pateritsas"] as const,
@@ -63,4 +63,4 @@ export const site = {
   },
 } as const;
 
-export const phoneHref = site.phone ? `tel:${site.phone}` : null;
+export const phoneHref = `tel:${(site.phone ?? site.phoneDisplay).replace(/\s+/g, "")}`;
