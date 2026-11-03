@@ -19,25 +19,23 @@
   --ink-muted: #5b6b66;
   --border: #d8e0dc;
   --border-strong: #b8c5bf;
-  /* Shared page widths. Content and hero boxes step up together from 1600px; chrome stays wider until aligned in a later pass. */
+  /* Shared page widths. Header and footer use the same box as the content column. */
   --layout-max: 72rem;
-  --layout-chrome: calc(72rem + 160px);
+  --layout-chrome: var(--layout-max);
   --layout-pad: 20px;
   --layout-hero-pad: 20px;
-  --layout-chrome-pad: 20px;
+  --layout-chrome-pad: var(--layout-pad);
 }
 
 @media (min-width: 1024px) {
   :root {
     --layout-hero-pad: 48px;
-    --layout-chrome-pad: 48px;
   }
 }
 
 @media (min-width: 1600px) {
   :root {
     --layout-max: 1280px;
-    --layout-chrome: 1440px;
   }
 }
 
@@ -187,13 +185,7 @@ body {
 }
 
 .offer-section {
-  padding-inline: 1rem;
-}
-
-@media (min-width: 768px) {
-  .offer-section {
-    padding-inline: 1.25rem;
-  }
+  padding-inline: var(--layout-pad);
 }
 
 .offer-grid {
