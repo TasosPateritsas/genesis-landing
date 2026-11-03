@@ -9,9 +9,9 @@
 
 .services-hero-wrap {
   width: 100%;
-  max-width: 72rem;
+  max-width: var(--layout-max);
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: var(--layout-pad);
 }
 
 .services-breadcrumb {

@@ -989,7 +989,7 @@
 
   .home-upcoming-inner {
     padding: 72px 20px 72px 72px;
-    padding-right: max(20px, calc(50vw - 36rem + 20px));
+    padding-right: max(20px, calc(50vw - (var(--layout-max) / 2) + 20px));
   }
 
   .home-upcoming-title {
