@@ -254,6 +254,7 @@
 
 .home-hero-line {
   display: block;
+  text-wrap: balance;
 }
 
 .home-hero-line.is-accent {
