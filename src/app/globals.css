@@ -120,7 +120,7 @@ body {
   }
 }
 
-.hero-mint {
+.bg-hero-mint {
   background:
     radial-gradient(ellipse 70% 55% at 88% 18%, rgba(120, 196, 170, 0.38), transparent 60%),
     radial-gradient(ellipse 55% 45% at 12% 88%, rgba(15, 110, 86, 0.1), transparent 55%),
