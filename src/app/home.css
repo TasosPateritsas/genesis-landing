@@ -122,6 +122,58 @@
   }
 }
 
+@media (max-width: 768px) {
+  .home-stat:nth-child(n + 3) {
+    box-shadow: none;
+  }
+
+  .home-stat:nth-child(4) {
+    box-shadow: inset 1px 0 0 rgb(255 255 255 / 18%);
+  }
+
+  .home-stats-inner::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: rgb(255 255 255 / 18%);
+    pointer-events: none;
+  }
+
+  .home-stat:nth-child(3)::before,
+  .home-stat:nth-child(4)::after,
+  .home-stats-inner::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    box-sizing: border-box;
+    border: 1px solid rgb(255 255 255 / 50%);
+    pointer-events: none;
+  }
+
+  .home-stat:nth-child(3)::before {
+    top: -4px;
+    left: -20px;
+  }
+
+  .home-stat:nth-child(4)::after {
+    top: -4px;
+    right: -20px;
+  }
+
+  .home-stat:nth-child(4)::before {
+    top: -4px;
+  }
+
+  .home-stats-inner::after {
+    bottom: 0;
+    left: calc(50% - 4px);
+  }
+}
+
 .home-hero {
   position: relative;
   isolation: isolate;
