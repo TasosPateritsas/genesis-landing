@@ -21,7 +21,7 @@ export function HomePage() {
         <Team />
         <Contact />
       </main>
-      <Footer />
+      <Footer className="bg-hero-mint" />
     </>
   );
 }

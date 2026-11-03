@@ -26,7 +26,7 @@ function FooterItem({ link }: { link: FooterLink }) {
   );
 }
 
-export function Footer({ variant = "light" }: { variant?: FooterVariant }) {
+export function Footer({ variant = "light", className }: { variant?: FooterVariant; className?: string }) {
   const { locale, t } = useLocale();
   const hrefFor = useLocalizedPath();
   const year = new Date().getFullYear();
@@ -50,7 +50,11 @@ export function Footer({ variant = "light" }: { variant?: FooterVariant }) {
   ];
 
   return (
-    <footer className="site-footer" data-variant={variant} data-cursor={variant === "dark" ? "dark" : undefined}>
+    <footer
+      className={className ? `site-footer ${className}` : "site-footer"}
+      data-variant={variant}
+      data-cursor={variant === "dark" ? "dark" : undefined}
+    >
       <div className="site-footer-inner site-footer-top">
         <div className="site-footer-brand">
           <Link href={hrefFor("/")} className="site-footer-logo" aria-label={`${site.name} home`}>

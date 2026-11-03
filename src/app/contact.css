@@ -1038,8 +1038,8 @@
     align-items: center;
     gap: 40px;
     width: 100%;
-    max-width: calc(72rem + 160px);
-    padding-inline: 48px;
+    max-width: var(--layout-chrome);
+    padding-inline: var(--layout-chrome-pad);
   }
 
   .band-photo.is-left {

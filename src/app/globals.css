@@ -19,6 +19,24 @@
   --ink-muted: #5b6b66;
   --border: #d8e0dc;
   --border-strong: #b8c5bf;
+  /* Shared page widths. Header and footer use the same box as the content column. */
+  --layout-max: 72rem;
+  --layout-chrome: var(--layout-max);
+  --layout-pad: 20px;
+  --layout-hero-pad: 20px;
+  --layout-chrome-pad: var(--layout-pad);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --layout-hero-pad: 48px;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --layout-max: 1280px;
+  }
 }
 
 @theme inline {
@@ -102,25 +120,25 @@ body {
 
 .container-narrow {
   width: 100%;
-  max-width: 72rem;
+  max-width: var(--layout-max);
   margin-inline: auto;
 }
 
 .wrap-content,
 .wrap-hero {
   width: 100%;
-  max-width: 72rem;
+  max-width: var(--layout-max);
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: var(--layout-pad);
 }
 
 @media (min-width: 1024px) {
   .wrap-hero {
-    padding-inline: 48px;
+    padding-inline: var(--layout-hero-pad);
   }
 }
 
-.hero-mint {
+.bg-hero-mint {
   background:
     radial-gradient(ellipse 70% 55% at 88% 18%, rgba(120, 196, 170, 0.38), transparent 60%),
     radial-gradient(ellipse 55% 45% at 12% 88%, rgba(15, 110, 86, 0.1), transparent 55%),
@@ -167,13 +185,7 @@ body {
 }
 
 .offer-section {
-  padding-inline: 1rem;
-}
-
-@media (min-width: 768px) {
-  .offer-section {
-    padding-inline: 1.25rem;
-  }
+  padding-inline: var(--layout-pad);
 }
 
 .offer-grid {

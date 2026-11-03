@@ -69,7 +69,7 @@ function SelectedCard({ project, size }: { project: Project; size: "large" | "sm
         <PhoneFrame
           image={shots?.mobile ?? project.mobileImage}
           alt={mobileAlt}
-          border={large ? 7 : 5}
+          border={large ? 7 : 6}
           radius={large ? 26 : 20}
           sizes={large ? "24vw" : "30vw"}
           className={`home-work-phone is-${phone}`}

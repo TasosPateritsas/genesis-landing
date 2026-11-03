@@ -45,8 +45,10 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     text: string;
+    tags: string[];
     launch: string;
     soon: string;
+    notify: string;
     photoAlt: string;
   };
   team: {
@@ -288,8 +290,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: "Upcoming projects",
       title: "Weddingflow",
       text: "The first Greek platform that brings wedding venues, professionals and planning tools together — for engaged couples and wedding pros.",
+      tags: ["Venues", "Wedding professionals", "Planning tools"],
       launch: "Launch:",
       soon: "soon.",
+      notify: "Get notified at launch",
       photoAlt: "Weddingflow — wedding table under olive trees",
     },
     team: {
@@ -689,8 +693,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: "Επερχόμενα έργα",
       title: "Weddingflow",
       text: "Η πρώτη ελληνική πλατφόρμα που συγκεντρώνει χώρους γάμου, επαγγελματίες και εργαλεία σχεδιασμού — για ζευγάρια και επαγγελματίες του γάμου.",
+      tags: ["Χώροι", "Επαγγελματίες γάμου", "Εργαλεία σχεδιασμού"],
       launch: "Launch:",
       soon: "σύντομα.",
+      notify: "Ενημερώστε με στο launch",
       photoAlt: "Weddingflow — τραπέζι γάμου κάτω από ελιές",
     },
     team: {

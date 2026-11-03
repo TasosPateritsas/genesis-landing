@@ -15,7 +15,7 @@ export function Hero() {
 
   return (
     <section id="top" className="home-hero" aria-labelledby="hero-heading">
-      <div className="hero-mint" aria-hidden />
+      <div className="hero-mint bg-hero-mint" aria-hidden />
       <div className="wrap-hero home-hero-inner">
         <p className="home-eyebrow hero-rise" style={rise("0.1s")}>
           {site.name.toUpperCase()} · {t.hero.place}
