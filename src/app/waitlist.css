@@ -1,0 +1,318 @@
+.wl-card {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dcebe3;
+  border-radius: 16px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 22px 44px -30px rgba(11, 59, 48, 0.45);
+}
+
+.wl-card.is-home {
+  max-width: 540px;
+}
+
+.wl-card.is-weddingflow {
+  padding: 26px 26px 20px;
+}
+
+.wl-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.wl-bell {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #e6f2ec;
+  color: #0f6e56;
+}
+
+.wl-title {
+  margin: 0;
+  color: #14181a;
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.wl-role {
+  margin-bottom: 16px;
+}
+
+.wl-role-label {
+  margin: 0 0 10px;
+  color: #5b6662;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.wl-role-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.wl-role-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #5b6662;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.wl-role-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wl-radio {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 1.5px solid #9dbfb1;
+  border-radius: 999px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.wl-role-option.is-checked {
+  color: #14181a;
+}
+
+.wl-role-option.is-checked .wl-radio {
+  border: 5px solid #0f6e56;
+}
+
+.wl-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  border: 1px solid #cfe6db;
+  border-radius: 12px;
+  background: #f7faf8;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+.wl-field:focus-within {
+  border-color: #0f6e56;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(15, 110, 86, 0.14);
+}
+
+.wl-field.is-invalid {
+  border-color: #e7a39c;
+}
+
+.wl-field input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  padding: 0 12px;
+  color: #14181a;
+  font-size: 15px;
+  outline: none;
+}
+
+.wl-submit {
+  display: inline-flex;
+  height: 42px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 9px;
+  background: #0f6e56;
+  padding: 0 16px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease, opacity 150ms ease;
+}
+
+.wl-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.wl-submit:hover:not(:disabled),
+.wl-submit:focus-visible:not(:disabled) {
+  background: #0c5c48;
+}
+
+.wl-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 999px;
+  animation: wl-spin 0.7s linear infinite;
+}
+
+.wl-error {
+  margin: 10px 0 0;
+  color: #b42318;
+  font-size: 13px;
+}
+
+.wl-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 14px 0 0;
+  color: #6b736f;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.wl-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.wl-privacy {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wl-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.wl-card.is-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  text-align: center;
+}
+
+.wl-success {
+  animation: wl-fade-up 0.35s ease-out;
+}
+
+.wl-success-check {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #0b3b30;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wl-success-title {
+  margin: 14px 0 0;
+  color: #14181a;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.wl-success-text {
+  margin: 8px 0 0;
+  color: #5b6662;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+@keyframes wl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wl-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .wl-role-label {
+    margin-bottom: 8px;
+  }
+
+  .wl-role-options {
+    gap: 12px;
+  }
+
+  .wl-role-option {
+    font-size: 13px;
+  }
+
+  .wl-field {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .wl-field:focus-within {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .wl-field.is-invalid input[type="email"] {
+    border-color: #e7a39c;
+  }
+
+  .wl-field input[type="email"] {
+    height: 46px;
+    border: 1px solid #cfe6db;
+    border-radius: 12px;
+    background: #f7faf8;
+    padding: 0 14px;
+  }
+
+  .wl-field input[type="email"]:focus {
+    border-color: #0f6e56;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(15, 110, 86, 0.14);
+  }
+
+  .wl-submit {
+    width: 100%;
+    height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-spinner,
+  .wl-success {
+    animation: none;
+  }
+}

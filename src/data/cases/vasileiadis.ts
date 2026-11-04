@@ -31,6 +31,17 @@ export const vasileiadis: Project = {
     "A site for a 24/7 drain-clearing service across Attica, built so a visitor can call straight away.",
     "Site για αποφράξεις 24/7 σε όλη την Αττική, φτιαγμένο ώστε ο επισκέπτης να καλεί αμέσως.",
   ),
+  meta: {
+    title: L(
+      "Vasileiadis Drain Cleaning: 24/7 Website, Attica | Genesis",
+      "Αποφράξεις Βασιλειάδης: site 24/7, Αττική | Genesis",
+    ),
+    description: L(
+      "A 24/7 drain-clearing site for all of Attica, in Greek, English and Russian, with the right phone number for the time of day on every page.",
+      "Site για αποφράξεις 24/7 σε όλη την Αττική, σε ελληνικά, αγγλικά και ρωσικά, με το σωστό τηλέφωνο ανάλογα με την ώρα σε κάθε σελίδα.",
+    ),
+    share: L("24/7 website, Attica", "site 24/7, Αττική"),
+  },
   client: L("Vasileiadis Drain Cleaning, Attica", "Αποφράξεις Βασιλειάδης, Αττική"),
   services: delivered,
   year: "2025",
@@ -52,9 +63,9 @@ export const vasileiadis: Project = {
     feature("globe", ["Three languages", "Τρεις γλώσσες"], ["The full site in Greek, English and Russian.", "Όλο το site στα ελληνικά, στα αγγλικά και στα ρωσικά."]),
   ],
   gallery: {
-    wide: shot(en("gallery-contact.jpg"), ["Contact", "Επικοινωνία"], ["Day, night and landline numbers, with the one to call right now highlighted, beside the message form.", "Τηλέφωνα ημέρας, νύχτας και σταθερό, με τονισμένο αυτό που καλείτε τώρα, δίπλα στη φόρμα μηνύματος."], ["Vasileiadis Drain Cleaning — phone numbers and contact form", "Αποφράξεις Βασιλειάδης — τηλέφωνα και φόρμα επικοινωνίας"], el("gallery-contact.jpg")),
+    wide: shot(en("gallery-services.jpg"), ["Services", "Υπηρεσίες"], ["Eight services, each with a photo and a one-line summary.", "Οκτώ υπηρεσίες, η καθεμία με φωτογραφία και μια σύντομη περιγραφή."], ["Vasileiadis Drain Cleaning — services", "Αποφράξεις Βασιλειάδης — οι υπηρεσίες"], el("gallery-services.jpg")),
     row: [
-      shot(en("gallery-services.jpg"), ["Services", "Υπηρεσίες"], ["Eight services, each with a photo and a one-line summary.", "Οκτώ υπηρεσίες, η καθεμία με φωτογραφία και μια σύντομη περιγραφή."], ["Vasileiadis Drain Cleaning — services", "Αποφράξεις Βασιλειάδης — οι υπηρεσίες"], el("gallery-services.jpg")),
+      shot(en("gallery-contact.jpg"), ["Contact", "Επικοινωνία"], ["Day, night and landline numbers, with the one to call right now highlighted, beside the message form.", "Τηλέφωνα ημέρας, νύχτας και σταθερό, με τονισμένο αυτό που καλείτε τώρα, δίπλα στη φόρμα μηνύματος."], ["Vasileiadis Drain Cleaning — phone numbers and contact form", "Αποφράξεις Βασιλειάδης — τηλέφωνα και φόρμα επικοινωνίας"], el("gallery-contact.jpg")),
       shot(en("gallery-septic.jpg"), ["Septic tank emptying", "Εκκενώσεις βόθρων"], ["What is handled, how it works and a call button, on one page.", "Τι αναλαμβάνουν, πώς λειτουργεί και κουμπί κλήσης, σε μία σελίδα."], ["Vasileiadis Drain Cleaning — septic tank emptying page", "Αποφράξεις Βασιλειάδης — σελίδα εκκένωσης βόθρων"], el("gallery-septic.jpg")),
       shot(en("gallery-equipment.jpg"), ["Equipment", "Μηχανήματα"], ["The machines behind every job, from high-pressure units to inspection cameras.", "Τα μηχανήματα πίσω από κάθε δουλειά, από μονάδες υψηλής πίεσης ως κάμερες επιθεώρησης."], ["Vasileiadis Drain Cleaning — equipment", "Αποφράξεις Βασιλειάδης — μηχανήματα"], el("gallery-equipment.jpg")),
     ],

@@ -34,6 +34,13 @@ export const techne: Project = {
   client: L("Techne., Athens", "Techne., Αθήνα"),
   services: delivered,
   year: "2026",
+  meta: {
+    title: L(
+      "Techne: Architecture Studio Website, Athens | Genesis",
+      "Techne: site αρχιτεκτονικού γραφείου, Αθήνα | Genesis",
+    ),
+    share: L("Architecture studio website, Athens", "site αρχιτεκτονικού γραφείου, Αθήνα"),
+  },
   storyTitle: L("A studio, presented in full.", "Ένα γραφείο, παρουσιασμένο πλήρως."),
   storySubtitle: L(
     "Services, built work and upcoming developments for an Athens studio.",

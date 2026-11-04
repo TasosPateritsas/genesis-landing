@@ -39,6 +39,7 @@ export const teamHeroCopy = {
 
 export const teamIntroCopy = {
   divider: { en: "The team", el: "Η ομάδα" },
+  storyDivider: { en: "Our story", el: "Η ιστορία μας" },
   titleLead: { en: "Same team since our ", el: "Η ίδια ομάδα από " },
   titleAccent: { en: "student days.", el: "τα φοιτητικά μας χρόνια." },
   subtext: {

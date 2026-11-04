@@ -8,8 +8,10 @@ export type TeamMember = {
   name: string;
   shortName: Record<Locale, string>;
   initials: string;
-  /** English in both languages. */
+  /** Shown on profile cards (English in both languages today). */
   role: string;
+  /** Localized job title for Person JSON-LD. */
+  jobTitle: Record<Locale, string>;
   discipline: Record<Locale, string>;
   bio: Record<Locale, string>;
   education: Record<Locale, string>;
@@ -33,6 +35,10 @@ export const teamMembers: readonly TeamMember[] = [
     shortName: { en: "Despoina", el: "Δέσποινα" },
     initials: "DN",
     role: "Product design & delivery",
+    jobTitle: {
+      en: "Product design & delivery",
+      el: "Σχεδιασμός προϊόντος & παράδοση",
+    },
     discipline: {
       en: "Electrical engineer",
       el: "Ηλεκτρολόγος μηχανικός",
@@ -72,6 +78,10 @@ export const teamMembers: readonly TeamMember[] = [
     shortName: { en: "Pantelis", el: "Παντελής" },
     initials: "PK",
     role: "Development",
+    jobTitle: {
+      en: "Development",
+      el: "Ανάπτυξη",
+    },
     discipline: {
       en: "Electrical engineer",
       el: "Ηλεκτρολόγος μηχανικός",
@@ -108,6 +118,10 @@ export const teamMembers: readonly TeamMember[] = [
     shortName: { en: "Anastasis", el: "Αναστάσης" },
     initials: "AP",
     role: "DevOps & deployment",
+    jobTitle: {
+      en: "DevOps & deployment",
+      el: "DevOps & deploy",
+    },
     discipline: {
       en: "Electrical engineer",
       el: "Ηλεκτρολόγος μηχανικός",

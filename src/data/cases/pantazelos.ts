@@ -34,6 +34,13 @@ export const pantazelos: Project = {
   client: L("Pantazelos Real Estate, Skroponeria", "Pantazelos Real Estate, Σκροπονέρια"),
   services: delivered,
   year: "2026",
+  meta: {
+    title: L(
+      "Pantazelos Real Estate: Website, Skroponeria | Genesis",
+      "Pantazelos Real Estate: μεσιτικό site, Σκροπονέρια | Genesis",
+    ),
+    share: L("Website, Skroponeria", "μεσιτικό site, Σκροπονέρια"),
+  },
   storyTitle: L(
     "Buying and selling, with the paperwork handled.",
     "Αγορά και πώληση, με τη γραφειοκρατία τακτοποιημένη.",
@@ -55,9 +62,9 @@ export const pantazelos: Project = {
     feature("mail", ["Contact form", "Φόρμα επικοινωνίας"], ["Buy or sell enquiries, with the office hours and a map.", "Ερωτήματα για αγορά ή πώληση, με το ωράριο του γραφείου και χάρτη."]),
   ],
   gallery: {
-    wide: shot(en("gallery-buy-sell.jpg"), ["Buy and sell", "Αγορά και πώληση"], ["Two paths, each with what the office handles — inspection, legal support, valuation and promotion.", "Δύο διαδρομές, η καθεμία με όσα αναλαμβάνει το γραφείο — τεχνικός έλεγχος, νομική υποστήριξη, εκτίμηση και προώθηση."], ["Pantazelos Real Estate — buying and selling paths", "Pantazelos Real Estate — διαδρομές αγοράς και πώλησης"], el("gallery-buy-sell.jpg")),
+    wide: shot(en("gallery-portfolio.jpg"), ["Portfolio", "Portfolio"], ["Recent sales, filtered by type and year.", "Πρόσφατες πωλήσεις, με φίλτρα ανά τύπο και έτος."], ["Pantazelos Real Estate — recent sales portfolio", "Pantazelos Real Estate — portfolio πρόσφατων πωλήσεων"], el("gallery-portfolio.jpg")),
     row: [
-      shot(en("gallery-portfolio.jpg"), ["Portfolio", "Portfolio"], ["Recent sales, filtered by type and year.", "Πρόσφατες πωλήσεις, με φίλτρα ανά τύπο και έτος."], ["Pantazelos Real Estate — recent sales portfolio", "Pantazelos Real Estate — portfolio πρόσφατων πωλήσεων"], el("gallery-portfolio.jpg")),
+      shot(en("gallery-buy-sell.jpg"), ["Buy and sell", "Αγορά και πώληση"], ["Two paths, each with what the office handles — inspection, legal support, valuation and promotion.", "Δύο διαδρομές, η καθεμία με όσα αναλαμβάνει το γραφείο — τεχνικός έλεγχος, νομική υποστήριξη, εκτίμηση και προώθηση."], ["Pantazelos Real Estate — buying and selling paths", "Pantazelos Real Estate — διαδρομές αγοράς και πώλησης"], el("gallery-buy-sell.jpg")),
       shot(en("gallery-list-property.jpg"), ["List your property", "Ανάθεση ακινήτου"], ["Owners send their property details for a free valuation.", "Οι ιδιοκτήτες στέλνουν τα στοιχεία του ακινήτου τους για δωρεάν εκτίμηση."], ["Pantazelos Real Estate — list your property form", "Pantazelos Real Estate — φόρμα ανάθεσης ακινήτου"], el("gallery-list-property.jpg")),
       shot(en("gallery-partners.jpg"), ["Partners", "Συνεργάτες"], ["Engineers, legal advisors and notaries — the right person at each step.", "Μηχανικοί, νομικοί σύμβουλοι και συμβολαιογράφοι — ο σωστός άνθρωπος σε κάθε βήμα."], ["Pantazelos Real Estate — partners", "Pantazelos Real Estate — συνεργάτες"], el("gallery-partners.jpg")),
     ],

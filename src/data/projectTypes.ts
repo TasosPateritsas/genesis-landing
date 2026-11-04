@@ -45,6 +45,12 @@ export type Project = {
     mobileAlt: LocalizedText;
   };
   intro: LocalizedText;
+  /** Document title, share line and description. */
+  meta?: {
+    title: LocalizedText;
+    description?: LocalizedText;
+    share: LocalizedText;
+  };
   client: LocalizedText;
   services: LocalizedText;
   year: string;
@@ -65,7 +71,7 @@ export type Project = {
   };
   results?: { desktop: ScoreSet; mobile: ScoreSet };
   review?: ProjectReview;
-  /** Upcoming projects render these blocks instead of the live gallery. */
+  /** Upcoming Weddingflow page blocks (package 9). */
   weddingflow?: WeddingflowContent;
 };
 
@@ -74,42 +80,119 @@ export interface Slide {
   alt: LocalizedText;
   title: LocalizedText;
   text: LocalizedText;
-};
+}
 
-export interface WeddingflowPane {
-  tab: LocalizedText;
+export type WeddingflowTagIcon =
+  | "overview"
+  | "requests"
+  | "messages"
+  | "calendar"
+  | "saved"
+  | "guests"
+  | "seating"
+  | "reviews"
+  | "halls"
+  | "profile";
+
+export interface WeddingflowStat {
+  value: number;
+  label: LocalizedText;
+}
+
+export interface WeddingflowCarouselStep {
+  label: LocalizedText;
+  caption: LocalizedText;
+  image: LocalizedText;
+  alt: LocalizedText;
+}
+
+export interface WeddingflowTag {
+  icon: WeddingflowTagIcon;
+  label: LocalizedText;
+}
+
+export interface WeddingflowSide {
+  id: "couples" | "venues" | "pros";
+  pill: LocalizedText;
   heading: LocalizedText;
-  sentence: LocalizedText;
-  steps: LocalizedText[];
-  chips: LocalizedText[];
-  slides: Slide[];
-};
+  lead: LocalizedText;
+  onboardingLabel: LocalizedText;
+  steps: WeddingflowCarouselStep[];
+  dashboardLabel: LocalizedText;
+  dashboard: {
+    image: LocalizedText;
+    alt: LocalizedText;
+    title: LocalizedText;
+    text: LocalizedText;
+  };
+  tags: WeddingflowTag[];
+  /** Venues row flips media/text columns. */
+  flipped?: boolean;
+}
 
 export interface WeddingflowContent {
-  sides: {
+  productBadge: LocalizedText;
+  countdownLabel: LocalizedText;
+  countdownUnits: [LocalizedText, LocalizedText, LocalizedText, LocalizedText];
+  notifyLink: LocalizedText;
+  /** ISO launch instant — Europe/Athens (+03:00). */
+  launchAt: string;
+  stats: WeddingflowStat[];
+  problem: {
+    eyebrow: LocalizedText;
     title: LocalizedText;
-    lead: LocalizedText;
-    stepsLabel: LocalizedText;
-    dashboardLabel: LocalizedText;
-    panes: WeddingflowPane[];
+    cards: [LocalizedText, LocalizedText];
+    cardBodies: [LocalizedText, LocalizedText];
+    solutionLabel: LocalizedText;
+    solution: LocalizedText;
   };
   flow: {
+    eyebrow: LocalizedText;
     title: LocalizedText;
     lead: LocalizedText;
     steps: Array<{ title: LocalizedText; who: LocalizedText; text: LocalizedText }>;
     pair: [Slide, Slide];
   };
-  visitors: {
+  sides: {
+    eyebrow: LocalizedText;
     title: LocalizedText;
     lead: LocalizedText;
-    slides: Slide[];
+    items: WeddingflowSide[];
+  };
+  visitors: {
+    eyebrow: LocalizedText;
+    title: LocalizedText;
+    lead: LocalizedText;
+    listLabel: LocalizedText;
+    steps: WeddingflowCarouselStep[];
     phones: [LocalizedText, LocalizedText, LocalizedText];
     phoneAlts: [LocalizedText, LocalizedText, LocalizedText];
-    captionTitle: LocalizedText;
-    captionText: LocalizedText;
+    phonesTitle: LocalizedText;
+    phonesText: LocalizedText;
+  };
+  howWeWork: {
+    eyebrow: LocalizedText;
+    title: LocalizedText;
+    items: Array<{ title: LocalizedText; text?: LocalizedText; tags?: string[] }>;
   };
   next: {
+    eyebrow: LocalizedText;
     title: LocalizedText;
-    cards: Array<{ tag: LocalizedText; tone: "ready" | "progress" | "next"; title: LocalizedText; text: LocalizedText }>;
+    cards: Array<{
+      tag: LocalizedText;
+      tone: "ready" | "progress" | "next";
+      title: LocalizedText;
+      text: LocalizedText;
+    }>;
   };
-};
+  waitlist: {
+    eyebrow: LocalizedText;
+    title: LocalizedText;
+    text: LocalizedText;
+  };
+  cta: {
+    title: LocalizedText;
+    text: LocalizedText;
+    button: LocalizedText;
+  };
+}

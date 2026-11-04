@@ -111,11 +111,12 @@ export function TeamVideo() {
           <Image src={poster} alt="" fill priority={false} sizes="100vw" className="team-video-media object-cover" />
         ) : null}
         <div className="team-video-shade" />
+        {/* TODO: replace with real team video before launch */}
         <video
           ref={videoRef}
           className="team-video-player"
           poster={poster || undefined}
-          preload="none"
+          preload="metadata"
           playsInline
           controls={playing}
         >
@@ -141,10 +142,14 @@ export function TeamVideo() {
             />
           ) : null}
         </video>
-        <div className="team-video-copy">
-          <p className="team-video-badge">{teamVideoCopy.badge[locale]}</p>
-          <p className="team-video-title">{teamVideoCopy.line1[locale]}</p>
-          <p className="team-video-line2">{teamVideoCopy.line2[locale]}</p>
+        <div className="team-video-caption">
+          <div className="wrap-content">
+            <div className="team-video-copy">
+              <p className="team-video-badge">{teamVideoCopy.badge[locale]}</p>
+              <p className="team-video-title">{teamVideoCopy.line1[locale]}</p>
+              <p className="team-video-line2">{teamVideoCopy.line2[locale]}</p>
+            </div>
+          </div>
         </div>
         <button type="button" className="team-video-hit" aria-label={teamVideoCopy.play[locale]} onClick={() => start(0)} />
         <span ref={playRef} className="team-video-play" aria-hidden>

@@ -29,6 +29,17 @@ export const salty: Project = {
     "A premium charter site for private RIB trips, day cruises and boat transfers in Mykonos — built to turn browsing into booking requests.",
     "Premium site για ιδιωτικές εκδρομές με RIB, ημερήσιες κρουαζιέρες και θαλάσσιες μεταφορές στη Μύκονο — φτιαγμένο για να μετατρέπει την περιήγηση σε αιτήματα κράτησης.",
   ),
+  meta: {
+    title: L(
+      "Salty Boat Trips: Boat Tour Booking Site, Mykonos | Genesis",
+      "Salty Boat Trips: site κρατήσεων εκδρομών, Μύκονος | Genesis",
+    ),
+    description: L(
+      "A premium charter site for private RIB trips, day cruises and boat transfers in Mykonos — built to turn browsing into booking requests.",
+      "Premium site για ιδιωτικές εκδρομές με RIB, κρουαζιέρες και θαλάσσιες μεταφορές στη Μύκονο, φτιαγμένο για να φέρνει αιτήματα κράτησης.",
+    ),
+    share: L("Boat tour booking site, Mykonos", "site κρατήσεων εκδρομών, Μύκονος"),
+  },
   client: L("Salty Boat Trips, Mykonos", "Salty Boat Trips, Μύκονος"),
   services: delivered,
   year: "2025",

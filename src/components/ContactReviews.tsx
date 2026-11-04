@@ -229,6 +229,7 @@ export function ContactReviews() {
             <div>
               <a href={site.google.profileUrl} className="review-see-all" target="_blank" rel="noopener">
                 {copy.seeAll}
+                <ExternalLink className="h-4 w-4" strokeWidth={1.75} aria-hidden />
               </a>
             </div>
           ) : null}

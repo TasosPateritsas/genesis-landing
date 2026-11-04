@@ -49,6 +49,7 @@ export type Dictionary = {
     launch: string;
     soon: string;
     notify: string;
+    viewProject: string;
     photoAlt: string;
   };
   team: {
@@ -109,6 +110,9 @@ export type Dictionary = {
       successBody: string;
       sendAnother: string;
       error: string;
+      privacyBefore: string;
+      privacyLink: string;
+      privacyAfter: string;
       errors: {
         firstName: string;
         lastName: string;
@@ -289,11 +293,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
     upcoming: {
       eyebrow: "Upcoming projects",
       title: "Weddingflow",
-      text: "The first Greek platform that brings wedding venues, professionals and planning tools together — for engaged couples and wedding pros.",
-      tags: ["Venues", "Wedding professionals", "Planning tools"],
+      text: "A three-sided wedding marketplace — from the first venue search to the seating plan.",
+      tags: ["Couples", "Venues", "Wedding pros"],
       launch: "Launch:",
-      soon: "soon.",
+      soon: "soon",
       notify: "Get notified at launch",
+      viewProject: "View project",
       photoAlt: "Weddingflow — wedding table under olive trees",
     },
     team: {
@@ -312,7 +317,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       directLabel: "Prefer to reach us directly by email or phone?",
     },
     contactPage: {
-      metaTitle: "Contact, Quotes & Booking - Genesis",
+      metaTitle: "Contact: Get a Quote or Book a Call | Genesis",
       metaDescription:
         "Send us a message or book an intro call with Genesis. App development, AI agents, automations and websites for startups. Based in Athens, working worldwide.",
       hero: {
@@ -333,7 +338,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           link: "Open the calendar",
         },
         email: { title: "Email us", body: "For briefs, questions or a quick hello." },
-        phone: { title: "Call us", body: "Mon–Fri, 10:00–18:00 (Athens)." },
+        phone: { title: "Call us", body: "Mon–Fri 9:00–18:00 · Sat 10:00–14:00 (Athens)" },
       },
       form: {
         firstName: "First name *",
@@ -357,6 +362,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           "We've received your message. We'll get back to you within one business day.",
         sendAnother: "Send another message",
         error: "Something went wrong. Please try again.",
+        privacyBefore: "By sending this form you agree to our ",
+        privacyLink: "Privacy Policy",
+        privacyAfter: ". We only use your details to reply to you.",
         errors: {
           firstName: "Enter your first name.",
           lastName: "Enter your last name.",
@@ -409,7 +417,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cardSource: "Review on Google",
       ctaPrompt: "Worked with us?",
       cta: "Leave us a review",
-      seeAll: "See all reviews on Google ↗",
+      seeAll: "See all reviews on Google",
       pagesLabel: "Reviews pages",
       pageLabel: "Page {page}",
       previous: "Previous",
@@ -424,10 +432,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       subtext:
         "Three engineers, no account managers, no outsourcing. The people you meet on the first call are the people who build your product.",
       people: "Despoina, Pantelis & Anastasis · Athens",
-      metaTitle: "Meet the Team: Software Engineers in Athens - Genesis",
+      metaTitle: "Meet the Team: Software Engineers in Athens | Genesis",
       metaDescription:
         "Meet Despoina, Pantelis and Anastasis, the engineers behind Genesis, a software development agency in Athens. Design, code and launch, with no outsourcing.",
-      ogTitle: "Meet the Team - Genesis",
+      ogTitle: "Meet the Team: Software Engineers in Athens | Genesis",
       imageAlt: "The Genesis team: Despoina, Pantelis and Anastasis",
     },
     footer: {
@@ -499,9 +507,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Websites, eshops and booking sites — live and working.",
       titleLines: ["Websites, eshops and booking", "sites — live and working."],
       subtitle: "Real businesses that run on what we built — every site here is live and in use.",
-      metaTitle: "Websites, eshops and booking sites - Genesis",
+      metaTitle: "Work: Websites, Eshops & Booking Sites | Genesis",
       metaDescription:
-        "Real businesses that run on what we built — every site here is live and in use.",
+        "Websites, eshops and booking sites we designed and built for real businesses, like Salty Boat Trips, Dr. Baumann and Techne. All live and in use.",
       viewProject: "View project",
       liveDivider: "Live projects",
       upcomingDivider: "Upcoming",
@@ -529,7 +537,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       subtitle:
         "App development, AI agents, workflow automation, and websites & eshops — all under one roof.",
-      metaTitle: "App Development, AI Agents & Workflows, Websites - Genesis",
+      metaTitle: "Services: Apps, AI Agents & Websites | Genesis",
       metaDescription:
         "Custom app development, AI agents, AI workflow automation, websites and eshops for startups and small businesses. Based in Athens, working worldwide.",
       divider: "Services",
@@ -657,24 +665,24 @@ export const dictionaries: Record<Locale, Dictionary> = {
       seeAll: "Δείτε όλες τις υπηρεσίες",
       items: [
         {
-          title: "Ανάπτυξη Εφαρμογών",
+          title: "Ανάπτυξη εφαρμογών",
           description:
             "Ανάπτυξη προϊόντος από το πρώτο wireframe έως το production deploy.",
           icon: "app",
         },
         {
-          title: "AI Agents",
+          title: "AI agents",
           description:
             "Agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείτε.",
           icon: "agents",
         },
         {
-          title: "AI Workflows",
+          title: "AI workflows",
           description: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σας διαδικασίες.",
           icon: "workflows",
         },
         {
-          title: "Websites & Eshops",
+          title: "Websites & eshops",
           description:
             "Ιστοσελίδες και eshops με SEO από την πρώτη μέρα, έτοιμα να πουλήσουν.",
           icon: "shop",
@@ -692,11 +700,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
     upcoming: {
       eyebrow: "Επερχόμενα έργα",
       title: "Weddingflow",
-      text: "Η πρώτη ελληνική πλατφόρμα που συγκεντρώνει χώρους γάμου, επαγγελματίες και εργαλεία σχεδιασμού — για ζευγάρια και επαγγελματίες του γάμου.",
-      tags: ["Χώροι", "Επαγγελματίες γάμου", "Εργαλεία σχεδιασμού"],
+      text: "Ένα marketplace γάμου τριών πλευρών — από την πρώτη αναζήτηση χώρου ως το πλάνο τραπεζιών.",
+      tags: ["Ζευγάρια", "Χώροι", "Επαγγελματίες γάμου"],
       launch: "Launch:",
-      soon: "σύντομα.",
+      soon: "σύντομα",
       notify: "Ενημερώστε με στο launch",
+      viewProject: "Δείτε το έργο",
       photoAlt: "Weddingflow — τραπέζι γάμου κάτω από ελιές",
     },
     team: {
@@ -716,9 +725,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       directLabel: "Προτιμάτε κατευθείαν email ή κινητό;",
     },
     contactPage: {
-      metaTitle: "Επικοινωνία, Προσφορά & Ραντεβού - Genesis",
+      metaTitle: "Επικοινωνία: προσφορά ή ραντεβού | Genesis",
       metaDescription:
-        "Στείλτε μας μήνυμα ή κλείστε ραντεβού γνωριμίας με τη Genesis. Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και websites για startups. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+        "Στείλτε μας μήνυμα ή κλείστε ραντεβού γνωριμίας. Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και κατασκευή ιστοσελίδων, με έδρα την Αθήνα.",
       hero: {
         titleLines: ["Ας φτιάξουμε κάτι", "σπουδαίο μαζί!"],
         intro:
@@ -737,7 +746,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           link: "Ανοίξτε το ημερολόγιο",
         },
         email: { title: "Στείλτε email", body: "Για brief, ερωτήσεις ή ένα γρήγορο γεια." },
-        phone: { title: "Καλέστε μας", body: "Δευ–Παρ, 10:00–18:00" },
+        phone: { title: "Καλέστε μας", body: "Δευ–Παρ 09:00–18:00 · Σάβ 10:00–14:00 (Αθήνα)" },
       },
       form: {
         firstName: "Όνομα *",
@@ -746,10 +755,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         category: "Κατηγορία *",
         categoryPlaceholder: "Επιλέξτε κατηγορία",
         categories: [
-          { value: "app", label: "Ανάπτυξη Εφαρμογών" },
-          { value: "agents", label: "AI Agents" },
-          { value: "workflows", label: "AI Workflows" },
-          { value: "shop", label: "Websites & Eshops" },
+          { value: "app", label: "Ανάπτυξη εφαρμογών" },
+          { value: "agents", label: "AI agents" },
+          { value: "workflows", label: "AI workflows" },
+          { value: "shop", label: "Websites & eshops" },
           { value: "other", label: "Άλλο" },
         ],
         otherLabel: "Τι άλλο χρειάζεστε; *",
@@ -761,6 +770,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           "Λάβαμε το μήνυμά σας. Θα επικοινωνήσουμε μαζί σας εντός μίας εργάσιμης ημέρας.",
         sendAnother: "Στείλτε άλλο μήνυμα",
         error: "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
+        privacyBefore: "Στέλνοντας τη φόρμα συμφωνείτε με την ",
+        privacyLink: "Πολιτική απορρήτου",
+        privacyAfter: ". Χρησιμοποιούμε τα στοιχεία σας μόνο για να σας απαντήσουμε.",
         errors: {
           firstName: "Συμπληρώστε το όνομά σας.",
           lastName: "Συμπληρώστε το επώνυμό σας.",
@@ -798,7 +810,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
     },
     stats: {
-      engineers: { label: "Senior μηχανικοί", note: "" },
+      engineers: { label: "senior μηχανικοί", note: "" },
       projects: {
         label: "Έργα που παραδώσαμε",
         note: "Websites, εφαρμογές και eshops που έχουμε φτιάξει και παραδώσει.",
@@ -813,7 +825,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cardSource: "Κριτική στο Google",
       ctaPrompt: "Συνεργαστήκαμε;",
       cta: "Αφήστε μας μια κριτική",
-      seeAll: "Δείτε όλες τις κριτικές στο Google ↗",
+      seeAll: "Δείτε όλες τις κριτικές στο Google",
       pagesLabel: "Σελίδες κριτικών",
       pageLabel: "Σελίδα {page}",
       previous: "Προηγούμενη",
@@ -828,10 +840,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       subtext:
         "Τρεις μηχανικοί, χωρίς account managers, χωρίς outsourcing. Οι άνθρωποι που γνωρίζετε στην αρχική συνάντηση είναι αυτοί που χτίζουν το προϊόν σας.",
       people: "Δέσποινα, Παντελής & Αναστάσης · Αθήνα",
-      metaTitle: "Η Ομάδα: Μηχανικοί Λογισμικού στην Αθήνα - Genesis",
+      metaTitle: "Η ομάδα: μηχανικοί λογισμικού στην Αθήνα | Genesis",
       metaDescription:
-        "Γνωρίστε τη Δέσποινα, τον Παντελή και τον Αναστάση, τους μηχανικούς της Genesis, agency λογισμικού στην Αθήνα. Design, κώδικας και launch, χωρίς outsourcing.",
-      ogTitle: "Η Ομάδα - Genesis",
+        "Γνωρίστε τη Δέσποινα, τον Παντελή και τον Αναστάση, τους μηχανικούς της Genesis, agency λογισμικού. Σχεδιασμός, κώδικας και launch, χωρίς outsourcing.",
+      ogTitle: "Η ομάδα: μηχανικοί λογισμικού στην Αθήνα | Genesis",
       imageAlt: "Η ομάδα της Genesis: Δέσποινα, Παντελής και Αναστάσης",
     },
     footer: {
@@ -904,9 +916,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Websites, eshops και booking sites — live και σε λειτουργία.",
       titleLines: ["Websites, eshops και booking", "sites — live και σε λειτουργία."],
       subtitle: "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
-      metaTitle: "Websites, eshops και booking sites - Genesis",
+      metaTitle: "Έργα: websites, eshops και booking sites | Genesis",
       metaDescription:
-        "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
+        "Websites, eshops και booking sites που σχεδιάσαμε και φτιάξαμε για πραγματικές επιχειρήσεις, όπως Salty Boat Trips, Dr. Baumann και Techne. Όλα live.",
       viewProject: "Δείτε το έργο",
       liveDivider: "Έργα σε λειτουργία",
       upcomingDivider: "Επερχόμενα έργα",
@@ -933,10 +945,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         [{ text: "στην πραγματικότητα.", accent: true }],
       ],
       subtitle:
-        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, και websites & eshops — όλα σε ένα μέρος.",
-      metaTitle: "Εφαρμογές, AI Agents & Workflows, Websites - Genesis",
+        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και websites & eshops — όλα σε ένα μέρος.",
+      metaTitle: "Υπηρεσίες: εφαρμογές, AI agents & websites | Genesis",
       metaDescription:
-        "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, κατασκευή ιστοσελίδων και eshop για startups και μικρές επιχειρήσεις. Με έδρα την Αθήνα, για πελάτες παντού.",
       divider: "Υπηρεσίες",
       includedLabel: "Τι περιλαμβάνει",
       cta: "Κλείστε μια συνάντηση γνωριμίας",
@@ -968,7 +980,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           id: "ai-agents",
           icon: "bot",
-          kicker: "AI Agents",
+          kicker: "AI agents",
           heading: "Custom agents, έτοιμοι να δουλέψουν για σας.",
           body: "Custom agents που αναλαμβάνουν επαναλαμβανόμενες εργασίες και συνδέονται με τα εργαλεία που ήδη χρησιμοποιείτε — support, lead qualification, εσωτερικές διαδικασίες.",
           included: [
@@ -986,7 +998,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           id: "ai-workflows",
           icon: "workflow",
-          kicker: "AI Workflows",
+          kicker: "AI workflows",
           heading: "Custom αυτοματισμοί, έτοιμοι να σας γλιτώσουν ώρες.",
           body: "Αυτοματισμοί και ενσωμάτωση AI στις καθημερινές σας διαδικασίες — ώστε η ομάδα σας να ξοδεύει λιγότερο χρόνο σε χειροκίνητες εργασίες και περισσότερο σε αυτό που μετράει.",
           included: [
@@ -1005,7 +1017,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         {
           id: "websites-eshops",
           icon: "shopping-bag",
-          kicker: "Websites & Eshops",
+          kicker: "Websites & eshops",
           heading: "Custom ιστοσελίδες και eshops, έτοιμα να πουλήσουν.",
           body: "Ιστοσελίδες και online καταστήματα, γρήγορα, με SEO ενσωματωμένο από την πρώτη μέρα — έτοιμα να βγουν live και να αρχίσουν να πουλάνε αμέσως.",
           included: [
@@ -1025,10 +1037,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         },
       ],
       chips: [
-        { href: serviceChipHrefs.app, label: "Ανάπτυξη Εφαρμογών" },
-        { href: serviceChipHrefs.agents, label: "AI Agents" },
-        { href: serviceChipHrefs.workflows, label: "AI Workflows" },
-        { href: serviceChipHrefs.shop, label: "Websites & Eshops" },
+        { href: serviceChipHrefs.app, label: "Ανάπτυξη εφαρμογών" },
+        { href: serviceChipHrefs.agents, label: "AI agents" },
+        { href: serviceChipHrefs.workflows, label: "AI workflows" },
+        { href: serviceChipHrefs.shop, label: "Websites & eshops" },
       ],
     },
   },

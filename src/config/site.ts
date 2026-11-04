@@ -13,9 +13,12 @@ const stats: readonly Stat[] = [
   { id: "inHouse", value: 100, suffix: "%" },
 ];
 
+/** Public site origin. Override with NEXT_PUBLIC_SITE_URL when the domain is final. */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://genesis.studio";
+
 export const site = {
   name: "Genesis",
-  url: "https://genesis.studio",
+  url: SITE_URL,
   email: "hello@genesis.studio",
   /** E.164 number. Falls back to the placeholder display until this is set. */
   phone: null as string | null,
@@ -32,7 +35,7 @@ export const site = {
   booking: {
     provider: "calendly",
     calendlyUrl: "https://calendly.com/TODO/intro-call",
-    durationMin: 20,
+    durationMin: 30,
   },
   google: {
     profileUrl: "https://www.google.com/maps/search/?api=1&query=Genesis%20Athens",
@@ -44,9 +47,10 @@ export const site = {
     teamGroup: "",
   },
   video: {
-    src1080: "",
+    // TODO: replace with real team video before launch
+    src1080: "/video/team-placeholder.mp4",
     src720: "",
-    poster: "",
+    poster: "/video/team-placeholder-poster.jpg",
     captions: { en: "", el: "" },
     chapters: [
       { seconds: 0, label: { en: "Who are we?", el: "Ποιοι είμαστε;" } },

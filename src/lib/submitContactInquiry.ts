@@ -5,21 +5,17 @@ export type ContactInquiry = {
   category: string;
   otherNeed?: string;
   description: string;
+  company_website?: string;
+  startedAt?: number;
 };
 
-const MOCK_DELAY_MS = 900;
-
-/**
- * Isolated stand-in for the future contact API.
- * Replace this function with a real request when a backend exists.
- * An email of fail@genesis.studio rejects, so the error state can be checked.
- */
+/** Posts to the contact route. fail@genesis.studio still rejects, so the error state can be checked. */
 export async function submitContactInquiry(inquiry: ContactInquiry): Promise<void> {
-  await new Promise((resolve) => {
-    window.setTimeout(resolve, MOCK_DELAY_MS);
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(inquiry),
   });
 
-  if (inquiry.email.trim().toLowerCase() === "fail@genesis.studio") {
-    throw new Error("Mock contact submit failed");
-  }
+  if (!response.ok) throw new Error("Contact submit failed");
 }

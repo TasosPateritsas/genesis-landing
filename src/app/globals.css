@@ -7,6 +7,8 @@
 @import "./work.css";
 @import "./home.css";
 @import "./project.css";
+@import "./not-found.css";
+@import "./waitlist.css";
 
 :root {
   --accent: #0f6e56;
@@ -25,11 +27,13 @@
   --layout-pad: 20px;
   --layout-hero-pad: 20px;
   --layout-chrome-pad: var(--layout-pad);
+  --header-h: 64px;
 }
 
 @media (min-width: 1024px) {
   :root {
     --layout-hero-pad: 48px;
+    --header-h: 76px;
   }
 }
 
@@ -95,6 +99,10 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-inter), "Segoe UI", sans-serif;
+}
+
+main {
+  overflow-x: clip;
 }
 
 ::selection {
@@ -279,6 +287,7 @@ body {
     linear-gradient(to right, rgba(15, 110, 86, 0.07) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15, 110, 86, 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
+  background-position: 0 100%, 0 100%;
   -webkit-mask-image:
     radial-gradient(70% 50% at 0 0, #000, transparent 75%),
     radial-gradient(70% 50% at 100% 100%, #000, transparent 75%);
@@ -574,21 +583,42 @@ a:focus-visible .link-underline {
   margin-top: 40px;
 }
 
-@media (min-width: 768px) {
-  .team-home-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .team-home-photo {
+@media (max-width: 639px) {
+  .team-home-card > .team-home-photo {
     aspect-ratio: 4 / 3;
+    height: auto;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .team-home-grid > :last-child {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: calc(50% - 10px);
+@media (min-width: 640px) and (max-width: 1023px) {
+  .team-home-grid {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .team-home-grid > .team-home-card {
+    display: grid;
+    grid-column: auto;
+    grid-row: auto;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    align-content: start;
+    justify-self: stretch;
+    max-width: none;
+    column-gap: 28px;
+    row-gap: 14px;
+  }
+
+  .team-home-card > .team-home-photo {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: start;
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+
+  .team-home-card > :not(.team-home-photo) {
+    grid-column: 2;
   }
 }
 
@@ -625,6 +655,11 @@ a:focus-visible .link-underline {
   overflow: hidden;
   border-radius: 0;
   background: #eef5f2;
+}
+
+.team-home-photo img {
+  object-fit: cover;
+  object-position: center 25%;
 }
 
 .team-home-initials {
