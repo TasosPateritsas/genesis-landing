@@ -8,7 +8,7 @@ import { teamHeroCopy } from "@/data/teamPage";
 import { teamMembers } from "@/data/team";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { revealDelay } from "@/lib/reveal";
-import { absoluteUrl, localizePath } from "@/lib/routes";
+import { absoluteUrl, localizePath, SITE_URL } from "@/lib/routes";
 
 export function TeamHero() {
   const { locale, t } = useLocale();
@@ -18,13 +18,25 @@ export function TeamHero() {
   const crumbs = [home, current];
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: crumbs.map((crumb, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: crumb.name,
-      item: absoluteUrl(crumb.href),
-    })),
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: crumbs.map((crumb, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: crumb.name,
+          item: absoluteUrl(crumb.href),
+        })),
+      },
+      ...teamMembers.map((member) => ({
+        "@type": "Person",
+        name: member.name,
+        jobTitle: member.jobTitle[locale],
+        worksFor: { "@id": `${SITE_URL}/#org` },
+        sameAs: [member.github, member.linkedin],
+        ...(member.photo ? { image: absoluteUrl(member.photo) } : {}),
+      })),
+    ],
   };
 
   return (

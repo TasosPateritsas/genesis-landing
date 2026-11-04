@@ -108,21 +108,19 @@ export function TeamProfiles() {
 
   return (
     <section className="team-who team-section" aria-labelledby="team-who-heading">
+      <div ref={ref} className={revealed ? "team-divider is-revealed" : "team-divider"}>
+        <span className="team-divider-line is-left" aria-hidden />
+        <p className="team-divider-label">{teamIntroCopy.divider[locale]}</p>
+        <span className="team-divider-line is-right" aria-hidden />
+      </div>
       <div className="wrap-content">
-        <div ref={ref} className={revealed ? "is-revealed" : undefined}>
-          <div className="team-divider">
-            <span className="team-divider-line is-left" aria-hidden />
-            <p className="team-divider-label">{teamIntroCopy.divider[locale]}</p>
-            <span className="team-divider-line is-right" aria-hidden />
-          </div>
-          <h2 id="team-who-heading" className="team-h2 gx-up">
-            {teamIntroCopy.titleLead[locale]}
-            <span className="is-accent">{teamIntroCopy.titleAccent[locale]}</span>
-          </h2>
-          <p className="team-who-sub gx-up" style={revealDelay(0.1, 0.06)}>
-            {teamIntroCopy.subtext[locale]}
-          </p>
-        </div>
+        <h2 id="team-who-heading" className="team-h2 gx-up">
+          {teamIntroCopy.titleLead[locale]}
+          <span className="is-accent">{teamIntroCopy.titleAccent[locale]}</span>
+        </h2>
+        <p className="team-who-sub gx-up" style={revealDelay(0.1, 0.06)}>
+          {teamIntroCopy.subtext[locale]}
+        </p>
         <div className="team-who-list">
           {teamProfiles.map((profile, index) => (
             <ProfileCard key={profile.id} profile={profile} mirrored={index % 2 === 1} />

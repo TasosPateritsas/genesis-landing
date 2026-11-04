@@ -430,10 +430,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       subtext:
         "Three engineers, no account managers, no outsourcing. The people you meet on the first call are the people who build your product.",
       people: "Despoina, Pantelis & Anastasis · Athens",
-      metaTitle: "Meet the Team: Software Engineers in Athens - Genesis",
+      metaTitle: "Meet the Team: Software Engineers in Athens | Genesis",
       metaDescription:
         "Meet Despoina, Pantelis and Anastasis, the engineers behind Genesis, a software development agency in Athens. Design, code and launch, with no outsourcing.",
-      ogTitle: "Meet the Team - Genesis",
+      ogTitle: "Meet the Team: Software Engineers in Athens | Genesis",
       imageAlt: "The Genesis team: Despoina, Pantelis and Anastasis",
     },
     footer: {
@@ -505,9 +505,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Websites, eshops and booking sites — live and working.",
       titleLines: ["Websites, eshops and booking", "sites — live and working."],
       subtitle: "Real businesses that run on what we built — every site here is live and in use.",
-      metaTitle: "Websites, eshops and booking sites - Genesis",
+      metaTitle: "Work: Websites, Eshops & Booking Sites | Genesis",
       metaDescription:
-        "Real businesses that run on what we built — every site here is live and in use.",
+        "Websites, eshops and booking sites we designed and built for real businesses, like Salty Boat Trips, Dr. Baumann and Techne. All live and in use.",
       viewProject: "View project",
       liveDivider: "Live projects",
       upcomingDivider: "Upcoming",
@@ -839,7 +839,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       people: "Δέσποινα, Παντελής & Αναστάσης · Αθήνα",
       metaTitle: "Η ομάδα: μηχανικοί λογισμικού στην Αθήνα | Genesis",
       metaDescription:
-        "Γνωρίστε τη Δέσποινα, τον Παντελή και τον Αναστάση, τους μηχανικούς της Genesis, agency λογισμικού στην Αθήνα. Design, κώδικας και launch, χωρίς outsourcing.",
+        "Γνωρίστε τη Δέσποινα, τον Παντελή και τον Αναστάση, τους μηχανικούς της Genesis, agency λογισμικού. Σχεδιασμός, κώδικας και launch, χωρίς outsourcing.",
       ogTitle: "Η ομάδα: μηχανικοί λογισμικού στην Αθήνα | Genesis",
       imageAlt: "Η ομάδα της Genesis: Δέσποινα, Παντελής και Αναστάσης",
     },
@@ -913,9 +913,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "Websites, eshops και booking sites — live και σε λειτουργία.",
       titleLines: ["Websites, eshops και booking", "sites — live και σε λειτουργία."],
       subtitle: "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
-      metaTitle: "Websites, eshops και booking sites - Genesis",
+      metaTitle: "Έργα: websites, eshops και booking sites | Genesis",
       metaDescription:
-        "Sites που φτιάξαμε για πραγματικές επιχειρήσεις — όλα είναι live και σε χρήση σήμερα.",
+        "Websites, eshops και booking sites που σχεδιάσαμε και φτιάξαμε για πραγματικές επιχειρήσεις, όπως Salty Boat Trips, Dr. Baumann και Techne. Όλα live.",
       viewProject: "Δείτε το έργο",
       liveDivider: "Έργα σε λειτουργία",
       upcomingDivider: "Επερχόμενα έργα",

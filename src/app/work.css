@@ -6,10 +6,15 @@
   padding: calc(64px + 56px) 0 56px;
 }
 
+.work-hero .wrap-hero {
+  padding-inline: 20px;
+}
+
 .work-crumb {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 13px;
@@ -87,9 +92,9 @@
 .work-divider-line {
   flex: 1;
   align-self: flex-start;
-  height: 0;
+  height: 1px;
   margin-top: 10px;
-  border-top: 1px solid rgba(15, 110, 86, 0.28);
+  border: 0;
   transform: scaleX(0);
   transition-property: transform;
   transition-duration: 1.4s;
@@ -98,10 +103,22 @@
 }
 
 .work-divider-line.is-left {
+  background: linear-gradient(
+    to left,
+    rgba(15, 110, 86, 0.32) 0%,
+    rgba(15, 110, 86, 0.32) 65%,
+    rgba(15, 110, 86, 0) 100%
+  );
   transform-origin: right center;
 }
 
 .work-divider-line.is-right {
+  background: linear-gradient(
+    to right,
+    rgba(15, 110, 86, 0.32) 0%,
+    rgba(15, 110, 86, 0.32) 65%,
+    rgba(15, 110, 86, 0) 100%
+  );
   transform-origin: left center;
 }
 
@@ -414,14 +431,6 @@
   .work-divider {
     margin-bottom: 40px;
     padding-inline: 0;
-  }
-
-  .work-divider-line.is-left {
-    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0), rgba(15, 110, 86, 0.28)) 1;
-  }
-
-  .work-divider-line.is-right {
-    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0.28), rgba(15, 110, 86, 0)) 1;
   }
 
   .work-measure {
