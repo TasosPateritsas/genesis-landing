@@ -35,7 +35,7 @@ export const site = {
   booking: {
     provider: "calendly",
     calendlyUrl: "https://calendly.com/TODO/intro-call",
-    durationMin: 20,
+    durationMin: 30,
   },
   google: {
     profileUrl: "https://www.google.com/maps/search/?api=1&query=Genesis%20Athens",

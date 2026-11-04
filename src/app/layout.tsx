@@ -56,6 +56,20 @@ function organizationJsonLd(includeWebsite: boolean) {
         areaServed: "Worldwide",
         knowsAbout: ["Web development", "Eshops", "App development", "AI agents", "AI workflows"],
         founder: site.founders.map((name) => ({ "@type": "Person", name })),
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "18:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: "Saturday",
+            opens: "10:00",
+            closes: "14:00",
+          },
+        ],
       },
       ...(includeWebsite
         ? [{ "@type": "WebSite", name: "Genesis", url: SITE_URL }]

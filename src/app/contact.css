@@ -22,6 +22,10 @@
   padding-block: calc(64px + 56px) 56px;
 }
 
+.contact-hero .wrap-hero {
+  padding-inline: 20px;
+}
+
 .contact-breadcrumb {
   display: flex;
   flex-wrap: wrap;
@@ -145,6 +149,7 @@
 }
 
 .ways-card-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   margin-top: 16px;
@@ -153,14 +158,51 @@
   font-weight: 600;
 }
 
+.ways-card.is-link .ways-card-link::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: #0f6e56;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
 .ways-form-card .ways-card-body {
   margin-bottom: 20px;
 }
 
 .contact-form {
+  position: relative;
   display: flex;
   flex: 1;
   flex-direction: column;
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form-privacy {
+  margin: 12px 0 0;
+  color: #5b6b66;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.contact-form-privacy a {
+  color: #0f6e56;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .contact-name-row {
@@ -737,6 +779,8 @@
 
 .review-see-all {
   display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-top: 16px;
   color: var(--g-brand);
   font-size: 15px;
@@ -993,9 +1037,10 @@
   }
 
   .contact-hero-grid {
-    grid-template-columns: minmax(0, 1fr) 440px;
+    grid-template-columns: max-content minmax(0, 540px);
     align-items: end;
-    gap: 64px;
+    justify-content: space-between;
+    column-gap: 64px;
   }
 
   .contact-hero-title {
@@ -1109,6 +1154,11 @@
 
   .ways-card.is-link:hover .cta-arrow {
     transform: translateX(3px);
+  }
+
+  .ways-card.is-link:hover .ways-card-link::after,
+  .ways-card.is-link:focus-visible .ways-card-link::after {
+    transform: scaleX(1);
   }
 
   .contact-submit:hover:not(:disabled) {

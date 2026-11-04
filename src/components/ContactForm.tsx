@@ -2,9 +2,10 @@
 
 import { FormEvent, useRef, useState } from "react";
 import { Check } from "lucide-react";
+import Link from "next/link";
 import { CategoryDropdown } from "@/components/CategoryDropdown";
 import { submitContactInquiry } from "@/lib/submitContactInquiry";
-import { useLocale } from "@/i18n/LocaleProvider";
+import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 
 type Fields = {
   firstName: string;
@@ -41,11 +42,14 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactForm() {
   const { t } = useLocale();
+  const hrefFor = useLocalizedPath();
   const page = t.contactPage.form;
   const [fields, setFields] = useState<Fields>(EMPTY_FIELDS);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
   const submitting = useRef(false);
+  const startedAt = useRef(Date.now());
+  const honeypot = useRef<HTMLInputElement>(null);
 
   function updateField(name: FieldName, value: string) {
     setFields((current) => ({ ...current, [name]: value }));
@@ -103,6 +107,8 @@ export function ContactForm() {
         category: fields.category,
         otherNeed: fields.category === "other" ? fields.otherNeed.trim() : undefined,
         description: fields.description.trim(),
+        company_website: honeypot.current?.value ?? "",
+        startedAt: startedAt.current,
       });
       setStatus("success");
     } catch {
@@ -194,6 +200,19 @@ export function ContactForm() {
         onChange={updateField}
       />
 
+      <div className="contact-honeypot" aria-hidden="true">
+        <label htmlFor="company_website">Website</label>
+        <input
+          ref={honeypot}
+          id="company_website"
+          name="company_website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
+      </div>
+
       <button
         type="submit"
         className={`contact-submit${status === "loading" ? " is-loading" : ""}`}
@@ -203,6 +222,12 @@ export function ContactForm() {
         {status === "loading" ? <span className="contact-spinner" aria-hidden /> : null}
         {status === "loading" ? page.sending : page.submit}
       </button>
+
+      <p className="contact-form-privacy">
+        {page.privacyBefore}
+        <Link href={hrefFor("/privacy")}>{page.privacyLink}</Link>
+        {page.privacyAfter}
+      </p>
 
       {status === "error" ? (
         <p className="contact-feedback is-error" role="alert">

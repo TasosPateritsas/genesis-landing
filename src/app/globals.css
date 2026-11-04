@@ -99,6 +99,10 @@ body {
   font-family: var(--font-inter), "Segoe UI", sans-serif;
 }
 
+main {
+  overflow-x: clip;
+}
+
 ::selection {
   background: var(--accent-muted);
   color: var(--ink);
