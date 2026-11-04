@@ -109,6 +109,9 @@ export type Dictionary = {
       successBody: string;
       sendAnother: string;
       error: string;
+      privacyBefore: string;
+      privacyLink: string;
+      privacyAfter: string;
       errors: {
         firstName: string;
         lastName: string;
@@ -312,7 +315,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       directLabel: "Prefer to reach us directly by email or phone?",
     },
     contactPage: {
-      metaTitle: "Contact, Quotes & Booking - Genesis",
+      metaTitle: "Contact: Get a Quote or Book a Call | Genesis",
       metaDescription:
         "Send us a message or book an intro call with Genesis. App development, AI agents, automations and websites for startups. Based in Athens, working worldwide.",
       hero: {
@@ -333,7 +336,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           link: "Open the calendar",
         },
         email: { title: "Email us", body: "For briefs, questions or a quick hello." },
-        phone: { title: "Call us", body: "Mon–Fri, 10:00–18:00 (Athens)." },
+        phone: { title: "Call us", body: "Mon–Fri 9:00–18:00 · Sat 10:00–14:00 (Athens)" },
       },
       form: {
         firstName: "First name *",
@@ -357,6 +360,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           "We've received your message. We'll get back to you within one business day.",
         sendAnother: "Send another message",
         error: "Something went wrong. Please try again.",
+        privacyBefore: "By sending this form you agree to our ",
+        privacyLink: "Privacy Policy",
+        privacyAfter: ". We only use your details to reply to you.",
         errors: {
           firstName: "Enter your first name.",
           lastName: "Enter your last name.",
@@ -409,7 +415,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cardSource: "Review on Google",
       ctaPrompt: "Worked with us?",
       cta: "Leave us a review",
-      seeAll: "See all reviews on Google ↗",
+      seeAll: "See all reviews on Google",
       pagesLabel: "Reviews pages",
       pageLabel: "Page {page}",
       previous: "Previous",
@@ -718,7 +724,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     contactPage: {
       metaTitle: "Επικοινωνία: προσφορά ή ραντεβού | Genesis",
       metaDescription:
-        "Στείλτε μας μήνυμα ή κλείστε ραντεβού γνωριμίας με τη Genesis. Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και websites για startups. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+        "Στείλτε μας μήνυμα ή κλείστε ραντεβού γνωριμίας. Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και κατασκευή ιστοσελίδων, με έδρα την Αθήνα.",
       hero: {
         titleLines: ["Ας φτιάξουμε κάτι", "σπουδαίο μαζί!"],
         intro:
@@ -737,7 +743,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           link: "Ανοίξτε το ημερολόγιο",
         },
         email: { title: "Στείλτε email", body: "Για brief, ερωτήσεις ή ένα γρήγορο γεια." },
-        phone: { title: "Καλέστε μας", body: "Δευ–Παρ, 10:00–18:00" },
+        phone: { title: "Καλέστε μας", body: "Δευ–Παρ 09:00–18:00 · Σάβ 10:00–14:00 (Αθήνα)" },
       },
       form: {
         firstName: "Όνομα *",
@@ -761,6 +767,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           "Λάβαμε το μήνυμά σας. Θα επικοινωνήσουμε μαζί σας εντός μίας εργάσιμης ημέρας.",
         sendAnother: "Στείλτε άλλο μήνυμα",
         error: "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
+        privacyBefore: "Στέλνοντας τη φόρμα συμφωνείτε με την ",
+        privacyLink: "Πολιτική απορρήτου",
+        privacyAfter: ". Χρησιμοποιούμε τα στοιχεία σας μόνο για να σας απαντήσουμε.",
         errors: {
           firstName: "Συμπληρώστε το όνομά σας.",
           lastName: "Συμπληρώστε το επώνυμό σας.",
@@ -813,7 +822,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       cardSource: "Κριτική στο Google",
       ctaPrompt: "Συνεργαστήκαμε;",
       cta: "Αφήστε μας μια κριτική",
-      seeAll: "Δείτε όλες τις κριτικές στο Google ↗",
+      seeAll: "Δείτε όλες τις κριτικές στο Google",
       pagesLabel: "Σελίδες κριτικών",
       pageLabel: "Σελίδα {page}",
       previous: "Προηγούμενη",
@@ -933,10 +942,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         [{ text: "στην πραγματικότητα.", accent: true }],
       ],
       subtitle:
-        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, και websites & eshops — όλα σε ένα μέρος.",
+        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί και websites & eshops — όλα σε ένα μέρος.",
       metaTitle: "Υπηρεσίες: εφαρμογές, AI agents & websites | Genesis",
       metaDescription:
-        "Custom ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, websites και eshops για startups και μικρές επιχειρήσεις. Έδρα στην Αθήνα, δουλεύουμε παντού.",
+        "Ανάπτυξη εφαρμογών, AI agents, αυτοματισμοί, κατασκευή ιστοσελίδων και eshop για startups και μικρές επιχειρήσεις. Με έδρα την Αθήνα, για πελάτες παντού.",
       divider: "Υπηρεσίες",
       includedLabel: "Τι περιλαμβάνει",
       cta: "Κλείστε μια συνάντηση γνωριμίας",

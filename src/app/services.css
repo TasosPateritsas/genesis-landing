@@ -11,13 +11,15 @@
   width: 100%;
   max-width: var(--layout-max);
   margin-inline: auto;
-  padding-inline: var(--layout-pad);
+  padding-inline: 20px;
+  text-align: center;
 }
 
 .services-breadcrumb {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   color: #5b6b66;
   font-size: 13px;
@@ -36,6 +38,7 @@
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.06;
+  text-wrap: balance;
 }
 
 .services-hero-title .is-accent {
@@ -45,6 +48,7 @@
 .services-hero-intro {
   max-width: 620px;
   margin-top: 20px;
+  margin-inline: auto;
   color: #5b6b66;
   font-size: 18px;
   line-height: 1.6;
@@ -55,7 +59,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .service-chip:focus-visible,
@@ -100,11 +104,29 @@
 .services-divider-line {
   flex: 1;
   align-self: flex-start;
-  height: 0;
+  height: 1px;
   margin-top: 10px;
-  border-top: 1px solid rgba(15, 110, 86, 0.28);
+  border: 0;
   transform: scaleX(0);
   transition: transform 1.4s cubic-bezier(0.33, 1, 0.68, 1) 0.15s;
+}
+
+.services-divider-line.is-left {
+  background: linear-gradient(
+    to left,
+    rgba(15, 110, 86, 0.32) 0%,
+    rgba(15, 110, 86, 0.32) 65%,
+    rgba(15, 110, 86, 0) 100%
+  );
+}
+
+.services-divider-line.is-right {
+  background: linear-gradient(
+    to right,
+    rgba(15, 110, 86, 0.32) 0%,
+    rgba(15, 110, 86, 0.32) 65%,
+    rgba(15, 110, 86, 0) 100%
+  );
 }
 
 .services-divider-line.is-left {
@@ -383,40 +405,17 @@
   }
 }
 
-@media (min-width: 768px) {
-  .services-hero-title .gx-mask-line > span {
-    white-space: nowrap;
-  }
-}
-
 @media (min-width: 1024px) {
   .services-hero {
     padding: calc(76px + 80px) 0 96px;
-  }
-
-  .services-hero-wrap {
-    padding-left: 160px;
-    padding-right: 48px;
   }
 
   .services-hero-title {
     font-size: 56px;
   }
 
-  .services-chips {
-    margin-top: 90px;
-  }
-
   .services-divider {
     padding-inline: 0;
-  }
-
-  .services-divider-line.is-left {
-    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0), rgba(15, 110, 86, 0.28)) 1;
-  }
-
-  .services-divider-line.is-right {
-    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0.28), rgba(15, 110, 86, 0)) 1;
   }
 
   .services-blocks {
