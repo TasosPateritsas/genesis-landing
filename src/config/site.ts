@@ -13,9 +13,12 @@ const stats: readonly Stat[] = [
   { id: "inHouse", value: 100, suffix: "%" },
 ];
 
+/** Public site origin. Override with NEXT_PUBLIC_SITE_URL when the domain is final. */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://genesis.studio";
+
 export const site = {
   name: "Genesis",
-  url: "https://genesis.studio",
+  url: SITE_URL,
   email: "hello@genesis.studio",
   /** E.164 number. Falls back to the placeholder display until this is set. */
   phone: null as string | null,

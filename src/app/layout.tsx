@@ -6,6 +6,7 @@ import { CursorFollower } from "@/components/CursorFollower";
 import { ScrollReset } from "@/components/ScrollReset";
 import { site } from "@/config/site";
 import { SITE_URL } from "@/lib/routes";
+import { isProductionIndexable } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -24,36 +25,58 @@ const colorTokens = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Genesis",
+    template: "%s | Genesis",
+  },
+  robots: isProductionIndexable()
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
   applicationName: site.name,
   authors: [{ name: site.name }],
   creator: site.name,
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  url: site.url,
-  description: "Software agency in Athens building websites, eshops, apps, AI agents and AI workflows.",
-  email: site.email,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Athens",
-    addressCountry: "GR",
-  },
-  areaServed: "Worldwide",
-  knowsAbout: ["Web development", "Eshops", "App development", "AI agents", "AI workflows"],
-  founder: site.founders.map((name) => ({ "@type": "Person", name })),
-};
+function organizationJsonLd(includeWebsite: boolean) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": `${SITE_URL}/#org`,
+        name: site.name,
+        url: site.url,
+        description: "Software agency in Athens building websites, eshops, apps, AI agents and AI workflows.",
+        email: site.email,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Athens",
+          addressCountry: "GR",
+        },
+        areaServed: "Worldwide",
+        knowsAbout: ["Web development", "Eshops", "App development", "AI agents", "AI workflows"],
+        founder: site.founders.map((name) => ({ "@type": "Person", name })),
+      },
+      ...(includeWebsite
+        ? [{ "@type": "WebSite", name: "Genesis", url: SITE_URL }]
+        : []),
+    ],
+  };
+}
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const headerStore = await headers();
   const locale = headerStore.get("x-locale") === "el" ? "el" : "en";
+  const pathname = headerStore.get("x-pathname") ?? "";
+  const isHome = pathname === "/" || pathname === "/el";
 
   return (
     <html lang={locale} className={`${inter.variable} h-full`} style={colorTokens} data-scroll-behavior="smooth">
       <body className="min-h-full font-sans antialiased">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd(isHome)) }}
+        />
         {children}
         <ScrollReset />
         <CursorFollower />

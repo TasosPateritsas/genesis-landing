@@ -29,6 +29,17 @@ export const baumann: Project = {
     "The Greek eshop for Dr. Baumann bionomic skincare — five product lines, shopping by skin need, and checkout by card, PayPal or bank transfer.",
     "Το ελληνικό eshop για τα βιονομικά καλλυντικά Dr. Baumann — πέντε σειρές προϊόντων, αγορά ανά ανάγκη της επιδερμίδας και πληρωμή με κάρτα, PayPal ή τραπεζική κατάθεση.",
   ),
+  meta: {
+    title: L(
+      "Dr. Baumann Hellas: Skincare Eshop | Genesis",
+      "Dr. Baumann Hellas: eshop καλλυντικών | Genesis",
+    ),
+    description: L(
+      "The Greek eshop for Dr. Baumann bionomic skincare — five product lines, shopping by skin need, and checkout by card, PayPal or bank transfer.",
+      "Το ελληνικό eshop των βιονομικών καλλυντικών Dr. Baumann: πέντε σειρές, αγορά ανά ανάγκη επιδερμίδας και πληρωμή με κάρτα, PayPal ή κατάθεση.",
+    ),
+    share: L("Skincare eshop", "eshop καλλυντικών"),
+  },
   client: L("Dr. Baumann Hellas", "Dr. Baumann Hellas"),
   services: delivered,
   year: "2026",

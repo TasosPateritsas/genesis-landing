@@ -45,6 +45,12 @@ export type Project = {
     mobileAlt: LocalizedText;
   };
   intro: LocalizedText;
+  /** Document title, share line and description. Weddingflow is filled in by package 9.6. */
+  meta?: {
+    title: LocalizedText;
+    description?: LocalizedText;
+    share: LocalizedText;
+  };
   client: LocalizedText;
   services: LocalizedText;
   year: string;
