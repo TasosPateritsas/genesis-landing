@@ -30,6 +30,9 @@ export function CaseShowcase({ project }: { project: Project }) {
     let ty = 0;
     let frame = 0;
 
+    // Resting tilt (was 5°). Scroll progress adds up to +18°; pointer tilt stacks on top.
+    const REST_X = 2;
+
     const layout = () => {
       const flat = reduce.matches || !tablet.matches;
       section.classList.toggle("is-flat", flat || !desktop.matches);
@@ -41,7 +44,8 @@ export function CaseShowcase({ project }: { project: Project }) {
         section.style.paddingTop = desktop.matches ? "96px" : "64px";
         return;
       }
-      const angle = desktop.matches ? 5 : 3;
+      const strength = desktop.matches ? 1 : 0.6;
+      const angle = REST_X * strength;
       const offset = laptop.offsetHeight * Math.sin((angle * Math.PI) / 180);
       const gap = desktop.matches ? 96 : 64;
       section.style.paddingTop = `${Math.max(0, gap - offset)}px`;
@@ -52,7 +56,7 @@ export function CaseShowcase({ project }: { project: Project }) {
       const strength = desktop.matches ? 1 : 0.6;
       const point = desktop.matches && fine.matches && !reduce.matches;
       if (reduce.matches) {
-        const tilt = flat ? "none" : "rotateX(5deg)";
+        const tilt = flat ? "none" : `rotateX(${REST_X}deg)`;
         laptop.style.transform = tilt;
         phone.style.transform = tilt;
         phone.style.opacity = "1";
@@ -65,10 +69,10 @@ export function CaseShowcase({ project }: { project: Project }) {
         return;
       }
       const lift = 1 - smooth;
-      const laptopX = 5 * strength + lift * 18 * strength - (point ? ty * 2.5 : 0);
+      const laptopX = REST_X * strength + lift * 18 * strength - (point ? ty * 2.5 : 0);
       const laptopY = point ? tx * 4 : 0;
       laptop.style.transform = `rotateX(${laptopX}deg) rotateY(${laptopY}deg) translateY(${lift * 60 * strength}px)`;
-      const phoneX = 5 * strength + lift * 18 * strength - (point ? ty * 3 : 0);
+      const phoneX = REST_X * strength + lift * 18 * strength - (point ? ty * 3 : 0);
       const phoneY = point ? tx * 6 : 0;
       const shiftX = point ? -tx * 8 : 0;
       const shiftY = lift * 140 * strength - (point ? ty * 6 : 0);
