@@ -47,9 +47,10 @@ export const site = {
     teamGroup: "",
   },
   video: {
-    src1080: "",
+    // TODO: replace with real team video before launch
+    src1080: "/video/team-placeholder.mp4",
     src720: "",
-    poster: "",
+    poster: "/video/team-placeholder-poster.jpg",
     captions: { en: "", el: "" },
     chapters: [
       { seconds: 0, label: { en: "Who are we?", el: "Ποιοι είμαστε;" } },

@@ -4,6 +4,10 @@
   padding: calc(64px + 56px) 0 56px;
 }
 
+.team-hero .wrap-hero {
+  padding-inline: 20px;
+}
+
 .team-hero-grid {
   display: grid;
   gap: 0 64px;
@@ -48,7 +52,7 @@
 }
 
 .team-hero-intro {
-  margin-top: 20px;
+  margin-top: 28px;
   color: #5b6b66;
   font-size: 18px;
   line-height: 1.6;
@@ -144,19 +148,28 @@
 }
 
 .team-who,
-.team-video {
+.team-video,
+.team-story {
   overflow-x: clip;
 }
 
 .team-divider {
   display: flex;
   align-items: center;
-  width: auto;
+  width: 100%;
   height: 20px;
   margin-bottom: 28px;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
   gap: 20px;
+  padding-inline: 20px;
+}
+
+.team-story > .team-divider {
+  margin-top: 0;
+  margin-bottom: 48px;
+}
+
+.team-story.team-section {
+  padding-top: 72px;
 }
 
 .team-divider-label {
@@ -173,9 +186,9 @@
 .team-divider-line {
   flex: 1;
   align-self: flex-start;
-  height: 0;
+  height: 1px;
   margin-top: 10px;
-  border-top: 1px solid rgba(15, 110, 86, 0.28);
+  border: 0;
   transform: scaleX(0);
   transition-property: transform;
   transition-duration: 1.4s;
@@ -184,13 +197,26 @@
 }
 
 .team-divider-line.is-left {
+  background: linear-gradient(
+    to left,
+    rgba(15, 110, 86, 0.32) 0%,
+    rgba(15, 110, 86, 0.32) 65%,
+    rgba(15, 110, 86, 0) 100%
+  );
   transform-origin: right center;
 }
 
 .team-divider-line.is-right {
+  background: linear-gradient(
+    to right,
+    rgba(15, 110, 86, 0.32) 0%,
+    rgba(15, 110, 86, 0.32) 65%,
+    rgba(15, 110, 86, 0) 100%
+  );
   transform-origin: left center;
 }
 
+.team-divider.is-revealed .team-divider-line,
 .is-revealed .team-divider-line {
   transform: scaleX(1);
 }
@@ -401,6 +427,7 @@
 
 .team-video-frame:not(.is-playing) .team-video-player {
   visibility: hidden;
+  pointer-events: none;
 }
 
 .team-video-shade {
@@ -424,13 +451,17 @@
   outline-offset: -4px;
 }
 
-.team-video-copy {
+.team-video-caption {
   position: absolute;
-  right: 20px;
+  right: 0;
   bottom: 28px;
-  left: 20px;
+  left: 0;
   z-index: 2;
   pointer-events: none;
+}
+
+.team-video-copy {
+  max-width: min(720px, 100%);
 }
 
 .team-video-badge {
@@ -483,7 +514,7 @@
   translate: -50% -50%;
 }
 
-.team-video-frame.is-playing .team-video-copy,
+.team-video-frame.is-playing .team-video-caption,
 .team-video-frame.is-playing .team-video-play,
 .team-video-frame.is-playing .team-video-shade,
 .team-video-frame.is-playing .team-video-hit {
@@ -640,27 +671,39 @@
   stroke-linejoin: round;
 }
 
-.team-story path.is-despoina,
-.team-story text.is-despoina {
+.team-story path.is-despoina {
   stroke: #9fe3cf;
+  fill: none;
+}
+
+.team-story text.is-despoina {
   fill: #9fe3cf;
 }
 
-.team-story path.is-pantelis,
-.team-story text.is-pantelis {
+.team-story path.is-pantelis {
   stroke: #4fc79e;
+  fill: none;
+}
+
+.team-story text.is-pantelis {
   fill: #4fc79e;
 }
 
-.team-story path.is-anastasis,
-.team-story text.is-anastasis {
+.team-story path.is-anastasis {
   stroke: #7fa898;
+  fill: none;
+}
+
+.team-story text.is-anastasis {
   fill: #7fa898;
 }
 
-.team-story path.is-main,
-.team-story text.is-main {
+.team-story path.is-main {
   stroke: #e6e6e6;
+  fill: none;
+}
+
+.team-story text.is-main {
   fill: #e6e6e6;
 }
 
@@ -668,10 +711,6 @@
   fill: none;
   stroke: #9fe3cf;
   stroke-dasharray: 4 7;
-}
-
-.team-story path {
-  fill: none;
 }
 
 .team-story-branch {
@@ -997,12 +1036,8 @@
 }
 
 @media (min-width: 1024px) {
-  .team-divider-line.is-left {
-    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0), rgba(15, 110, 86, 0.28)) 1;
-  }
-
-  .team-divider-line.is-right {
-    border-image: linear-gradient(90deg, rgba(15, 110, 86, 0.28), rgba(15, 110, 86, 0)) 1;
+  .team-divider {
+    padding-inline: 0;
   }
 
   .team-hero {
@@ -1015,6 +1050,7 @@
 
   .team-hero-grid {
     grid-template-columns: minmax(0, 1fr) 460px;
+    grid-template-rows: auto auto auto 1fr;
     align-items: start;
   }
 
@@ -1031,17 +1067,28 @@
   .team-hero-intro {
     grid-column: 1;
     grid-row: 3;
+    margin-top: 28px;
   }
 
   .team-hero-media {
     grid-column: 2;
-    grid-row: 2 / span 2;
-    margin-top: 28px;
+    grid-row: 2 / 5;
+    align-self: start;
+    margin-top: 28px; /* match .team-hero-title margin so photo top = title top */
+  }
+
+  .team-hero-shot {
+    width: 100%;
+    margin-right: 0;
   }
 
   .team-section,
   .team-faq {
     padding-block: 96px;
+  }
+
+  .team-story.team-section {
+    padding-top: 72px;
   }
 
   .team-who-sub {
@@ -1054,12 +1101,13 @@
     column-gap: 48px;
     align-items: stretch;
     filter: blur(3px);
-    translate: 0 48px;
+    translate: -48px 0;
     transition-duration: 1s;
   }
 
   .team-profile.is-reverse {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    translate: 48px 0;
   }
 
   .team-profile.is-revealed,
@@ -1117,12 +1165,35 @@
   }
 }
 
+@media (min-width: 768px) {
+  .team-story-mobile {
+    display: none;
+  }
+
+  .team-story-desktop {
+    display: block;
+  }
+
+  .team-story-desktop .team-story-branch {
+    font-size: 20px;
+  }
+
+  .team-story-desktop .team-story-year {
+    font-size: 17px;
+  }
+
+  .team-story-desktop .team-story-type {
+    font-size: 18px;
+  }
+
+  .team-story-desktop .team-story-message {
+    font-size: 20px;
+  }
+}
+
 @media (min-width: 1180px) {
-  .team-video-copy {
-    right: auto;
+  .team-video-caption {
     bottom: 56px;
-    left: calc(50% - 556px);
-    max-width: min(720px, calc(100vw - 80px));
   }
 }
 
@@ -1155,41 +1226,10 @@
     flex-direction: column;
     justify-content: center;
   }
-
-  .team-story-mobile {
-    display: none;
-  }
-
-  .team-story-desktop {
-    display: block;
-  }
-
-  .team-story-desktop .team-story-branch {
-    font-size: 20px;
-  }
-
-  .team-story-desktop .team-story-year {
-    font-size: 17px;
-  }
-
-  .team-story-desktop .team-story-type {
-    font-size: 18px;
-  }
-
-  .team-story-desktop .team-story-message {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 1300px) {
-  .team-hero-shot {
-    width: calc(100% + 80px);
-    margin-right: -80px;
-  }
 }
 
 html[lang="el"] .team-video-copy {
-  max-width: min(980px, calc(100vw - 40px));
+  max-width: min(980px, 100%);
 }
 
 @media (min-width: 1200px) {

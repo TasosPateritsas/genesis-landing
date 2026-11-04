@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import type { Locale } from "@/data/content";
-import { storyCommand, storyCommits, storyTitle } from "@/data/teamPage";
+import { storyCommand, storyCommits, storyTitle, teamIntroCopy } from "@/data/teamPage";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { useReveal } from "@/lib/reveal";
 import { localizePath } from "@/lib/routes";
@@ -175,6 +175,7 @@ function playGraph(svg: SVGSVGElement) {
 export function TeamStory() {
   const { locale } = useLocale();
   const [pairRef, revealed] = useReveal<HTMLDivElement>();
+  const [dividerRef, dividerOn] = useReveal<HTMLDivElement>();
   const terminalRef = useRef<HTMLDivElement>(null);
   const dollarRef = useRef<HTMLSpanElement>(null);
   const restRef = useRef<HTMLSpanElement>(null);
@@ -242,7 +243,12 @@ export function TeamStory() {
 
   return (
     <section className="team-story team-section" aria-labelledby="team-story-heading">
-      <div className="wrap-content">
+      <div ref={dividerRef} className={dividerOn ? "team-divider is-revealed" : "team-divider"}>
+        <span className="team-divider-line is-left" aria-hidden />
+        <p className="team-divider-label">{teamIntroCopy.storyDivider[locale]}</p>
+        <span className="team-divider-line is-right" aria-hidden />
+      </div>
+      <div className="wrap-content team-story-grid">
         <div ref={pairRef} className={revealed ? "team-pair is-revealed" : "team-pair"}>
           <SideTitle id="team-story-heading" title={storyTitle} className="gx-up" />
           <div ref={terminalRef} className="team-terminal">
