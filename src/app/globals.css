@@ -7,6 +7,7 @@
 @import "./work.css";
 @import "./home.css";
 @import "./project.css";
+@import "./not-found.css";
 
 :root {
   --accent: #0f6e56;
