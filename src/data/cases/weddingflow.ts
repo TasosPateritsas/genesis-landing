@@ -1,130 +1,388 @@
 import { asset, feature, L } from "@/data/caseHelpers";
-import type { Project, Slide, WeddingflowPane } from "@/data/projectTypes";
+import type {
+  Project,
+  Slide,
+  WeddingflowCarouselStep,
+  WeddingflowSide,
+  WeddingflowTag,
+} from "@/data/projectTypes";
 
 const root = "/projects/weddingflow";
-const en = (file: string) => `${root}/${file}`;
-const el = (file: string) => `${root}/el-${file}`;
+const enPath = (file: string) => `${root}/en/${file}`;
+const elPath = (file: string) => `${root}/el/${file}`;
+const img = (file: string) => asset(enPath(file), elPath(file));
 
-function slide(file: string, title: [string, string], text: [string, string], alt: [string, string]): Slide {
+function slide(
+  file: string,
+  title: [string, string],
+  text: [string, string],
+  alt: [string, string],
+): Slide {
   return {
-    image: asset(en(file), el(file)),
+    image: img(file),
     title: L(title[0], title[1]),
     text: L(text[0], text[1]),
     alt: L(alt[0], alt[1]),
   };
 }
 
-const coupleSlides: Slide[] = [
-  slide("couple-onboarding-1.jpg", ["Onboarding · step 1 of 4", "Onboarding · βήμα 1 από 4"], ["Names first — everything after that speaks to the couple by name.", "Πρώτα τα ονόματα — από εκεί και πέρα όλα απευθύνονται στο ζευγάρι με το όνομά του."], ["Weddingflow couple onboarding, names", "Weddingflow onboarding ζευγαριού, ονόματα"]),
-  slide("couple-onboarding-3.jpg", ["Onboarding · step 3 of 4", "Onboarding · βήμα 3 από 4"], ["Where: any place in Greece, with suggestions as they type.", "Πού: οπουδήποτε στην Ελλάδα, με προτάσεις καθώς πληκτρολογούν."], ["Weddingflow couple onboarding, location", "Weddingflow onboarding ζευγαριού, τοποθεσία"]),
-  slide("couple-onboarding-4.jpg", ["Onboarding · step 4 of 4", "Onboarding · βήμα 4 από 4"], ["Guests, budget and style — the details that shape every search.", "Καλεσμένοι, προϋπολογισμός και στυλ — όσα διαμορφώνουν κάθε αναζήτηση."], ["Weddingflow couple onboarding, guests and budget", "Weddingflow onboarding ζευγαριού, καλεσμένοι και προϋπολογισμός"]),
-  slide("couple-overview.jpg", ["Overview", "Επισκόπηση"], ["A countdown to the day, the next appointment and every request at a glance.", "Αντίστροφη μέτρηση ως τη μέρα, το επόμενο ραντεβού και κάθε αίτημα με μια ματιά."], ["Weddingflow couple overview", "Επισκόπηση ζευγαριού στο Weddingflow"]),
-  slide("couple-requests.jpg", ["Requests", "Αιτήματα"], ["When the venue accepts, the agreed price and the deposit appear — with a timer.", "Όταν ο χώρος αποδεχτεί, εμφανίζονται η συμφωνημένη τιμή και η προκαταβολή — με χρονόμετρο."], ["Weddingflow couple requests", "Αιτήματα ζευγαριού στο Weddingflow"]),
-  slide("couple-guests.jpg", ["Guests", "Καλεσμένοι"], ["Groups, children and menus, counted as the list grows.", "Ομάδες, παιδιά και μενού, μετρημένα καθώς μεγαλώνει η λίστα."], ["Weddingflow guest list", "Λίστα καλεσμένων στο Weddingflow"]),
-  slide("couple-seating.jpg", ["Seating plan", "Πλάνο θέσεων"], ["Everyone seated on the tables — automatically, or one by one.", "Όλοι στα τραπέζια — αυτόματα ή έναν-έναν."], ["Weddingflow seating plan", "Πλάνο θέσεων στο Weddingflow"]),
-];
-
-const venueSlides: Slide[] = [
-  slide("venue.jpg", ["The venue page", "Η σελίδα του χώρου"], ["What couples see: gallery and video, capacity, the price from — and a request button.", "Τι βλέπουν τα ζευγάρια: gallery και βίντεο, χωρητικότητα, την τιμή «από» — και κουμπί αιτήματος."], ["Weddingflow venue page", "Σελίδα χώρου στο Weddingflow"]),
-  slide("venue-pricing.jpg", ["Prices and deposit", "Τιμές και προκαταβολή"], ["Regular and high season, extras per amenity and the deposit, set once in the profile.", "Κανονική και υψηλή σεζόν, extras ανά παροχή και η προκαταβολή, ορισμένα μία φορά στο προφίλ."], ["Weddingflow venue prices", "Τιμές χώρου στο Weddingflow"]),
-  slide("venue-requests.jpg", ["Requests", "Αιτήματα"], ["Every request with date, guests, budget and a note — Interested or Decline.", "Κάθε αίτημα με ημερομηνία, καλεσμένους, προϋπολογισμό και σημείωμα — «Ενδιαφέρομαι» ή «Απόρριψη»."], ["Weddingflow venue requests", "Αιτήματα χώρου στο Weddingflow"]),
-  slide("venue-hall.jpg", ["Rooms and tables", "Αίθουσες και τραπέζια"], ["The venue draws its room once — tables, dance floor, stage, bar. Couples seat their guests on it.", "Ο χώρος σχεδιάζει την αίθουσά του μία φορά — τραπέζια, πίστα, σκηνή, μπαρ. Τα ζευγάρια βάζουν εκεί τους καλεσμένους τους."], ["Weddingflow venue hall", "Αίθουσα χώρου στο Weddingflow"]),
-];
-
-const proSlides: Slide[] = [
-  slide("pro-overview.jpg", ["Overview", "Επισκόπηση"], ["Pending requests, the next appointment and unread messages, the moment they log in.", "Εκκρεμή αιτήματα, το επόμενο ραντεβού και τα αδιάβαστα μηνύματα, μόλις συνδεθούν."], ["Weddingflow professional overview", "Επισκόπηση επαγγελματία στο Weddingflow"]),
-  slide("pro-requests.jpg", ["Requests", "Αιτήματα"], ["Couples ask with their date and budget; one tap to show interest.", "Τα ζευγάρια ζητούν με την ημερομηνία και τον προϋπολογισμό τους· ένα πάτημα για ενδιαφέρον."], ["Weddingflow professional requests", "Αιτήματα επαγγελματία στο Weddingflow"]),
-  slide("pro-messages.jpg", ["Messages", "Μηνύματα"], ["One conversation per couple, with their wedding date always in view.", "Μία συζήτηση ανά ζευγάρι, με την ημερομηνία του γάμου τους πάντα μπροστά."], ["Weddingflow professional messages", "Μηνύματα επαγγελματία στο Weddingflow"]),
-  slide("pro-pricing.jpg", ["Pricing", "Τιμολόγηση"], ["A price from, the deposit, and what is included or extra — per service.", "Τιμή «από», η προκαταβολή και τι περιλαμβάνεται ή χρεώνεται έξτρα — ανά υπηρεσία."], ["Weddingflow professional pricing", "Τιμολόγηση επαγγελματία στο Weddingflow"]),
-];
-
-function chips(enList: string, elList: string) {
-  const enItems = enList.split(" · ");
-  const elItems = elList.split(" · ");
-  return enItems.map((item, index) => L(item, elItems[index] ?? item));
+function step(
+  file: string,
+  label: [string, string],
+  caption: [string, string],
+  alt: [string, string],
+): WeddingflowCarouselStep {
+  return {
+    image: img(file),
+    label: L(label[0], label[1]),
+    caption: L(caption[0], caption[1]),
+    alt: L(alt[0], alt[1]),
+  };
 }
 
-const panes: WeddingflowPane[] = [
+function tags(items: Array<[WeddingflowTag["icon"], string, string]>): WeddingflowTag[] {
+  return items.map(([icon, en, el]) => ({ icon, label: L(en, el) }));
+}
+
+const coupleSteps: WeddingflowCarouselStep[] = [
+  step(
+    "couple-onboarding-1.jpg",
+    ["Names", "Ονόματα"],
+    [
+      "Names first — from then on, everything speaks to the couple by name.",
+      "Πρώτα τα ονόματα — από εκεί και πέρα όλα μιλούν στο ζευγάρι με το όνομά του.",
+    ],
+    ["Weddingflow couple onboarding, names", "Weddingflow onboarding ζευγαριού, ονόματα"],
+  ),
+  step(
+    "couple-onboarding-2.jpg",
+    ["Wedding date", "Ημερομηνία γάμου"],
+    [
+      "The date — or skip it if it isn't set yet.",
+      "Η ημερομηνία — ή παράλειψη, αν δεν έχει οριστεί ακόμα.",
+    ],
+    ["Weddingflow couple onboarding, wedding date", "Weddingflow onboarding ζευγαριού, ημερομηνία"],
+  ),
+  step(
+    "couple-onboarding-3.jpg",
+    ["Location", "Τοποθεσία"],
+    [
+      "Where: anywhere in Greece, with suggestions as they type.",
+      "Πού: οποιοδήποτε μέρος στην Ελλάδα, με προτάσεις καθώς πληκτρολογούν.",
+    ],
+    ["Weddingflow couple onboarding, location", "Weddingflow onboarding ζευγαριού, τοποθεσία"],
+  ),
+  step(
+    "couple-onboarding-4.jpg",
+    ["Guests, budget & style", "Καλεσμένοι, budget & στυλ"],
+    [
+      "Guests, budget and style — the details that shape every search.",
+      "Καλεσμένοι, budget και στυλ — οι λεπτομέρειες που διαμορφώνουν κάθε αναζήτηση.",
+    ],
+    ["Weddingflow couple onboarding, guests and budget", "Weddingflow onboarding ζευγαριού, καλεσμένοι"],
+  ),
+];
+
+const venueSteps: WeddingflowCarouselStep[] = [
+  step(
+    "venue-onboarding-1.jpg",
+    ["Venue type", "Τύπος χώρου"],
+    [
+      "Eight kinds of venue — from estates to seaside villas.",
+      "Οκτώ είδη χώρων — από κτήματα ως παραθαλάσσιες βίλες.",
+    ],
+    ["Weddingflow venue onboarding, type", "Weddingflow onboarding χώρου, τύπος"],
+  ),
+  step(
+    "venue-onboarding-2.jpg",
+    ["Name, story & map", "Όνομα, ιστορία & χάρτης"],
+    [
+      "Name, style and the story couples will read — pinned on the map.",
+      "Όνομα, στυλ και η ιστορία που θα διαβάσουν τα ζευγάρια — καρφιτσωμένη στον χάρτη.",
+    ],
+    ["Weddingflow venue onboarding, name and map", "Weddingflow onboarding χώρου, όνομα και χάρτης"],
+  ),
+  step(
+    "venue-onboarding-3.jpg",
+    ["Capacity", "Χωρητικότητα"],
+    [
+      "Indoor, outdoor or both, each with its own guest range.",
+      "Εσωτερικός, εξωτερικός ή και τα δύο, ο καθένας με το δικό του εύρος καλεσμένων.",
+    ],
+    ["Weddingflow venue onboarding, capacity", "Weddingflow onboarding χώρου, χωρητικότητα"],
+  ),
+  step(
+    "venue-onboarding-4.jpg",
+    ["Amenities", "Παροχές"],
+    [
+      "Everything the venue offers, included and extra.",
+      "Ό,τι προσφέρει ο χώρος, βασικά και έξτρα.",
+    ],
+    ["Weddingflow venue onboarding, amenities", "Weddingflow onboarding χώρου, παροχές"],
+  ),
+  step(
+    "venue-onboarding-5.jpg",
+    ["Pricing & deposit", "Τιμές & προκαταβολή"],
+    [
+      "A price from, the deposit, and what is included or extra.",
+      "Τιμή από, η προκαταβολή, και τι περιλαμβάνεται ή χρεώνεται έξτρα.",
+    ],
+    ["Weddingflow venue onboarding, pricing", "Weddingflow onboarding χώρου, τιμές"],
+  ),
+  step(
+    "venue-onboarding-6.jpg",
+    ["Portfolio", "Πορτφόλιο"],
+    [
+      "Cover and a gallery of at least three photos, plus video.",
+      "Cover και gallery με τουλάχιστον τρεις φωτογραφίες, μαζί με video.",
+    ],
+    ["Weddingflow venue onboarding, portfolio", "Weddingflow onboarding χώρου, πορτφόλιο"],
+  ),
+  step(
+    "venue-onboarding-7.jpg",
+    ["Contact", "Επικοινωνία"],
+    [
+      "Email, mobile and social — how couples reach the venue.",
+      "Email, κινητό και social — πώς φτάνουν τα ζευγάρια στον χώρο.",
+    ],
+    ["Weddingflow venue onboarding, contact", "Weddingflow onboarding χώρου, επικοινωνία"],
+  ),
+];
+
+const proSteps: WeddingflowCarouselStep[] = [
+  step(
+    "pro-onboarding-1.jpg",
+    ["Category", "Κατηγορία"],
+    [
+      "One main category, each with its own card and photo.",
+      "Μία κύρια κατηγορία, η καθεμία με τη δική της κάρτα και φωτογραφία.",
+    ],
+    ["Weddingflow pro onboarding, category", "Weddingflow onboarding επαγγελματία, κατηγορία"],
+  ),
+  step(
+    "pro-onboarding-2.jpg",
+    ["Name & story", "Όνομα & ιστορία"],
+    [
+      "Business name, areas, services and a short story — with a profile photo.",
+      "Όνομα επιχείρησης, περιοχές, υπηρεσίες και μια σύντομη ιστορία — με φωτογραφία προφίλ.",
+    ],
+    ["Weddingflow pro onboarding, name and story", "Weddingflow onboarding επαγγελματία, όνομα"],
+  ),
+  step(
+    "pro-onboarding-3.jpg",
+    ["Amenities", "Παροχές"],
+    [
+      "Every service and extra, grouped by service — photo, video and more.",
+      "Κάθε υπηρεσία και έξτρα, ομαδοποιημένα ανά υπηρεσία — φωτογραφία, βίντεο και άλλα.",
+    ],
+    ["Weddingflow pro onboarding, amenities", "Weddingflow onboarding επαγγελματία, παροχές"],
+  ),
+  step(
+    "pro-onboarding-4.jpg",
+    ["Pricing & deposit", "Τιμές & προκαταβολή"],
+    [
+      "A price from, the deposit, and what is included or extra — per service.",
+      "Τιμή από, η προκαταβολή, και τι περιλαμβάνεται ή χρεώνεται έξτρα — ανά υπηρεσία.",
+    ],
+    ["Weddingflow pro onboarding, pricing", "Weddingflow onboarding επαγγελματία, τιμές"],
+  ),
+  step(
+    "pro-onboarding-5.jpg",
+    ["Portfolio", "Πορτφόλιο"],
+    [
+      "Cover, a gallery per service and video links.",
+      "Cover, gallery ανά υπηρεσία και τα links των video.",
+    ],
+    ["Weddingflow pro onboarding, portfolio", "Weddingflow onboarding επαγγελματία, πορτφόλιο"],
+  ),
+  step(
+    "pro-onboarding-6.jpg",
+    ["Contact", "Επικοινωνία"],
+    [
+      "Email, mobile and social — how couples reach the pro.",
+      "Email, κινητό και social — πώς φτάνουν τα ζευγάρια στον επαγγελματία.",
+    ],
+    ["Weddingflow pro onboarding, contact", "Weddingflow onboarding επαγγελματία, επικοινωνία"],
+  ),
+];
+
+const sides: WeddingflowSide[] = [
   {
-    tab: L("Couples", "Ζευγάρια"),
-    heading: L("Plan it, then book it", "Οργανώστε, μετά κλείστε"),
-    sentence: L(
-      "Four short questions, then a dashboard that follows the wedding from the first request to the seating plan.",
-      "Τέσσερις σύντομες ερωτήσεις και μετά ένα dashboard που ακολουθεί τον γάμο από το πρώτο αίτημα ως το πλάνο θέσεων.",
+    id: "couples",
+    pill: L("Couples", "Ζευγάρια"),
+    heading: L("From \"yes\" to the seating plan.", "Από το «ναι» ως το πλάνο τραπεζιών."),
+    lead: L(
+      "Four questions and they're in. From there, one dashboard carries the whole wedding — every request, every reply, every guest, every table.",
+      "Τέσσερις ερωτήσεις και είναι μέσα. Από εκεί, ένα dashboard κουβαλά όλο τον γάμο — κάθε αίτημα, κάθε απάντηση, κάθε καλεσμένο, κάθε τραπέζι.",
     ),
-    steps: chips(
-      "Names · Wedding date · Location · Guests, budget and style",
-      "Ονόματα · Ημερομηνία γάμου · Τοποθεσία · Καλεσμένοι, προϋπολογισμός και στυλ",
-    ),
-    chips: chips(
-      "Overview · Requests · Messages · Calendar · Saved · Guests · Seating plan · Reviews",
-      "Επισκόπηση · Αιτήματα · Μηνύματα · Ημερολόγιο · Αγαπημένα · Καλεσμένοι · Πλάνο θέσεων · Αξιολογήσεις",
-    ),
-    slides: coupleSlides,
+    onboardingLabel: L("Onboarding · 4 steps", "Onboarding · 4 βήματα"),
+    steps: coupleSteps,
+    dashboardLabel: L("Dashboard · 8 sections", "Dashboard · 8 ενότητες"),
+    dashboard: {
+      image: img("couple-overview.jpg"),
+      alt: L("Weddingflow couple dashboard", "Dashboard ζευγαριού στο Weddingflow"),
+      title: L("Dashboard.", "Dashboard."),
+      text: L(
+        "A countdown to the day, the next appointment and every request at a glance.",
+        "Αντίστροφη μέτρηση ως τη μέρα, το επόμενο ραντεβού και κάθε αίτημα με μια ματιά.",
+      ),
+    },
+    tags: tags([
+      ["overview", "Overview", "Επισκόπηση"],
+      ["requests", "Requests", "Αιτήματα"],
+      ["messages", "Messages", "Μηνύματα"],
+      ["calendar", "Calendar", "Ημερολόγιο"],
+      ["saved", "Saved", "Αποθηκευμένα"],
+      ["guests", "Guest list", "Λίστα καλεσμένων"],
+      ["seating", "Seating plan", "Πλάνο τραπεζιών"],
+      ["reviews", "Reviews", "Αξιολογήσεις"],
+    ]),
   },
   {
-    tab: L("Venues", "Χώροι"),
-    heading: L("List the venue, fill the calendar", "Καταχωρίστε τον χώρο, γεμίστε το ημερολόγιο"),
-    sentence: L(
-      "Seven steps turn a venue into a listing couples can compare — and a dashboard to answer them.",
-      "Επτά βήματα κάνουν έναν χώρο καταχώριση που τα ζευγάρια μπορούν να συγκρίνουν — και ένα dashboard για να τους απαντάτε.",
+    id: "venues",
+    flipped: true,
+    pill: L("Venues", "Χώροι"),
+    heading: L("From listing to bookings.", "Από την καταχώριση στις κρατήσεις."),
+    lead: L(
+      "Seven steps turn a venue into a listing couples can actually compare — capacity, prices, dates. Requests land in one inbox; bookings land on the calendar.",
+      "Επτά βήματα κάνουν έναν χώρο καταχώριση που τα ζευγάρια μπορούν πραγματικά να συγκρίνουν — χωρητικότητα, τιμές, ημερομηνίες. Τα αιτήματα έρχονται σε ένα inbox· οι κρατήσεις μπαίνουν στο ημερολόγιο.",
     ),
-    steps: chips(
-      "Venue type · Name, story and map · Capacity · Amenities · Pricing and deposit · Portfolio · Contact",
-      "Τύπος χώρου · Όνομα, ιστορία και χάρτης · Χωρητικότητα · Παροχές · Τιμές και προκαταβολή · Portfolio · Επικοινωνία",
-    ),
-    chips: chips(
-      "Overview · Requests · Calendar · Messages · Rooms and tables · Profile · Reviews",
-      "Επισκόπηση · Αιτήματα · Ημερολόγιο · Μηνύματα · Αίθουσες και τραπέζια · Προφίλ · Αξιολογήσεις",
-    ),
-    slides: venueSlides,
+    onboardingLabel: L("Onboarding · 7 steps", "Onboarding · 7 βήματα"),
+    steps: venueSteps,
+    dashboardLabel: L("Dashboard · 7 sections", "Dashboard · 7 ενότητες"),
+    dashboard: {
+      image: img("venue-overview.jpg"),
+      alt: L("Weddingflow venue dashboard", "Dashboard χώρου στο Weddingflow"),
+      title: L("Dashboard.", "Dashboard."),
+      text: L(
+        "Pending requests, the next booking and unread messages — the venue's day at a glance.",
+        "Εκκρεμή αιτήματα, η επόμενη κράτηση και τα αδιάβαστα μηνύματα — η μέρα του χώρου με μια ματιά.",
+      ),
+    },
+    tags: tags([
+      ["overview", "Overview", "Επισκόπηση"],
+      ["requests", "Requests", "Αιτήματα"],
+      ["calendar", "Calendar", "Ημερολόγιο"],
+      ["messages", "Messages", "Μηνύματα"],
+      ["halls", "Halls & tables", "Αίθουσες & τραπέζια"],
+      ["profile", "Profile", "Προφίλ"],
+      ["reviews", "Reviews", "Αξιολογήσεις"],
+    ]),
   },
   {
-    tab: L("Wedding pros", "Επαγγελματίες γάμου"),
-    heading: L("One profile per craft", "Ένα προφίλ για κάθε ειδικότητα"),
-    sentence: L(
-      "Twelve categories, each with its own services and extras — so couples compare like with like.",
-      "Δώδεκα κατηγορίες, η καθεμία με τις δικές της υπηρεσίες και extras — για να συγκρίνουν τα ζευγάρια όμοια με όμοια.",
+    id: "pros",
+    pill: L("Wedding pros", "Επαγγελματίες γάμου"),
+    heading: L("Every craft, in one place.", "Όλες οι ειδικότητες, σε ένα μέρος."),
+    lead: L(
+      "From photographers to dance lessons — nineteen categories, each with its own services, extras and pricing, so couples compare like with like.",
+      "Από φωτογράφους ως μαθήματα χορού — δεκαεννέα κατηγορίες, η καθεμία με τις δικές της υπηρεσίες, έξτρα και τιμές, ώστε τα ζευγάρια να συγκρίνουν ίδια με ίδια.",
     ),
-    steps: chips(
-      "Category · Name, areas and services · Services and extras · Pricing and deposit · Portfolio and video · Contact",
-      "Κατηγορία · Όνομα, περιοχές και υπηρεσίες · Υπηρεσίες και extras · Τιμές και προκαταβολή · Portfolio και βίντεο · Επικοινωνία",
-    ),
-    chips: chips(
-      "Overview · Requests · Calendar · Messages · Profile · Reviews",
-      "Επισκόπηση · Αιτήματα · Ημερολόγιο · Μηνύματα · Προφίλ · Αξιολογήσεις",
-    ),
-    slides: proSlides,
+    onboardingLabel: L("Onboarding", "Onboarding"),
+    steps: proSteps,
+    dashboardLabel: L("Dashboard · 6 sections", "Dashboard · 6 ενότητες"),
+    dashboard: {
+      image: img("pro-overview.jpg"),
+      alt: L("Weddingflow pro dashboard", "Dashboard επαγγελματία στο Weddingflow"),
+      title: L("Dashboard.", "Dashboard."),
+      text: L(
+        "Pending requests, the next appointment and unread messages — the studio's day at a glance.",
+        "Εκκρεμή αιτήματα, το επόμενο ραντεβού και τα αδιάβαστα μηνύματα — η μέρα του studio με μια ματιά.",
+      ),
+    },
+    tags: tags([
+      ["overview", "Overview", "Επισκόπηση"],
+      ["requests", "Requests", "Αιτήματα"],
+      ["calendar", "Calendar", "Ημερολόγιο"],
+      ["messages", "Messages", "Μηνύματα"],
+      ["profile", "Profile", "Προφίλ"],
+      ["reviews", "Reviews", "Αξιολογήσεις"],
+    ]),
   },
+];
+
+const visitorSteps: WeddingflowCarouselStep[] = [
+  step(
+    "visit-home.jpg",
+    ["Homepage", "Αρχική"],
+    [
+      "Venues and every category of pros, one search away.",
+      "Χώροι και κάθε κατηγορία επαγγελματιών, μία αναζήτηση μακριά.",
+    ],
+    ["Weddingflow homepage", "Αρχική του Weddingflow"],
+  ),
+  step(
+    "visit-venue-search.jpg",
+    ["Venue search", "Αναζήτηση χώρων"],
+    [
+      "Filters for region, type, style, date, guests and budget.",
+      "Φίλτρα για περιοχή, τύπο, στυλ, ημερομηνία, καλεσμένους και budget.",
+    ],
+    ["Weddingflow venue search", "Αναζήτηση χώρων στο Weddingflow"],
+  ),
+  step(
+    "visit-venue-page.jpg",
+    ["Venue page", "Σελίδα χώρου"],
+    [
+      "Gallery and video, capacity, amenities, seasonal prices and the deposit — on one page.",
+      "Gallery και video, χωρητικότητα, παροχές, εποχικές τιμές και η προκαταβολή — σε μία σελίδα.",
+    ],
+    ["Weddingflow venue page", "Σελίδα χώρου στο Weddingflow"],
+  ),
+  step(
+    "visit-pros-category.jpg",
+    ["Pros by category", "Επαγγελματίες ανά κατηγορία"],
+    [
+      "Every craft in its own place, from photography to dance lessons.",
+      "Κάθε ειδικότητα στη θέση της, από τη φωτογραφία ως τα μαθήματα χορού.",
+    ],
+    ["Weddingflow professionals by category", "Επαγγελματίες ανά κατηγορία στο Weddingflow"],
+  ),
+  step(
+    "visit-pro-page.jpg",
+    ["Pro page", "Σελίδα επαγγελματία"],
+    [
+      "Services, extras and a price from — before anyone has to ask.",
+      "Υπηρεσίες, έξτρα και τιμή από — πριν χρειαστεί να ρωτήσει κανείς.",
+    ],
+    ["Weddingflow professional page", "Σελίδα επαγγελματία στο Weddingflow"],
+  ),
 ];
 
 export const weddingflow: Project = {
   slug: "weddingflow",
   kind: "upcoming",
   name: L("Weddingflow", "Weddingflow"),
-  type: L("Web app", "Web app"),
+  type: L("Marketplace", "Marketplace"),
   industry: L("Weddings", "Γάμοι"),
   description: L(
-    "The first Greek platform that brings wedding venues, professionals and planning tools together — for engaged couples and wedding pros.",
-    "Η πρώτη ελληνική πλατφόρμα που συγκεντρώνει χώρους γάμου, επαγγελματίες και εργαλεία σχεδιασμού — για ζευγάρια και επαγγελματίες του γάμου.",
+    "A three-sided wedding marketplace — from the first venue search to the seating plan.",
+    "Ένα marketplace γάμου τριών πλευρών — από την πρώτη αναζήτηση χώρου ως το πλάνο τραπεζιών.",
   ),
   stage: "#0B3B30",
   domain: "weddingflow",
-  desktopImage: en("home-desktop.jpg"),
-  mobileImage: en("home-mobile.jpg"),
-  image: asset(en("home-desktop.jpg"), el("home-desktop.jpg")),
+  desktopImage: enPath("home-desktop.jpg"),
+  mobileImage: enPath("home-mobile.jpg"),
+  image: img("home-desktop.jpg"),
   showcase: {
-    desktop: asset(en("home-desktop.jpg"), el("home-desktop.jpg")),
-    mobile: asset(en("home-mobile.jpg"), el("home-mobile.jpg")),
+    desktop: img("home-desktop.jpg"),
+    mobile: img("home-mobile.jpg"),
     desktopAlt: L("Weddingflow homepage on desktop", "Αρχική του Weddingflow σε desktop"),
     mobileAlt: L("Weddingflow homepage on mobile", "Αρχική του Weddingflow σε κινητό"),
   },
   intro: L(
-    "Our own platform that brings wedding venues, professionals and planning tools together — for engaged couples and the people who make the day.",
-    "Η δική μας πλατφόρμα που φέρνει μαζί χώρους δεξιώσεων, επαγγελματίες γάμου και εργαλεία οργάνωσης — για τα ζευγάρια και για όσους κάνουν τη μέρα πραγματικότητα.",
+    "A three-sided wedding marketplace — designed and built in-house, from the first venue search to the seating plan.",
+    "Ένα marketplace γάμου τριών πλευρών — σχεδιασμένο και χτισμένο από εμάς, από την πρώτη αναζήτηση χώρου ως το πλάνο τραπεζιών.",
   ),
-  client: L("Weddingflow · our product", "Weddingflow · δικό μας προϊόν"),
-  services: L("Product design · Development", "Σχεδιασμός προϊόντος · Ανάπτυξη"),
+  meta: {
+    title: L("Weddingflow: Wedding Marketplace | Genesis", "Weddingflow: marketplace γάμου | Genesis"),
+    description: L(
+      "A three-sided wedding marketplace for couples, venues and wedding pros — designed and built in-house, launching in June 2027.",
+      "Ένα marketplace γάμου τριών πλευρών για ζευγάρια, χώρους και επαγγελματίες — σχεδιασμένο και χτισμένο από εμάς, με κυκλοφορία τον Ιούνιο 2027.",
+    ),
+    share: L("Wedding marketplace", "Marketplace γάμου"),
+  },
+  client: L("Weddingflow · a Genesis product", "Weddingflow · προϊόν της Genesis"),
+  services: L("Strategy · Design · Development", "Στρατηγική · Σχεδιασμός · Ανάπτυξη"),
   year: "2026",
   storyTitle: L("Your wedding, from one place.", "Ο γάμος σας, από ένα σημείο."),
   storySubtitle: L(
@@ -132,76 +390,245 @@ export const weddingflow: Project = {
     "Χώροι, επαγγελματίες γάμου και εργαλεία οργάνωσης — για τα ζευγάρια και για όσους κάνουν τη μέρα πραγματικότητα.",
   ),
   brief: L(
-    "Couples plan a wedding across dozens of sites, Instagram and WhatsApp, ask for prices by email and keep it all in spreadsheets. Venues and professionals answer the same questions again and again, with no single place for requests and dates. Weddingflow puts both sides on one platform: real availability, real prices, real booking.",
-    "Τα ζευγάρια οργανώνουν τον γάμο τους μέσα από δεκάδες sites, το Instagram και το WhatsApp, ζητούν τιμές με email και τα κρατούν όλα σε υπολογιστικά φύλλα. Οι χώροι και οι επαγγελματίες απαντούν ξανά και ξανά στις ίδιες ερωτήσεις, χωρίς ένα σημείο για αιτήματα και ημερομηνίες. Το Weddingflow φέρνει και τις δύο πλευρές σε μία πλατφόρμα: πραγματική διαθεσιμότητα, πραγματικές τιμές, πραγματική κράτηση.",
+    "Planning a wedding today means dozens of sites and endless messages.",
+    "Σήμερα, ένας γάμος οργανώνεται σε δεκάδες sites και ατελείωτα μηνύματα.",
   ),
   built: [
-    feature("search", ["Venue search", "Αναζήτηση χώρων"], ["Venues across Greece, filtered by region, type, style, guests and budget.", "Χώροι σε όλη την Ελλάδα, με φίλτρα για περιοχή, τύπο, στυλ, καλεσμένους και προϋπολογισμό."]),
-    feature("building", ["Venue pages", "Σελίδες χώρων"], ["Gallery and video, capacity, amenities, seasonal prices and the deposit — on one page.", "Gallery και βίντεο, χωρητικότητα, παροχές, τιμές ανά σεζόν και η προκαταβολή — σε μία σελίδα."]),
-    feature("grid", ["Wedding pros", "Επαγγελματίες γάμου"], ["Twelve categories, from photography to dance lessons, each with its own services and pricing.", "Δώδεκα κατηγορίες, από τη φωτογραφία ως τα μαθήματα χορού, η καθεμία με τις δικές της υπηρεσίες και τιμές."]),
-    feature("mail", ["Requests and booking", "Αιτήματα και κράτηση"], ["The couple asks, the venue or wedding pro accepts, and the deposit locks the date.", "Το ζευγάρι ζητά, ο χώρος ή ο επαγγελματίας αποδέχεται και η προκαταβολή κλειδώνει την ημερομηνία."]),
-    feature("calendar", ["Three dashboards", "Τρία dashboards"], ["Couple, venue and professional — each with requests, calendar and messages.", "Ζευγάρι, χώρος και επαγγελματίας — ο καθένας με αιτήματα, ημερολόγιο και μηνύματα."]),
-    feature("document", ["Planning tools", "Εργαλεία οργάνωσης"], ["For couples: a guest list with groups and menus, a seating plan on the venue’s tables — and a planning checklist on the way.", "Για τα ζευγάρια: λίστα καλεσμένων με ομάδες και μενού, πλάνο θέσεων στα τραπέζια του χώρου — και σύντομα λίστα εργασιών για την οργάνωση."]),
+    feature(
+      "search",
+      ["Venue search", "Αναζήτηση χώρων"],
+      [
+        "Venues across Greece, filtered by region, type, style, guests and budget.",
+        "Χώροι σε όλη την Ελλάδα, με φίλτρα για περιοχή, τύπο, στυλ, καλεσμένους και προϋπολογισμό.",
+      ],
+    ),
   ],
   weddingflow: {
-    sides: {
-      title: L("Each side gets its own way in.", "Κάθε πλευρά έχει τη δική της διαδρομή."),
-      lead: L(
-        "Couples, venues and wedding professionals sign up the same way, then follow an onboarding and a dashboard built for what they do.",
-        "Ζευγάρια, χώροι και επαγγελματίες γάμου εγγράφονται με τον ίδιο τρόπο και μετά περνούν από onboarding και dashboard φτιαγμένα για ό,τι κάνουν.",
+    productBadge: L("A GENESIS PRODUCT", "ΕΝΑ ΠΡΟΪΟΝ ΤΗΣ GENESIS"),
+    countdownLabel: L("Launching June 2027", "Κυκλοφορεί τον Ιούνιο 2027"),
+    countdownUnits: [
+      L("Days", "Μέρες"),
+      L("Hours", "Ώρες"),
+      L("Mins", "Λεπτά"),
+      L("Secs", "Δευτ."),
+    ],
+    notifyLink: L("Get notified at launch", "Ενημερώστε με στο launch"),
+    launchAt: "2027-06-01T10:00:00+03:00",
+    stats: [
+      { value: 3, label: L("user types", "τύποι χρηστών") },
+      { value: 3, label: L("dashboards", "dashboards") },
+      { value: 19, label: L("pro categories", "κατηγορίες επαγγελματιών") },
+      { value: 50, label: L("screens", "οθόνες") },
+      { value: 3, label: L("engineers", "μηχανικοί") },
+    ],
+    problem: {
+      eyebrow: L("The problem", "Το πρόβλημα"),
+      title: L(
+        "Planning a wedding today means dozens of sites and endless messages.",
+        "Σήμερα, ένας γάμος οργανώνεται σε δεκάδες sites και ατελείωτα μηνύματα.",
       ),
-      stepsLabel: L("Onboarding", "Onboarding"),
-      dashboardLabel: L("Their dashboard", "Το dashboard τους"),
-      panes,
+      cards: [L("Couples today", "Ζευγάρια σήμερα"), L("Venues & pros today", "Χώροι & επαγγελματίες σήμερα")],
+      cardBodies: [
+        L(
+          "They search across websites, Instagram and WhatsApp, ask for prices by email and wait for replies that are slow to come.",
+          "Ψάχνουν σε sites, Instagram και WhatsApp, ζητούν τιμές με email και περιμένουν απαντήσεις που αργούν να έρθουν.",
+        ),
+        L(
+          "They answer the same questions again and again, with requests and dates scattered across inboxes.",
+          "Απαντούν ξανά και ξανά στις ίδιες ερωτήσεις, με αιτήματα και ημερομηνίες σκόρπια σε inboxes.",
+        ),
+      ],
+      solutionLabel: L("Our solution", "Η λύση μας"),
+      solution: L(
+        "One platform for both sides — real availability, real prices, real booking.",
+        "Μία πλατφόρμα και για τις δύο πλευρές — πραγματική διαθεσιμότητα, πραγματικές τιμές, πραγματική κράτηση.",
+      ),
     },
     flow: {
+      eyebrow: L("How it connects", "Πώς συνδέονται"),
       title: L("From the first search to the last table.", "Από την πρώτη αναζήτηση ως το τελευταίο τραπέζι."),
       lead: L(
-        "One request moves through every side of the platform — nobody leaves it to send an email.",
+        "One request travels through every side of the platform — nobody leaves it to send an email.",
         "Ένα αίτημα περνά από κάθε πλευρά της πλατφόρμας — κανείς δεν χρειάζεται να βγει από αυτήν για να στείλει email.",
       ),
       steps: [
-        { title: L("Find", "Αναζήτηση"), who: L("Couple", "Ζευγάρι"), text: L("Search venues and pros with filters, save favourites and compare.", "Χώροι και επαγγελματίες με φίλτρα, αποθήκευση στα αγαπημένα και σύγκριση.") },
-        { title: L("Ask", "Αίτημα"), who: L("Couple", "Ζευγάρι"), text: L("Send a request with the date, the guests and a short note.", "Αίτημα με την ημερομηνία, τους καλεσμένους και ένα σύντομο σημείωμα.") },
-        { title: L("Talk", "Συζήτηση"), who: L("Venue · Pro", "Χώρος · Επαγγελματίας"), text: L("Show interest, answer in Messages, agree on the details.", "Ενδιαφέρον, απάντηση στα Μηνύματα, συμφωνία στις λεπτομέρειες.") },
-        { title: L("Book", "Κράτηση"), who: L("Both", "Και οι δύο"), text: L("The venue or pro accepts; the deposit locks the date.", "Ο χώρος ή ο επαγγελματίας αποδέχεται· η προκαταβολή κλειδώνει την ημερομηνία.") },
-        { title: L("Plan", "Οργάνωση"), who: L("Couple · Venue", "Ζευγάρι · Χώρος"), text: L("Guests are seated on the venue’s own tables.", "Οι καλεσμένοι μπαίνουν στα τραπέζια του ίδιου του χώρου.") },
+        {
+          title: L("Find", "Αναζήτηση"),
+          who: L("Couple", "Ζευγάρι"),
+          text: L(
+            "Venues and pros with filters, saved favourites and comparison.",
+            "Χώροι και επαγγελματίες με φίλτρα, αποθήκευση στα αγαπημένα και σύγκριση.",
+          ),
+        },
+        {
+          title: L("Ask", "Αίτημα"),
+          who: L("Couple", "Ζευγάρι"),
+          text: L(
+            "A request with the date, the guest count and a short note.",
+            "Αίτημα με την ημερομηνία, τους καλεσμένους και ένα σύντομο σημείωμα.",
+          ),
+        },
+        {
+          title: L("Talk", "Συζήτηση"),
+          who: L("Both", "Και οι δύο"),
+          text: L(
+            "Both sides talk in Messages and agree on the details.",
+            "Οι δύο πλευρές συζητούν στα Μηνύματα και συμφωνούν στις λεπτομέρειες.",
+          ),
+        },
+        {
+          title: L("Book", "Κράτηση"),
+          who: L("Both", "Και οι δύο"),
+          text: L(
+            "The venue or pro accepts; the deposit locks the date.",
+            "Ο χώρος ή ο επαγγελματίας αποδέχεται· η προκαταβολή κλειδώνει την ημερομηνία.",
+          ),
+        },
+        {
+          title: L("Plan", "Οργάνωση"),
+          who: L("Couple · Venue", "Ζευγάρι · Χώρος"),
+          text: L(
+            "Guests are seated on the venue's own tables.",
+            "Οι καλεσμένοι μπαίνουν στα τραπέζια του ίδιου του χώρου.",
+          ),
+        },
       ],
       pair: [
-        slide("pro-messages.jpg", ["The pro answers in Messages", "Ο επαγγελματίας απαντά στα Μηνύματα"], ["One conversation per couple, with the wedding date always in view.", "Μία συζήτηση ανά ζευγάρι, με την ημερομηνία του γάμου πάντα μπροστά."], ["Weddingflow pro messages", "Μηνύματα επαγγελματία στο Weddingflow"]),
-        slide("couple-requests.jpg", ["The couple sees every answer", "Το ζευγάρι βλέπει κάθε απάντηση"], ["Each request with its status — and the deposit, once the venue or pro accepts.", "Κάθε αίτημα με την κατάστασή του — και την προκαταβολή, μόλις ο χώρος ή ο επαγγελματίας αποδεχτεί."], ["Weddingflow couple requests", "Αιτήματα ζευγαριού στο Weddingflow"]),
+        slide(
+          "connect-messages.jpg",
+          ["3 · The pro answers in Messages", "3 · Ο επαγγελματίας απαντά στα Μηνύματα"],
+          [
+            "One conversation per couple, with the wedding date always in view.",
+            "Μία συζήτηση ανά ζευγάρι, με την ημερομηνία του γάμου πάντα μπροστά.",
+          ],
+          ["Weddingflow Messages", "Μηνύματα στο Weddingflow"],
+        ),
+        slide(
+          "connect-request.jpg",
+          ["4 · The couple sees every answer", "4 · Το ζευγάρι βλέπει κάθε απάντηση"],
+          [
+            "Each request with its status, and the deposit once accepted.",
+            "Κάθε αίτημα με την κατάστασή του και την προκαταβολή, μόλις γίνει αποδοχή.",
+          ],
+          ["Weddingflow couple requests", "Αιτήματα ζευγαριού στο Weddingflow"],
+        ),
       ],
     },
-    visitors: {
-      title: L("Real availability, real prices.", "Πραγματική διαθεσιμότητα, πραγματικές τιμές."),
+    sides: {
+      eyebrow: L("Three sides, one platform", "Τρεις πλευρές, μία πλατφόρμα"),
+      title: L("Three sides, one platform.", "Τρεις πλευρές, μία πλατφόρμα."),
       lead: L(
-        "Before anyone signs up, every venue and professional can be searched, compared and saved.",
-        "Πριν εγγραφεί κανείς, κάθε χώρος και επαγγελματίας μπορεί να αναζητηθεί, να συγκριθεί και να αποθηκευτεί.",
+        "Couples, venues and wedding professionals sign up the same way. Each then gets an onboarding and a dashboard built for what they do — on one shared design system.",
+        "Ζευγάρια, χώροι και επαγγελματίες γάμου εγγράφονται με τον ίδιο τρόπο. Ο καθένας περνά μετά από onboarding και dashboard φτιαγμένα για ό,τι κάνει — πάνω σε ένα κοινό design system.",
       ),
-      slides: [
-        slide("venues.jpg", ["Venue search", "Αναζήτηση χώρων"], ["42 venues in the demo, filtered by rating, region, type, style, date, guests and budget.", "42 χώροι στο demo, με φίλτρα για βαθμολογία, περιοχή, τύπο, στυλ, ημερομηνία, καλεσμένους και προϋπολογισμό."], ["Weddingflow venue search", "Αναζήτηση χώρων στο Weddingflow"]),
-        slide("venue.jpg", ["Venue page", "Σελίδα χώρου"], ["Gallery with video, the price from and tags for style and type.", "Gallery με βίντεο, η τιμή «από» και ετικέτες για στυλ και τύπο."], ["Weddingflow venue page", "Σελίδα χώρου στο Weddingflow"]),
-        slide("venue-pricing.jpg", ["Amenities and pricing", "Παροχές και τιμές"], ["What is included, what costs extra, the high season and the deposit.", "Τι περιλαμβάνεται, τι χρεώνεται έξτρα, η υψηλή σεζόν και η προκαταβολή."], ["Weddingflow amenities and pricing", "Παροχές και τιμές στο Weddingflow"]),
-      ],
-      phones: [asset(en("home-mobile.jpg"), el("home-mobile.jpg")), asset(en("mobile-venue.jpg"), el("mobile-venue.jpg")), asset(en("mobile-vendors.jpg"), el("mobile-vendors.jpg"))],
+      items: sides,
+    },
+    visitors: {
+      eyebrow: L("For every visitor", "Για κάθε επισκέπτη"),
+      title: L(
+        "Real availability, real prices — before anyone signs up.",
+        "Πραγματική διαθεσιμότητα, πραγματικές τιμές — πριν από την εγγραφή.",
+      ),
+      lead: L(
+        "Every venue and professional can be searched, compared and saved without an account.",
+        "Κάθε χώρος και επαγγελματίας μπορεί να αναζητηθεί, να συγκριθεί και να αποθηκευτεί χωρίς λογαριασμό.",
+      ),
+      listLabel: L("A visitor's path", "Η διαδρομή ενός επισκέπτη"),
+      steps: visitorSteps,
+      phones: [img("home-mobile.jpg"), img("mobile-venue.jpg"), img("mobile-vendors.jpg")],
       phoneAlts: [
         L("Weddingflow homepage on a phone", "Αρχική του Weddingflow σε κινητό"),
         L("Weddingflow venue on a phone", "Χώρος του Weddingflow σε κινητό"),
         L("Weddingflow professionals on a phone", "Επαγγελματίες του Weddingflow σε κινητό"),
       ],
-      captionTitle: L("Mobile", "Κινητό"),
-      captionText: L(
-        "From the homepage to a venue and a category of professionals, with the request button always in reach.",
-        "Από την αρχική σε έναν χώρο και σε μια κατηγορία επαγγελματιών, με το κουμπί αιτήματος πάντα κοντά.",
+      phonesTitle: L("Mobile", "Κινητό"),
+      phonesText: L(
+        "From the homepage to a venue or a category of pros — the request button always in reach.",
+        "Από την αρχική σε έναν χώρο ή σε μια κατηγορία επαγγελματιών — με το κουμπί αιτήματος πάντα κοντά.",
       ),
     },
+    howWeWork: {
+      eyebrow: L("Behind the build", "Πίσω από την κατασκευή"),
+      title: L("How we work.", "Πώς δουλεύουμε."),
+      items: [
+        {
+          title: L("Planned before it's built", "Σχέδιο πριν από τον κώδικα"),
+          text: L(
+            "A product spec and user stories, split into releases — you always know what's next.",
+            "Product spec και user stories, χωρισμένα σε releases — ξέρετε πάντα τι έρχεται μετά.",
+          ),
+        },
+        {
+          title: L("You see it before we build it", "Το βλέπετε πριν το χτίσουμε"),
+          text: L(
+            "Every screen is an interactive mockup you try and approve first.",
+            "Κάθε οθόνη είναι interactive mockup που δοκιμάζετε και εγκρίνετε πρώτα.",
+          ),
+        },
+        {
+          title: L("Checked on every change", "Έλεγχος σε κάθε αλλαγή"),
+          text: L(
+            "Automated checks run before every release: accessibility, colour contrast, translations, layout and who can see which data.",
+            "Αυτόματοι έλεγχοι τρέχουν πριν από κάθε release: προσβασιμότητα, αντίθεση χρωμάτων, μεταφράσεις, layout και ποιος βλέπει ποια δεδομένα.",
+          ),
+        },
+        {
+          title: L("Built on a modern stack", "Σύγχρονο stack"),
+          tags: ["React", "TypeScript", "Tailwind", "Supabase (PostgreSQL)"],
+        },
+      ],
+    },
     next: {
+      eyebrow: L("What's next", "Τι ακολουθεί"),
       title: L("One release at a time.", "Μία έκδοση τη φορά."),
       cards: [
-        { tag: L("Ready", "Έτοιμο"), tone: "ready", title: L("Venues and Couples", "Χώροι και Ζευγάρια"), text: L("Sign-up and roles, every onboarding, venue search and pages, requests, deposits, guests and seating.", "Εγγραφή και ρόλοι, όλα τα onboarding, αναζήτηση και σελίδες χώρων, αιτήματα, προκαταβολές, καλεσμένοι και πλάνο θέσεων.") },
-        { tag: L("In progress", "Σε εξέλιξη"), tone: "progress", title: L("Wedding Pros and Dashboards", "Επαγγελματίες και Dashboards"), text: L("Professional pages and request forms, reviews, and the last details of all three dashboards.", "Σελίδες επαγγελματιών και φόρμες αιτημάτων, αξιολογήσεις και οι τελευταίες λεπτομέρειες στα τρία dashboards.") },
-        { tag: L("Next", "Επόμενο"), tone: "next", title: L("Payments and Planning", "Πληρωμές και Οργάνωση"), text: L("Online deposits, email notifications and a planning checklist with a timeline.", "Online προκαταβολές, ειδοποιήσεις με email και λίστα εργασιών με χρονοδιάγραμμα.") },
+        {
+          tag: L("Ready", "Έτοιμο"),
+          tone: "ready",
+          title: L("Venues, couples and dashboards", "Χώροι, ζευγάρια και dashboards"),
+          text: L(
+            "Sign-up and roles, couple and venue onboarding, venue search and pages, requests, guest list — and all three dashboards.",
+            "Εγγραφή και ρόλοι, onboarding ζευγαριού και χώρου, αναζήτηση και σελίδες χώρων, αιτήματα, λίστα καλεσμένων — και τα τρία dashboards.",
+          ),
+        },
+        {
+          tag: L("In progress", "Σε εξέλιξη"),
+          tone: "progress",
+          title: L("Wedding pros and seating", "Επαγγελματίες και πλάνο τραπεζιών"),
+          text: L(
+            "Onboarding for every category, pro pages, pricing and reviews — and seating on the venue's real hall.",
+            "Onboarding για κάθε κατηγορία, σελίδες επαγγελματιών, τιμές και αξιολογήσεις — και πλάνο τραπεζιών πάνω στην πραγματική αίθουσα του χώρου.",
+          ),
+        },
+        {
+          tag: L("Next", "Επόμενο"),
+          tone: "next",
+          title: L("Payments and planning", "Πληρωμές και οργάνωση"),
+          text: L(
+            "Online deposits, email notifications and a task list with a timeline.",
+            "Online προκαταβολές, ειδοποιήσεις με email και λίστα εργασιών με χρονοδιάγραμμα.",
+          ),
+        },
       ],
+    },
+    waitlist: {
+      eyebrow: L("Waitlist", "Λίστα αναμονής"),
+      title: L("Be the first to know when it launches.", "Μάθετε πρώτοι πότε κυκλοφορεί."),
+      text: L(
+        "Couple, venue or wedding pro — leave your email and we'll let you know as soon as Weddingflow opens.",
+        "Ζευγάρι, χώρος ή επαγγελματίας — αφήστε το email σας και θα σας ενημερώσουμε μόλις ανοίξει το Weddingflow.",
+      ),
+    },
+    cta: {
+      title: L(
+        "Building a marketplace or a booking platform?",
+        "Χτίζετε marketplace ή πλατφόρμα κρατήσεων;",
+      ),
+      text: L(
+        "We've already solved the hard parts — roles, requests, availability, bookings. Tell us what you want to build; we reply within one business day.",
+        "Τα δύσκολα τα έχουμε ήδη λύσει — ρόλους, αιτήματα, διαθεσιμότητα, κρατήσεις. Πείτε μας τι θέλετε να φτιάξετε· απαντάμε μέσα σε μία εργάσιμη.",
+      ),
+      button: L("Let's talk →", "Ας μιλήσουμε →"),
     },
   },
 };

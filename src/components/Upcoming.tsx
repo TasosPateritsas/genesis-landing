@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { site } from "@/config/site";
-import { useLocale } from "@/i18n/LocaleProvider";
+import Link from "next/link";
+import { WaitlistForm } from "@/components/WaitlistForm";
+import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 import { stagger, useReveal } from "@/lib/reveal";
 
 export function Upcoming() {
   const { t } = useLocale();
+  const hrefFor = useLocalizedPath();
   const [ref, revealed] = useReveal<HTMLElement>();
 
   return (
@@ -40,15 +42,21 @@ export function Upcoming() {
               <span key={tag}>{tag}</span>
             ))}
           </div>
-          <p className="home-upcoming-launch">
-            {t.upcoming.launch} <span>{t.upcoming.soon}</span>
-          </p>
-          <a className="btn-primary home-upcoming-cta" href={`mailto:${site.email}?subject=Weddingflow%20launch`}>
-            {t.upcoming.notify}
-            <span className="cta-arrow" aria-hidden>
-              →
-            </span>
-          </a>
+          <div className="home-upcoming-row">
+            <p className="home-upcoming-launch">
+              <span className="home-upcoming-launch-dot" aria-hidden />
+              {t.upcoming.launch} <strong>{t.upcoming.soon}</strong>
+            </p>
+            <Link href={hrefFor("/work/weddingflow")} className="see-all-services home-upcoming-view">
+              <span className="see-all-services-text">{t.upcoming.viewProject}</span>
+              <span className="see-all-services-arrow" aria-hidden>
+                →
+              </span>
+            </Link>
+          </div>
+          <div className="home-upcoming-waitlist">
+            <WaitlistForm source="home" />
+          </div>
         </div>
       </div>
     </section>

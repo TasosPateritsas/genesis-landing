@@ -16,20 +16,26 @@ export function ProjectPage({ slug }: { slug: string }) {
   const project = getProject(slug);
   if (!project) return null;
   const live = project.kind === "live";
+  const wf = Boolean(project.weddingflow);
   const neighbors = projectNeighbors(project);
   const hasNav = Boolean(neighbors.prev || neighbors.next);
 
   return (
-    <div className="case-page">
+    <div className={`case-page${wf ? " is-weddingflow" : ""}`}>
       <Header variant="dark" />
       <main>
         <CaseHero project={project} />
         <CaseShowcase project={project} />
-        <CaseStory project={project} />
-        {live ? <CaseGallery project={project} /> : null}
-        {project.weddingflow ? <WeddingflowSections project={project} /> : null}
-        {live ? <CaseResults project={project} /> : null}
-        {live ? <CaseQuote project={project} /> : null}
+        {wf ? (
+          <WeddingflowSections project={project} />
+        ) : (
+          <>
+            <CaseStory project={project} />
+            {live ? <CaseGallery project={project} /> : null}
+            {live ? <CaseResults project={project} /> : null}
+            {live ? <CaseQuote project={project} /> : null}
+          </>
+        )}
         <CaseNav project={project} />
         <CaseClosing lead={!hasNav} />
       </main>
