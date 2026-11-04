@@ -34,6 +34,13 @@ export const chalkino: Project = {
   client: L("Chalkino Katsaroli, Chalkida", "Χάλκινο Κατσαρόλι, Χαλκίδα"),
   services: delivered,
   year: "2025",
+  meta: {
+    title: L(
+      "Chalkino Katsaroli: Home-Cooking Kitchen, Chalkida | Genesis",
+      "Χάλκινο Κατσαρόλι: site μαγειρείου, Χαλκίδα | Genesis",
+    ),
+    share: L("Home-cooking kitchen, Chalkida", "site μαγειρείου, Χαλκίδα"),
+  },
   storyTitle: L("Today's menu, easy to find.", "Το μενού της ημέρας, με μια ματιά."),
   storySubtitle: L(
     "Two kitchens, one mobile-first site for local search.",

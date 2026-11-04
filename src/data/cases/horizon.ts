@@ -31,6 +31,17 @@ export const horizon: Project = {
     "A booking site for boutique short-term stays in Chalkida, with direct booking that skips the platforms.",
     "Booking site για boutique βραχυχρόνιες μισθώσεις στη Χαλκίδα, με απευθείας κράτηση χωρίς πλατφόρμες.",
   ),
+  meta: {
+    title: L(
+      "Horizon Realty: Short-Stay Booking Site, Chalkida | Genesis",
+      "Horizon Realty: κρατήσεις καταλυμάτων, Χαλκίδα | Genesis",
+    ),
+    description: L(
+      "A booking site for boutique short-term stays in Chalkida. Guests book direct on WhatsApp, up to 10% below the platforms, with no service fees.",
+      "Booking site για boutique βραχυχρόνιες μισθώσεις στη Χαλκίδα. Οι επισκέπτες κλείνουν απευθείας στο WhatsApp, έως 10% φθηνότερα από τις πλατφόρμες.",
+    ),
+    share: L("Short-stay booking site, Chalkida", "κρατήσεις καταλυμάτων, Χαλκίδα"),
+  },
   client: L("Horizon Realty, Chalkida", "Horizon Realty, Χαλκίδα"),
   services: delivered,
   year: "2026",

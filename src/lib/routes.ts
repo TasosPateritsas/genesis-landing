@@ -1,7 +1,7 @@
-import { site } from "@/config/site";
+import { SITE_URL } from "@/config/site";
 import type { Locale } from "@/data/content";
 
-export const SITE_URL = site.url;
+export { SITE_URL };
 
 /** Add a page here and the sitemap picks up both language versions. */
 export const publicRoutes = [

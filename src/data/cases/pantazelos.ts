@@ -34,6 +34,13 @@ export const pantazelos: Project = {
   client: L("Pantazelos Real Estate, Skroponeria", "Pantazelos Real Estate, Σκροπονέρια"),
   services: delivered,
   year: "2026",
+  meta: {
+    title: L(
+      "Pantazelos Real Estate: Website, Skroponeria | Genesis",
+      "Pantazelos Real Estate: μεσιτικό site, Σκροπονέρια | Genesis",
+    ),
+    share: L("Website, Skroponeria", "μεσιτικό site, Σκροπονέρια"),
+  },
   storyTitle: L(
     "Buying and selling, with the paperwork handled.",
     "Αγορά και πώληση, με τη γραφειοκρατία τακτοποιημένη.",
