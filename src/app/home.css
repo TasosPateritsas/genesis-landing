@@ -194,6 +194,14 @@
   line-height: 1.04;
 }
 
+/* From 1280px the hero inset holds the lockup at 928px until the 1600px
+   container step. The full clamp clips the nowrap lines inside .gx-mask-line. */
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .home-hero-title {
+    font-size: min(4.8vw, 63px);
+  }
+}
+
 .home-hero-line {
   display: block;
 }
