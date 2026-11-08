@@ -788,8 +788,9 @@
 }
 
 .team-check.is-ticked {
-  border-color: #9fe3cf;
+  border: 0;
   background: #9fe3cf;
+  overflow: hidden;
   color: var(--g-dark);
   animation: none;
 }

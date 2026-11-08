@@ -31,11 +31,11 @@ export function Header({ variant = "light" }: { variant?: HeaderVariant }) {
   const dark = variant === "dark";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > (barePath === "/" ? window.innerHeight * 0.8 : 20));
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [barePath]);
 
   useEffect(() => {
     if (!open) return;
@@ -93,6 +93,7 @@ export function Header({ variant = "light" }: { variant?: HeaderVariant }) {
       <header
         className="site-header"
         data-variant={variant}
+        data-path={barePath}
         data-scrolled={scrolled}
         data-open={open}
         data-cursor={dark ? "dark" : undefined}

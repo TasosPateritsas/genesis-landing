@@ -168,6 +168,12 @@
   cursor: pointer;
 }
 
+@media (max-width:1023px) {
+  .site-header[data-variant="light"][data-path="/"] .site-header-burger,
+  .site-header[data-variant="light"][data-path="/team"] .site-header-burger,
+  .site-header[data-variant="light"][data-path="/services"] .site-header-burger { border-color:#0b3b30; background:transparent; color:#0b3b30; }
+}
+
 .site-header-burger > span {
   display: block;
   width: 18px;

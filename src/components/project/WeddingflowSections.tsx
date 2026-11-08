@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Heart, Landmark, User, X } from "lucide-react";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import { CaseAllProjects } from "@/components/project/CaseNav";
 import { caseRevealMargin } from "@/components/project/CaseDivider";
 import { StepCarousel } from "@/components/project/weddingflow/StepCarousel";
 import { TagIcon } from "@/components/project/weddingflow/TagIcon";
@@ -350,6 +351,8 @@ export function WeddingflowSections({ project }: { project: Project }) {
           </div>
         </div>
       </section>
+
+      <CaseAllProjects />
 
       <section ref={ctaRef} className={`wf-section wf-cta${ctaOn ? " is-revealed" : ""}`}>
         <div className="wrap-hero">

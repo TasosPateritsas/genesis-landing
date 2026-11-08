@@ -47,6 +47,8 @@ function NavCard({
 }
 
 export function CaseNav({ project }: { project: Project }) {
+  const { locale } = useLocale();
+  const hrefFor = useLocalizedPath();
   const { prev, next } = projectNeighbors(project);
   const [ref, on] = useReveal<HTMLElement>(0.15, caseRevealMargin);
   if (!prev && !next) return null;
@@ -57,6 +59,12 @@ export function CaseNav({ project }: { project: Project }) {
   return (
     <section ref={ref} className={on ? "case-nav is-revealed" : "case-nav"}>
       <div className={single ? "case-l2" : "case-l1"}>
+        <div className="case-projects-row gx-up">
+          {project.kind === "live" ? <p>{locale === "el" ? "ΠΕΡΙΣΣΟΤΕΡΑ ΕΡΓΑ" : "MORE PROJECTS"}</p> : null}
+          <Link href={hrefFor("/work")}>
+            {locale === "el" ? "Όλα τα έργα" : "All projects"}<span aria-hidden>→</span>
+          </Link>
+        </div>
         {single ? (
           <div className="gx-up">
             <NavCard project={only} direction={next ? "next" : "prev"} single />
@@ -77,6 +85,18 @@ export function CaseNav({ project }: { project: Project }) {
         )}
       </div>
     </section>
+  );
+}
+
+export function CaseAllProjects() {
+  const { locale } = useLocale();
+  const hrefFor = useLocalizedPath();
+  return (
+    <div className="case-projects-end">
+      <Link href={hrefFor("/work")}>
+        {locale === "el" ? "Όλα τα έργα" : "All projects"}<span aria-hidden>→</span>
+      </Link>
+    </div>
   );
 }
 

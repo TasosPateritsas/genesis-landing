@@ -7,7 +7,7 @@ import { useLocale } from "@/i18n/LocaleProvider";
 import { fill } from "@/lib/fill";
 import { revealDelay, useReducedMotion, useReveal } from "@/lib/reveal";
 
-const AUTO_MS = 5000;
+const AUTO_MS = 3500;
 const EXIT_MS = 300;
 const COUNT_MS = 1600;
 const COUNT_START_MS = 300;
@@ -29,9 +29,26 @@ export function ContactStats() {
   const [phase, setPhase] = useState<"idle" | "exit" | "enter">("idle");
   const [count, setCount] = useState(0);
   const [hovered, setHovered] = useState(false);
-  const [stopped, setStopped] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [pageVisible, setPageVisible] = useState(true);
+  const [timerKey, setTimerKey] = useState(0);
   const exitTimer = useRef<number | null>(null);
   const slide = slides[index];
+
+  useEffect(() => {
+    const node = bandRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(Boolean(entry?.isIntersecting)), { threshold: 0.15 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [bandRef]);
+
+  useEffect(() => {
+    const update = () => setPageVisible(!document.hidden);
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
+  }, []);
 
   const goTo = useCallback(
     (next: number) => {
@@ -68,10 +85,10 @@ export function ContactStats() {
   }, [started, index, reduced]);
 
   useEffect(() => {
-    if (!started || hovered || stopped || reduced) return;
+    if (!started || hovered || focused || !inView || !pageVisible || reduced) return;
     const timer = window.setTimeout(() => goTo((index + 1) % slides.length), AUTO_MS);
     return () => window.clearTimeout(timer);
-  }, [started, hovered, stopped, reduced, index, goTo]);
+  }, [started, hovered, focused, inView, pageVisible, reduced, index, timerKey, goTo]);
 
   useEffect(
     () => () => {
@@ -83,6 +100,11 @@ export function ContactStats() {
   function onCardShown(event: TransitionEvent<HTMLDivElement>) {
     if (started || event.target !== event.currentTarget || event.propertyName !== "opacity") return;
     window.setTimeout(() => setStarted(true), COUNT_START_MS);
+  }
+
+  function selectSlide(next: number) {
+    goTo(next);
+    setTimerKey((key) => key + 1);
   }
 
   return (
@@ -98,6 +120,10 @@ export function ContactStats() {
             data-cursor="dark"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            onFocusCapture={() => setFocused(true)}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
+            }}
           >
             <div className="stat-slide" data-phase={phase}>
               <p className="stat-value">
@@ -119,8 +145,7 @@ export function ContactStats() {
                     aria-label={fill(copy.slideLabel, { index: dotIndex + 1 })}
                     aria-current={dotIndex === index ? "true" : undefined}
                     onClick={() => {
-                      setStopped(true);
-                      goTo(dotIndex);
+                      selectSlide(dotIndex);
                     }}
                   >
                     <span className={`stat-dot${dotIndex === index ? " is-active" : ""}`} />

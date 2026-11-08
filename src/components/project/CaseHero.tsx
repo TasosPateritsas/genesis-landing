@@ -31,7 +31,7 @@ function LaunchCountdown({
   units: [string, string, string, string];
 }) {
   const target = Date.parse(launchAt);
-  const [parts, setParts] = useState<CountdownParts | null>(() => partsUntil(target, Date.now()));
+  const [parts, setParts] = useState<CountdownParts | null>(null);
 
   useEffect(() => {
     const tick = () => setParts(partsUntil(target, Date.now()));
