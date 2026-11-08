@@ -10,6 +10,7 @@ export type TeamMember = {
   initials: string;
   /** Shown on profile cards (English in both languages today). */
   role: string;
+  roleByLocale?: Record<Locale, string>;
   /** Localized job title for Person JSON-LD. */
   jobTitle: Record<Locale, string>;
   discipline: Record<Locale, string>;
@@ -35,6 +36,7 @@ export const teamMembers: readonly TeamMember[] = [
     shortName: { en: "Despoina", el: "Δέσποινα" },
     initials: "DN",
     role: "Product design & delivery",
+    roleByLocale: { en: "Product design & delivery", el: "Σχεδιασμός & παράδοση προϊόντος" },
     jobTitle: {
       en: "Product design & delivery",
       el: "Σχεδιασμός προϊόντος & παράδοση",
@@ -78,6 +80,7 @@ export const teamMembers: readonly TeamMember[] = [
     shortName: { en: "Pantelis", el: "Παντελής" },
     initials: "PK",
     role: "Development",
+    roleByLocale: { en: "Development", el: "Ανάπτυξη" },
     jobTitle: {
       en: "Development",
       el: "Ανάπτυξη",
@@ -118,6 +121,7 @@ export const teamMembers: readonly TeamMember[] = [
     shortName: { en: "Anastasis", el: "Αναστάσης" },
     initials: "AP",
     role: "DevOps & deployment",
+    roleByLocale: { en: "DevOps & deployment", el: "DevOps & deployment" },
     jobTitle: {
       en: "DevOps & deployment",
       el: "DevOps & deploy",

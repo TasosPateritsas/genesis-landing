@@ -36,8 +36,8 @@ export function ProjectPage({ slug }: { slug: string }) {
             {live ? <CaseQuote project={project} /> : null}
           </>
         )}
-        <CaseNav project={project} />
-        <CaseClosing lead={!hasNav} />
+        {!wf ? <CaseNav project={project} /> : null}
+        {!wf ? <CaseClosing lead={!hasNav} /> : null}
       </main>
       <Footer variant="dark" />
     </div>

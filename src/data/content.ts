@@ -338,7 +338,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           link: "Open the calendar",
         },
         email: { title: "Email us", body: "For briefs, questions or a quick hello." },
-        phone: { title: "Call us", body: "Mon–Fri 9:00–18:00 · Sat 10:00–14:00 (Athens)" },
+        phone: { title: "Call us", body: "Mon–Fri 09:00–18:00 · Sat 10:00–14:00" },
       },
       form: {
         firstName: "First name *",
@@ -746,7 +746,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
           link: "Ανοίξτε το ημερολόγιο",
         },
         email: { title: "Στείλτε email", body: "Για brief, ερωτήσεις ή ένα γρήγορο γεια." },
-        phone: { title: "Καλέστε μας", body: "Δευ–Παρ 09:00–18:00 · Σάβ 10:00–14:00 (Αθήνα)" },
+        phone: { title: "Καλέστε μας", body: "Δευ–Παρ 09:00–18:00 · Σάβ 10:00–14:00" },
       },
       form: {
         firstName: "Όνομα *",

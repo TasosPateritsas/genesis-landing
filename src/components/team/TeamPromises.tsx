@@ -10,7 +10,7 @@ function PromiseCheck({ ticked }: { ticked: boolean }) {
   return (
     <span className={ticked ? "team-check is-ticked" : "team-check"} aria-hidden>
       <svg viewBox="0 0 20 20" width="20" height="20">
-        <path d="M4.5 10.4 L8.2 14.1 L15.6 6.2" />
+        <path d="M-1 11 L6.5 18.5 L21 -1" />
       </svg>
     </span>
   );

@@ -50,7 +50,7 @@ function ProfileCard({ profile, mirrored }: { profile: TeamProfileCopy; mirrored
         )}
       </div>
       <div className="team-profile-body">
-        <p className="team-profile-role">{member.role}</p>
+        <p className="team-profile-role">{member.roleByLocale?.[locale] ?? member.role}</p>
         <h3 className="team-profile-name">{profile.name[locale]}</h3>
         <p className="team-profile-quote">{profile.quote[locale]}</p>
         <p className="team-eyebrow team-profile-label">{teamIntroCopy.onProject[locale]}</p>
@@ -65,7 +65,16 @@ function ProfileCard({ profile, mirrored }: { profile: TeamProfileCopy; mirrored
         <ul className="team-profile-tags">
           {profile.tags.map((tag) => (
             <li key={tag} className="team-profile-tag">
-              {tag}
+              {locale === "el" ? ({
+                "Product strategy": "Στρατηγική προϊόντος",
+                "Prototyping": "Πρωτότυπα",
+                "Project delivery": "Διαχείριση έργου",
+                "Performance": "Απόδοση",
+                "AI integrations": "Ενσωμάτωση AI",
+                "Automated deploys": "Αυτόματα deploys",
+                "Monitoring": "Παρακολούθηση",
+                "Security": "Ασφάλεια",
+              } as Record<string, string>)[tag] ?? tag : tag}
             </li>
           ))}
         </ul>
@@ -104,16 +113,18 @@ function ProfileCard({ profile, mirrored }: { profile: TeamProfileCopy; mirrored
 
 export function TeamProfiles() {
   const { locale } = useLocale();
-  const [ref, revealed] = useReveal<HTMLDivElement>();
+  const [dividerRef, dividerRevealed] = useReveal<HTMLDivElement>();
+  const [introRef, introRevealed] = useReveal<HTMLDivElement>(0.15);
 
   return (
     <section className="team-who team-section" aria-labelledby="team-who-heading">
-      <div ref={ref} className={revealed ? "team-divider is-revealed" : "team-divider"}>
+      <div ref={dividerRef} className={dividerRevealed ? "team-divider is-revealed" : "team-divider"}>
         <span className="team-divider-line is-left" aria-hidden />
         <p className="team-divider-label">{teamIntroCopy.divider[locale]}</p>
         <span className="team-divider-line is-right" aria-hidden />
       </div>
       <div className="wrap-content">
+        <div ref={introRef} className={`team-who-intro${introRevealed ? " is-revealed" : ""}`}>
         <h2 id="team-who-heading" className="team-h2 gx-up">
           {teamIntroCopy.titleLead[locale]}
           <span className="is-accent">{teamIntroCopy.titleAccent[locale]}</span>
@@ -121,6 +132,7 @@ export function TeamProfiles() {
         <p className="team-who-sub gx-up" style={revealDelay(0.1, 0.06)}>
           {teamIntroCopy.subtext[locale]}
         </p>
+        </div>
         <div className="team-who-list">
           {teamProfiles.map((profile, index) => (
             <ProfileCard key={profile.id} profile={profile} mirrored={index % 2 === 1} />

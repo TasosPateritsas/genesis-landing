@@ -1,7 +1,7 @@
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
+import { HomeOpening } from "@/components/HomeOpening";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Team } from "@/components/Team";
 import { Upcoming } from "@/components/Upcoming";
@@ -13,7 +13,7 @@ export function HomePage() {
     <>
       <Header />
       <main id="main">
-        <Hero />
+        <HomeOpening />
         <StatsStrip />
         <WhatWeBuild />
         <Work />

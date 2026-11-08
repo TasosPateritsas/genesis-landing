@@ -39,7 +39,7 @@ function WayCard({
       <h3 className="ways-card-title">{title}</h3>
       <p className="ways-card-body">{body}</p>
       <span className="ways-card-link">
-        {link}
+        <span className="ways-card-link-text">{link}</span>
         {href ? (
           <span className="cta-arrow" aria-hidden>
             →
