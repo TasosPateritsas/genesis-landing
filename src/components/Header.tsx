@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
-import { site } from "@/config/site";
+import { emailHref, site } from "@/config/site";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 import { contactHref } from "@/lib/contactHref";
 import { primaryNav, stripLocalePrefix } from "@/lib/routes";
@@ -181,9 +181,13 @@ export function Header({ variant = "light" }: { variant?: HeaderVariant }) {
               →
             </span>
           </Link>
-          <a href={`mailto:${site.email}`} className="site-menu-email">
-            {site.email}
-          </a>
+          {emailHref ? (
+            <a href={emailHref} className="site-menu-email">
+              {site.emailDisplay}
+            </a>
+          ) : (
+            <span className="site-menu-email">{site.emailDisplay}</span>
+          )}
         </div>
       </div>
     </>

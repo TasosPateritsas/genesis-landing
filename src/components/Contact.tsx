@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
-import { phoneHref, site } from "@/config/site";
+import { emailHref, phoneHref, site } from "@/config/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { revealDelay, useReveal } from "@/lib/reveal";
 import { contactHref } from "@/lib/contactHref";
@@ -50,10 +50,17 @@ export function Contact() {
               {t.contact.directLabel}
             </p>
             <div className="home-contact-links gx-up" style={revealDelay(0.5, 0.3)}>
-              <a href={`mailto:${site.email}`} className="home-contact-link">
-                <Mail className="home-contact-icon" strokeWidth={1.75} aria-hidden />
-                <span className="label">{site.email}</span>
-              </a>
+              {emailHref ? (
+                <a href={emailHref} className="home-contact-link">
+                  <Mail className="home-contact-icon" strokeWidth={1.75} aria-hidden />
+                  <span className="label">{site.emailDisplay}</span>
+                </a>
+              ) : (
+                <span className="home-contact-link">
+                  <Mail className="home-contact-icon" strokeWidth={1.75} aria-hidden />
+                  <span className="label">{site.emailDisplay}</span>
+                </span>
+              )}
               <a href={phoneHref} className="home-contact-link">
                 <Phone className="home-contact-icon" strokeWidth={1.75} aria-hidden />
                 <span className="label">{site.phoneDisplay}</span>

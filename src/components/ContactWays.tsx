@@ -3,7 +3,7 @@
 import { Calendar, Mail, Phone, type LucideIcon } from "lucide-react";
 import { useEffect, useRef, type MouseEvent, type Ref } from "react";
 import { ContactForm } from "@/components/ContactForm";
-import { phoneHref, site } from "@/config/site";
+import { emailHref, phoneHref, site } from "@/config/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { openCalendlyPopup } from "@/lib/calendly";
 import { fill } from "@/lib/fill";
@@ -120,8 +120,8 @@ export function ContactWays() {
                 icon={Mail}
                 title={ways.email.title}
                 body={ways.email.body}
-                link={site.email}
-                href={`mailto:${site.email}`}
+                link={site.emailDisplay}
+                href={emailHref}
               />
             </div>
             <div className="gx-up ways-cell" style={cardDelay(3)}>

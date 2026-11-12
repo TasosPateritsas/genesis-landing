@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { phoneHref, site } from "@/config/site";
+import { emailHref, phoneHref, site } from "@/config/site";
 import { useLocale, useLocalizedPath } from "@/i18n/LocaleProvider";
 import { primaryNav } from "@/lib/routes";
 
@@ -43,7 +43,7 @@ export function Footer({ variant = "light", className }: { variant?: FooterVaria
     {
       title: t.footer.contactTitle,
       links: [
-        { label: site.email, href: `mailto:${site.email}` },
+        { label: site.emailDisplay, href: emailHref },
         { label: site.phoneDisplay, href: phoneHref },
       ],
     },

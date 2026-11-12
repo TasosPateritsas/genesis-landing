@@ -9,7 +9,7 @@ import { fill } from "@/lib/fill";
 export function LegalPage({ kind }: { kind: "privacy" | "cookies" }) {
   const { t } = useLocale();
   const page = t.legal[kind];
-  const values = { name: site.name, email: site.email };
+  const values = { name: site.name, email: site.emailDisplay };
 
   return (
     <>

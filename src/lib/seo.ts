@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CONFIGURED_SITE_URL } from "@/config/env";
 import { site } from "@/config/site";
 import { dictionaries, type Locale } from "@/data/content";
 import type { Project } from "@/data/projects";
@@ -17,8 +18,9 @@ const HOME = {
   },
 } as const;
 
+/** Indexable only on Vercel production with the real domain set, never on the vercel.app fallback. */
 export function isProductionIndexable() {
-  return process.env.VERCEL_ENV === "production";
+  return process.env.VERCEL_ENV === "production" && CONFIGURED_SITE_URL !== null;
 }
 
 function titled(title: string): Metadata["title"] {

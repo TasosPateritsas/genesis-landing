@@ -47,7 +47,7 @@ function organizationJsonLd(includeWebsite: boolean) {
         name: site.name,
         url: site.url,
         description: "Software agency in Athens building websites, eshops, apps, AI agents and AI workflows.",
-        email: site.email,
+        ...(site.email ? { email: site.email } : {}),
         address: {
           "@type": "PostalAddress",
           addressLocality: "Athens",

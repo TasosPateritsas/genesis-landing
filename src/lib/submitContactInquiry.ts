@@ -9,7 +9,7 @@ export type ContactInquiry = {
   startedAt?: number;
 };
 
-/** Posts to the contact route. fail@genesis.studio still rejects, so the error state can be checked. */
+/** Posts to the contact route. */
 export async function submitContactInquiry(inquiry: ContactInquiry): Promise<void> {
   const response = await fetch("/api/contact", {
     method: "POST",

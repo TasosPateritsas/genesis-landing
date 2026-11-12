@@ -2,15 +2,16 @@
 
 import Link from "next/link";
 import { useId, useState, type ReactNode } from "react";
-import { site } from "@/config/site";
+import { emailHref } from "@/config/site";
 import type { Locale } from "@/data/content";
 import { teamFaqCopy, teamFaqs, type TeamFaqLink } from "@/data/teamFaq";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { stagger, useReveal } from "@/lib/reveal";
 import { localizePath } from "@/lib/routes";
 
+/** null for the email phrase until a real address is configured; it then stays plain text. */
 function linkHref(link: TeamFaqLink, locale: Locale) {
-  if (link.href === "mailto") return `mailto:${site.email}`;
+  if (link.href === "mailto") return emailHref;
   return localizePath(link.href, locale);
 }
 
@@ -32,10 +33,15 @@ function AnswerText({
     const at = rest.indexOf(phrase);
     if (at === -1) return;
     if (at > 0) nodes.push(rest.slice(0, at));
+    const href = linkHref(link, locale);
     nodes.push(
-      <Link key={`${phrase}-${index}`} href={linkHref(link, locale)} className="team-faq-inline">
-        {phrase}
-      </Link>,
+      href ? (
+        <Link key={`${phrase}-${index}`} href={href} className="team-faq-inline">
+          {phrase}
+        </Link>
+      ) : (
+        phrase
+      ),
     );
     rest = rest.slice(at + phrase.length);
   });

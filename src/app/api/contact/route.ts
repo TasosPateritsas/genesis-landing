@@ -49,9 +49,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 429 });
   }
 
-  if (typeof body.email === "string" && body.email.trim().toLowerCase() === "fail@genesis.studio") {
-    return NextResponse.json({ ok: false }, { status: 500 });
-  }
-
   return NextResponse.json({ ok: true });
 }
