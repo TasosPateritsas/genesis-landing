@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { CategoryDropdown } from "@/components/CategoryDropdown";
@@ -48,8 +48,14 @@ export function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
   const submitting = useRef(false);
-  const startedAt = useRef(Date.now());
+  // When the form mounted (or was reset). /api/contact uses it as a light minimum-fill-time
+  // heuristic, not real bot protection. Set after mount: reading the clock in render is impure.
+  const startedAt = useRef(0);
   const honeypot = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   function updateField(name: FieldName, value: string) {
     setFields((current) => ({ ...current, [name]: value }));
@@ -67,6 +73,7 @@ export function ContactForm() {
     setFields(EMPTY_FIELDS);
     setErrors({});
     setStatus("idle");
+    startedAt.current = Date.now();
     window.requestAnimationFrame(() => {
       document.getElementById("firstName")?.focus();
     });

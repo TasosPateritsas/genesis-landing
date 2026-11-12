@@ -23,7 +23,7 @@ export function ProjectPage({ slug }: { slug: string }) {
   return (
     <div className={`case-page${wf ? " is-weddingflow" : ""}`}>
       <Header variant="dark" />
-      <main>
+      <main id="main">
         <CaseHero project={project} />
         <CaseShowcase project={project} />
         {wf ? (
