@@ -1,4 +1,4 @@
-import { asset, delivered, feature, L, phone, review, scores, shot } from "@/data/caseHelpers";
+import { asset, delivered, feature, L, mockReview, phone, scores, shot } from "@/data/caseHelpers";
 import type { Project } from "@/data/projectTypes";
 
 const root = "/projects/vasileiadis";
@@ -84,7 +84,7 @@ export const vasileiadis: Project = {
     },
   },
   results: { desktop: scores(97, 1.3, 100, 94), mobile: scores(95, 2.9, 100, 87) },
-  review: review(
+  review: mockReview(
     ["Owner, Vasileiadis Drain Cleaning", "Ιδιοκτήτης, Αποφράξεις Βασιλειάδης"],
     "[Mock] Vasileiadis Drain Cleaning",
     "[Mock] The client's own Google review appears here, word for word — for example how customers now find the right number at any hour.",

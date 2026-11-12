@@ -45,6 +45,12 @@ export const SITE_URL = CONFIGURED_SITE_URL ?? vercelUrl() ?? LOCAL_URL;
 
 export const CONTACT_EMAIL = parseEmail(process.env.NEXT_PUBLIC_CONTACT_EMAIL);
 
+/**
+ * The "[Mock]" reviews on /contact and the case studies stay visible for the team until the
+ * real domain is set, then disappear on their own so they can never ship with the launch.
+ */
+export const SHOW_MOCK_REVIEWS = CONFIGURED_SITE_URL === null;
+
 /** What still has to be set before launch. Production builds print these as warnings. */
 export function launchWarnings(): string[] {
   const warnings: string[] = [];
@@ -55,6 +61,7 @@ export function launchWarnings(): string[] {
         ? `NEXT_PUBLIC_SITE_URL "${rawUrl}" is ignored: use a bare https origin, no path or trailing slash.`
         : "NEXT_PUBLIC_SITE_URL is not set.",
       `The site is noindex and canonical URLs use ${SITE_URL}.`,
+      "Mock reviews are shown on /contact and the case studies.",
     );
   }
   if (!CONTACT_EMAIL) {

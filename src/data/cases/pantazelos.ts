@@ -1,4 +1,4 @@
-import { asset, delivered, feature, L, phone, review, scores, shot } from "@/data/caseHelpers";
+import { asset, delivered, feature, L, mockReview, phone, scores, shot } from "@/data/caseHelpers";
 import type { Project } from "@/data/projectTypes";
 
 const root = "/projects/pantazelos";
@@ -80,7 +80,7 @@ export const pantazelos: Project = {
     },
   },
   results: { desktop: scores(99, 0.9, 100, 94), mobile: scores(93, 2.3, 100, 90) },
-  review: review(
+  review: mockReview(
     ["Owner, Pantazelos Real Estate", "Ιδιοκτήτης, Pantazelos Real Estate"],
     "[Mock] Pantazelos Real Estate",
     "[Mock] The client's own Google review appears here, word for word — for example how buyers and sellers now find the office and its partners.",

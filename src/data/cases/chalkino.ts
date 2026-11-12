@@ -1,4 +1,4 @@
-import { asset, delivered, feature, L, phone, review, scores, shot } from "@/data/caseHelpers";
+import { asset, delivered, feature, L, mockReview, phone, scores, shot } from "@/data/caseHelpers";
 import type { Project } from "@/data/projectTypes";
 
 const root = "/projects/chalkino-katsaroli";
@@ -77,7 +77,7 @@ export const chalkino: Project = {
     },
   },
   results: { desktop: scores(98, 0.7, 92, 92), mobile: scores(86, 3.2, 92, 88) },
-  review: review(
+  review: mockReview(
     ["Owner, Chalkino Katsaroli", "Ιδιοκτήτης, Χάλκινο Κατσαρόλι"],
     "[Mock] Chalkino Katsaroli",
     "[Mock] The client's own Google review appears here, word for word — for example how customers now check the daily menu before they call.",

@@ -1,4 +1,4 @@
-import { asset, delivered, feature, L, phone, review, scores, shot } from "@/data/caseHelpers";
+import { asset, delivered, feature, L, mockReview, phone, scores, shot } from "@/data/caseHelpers";
 import type { Project } from "@/data/projectTypes";
 
 const root = "/projects/salty-boat-trips";
@@ -90,7 +90,7 @@ export const salty: Project = {
     desktop: scores(100, 0.3, 100, 96),
     mobile: scores(99, 0.9, 100, 96),
   },
-  review: review(
+  review: mockReview(
     ["Founder, Salty Boat Trips", "Ιδρυτής, Salty Boat Trips"],
     "[Mock] Thodoris P.",
     "[Mock] The client's own Google review appears here, word for word — for example how guests now request a private boat trip from the site.",

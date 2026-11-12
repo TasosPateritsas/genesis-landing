@@ -1,5 +1,7 @@
-/** Flip to false before launch to publish the real Google reviews only. */
-export const USE_MOCK_REVIEWS = true;
+import { SHOW_MOCK_REVIEWS } from "@/config/env";
+
+/** Mock reviews until NEXT_PUBLIC_SITE_URL is set (see config/env.ts); then only the real ones below. */
+export const USE_MOCK_REVIEWS = SHOW_MOCK_REVIEWS;
 
 export type Review = {
   name: string;

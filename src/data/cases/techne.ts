@@ -1,4 +1,4 @@
-import { asset, delivered, feature, L, phone, review, scores, shot } from "@/data/caseHelpers";
+import { asset, delivered, feature, L, mockReview, phone, scores, shot } from "@/data/caseHelpers";
 import type { Project } from "@/data/projectTypes";
 
 const root = "/projects/techne";
@@ -77,7 +77,7 @@ export const techne: Project = {
     },
   },
   results: { desktop: scores(90, 1.5, 92, 88), mobile: scores(64, 6.5, 92, 87) },
-  review: review(
+  review: mockReview(
     ["Founder, Techne.", "Ιδρυτής, Techne."],
     "[Mock] Techne.",
     "[Mock] The client's own Google review appears here, word for word — for example how the new site presents the studio's services and built work.",

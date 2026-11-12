@@ -1,4 +1,4 @@
-import { asset, delivered, feature, L, phone, review, scores, shot } from "@/data/caseHelpers";
+import { asset, delivered, feature, L, mockReview, phone, scores, shot } from "@/data/caseHelpers";
 import type { Project } from "@/data/projectTypes";
 
 const root = "/projects/horizon-realty";
@@ -84,7 +84,7 @@ export const horizon: Project = {
     },
   },
   results: { desktop: scores(97, 1.2, 100, 89), mobile: scores(76, 5.7, 100, 89) },
-  review: review(
+  review: mockReview(
     ["Owner, Horizon Realty", "Ιδιοκτήτης, Horizon Realty"],
     "[Mock] Horizon Realty",
     "[Mock] The client's own Google review appears here, word for word — for example how guests now book their stay direct.",

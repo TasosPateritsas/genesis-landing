@@ -1,3 +1,4 @@
+import { SHOW_MOCK_REVIEWS } from "@/config/env";
 import type { ScoreSet } from "@/lib/pageSpeed";
 import type { Feature, LocalizedText, ProjectReview, Shot } from "@/data/projectTypes";
 
@@ -25,12 +26,20 @@ export const shot = (
 
 export const phone = (en: string, el = en) => asset(en, el);
 
-export const review = (role: [string, string], name: string, text: string): ProjectReview => ({
-  role: L(role[0], role[1]),
-  name,
-  text,
-  date: "30 Oct 2026",
-});
+/** Placeholder "[Mock]" testimonial. Dropped automatically once the real domain is set. */
+export const mockReview = (
+  role: [string, string],
+  name: string,
+  text: string,
+): ProjectReview | undefined =>
+  SHOW_MOCK_REVIEWS
+    ? {
+        role: L(role[0], role[1]),
+        name,
+        text,
+        date: "30 Oct 2026",
+      }
+    : undefined;
 
 export const scores = (
   performance: number,

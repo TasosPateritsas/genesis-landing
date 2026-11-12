@@ -1,4 +1,4 @@
-import { asset, delivered, feature, L, phone, review, scores, shot } from "@/data/caseHelpers";
+import { asset, delivered, feature, L, mockReview, phone, scores, shot } from "@/data/caseHelpers";
 import type { Project } from "@/data/projectTypes";
 
 const root = "/projects/dr-baumann";
@@ -79,7 +79,7 @@ export const baumann: Project = {
     },
   },
   results: { desktop: scores(100, 0.6, 100, 100), mobile: scores(96, 2.8, 100, 100) },
-  review: review(
+  review: mockReview(
     ["Owner, Dr. Baumann Hellas", "Ιδιοκτήτης, Dr. Baumann Hellas"],
     "[Mock] Dr. Baumann Hellas",
     "[Mock] The client's own Google review appears here, word for word — for example how the new eshop changed the way customers find the right products for their skin.",
